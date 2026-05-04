@@ -534,7 +534,7 @@
       <p style="color: #B0B0B0; font-size: 16px; line-height: 1.8; max-width: 600px; margin: 0 auto 32px;">
         Setiap langkah dipandu oleh tim kaunselor berpengalaman dan mematuhi garis panduan syariah yang ketat untuk memastikan proses ta'aruf yang berkah.
       </p>
-      <a href="#hero" class="btn-primary-hero">Mulakan Ta'aruf</a>
+      
 
     <div style="text-align:center;margin-top:56px;">
       <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
