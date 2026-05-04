@@ -894,6 +894,11 @@ document.querySelectorAll('.modal-overlay').forEach(m => {
   </div>
 </div>
 
+  <script>
+  const supabaseUrl = '<?php echo getenv("SUPABASE_URL"); ?>';
+  const supabaseKey = '<?php echo getenv("SUPABASE_ANON_KEY"); ?>';
+</script>
+
 <?php include 'footer.php'; ?>
 
 </body>
