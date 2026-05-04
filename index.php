@@ -830,12 +830,14 @@ async function handleFormSubmit(e) {
     const ext = file.name.split('.').pop();
     const filename = `${jdk_id}.${ext}`;
 
-    const { error: uploadError } = await db.storage
-      .from('profile-pics')
-      .upload(filename, file);
+   const { data: uploadData, error: uploadError } = await db.storage
+  .from('profile-pics')
+  .upload(filename, file);
 
-    if (uploadError) {
-      console.error('Upload error:', uploadError.message);
+console.log('Upload result:', uploadData, uploadError);
+
+if (uploadError) {
+  console.error('Upload error:', uploadError.message);
       // non-fatal — continue without photo
     } else {
       const { data: urlData } = db.storage
