@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Tajawal:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+  <!-- Supabase CDN — add this in <head> -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   
@@ -747,7 +749,13 @@
 
 
 <script>
-// IC FORMATTING
+// ── SUPABASE INIT ──
+const { createClient } = supabase;
+const supabaseUrl = '<?php echo getenv("SUPABASE_URL"); ?>';
+const supabaseKey = '<?php echo getenv("SUPABASE_ANON_KEY"); ?>';
+const db = createClient(supabaseUrl, supabaseKey);
+
+// ── IC FORMATTING ──
 document.getElementById('icNo')?.addEventListener('input', function(e) {
   let v = e.target.value.replace(/\D/g, '');
   if (v.length > 6 && v.length <= 8) v = v.slice(0,6) + '-' + v.slice(6);
@@ -755,41 +763,41 @@ document.getElementById('icNo')?.addEventListener('input', function(e) {
   e.target.value = v;
 });
 
-// IMAGE UPLOAD HANDLER
+// ── IMAGE UPLOAD HANDLER ──
 function handleImageUpload(event) {
   const file = event.target.files[0];
   if (!file) return;
   if (file.size > 5 * 1024 * 1024) {
     alert('Saiz fail melebihi 5MB. Sila pilih gambar yang lebih kecil.');
+    event.target.value = '';
     return;
   }
   const uploadArea = event.target.parentElement;
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    uploadArea.innerHTML = `
-      <div style="text-align: center; color: var(--gold);">
-        <div style="font-size: 24px; margin-bottom: 8px;">✓</div>
-        <div style="font-size: 13px;">Gambar berjaya dimuat naik</div>
-        <div style="font-size: 12px; color: #B0B0B0; margin-top: 4px;">${file.name}</div>
-      </div>
-    `;
-  };
-  reader.readAsDataURL(file);
+  uploadArea.innerHTML = `
+    <div style="text-align:center; color:var(--gold);">
+      <div style="font-size:24px; margin-bottom:8px;">✓</div>
+      <div style="font-size:13px;">Gambar berjaya dimuat naik</div>
+      <div style="font-size:12px; color:#B0B0B0; margin-top:4px;">${file.name}</div>
+    </div>
+  `;
 }
 
-// FORM VALIDATION
+// ── FORM VALIDATION ──
 function validateForm() {
   let valid = true;
-  const requiredFields = ['fullName', 'icNo', 'phoneNo', 'emailAddr'];
-  requiredFields.forEach(id => {
+  ['fullName','icNo','phoneNo','emailAddr'].forEach(id => {
     const field = document.getElementById(id);
     if (!field.value.trim()) { field.style.borderColor = '#FF6B6B'; valid = false; }
     else { field.style.borderColor = ''; }
   });
   const ic = document.getElementById('icNo').value.replace(/-/g, '');
-  if (ic.length !== 12 || !/^\d+$/.test(ic)) { document.getElementById('icNo').style.borderColor = '#FF6B6B'; valid = false; }
+  if (ic.length !== 12 || !/^\d+$/.test(ic)) {
+    document.getElementById('icNo').style.borderColor = '#FF6B6B'; valid = false;
+  }
   const email = document.getElementById('emailAddr').value;
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('emailAddr').style.borderColor = '#FF6B6B'; valid = false; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('emailAddr').style.borderColor = '#FF6B6B'; valid = false;
+  }
   return valid;
 }
 
@@ -799,60 +807,90 @@ function generateId() {
   return `JDK-${year}-${random}`;
 }
 
-function handleFormSubmit(e) {
+// ── MAIN FORM SUBMIT ──
+async function handleFormSubmit(e) {
   e.preventDefault();
   if (!validateForm()) return;
   if (!document.getElementById('agreeTerms').checked) {
     alert('Sila bersetuju dengan Terma & Syarat untuk meneruskan.');
     return;
   }
+
   const submitBtn = e.target.querySelector('.btn-submit-premium');
   submitBtn.disabled = true;
   submitBtn.textContent = 'Memproses...';
-  const formData = {
-    id: generateId(),
-    nama: document.getElementById('fullName').value.trim(),
-    ic: document.getElementById('icNo').value,
+
+  const jdk_id = generateId();
+  let photo_url = null;
+
+  // ── UPLOAD PHOTO if selected ──
+  const fileInput = document.getElementById('profilePic');
+  if (fileInput && fileInput.files[0]) {
+    const file = fileInput.files[0];
+    const ext = file.name.split('.').pop();
+    const filename = `${jdk_id}.${ext}`;
+
+    const { error: uploadError } = await db.storage
+      .from('profile-pics')
+      .upload(filename, file);
+
+    if (uploadError) {
+      console.error('Upload error:', uploadError.message);
+      // non-fatal — continue without photo
+    } else {
+      const { data: urlData } = db.storage
+        .from('profile-pics')
+        .getPublicUrl(filename);
+      photo_url = urlData.publicUrl;
+    }
+  }
+
+  // ── INSERT ROW ──
+  const { error } = await db.from('registrations').insert([{
+    jdk_id,
+    nama:    document.getElementById('fullName').value.trim(),
+    ic:      document.getElementById('icNo').value,
     telefon: document.getElementById('phoneNo').value.trim(),
-    email: document.getElementById('emailAddr').value.trim(),
-    timestamp: new Date().toISOString()
-  };
-  try {
-    const existing = JSON.parse(localStorage.getItem('jodohku_registrations') || '[]');
-    existing.push(formData);
-    localStorage.setItem('jodohku_registrations', JSON.stringify(existing));
-  } catch(err) {}
-  setTimeout(() => {
-    document.getElementById('formView').style.display = 'none';
-    const successView = document.getElementById('successView');
-    successView.style.display = 'block';
-    document.getElementById('generatedId').textContent = formData.id;
-  }, 1500);
+    email:   document.getElementById('emailAddr').value.trim(),
+    photo_url,
+  }]);
+
+  if (error) {
+    console.error('Supabase error:', error.message);
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Hantar Permohonan Beta Access';
+    alert('Ralat berlaku: ' + error.message);
+    return;
+  }
+
+  // ── SUCCESS ──
+  document.getElementById('formView').style.display = 'none';
+  document.getElementById('successView').style.display = 'block';
+  document.getElementById('generatedId').textContent = jdk_id;
 }
 
-// SCROLL ANIMATIONS
-const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+// ── SCROLL ANIMATIONS ──
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-}, observerOptions);
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// NAVBAR SCROLL EFFECT
+// ── NAVBAR SCROLL ──
 window.addEventListener('scroll', () => {
   const navbar = document.querySelector('.navbar');
   if (navbar) navbar.style.background = window.scrollY > 100 ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.9)';
 });
 
-// SMOOTH SCROLL
+// ── SMOOTH SCROLL ──
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
+  anchor.addEventListener('click', function(e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
-// MODAL FUNCTIONS
+// ── MODALS ──
 function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
 function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = ''; }
 document.querySelectorAll('.modal-overlay').forEach(m => {
