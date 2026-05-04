@@ -7,8 +7,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Tajawal:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-  <!-- Supabase CDN — add this in <head> -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  .pillar-image, .usp-image, .flow-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255,215,0,0.08);
+    border: 1.5px solid rgba(255,215,0,0.25);
+    margin: 0 auto 16px;
+  }
+  .flow-image {
+    width: 120px;
+    height: 120px;
+  }
+</style>
 </head>
 <body>
   
@@ -20,7 +36,6 @@
   <div class="hero-container">
     <div class="hero-content">
       <div class="hero-badge">
-        <!-- Crown SVG -->
         <svg class="hero-crown-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M2 19L4.5 9L9 14L12 6L15 14L19.5 9L22 19H2Z" fill="#FFD700" stroke="#FFD700" stroke-width="1.5" stroke-linejoin="round"/>
           <rect x="2" y="19" width="20" height="2" rx="1" fill="#FFD700"/>
@@ -48,7 +63,6 @@
       <div id="formView">
         <div class="form-header">
           <div class="form-crown">
-            <!-- Crown SVG large -->
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 38L9 18L18 28L24 12L30 28L39 18L44 38H4Z" fill="#FFD700" stroke="#FFA000" stroke-width="2" stroke-linejoin="round"/>
               <rect x="4" y="38" width="40" height="4" rx="2" fill="#FFD700"/>
@@ -91,7 +105,6 @@
             <div class="upload-area">
               <input type="file" id="profilePic" accept="image/*" onchange="handleImageUpload(event)">
               <div class="upload-icon">
-                <!-- Camera SVG -->
                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect x="3" y="10" width="30" height="22" rx="4" stroke="#FFD700" stroke-width="2"/>
                   <circle cx="18" cy="21" r="6" stroke="#FFD700" stroke-width="2"/>
@@ -123,7 +136,6 @@
       <!-- SUCCESS STATE -->
       <div class="success-state" id="successView">
         <div class="success-icon">
-          <!-- Checkmark SVG -->
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M8 20L16 28L32 12" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -140,7 +152,7 @@
 </section>
 <div class="gold-shimmer-line"></div>
 
-<!-- IMAGE SLIDER -->
+<!-- IMAGE SLIDER (carousel — unsplash kept) -->
 <section id="slider" class="slider-section">
   <div class="slider-container">
     <div class="slider-header reveal">
@@ -153,7 +165,6 @@
     
     <div class="image-slider reveal">
       <div class="slider-track">
-        <!-- Slide 1: Islamic values / couple ta'aruf -->
         <div class="slide">
           <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=900&h=260&fit=crop&q=80" alt="Padanan Nilai Islam">
           <div class="slide-overlay">
@@ -163,7 +174,6 @@
             </div>
           </div>
         </div>
-        <!-- Slide 2: AI / data science -->
         <div class="slide">
           <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=900&h=260&fit=crop&q=80" alt="AI Technology">
           <div class="slide-overlay">
@@ -173,7 +183,6 @@
             </div>
           </div>
         </div>
-        <!-- Slide 3: Digital security / shield -->
         <div class="slide">
           <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=900&h=260&fit=crop&q=80" alt="Keselamatan Digital">
           <div class="slide-overlay">
@@ -183,7 +192,6 @@
             </div>
           </div>
         </div>
-        <!-- Slide 4: Family / wali -->
         <div class="slide">
           <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?w=900&h=260&fit=crop&q=80" alt="Sistem Wali">
           <div class="slide-overlay">
@@ -193,7 +201,6 @@
             </div>
           </div>
         </div>
-        <!-- Slide 5: Muslim community professionals -->
         <div class="slide">
           <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=900&h=260&fit=crop&q=80" alt="Komuniti Muslim">
           <div class="slide-overlay">
@@ -203,7 +210,6 @@
             </div>
           </div>
         </div>
-        <!-- Slide 6: Wedding / perkahwinan -->
         <div class="slide">
           <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=900&h=260&fit=crop&q=80" alt="Ekosistem Perkahwinan">
           <div class="slide-overlay">
@@ -213,7 +219,6 @@
             </div>
           </div>
         </div>
-        <!-- Slide 7: Data analytics -->
         <div class="slide">
           <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=260&fit=crop&q=80" alt="Analitik Data">
           <div class="slide-overlay">
@@ -223,7 +228,6 @@
             </div>
           </div>
         </div>
-        <!-- Slide 8: Mobile app -->
         <div class="slide">
           <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&h=260&fit=crop&q=80" alt="Aplikasi Mobile">
           <div class="slide-overlay">
@@ -233,7 +237,6 @@
             </div>
           </div>
         </div>
-        <!-- Slide 9: Islamic counsellor -->
         <div class="slide">
           <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&h=260&fit=crop&q=80" alt="Kaunselor Islam">
           <div class="slide-overlay">
@@ -243,7 +246,6 @@
             </div>
           </div>
         </div>
-        <!-- Slide 10: Happy Muslim couple / success -->
         <div class="slide">
           <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&h=260&fit=crop&q=80" alt="Kisah Kejayaan">
           <div class="slide-overlay">
@@ -265,7 +267,7 @@
 </section>
 <div class="gold-shimmer-line"></div>
 
-<!-- PILLARS WITH AI IMAGES -->
+<!-- PILLARS -->
 <section id="pillars" class="pillars-section">
   <div class="pillars-container">
     <div class="slider-header reveal">
@@ -277,45 +279,79 @@
     </div>
     
     <div class="pillars-grid reveal">
+
+      <!-- Teras 1: Kesucian Agama — Mosque/crescent -->
       <div class="pillar-card">
         <div class="pillar-image">
-          <!-- Masjid / mosque Malaysia -->
-          <img src="https://images.unsplash.com/photo-1597138803812-c01534e1dbfc?w=200&h=200&fit=crop&q=80" alt="Mosque Malaysia">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 42V24C9 18 13.5 13.5 19.5 13.5H34.5C40.5 13.5 45 18 45 24V42" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M3 42H51" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M27 3C27 3 33 7.5 27 13.5C21 7.5 27 3 27 3Z" fill="#FFD700"/>
+            <rect x="21" y="30" width="12" height="12" rx="1.5" stroke="#FFD700" stroke-width="2"/>
+            <!-- crescent moon top right -->
+            <path d="M40 6C40 6 44 8 42 12C39 10 40 6 40 6Z" fill="#FFD700" opacity="0.7"/>
+          </svg>
         </div>
         <div class="pillar-number">Teras 1</div>
         <h3 class="pillar-title">Kesucian Agama</h3>
         <p class="pillar-desc">Menghapuskan ruang zina, memelihara adab, dan menstrukturkan ta'aruf berlandaskan syariah.</p>
       </div>
-      
+
+      <!-- Teras 2: Perlindungan Sosial — Shield -->
       <div class="pillar-card">
         <div class="pillar-image">
-          <!-- Digital shield / cybersecurity -->
-          <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=200&h=200&fit=crop&q=80" alt="Perlindungan Digital">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M27 6L9 13.5V27C9 36.9 17.1 46.2 27 48C36.9 46.2 45 36.9 45 27V13.5L27 6Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round" fill="rgba(255,215,0,0.07)"/>
+            <path d="M19 27L24 32L35 21" stroke="#FFD700" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
         <div class="pillar-number">Teras 2</div>
         <h3 class="pillar-title">Perlindungan Sosial</h3>
         <p class="pillar-desc">Pemerkasaan Mod Wali, perlindungan identiti dan pembanterasan scam romantik.</p>
       </div>
-      
+
+      <!-- Teras 3: Pemerkasaan Ekonomi — Growth/chart -->
       <div class="pillar-card">
         <div class="pillar-image">
-          <!-- Malaysian small business / economy -->
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&h=200&fit=crop&q=80" alt="Ekonomi Muslim">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="9" y="30" width="8" height="15" rx="2" fill="rgba(255,215,0,0.15)" stroke="#FFD700" stroke-width="1.8"/>
+            <rect x="23" y="21" width="8" height="24" rx="2" fill="rgba(255,215,0,0.15)" stroke="#FFD700" stroke-width="1.8"/>
+            <rect x="37" y="12" width="8" height="33" rx="2" fill="rgba(255,215,0,0.2)" stroke="#FFD700" stroke-width="1.8"/>
+            <path d="M9 27L23 18L37 9" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 2"/>
+            <circle cx="37" cy="9" r="3" fill="#FFD700"/>
+          </svg>
         </div>
         <div class="pillar-number">Teras 3</div>
         <h3 class="pillar-title">Pemerkasaan Ekonomi</h3>
         <p class="pillar-desc">Rantaian nilai perkahwinan yang menyokong vendor PKS Muslim bersijil halal.</p>
       </div>
-      
+
+      <!-- Teras 4: Teknologi & Privasi — Circuit/AI -->
       <div class="pillar-card">
         <div class="pillar-image">
-          <!-- AI / neural network -->
-          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=200&h=200&fit=crop&q=80" alt="AI Teknologi">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="18" y="18" width="18" height="18" rx="3" stroke="#FFD700" stroke-width="2" fill="rgba(255,215,0,0.07)"/>
+            <circle cx="27" cy="27" r="4" fill="#FFD700" opacity="0.8"/>
+            <!-- circuit lines -->
+            <line x1="27" y1="6" x2="27" y2="18" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="27" y1="36" x2="27" y2="48" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="6" y1="27" x2="18" y2="27" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="36" y1="27" x2="48" y2="27" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="27" cy="6" r="2.5" fill="#FFD700" opacity="0.5"/>
+            <circle cx="27" cy="48" r="2.5" fill="#FFD700" opacity="0.5"/>
+            <circle cx="6" cy="27" r="2.5" fill="#FFD700" opacity="0.5"/>
+            <circle cx="48" cy="27" r="2.5" fill="#FFD700" opacity="0.5"/>
+            <line x1="18" y1="18" x2="10" y2="10" stroke="#FFD700" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+            <line x1="36" y1="18" x2="44" y2="10" stroke="#FFD700" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+            <line x1="18" y1="36" x2="10" y2="44" stroke="#FFD700" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+            <line x1="36" y1="36" x2="44" y2="44" stroke="#FFD700" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+          </svg>
         </div>
         <div class="pillar-number">Teras 4</div>
         <h3 class="pillar-title">Teknologi &amp; Privasi</h3>
         <p class="pillar-desc">AI real-time filtering, kod identiti rahsia dan perlindungan data PDPA 2010.</p>
       </div>
+
     </div>
 
     <div style="display:flex; justify-content:center; margin-top:56px;">
@@ -327,7 +363,7 @@
 </section>
 <div class="gold-shimmer-line"></div>
 
-<!-- USP WITH AI IMAGES -->
+<!-- USP -->
 <section id="usp" class="usp-section">
   <div class="usp-container">
     <div class="slider-header reveal">
@@ -339,41 +375,79 @@
     </div>
     
     <div class="usp-grid reveal">
+
+      <!-- USP 1: Identiti Kod Rahsia — ID card / lock -->
       <div class="usp-card">
         <div class="usp-image">
-          <!-- Identity / MyKad / privacy -->
-          <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=200&h=200&fit=crop&q=80" alt="Identiti Selamat">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7" y="15" width="40" height="28" rx="4" stroke="#FFD700" stroke-width="2" fill="rgba(255,215,0,0.06)"/>
+            <circle cx="18" cy="27" r="5" stroke="#FFD700" stroke-width="1.8"/>
+            <line x1="28" y1="23" x2="41" y2="23" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="28" y1="28" x2="38" y2="28" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="28" y1="33" x2="35" y2="33" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/>
+            <!-- lock overlay -->
+            <rect x="34" y="33" width="14" height="11" rx="2" fill="#0a0a0a" stroke="#FFD700" stroke-width="1.5"/>
+            <path d="M37 33V30C37 27.8 39.8 26 41 26C42.2 26 45 27.8 45 30V33" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="41" cy="38" r="1.5" fill="#FFD700"/>
+          </svg>
         </div>
         <h3 class="usp-title">Identiti Kod Rahsia</h3>
         <p class="usp-desc">Nama sebenar disembunyikan dengan kod unik (JDK-2025-XX) sehingga kedua-dua pihak bersetuju bertemu.</p>
       </div>
-      
+
+      <!-- USP 2: AI Padanan Saintifik — Brain/neural -->
       <div class="usp-card">
         <div class="usp-image">
-          <!-- AI brain / neural matching -->
-          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=200&h=200&fit=crop&q=80" alt="AI Padanan">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M27 12C21 12 15 16.5 15 22.5C15 25.5 16.5 28.5 18 30C15 31.5 12 34.5 12 39C12 42 14.3 45 18 45H36C39.8 45 42 42 42 39C42 34.5 39 31.5 36 30C37.5 28.5 39 25.5 39 22.5C39 16.5 33 12 27 12Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round" fill="rgba(255,215,0,0.06)"/>
+            <line x1="27" y1="12" x2="27" y2="45" stroke="#FFD700" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <circle cx="21" cy="24" r="2.5" fill="#FFD700"/>
+            <circle cx="33" cy="24" r="2.5" fill="#FFD700"/>
+            <path d="M21 33C21 33 24 36 27 36C30 36 33 33 33 33" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
         </div>
         <h3 class="usp-title">AI Padanan Saintifik</h3>
         <p class="usp-desc">115 soalan psikologi dianalisis AI untuk padanan 847% lebih tepat berbanding swipe-based apps.</p>
       </div>
-      
+
+      <!-- USP 3: Real-Time Content Shield — Filter/radar -->
       <div class="usp-card">
         <div class="usp-image">
-          <!-- Content filter / shield -->
-          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=200&h=200&fit=crop&q=80" alt="Content Shield">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="27" cy="27" r="20" stroke="#FFD700" stroke-width="1.5" opacity="0.3"/>
+            <circle cx="27" cy="27" r="13" stroke="#FFD700" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="27" cy="27" r="6" stroke="#FFD700" stroke-width="1.5"/>
+            <circle cx="27" cy="27" r="2.5" fill="#FFD700"/>
+            <!-- sweep line -->
+            <line x1="27" y1="27" x2="27" y2="7" stroke="#FFD700" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+            <path d="M27 27 L42 17" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+            <!-- blocked X -->
+            <circle cx="42" cy="12" r="5" fill="rgba(255,80,80,0.15)" stroke="#FF6B6B" stroke-width="1.5"/>
+            <line x1="39.5" y1="9.5" x2="44.5" y2="14.5" stroke="#FF6B6B" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="44.5" y1="9.5" x2="39.5" y2="14.5" stroke="#FF6B6B" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
         </div>
         <h3 class="usp-title">Real-Time Content Shield</h3>
         <p class="usp-desc">AI menyekat kandungan haram, pertukaran nombor telefon dan ajakan tidak sesuai dalam 0.3 saat.</p>
       </div>
-      
+
+      <!-- USP 4: Ekosistem Komprehensif — rings/chain -->
       <div class="usp-card">
         <div class="usp-image">
-          <!-- Wedding ecosystem / flowers -->
-          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=200&h=200&fit=crop&q=80" alt="Ekosistem">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- wedding rings -->
+            <circle cx="21" cy="30" r="10" stroke="#FFD700" stroke-width="2.2" fill="none"/>
+            <circle cx="33" cy="30" r="10" stroke="#FFD700" stroke-width="2.2" fill="rgba(255,215,0,0.07)"/>
+            <!-- diamond on top -->
+            <polygon points="27,8 32,14 27,17 22,14" stroke="#FFD700" stroke-width="1.5" fill="rgba(255,215,0,0.15)" stroke-linejoin="round"/>
+            <line x1="22" y1="14" x2="32" y2="14" stroke="#FFD700" stroke-width="1"/>
+            <line x1="27" y1="8" x2="27" y2="14" stroke="#FFD700" stroke-width="1" opacity="0.5"/>
+          </svg>
         </div>
         <h3 class="usp-title">Ekosistem Komprehensif</h3>
         <p class="usp-desc">Satu-satunya platform dari padanan hingga pelamin — wedding planning, vendor booking, e-Nikah.</p>
       </div>
+
     </div>
 
     <div style="display:flex; justify-content:center; margin-top:56px;">
@@ -468,7 +542,6 @@
     <div class="questions-grid reveal">
       <div class="dimension-card">
         <div class="dimension-icon">
-          <!-- Compass SVG -->
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="18" cy="18" r="15" stroke="#FFD700" stroke-width="2"/>
             <circle cx="18" cy="18" r="3" fill="#FFD700"/>
@@ -485,7 +558,6 @@
       
       <div class="dimension-card">
         <div class="dimension-icon">
-          <!-- Home SVG -->
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 16L18 4L32 16V32H22V22H14V32H4V16Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round" fill="none"/>
             <rect x="15" y="22" width="6" height="10" rx="1" stroke="#FFD700" stroke-width="1.5"/>
@@ -498,7 +570,6 @@
       
       <div class="dimension-card">
         <div class="dimension-icon">
-          <!-- Money/coin SVG -->
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="18" cy="18" r="14" stroke="#FFD700" stroke-width="2"/>
             <path d="M18 10V12M18 24V26M13 16C13 14.3 15.2 13 18 13C20.8 13 23 14.3 23 16C23 17.7 21 18.7 18 19C15 19.3 13 20.3 13 22C13 23.7 15.2 25 18 25C20.8 25 23 23.7 23 22" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
@@ -511,7 +582,6 @@
       
       <div class="dimension-card">
         <div class="dimension-icon">
-          <!-- Mosque/crescent SVG -->
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6 28V16C6 12 9 9 13 9H23C27 9 30 12 30 16V28" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
             <path d="M2 28H34" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
@@ -526,7 +596,6 @@
       
       <div class="dimension-card">
         <div class="dimension-icon">
-          <!-- Heart SVG -->
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18 30C18 30 4 22 4 12C4 8.1 7.1 5 11 5C13.7 5 16 6.5 18 9C20 6.5 22.3 5 25 5C28.9 5 32 8.1 32 12C32 22 18 30 18 30Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round" fill="rgba(255,215,0,0.1)"/>
           </svg>
@@ -538,7 +607,6 @@
       
       <div class="dimension-card">
         <div class="dimension-icon">
-          <!-- Brain SVG -->
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18 8C14 8 10 11 10 15C10 17 11 19 12 20C10 21 8 23 8 26C8 28 9.5 30 12 30H24C26.5 30 28 28 28 26C28 23 26 21 24 20C25 19 26 17 26 15C26 11 22 8 18 8Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round" fill="none"/>
             <line x1="18" y1="8" x2="18" y2="30" stroke="#FFD700" stroke-width="1.5" stroke-dasharray="2 2"/>
@@ -553,7 +621,6 @@
       
       <div class="dimension-card">
         <div class="dimension-icon">
-          <!-- Family SVG -->
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="18" cy="9" r="4" stroke="#FFD700" stroke-width="2"/>
             <circle cx="8" cy="12" r="3" stroke="#FFD700" stroke-width="1.5"/>
@@ -570,7 +637,6 @@
       
       <div class="dimension-card">
         <div class="dimension-icon">
-          <!-- Lightning/conflict SVG -->
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M21 4L10 20H18L15 32L26 16H18L21 4Z" fill="rgba(255,215,0,0.15)" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"/>
           </svg>
@@ -582,7 +648,6 @@
       
       <div class="dimension-card">
         <div class="dimension-icon">
-          <!-- Chain/link SVG -->
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M14 22L22 14" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
             <path d="M10 18L8 20C5.8 22.2 5.8 25.8 8 28C10.2 30.2 13.8 30.2 16 28L18 26" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
@@ -617,35 +682,59 @@
     </div>
     
     <div class="taaruf-flow reveal">
+
+      <!-- Step 1: AI Smart Matching -->
       <div class="flow-step">
         <div class="flow-number">1</div>
         <div class="flow-image">
-          <!-- AI matching illustration -->
-          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=200&h=200&fit=crop&q=80" alt="AI Matching">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- two profiles -->
+            <circle cx="20" cy="22" r="8" stroke="#FFD700" stroke-width="2" fill="rgba(255,215,0,0.07)"/>
+            <circle cx="44" cy="22" r="8" stroke="#FFD700" stroke-width="2" fill="rgba(255,215,0,0.07)"/>
+            <path d="M8 48V42C8 38 13 35 20 35" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M56 48V42C56 38 51 35 44 35" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <!-- connecting heart -->
+            <path d="M32 38C32 38 26 34 26 30C26 27.2 28.2 25 31 25C31.7 25 32.4 25.2 33 25.5C33.6 25.2 34.3 25 35 25C37.8 25 40 27.2 40 30C40 34 32 38 32 38Z" fill="rgba(255,215,0,0.2)" stroke="#FFD700" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
         </div>
         <h3 class="flow-title">AI Smart Matching</h3>
         <p class="flow-desc">Algoritma menganalisis 115 jawapan anda dan mencari padanan terbaik berdasarkan keserasian mendalam.</p>
       </div>
-      
+
+      <!-- Step 2: Persetujuan Wali -->
       <div class="flow-step">
         <div class="flow-number">2</div>
         <div class="flow-image">
-          <!-- Family / wali approval -->
-          <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?w=200&h=200&fit=crop&q=80" alt="Wali Approval">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- elder figure -->
+            <circle cx="32" cy="16" r="8" stroke="#FFD700" stroke-width="2" fill="rgba(255,215,0,0.07)"/>
+            <path d="M16 52V44C16 40 23 36 32 36C41 36 48 40 48 44V52" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <!-- approval checkmark shield -->
+            <path d="M32 36C32 36 24 39 24 46C24 50.4 27.6 54 32 54C36.4 54 40 50.4 40 46C40 39 32 36 32 36Z" fill="rgba(255,215,0,0.1)" stroke="#FFD700" stroke-width="1.5"/>
+            <path d="M28 46L31 49L37 43" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
         <h3 class="flow-title">Persetujuan Wali</h3>
         <p class="flow-desc">Wali pihak perempuan menerima notifikasi dan menilai profil calon untuk memberikan kebenaran awal.</p>
       </div>
-      
+
+      <!-- Step 3: Komunikasi Terlindung -->
       <div class="flow-step">
         <div class="flow-number">3</div>
         <div class="flow-image">
-          <!-- Secure chat / encrypted communication -->
-          <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=200&h=200&fit=crop&q=80" alt="Komunikasi Terlindung">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- chat bubble with lock -->
+            <path d="M10 14C10 11.8 11.8 10 14 10H50C52.2 10 54 11.8 54 14V38C54 40.2 52.2 42 50 42H36L26 54V42H14C11.8 42 10 40.2 10 38V14Z" stroke="#FFD700" stroke-width="2" fill="rgba(255,215,0,0.06)" stroke-linejoin="round"/>
+            <!-- lock icon inside chat -->
+            <rect x="26" y="22" width="12" height="10" rx="2" stroke="#FFD700" stroke-width="1.8"/>
+            <path d="M29 22V19.5C29 17.6 30.3 16 32 16C33.7 16 35 17.6 35 19.5V22" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="32" cy="27" r="1.5" fill="#FFD700"/>
+          </svg>
         </div>
         <h3 class="flow-title">Komunikasi Terlindung</h3>
         <p class="flow-desc">Perbualan dalam platform dengan AI monitoring 24/7 untuk memastikan adab Islam terpelihara.</p>
       </div>
+
     </div>
     
     <div style="text-align: center; margin-top: 60px;">
@@ -663,7 +752,7 @@
 </section>
 <div class="gold-shimmer-line"></div>
 
-<!-- WEDDING ECOSYSTEM COMING SOON -->
+<!-- WEDDING ECOSYSTEM -->
 <section id="wedding" class="wedding-section">
   <div class="wedding-container">
     <div class="slider-header reveal">
@@ -679,7 +768,6 @@
       <div class="wedding-mockup">
         <div class="wedding-card">
           <div class="wedding-icon">
-            <!-- Building SVG -->
             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="6" y="10" width="24" height="22" rx="2" stroke="#FFD700" stroke-width="1.5"/>
               <rect x="10" y="14" width="4" height="4" rx="1" stroke="#FFD700" stroke-width="1.2"/>
@@ -696,7 +784,6 @@
         </div>
         <div class="wedding-card">
           <div class="wedding-icon">
-            <!-- Hotel/stars SVG -->
             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="4" y="14" width="28" height="18" rx="2" stroke="#FFD700" stroke-width="1.5"/>
               <rect x="8" y="18" width="5" height="5" rx="1" stroke="#FFD700" stroke-width="1.2"/>
@@ -712,7 +799,6 @@
         </div>
         <div class="wedding-card">
           <div class="wedding-icon">
-            <!-- Crown SVG -->
             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 28L7 14L13 20L18 8L23 20L29 14L32 28H4Z" stroke="#FFD700" stroke-width="1.5" stroke-linejoin="round" fill="rgba(255,215,0,0.1)"/>
               <rect x="4" y="28" width="28" height="3" rx="1.5" fill="#FFD700"/>
@@ -724,7 +810,6 @@
         </div>
         <div class="wedding-card">
           <div class="wedding-icon">
-            <!-- Diamond SVG -->
             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
               <polygon points="18,4 32,14 26,32 10,32 4,14" stroke="#FFD700" stroke-width="1.5" fill="rgba(255,215,0,0.1)" stroke-linejoin="round"/>
               <polygon points="18,4 32,14 18,14 4,14" stroke="#FFD700" stroke-width="1" fill="rgba(255,215,0,0.05)"/>
@@ -935,7 +1020,6 @@ document.querySelectorAll('.modal-overlay').forEach(m => {
     </div>
   </div>
 </div>
-
 
 <?php include 'footer.php'; ?>
 
