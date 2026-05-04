@@ -755,6 +755,9 @@ const supabaseUrl = '<?php echo getenv("SUPABASE_URL"); ?>';
 const supabaseKey = '<?php echo getenv("SUPABASE_ANON_KEY"); ?>';
 const db = createClient(supabaseUrl, supabaseKey);
 
+// ── STORE SELECTED FILE ──
+let selectedFile = null;
+
 // ── IC FORMATTING ──
 document.getElementById('icNo')?.addEventListener('input', function(e) {
   let v = e.target.value.replace(/\D/g, '');
@@ -772,6 +775,7 @@ function handleImageUpload(event) {
     event.target.value = '';
     return;
   }
+  selectedFile = file;
   const uploadArea = event.target.parentElement;
   uploadArea.innerHTML = `
     <div style="text-align:center; color:var(--gold);">
@@ -824,21 +828,19 @@ async function handleFormSubmit(e) {
   let photo_url = null;
 
   // ── UPLOAD PHOTO if selected ──
-  const fileInput = document.getElementById('profilePic');
-  if (fileInput && fileInput.files[0]) {
-    const file = fileInput.files[0];
+  if (selectedFile) {
+    const file = selectedFile;
     const ext = file.name.split('.').pop();
     const filename = `${jdk_id}.${ext}`;
 
-   const { data: uploadData, error: uploadError } = await db.storage
-  .from('profile-pics')
-  .upload(filename, file);
+    const { data: uploadData, error: uploadError } = await db.storage
+      .from('profile-pics')
+      .upload(filename, file);
 
-console.log('Upload result:', uploadData, uploadError);
+    console.log('Upload result:', uploadData, uploadError);
 
-if (uploadError) {
-  console.error('Upload error:', uploadError.message);
-      // non-fatal — continue without photo
+    if (uploadError) {
+      console.error('Upload error:', uploadError.message);
     } else {
       const { data: urlData } = db.storage
         .from('profile-pics')
