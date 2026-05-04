@@ -394,10 +394,11 @@
         </tbody>
       </table>
 
-    <div style="text-align:center;margin-top:56px;">
-      <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
-        Daftar Sekarang
-      </a>
+   <div style="text-align:center; margin-top:56px; display:flex; justify-content:center;">
+  <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
+    Daftar Sekarang
+  </a>
+</div>
     </div>
   </div>
 </section>
