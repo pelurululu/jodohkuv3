@@ -18,7 +18,11 @@
   <div class="hero-container">
     <div class="hero-content">
       <div class="hero-badge">
-        <span class="hero-crown">👑</span>
+        <!-- Crown SVG -->
+        <svg class="hero-crown-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 19L4.5 9L9 14L12 6L15 14L19.5 9L22 19H2Z" fill="#FFD700" stroke="#FFD700" stroke-width="1.5" stroke-linejoin="round"/>
+          <rect x="2" y="19" width="20" height="2" rx="1" fill="#FFD700"/>
+        </svg>
         Platform Ultra-Premium Perkahwinan Islam
       </div>
       <h1 class="hero-title">
@@ -41,7 +45,16 @@
     <div class="form-premium-container">
       <div id="formView">
         <div class="form-header">
-          <div class="form-crown">👑</div>
+          <div class="form-crown">
+            <!-- Crown SVG large -->
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 38L9 18L18 28L24 12L30 28L39 18L44 38H4Z" fill="#FFD700" stroke="#FFA000" stroke-width="2" stroke-linejoin="round"/>
+              <rect x="4" y="38" width="40" height="4" rx="2" fill="#FFD700"/>
+              <circle cx="24" cy="10" r="3" fill="#FFD700"/>
+              <circle cx="7" cy="16" r="2.5" fill="#FFD700"/>
+              <circle cx="41" cy="16" r="2.5" fill="#FFD700"/>
+            </svg>
+          </div>
           <h2 class="form-title">Akses Eksklusif</h2>
           <p class="form-subtitle">
             Jadi antara 500 pengguna terawal yang mendapat akses beta kepada platform revolusioner ini
@@ -75,7 +88,16 @@
             <label class="input-label">Gambar Profil</label>
             <div class="upload-area">
               <input type="file" id="profilePic" accept="image/*" onchange="handleImageUpload(event)">
-              <div class="upload-icon">📸</div>
+              <div class="upload-icon">
+                <!-- Camera SVG -->
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="10" width="30" height="22" rx="4" stroke="#FFD700" stroke-width="2"/>
+                  <circle cx="18" cy="21" r="6" stroke="#FFD700" stroke-width="2"/>
+                  <circle cx="18" cy="21" r="2.5" fill="#FFD700"/>
+                  <path d="M13 10L15 6H21L23 10" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"/>
+                  <circle cx="28" cy="15" r="1.5" fill="#FFD700"/>
+                </svg>
+              </div>
               <div class="upload-text">
                 Pilih gambar profil anda<br>
                 <strong>JPG, PNG, WEBP</strong> — Maksimum 5MB
@@ -98,7 +120,12 @@
       
       <!-- SUCCESS STATE -->
       <div class="success-state" id="successView">
-        <div class="success-icon">✓</div>
+        <div class="success-icon">
+          <!-- Checkmark SVG -->
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 20L16 28L32 12" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <h2 class="success-title">Pendaftaran Berjaya!</h2>
         <p class="success-message">
           Tahniah! Anda telah berjaya mendaftar untuk beta access Jodohku.my. 
@@ -124,8 +151,9 @@
     
     <div class="image-slider reveal">
       <div class="slider-track">
+        <!-- Slide 1: Islamic values / couple ta'aruf -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=800&h=320&fit=crop" alt="Masjid Islam">
+          <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=900&h=260&fit=crop&q=80" alt="Padanan Nilai Islam">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Padanan Berdasarkan Nilai Islam</h3>
@@ -133,8 +161,9 @@
             </div>
           </div>
         </div>
+        <!-- Slide 2: AI / data science -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=320&fit=crop" alt="AI Technology">
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=900&h=260&fit=crop&q=80" alt="AI Technology">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Teknologi AI Terdepan</h3>
@@ -142,8 +171,9 @@
             </div>
           </div>
         </div>
+        <!-- Slide 3: Digital security / shield -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=320&fit=crop" alt="Keselamatan Digital">
+          <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=900&h=260&fit=crop&q=80" alt="Keselamatan Digital">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Keselamatan Maksimum</h3>
@@ -151,8 +181,9 @@
             </div>
           </div>
         </div>
+        <!-- Slide 4: Family / wali -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=800&h=320&fit=crop" alt="Seni Islam">
+          <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?w=900&h=260&fit=crop&q=80" alt="Sistem Wali">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Sistem Wali Digital</h3>
@@ -160,8 +191,9 @@
             </div>
           </div>
         </div>
+        <!-- Slide 5: Muslim community professionals -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1564769625392-651b89c25c20?w=800&h=320&fit=crop" alt="Masjid Komuniti">
+          <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=900&h=260&fit=crop&q=80" alt="Komuniti Muslim">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Komuniti Premium Muslim</h3>
@@ -169,8 +201,9 @@
             </div>
           </div>
         </div>
+        <!-- Slide 6: Wedding / perkahwinan -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&h=320&fit=crop" alt="Ekosistem Perkahwinan">
+          <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=900&h=260&fit=crop&q=80" alt="Ekosistem Perkahwinan">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Ekosistem Perkahwinan</h3>
@@ -178,8 +211,9 @@
             </div>
           </div>
         </div>
+        <!-- Slide 7: Data analytics -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=320&fit=crop" alt="Analitik Data">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=260&fit=crop&q=80" alt="Analitik Data">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Analitik Mendalam</h3>
@@ -187,8 +221,9 @@
             </div>
           </div>
         </div>
+        <!-- Slide 8: Mobile app -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=320&fit=crop" alt="Aplikasi Mobile">
+          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&h=260&fit=crop&q=80" alt="Aplikasi Mobile">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Aplikasi Mobile Premium</h3>
@@ -196,8 +231,9 @@
             </div>
           </div>
         </div>
+        <!-- Slide 9: Islamic counsellor -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=800&h=320&fit=crop" alt="Panduan Islam">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&h=260&fit=crop&q=80" alt="Kaunselor Islam">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Bimbingan Kaunselor Islam</h3>
@@ -205,8 +241,9 @@
             </div>
           </div>
         </div>
+        <!-- Slide 10: Happy Muslim couple / success -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=320&fit=crop" alt="Kejayaan Bersama">
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&h=260&fit=crop&q=80" alt="Kisah Kejayaan">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Kisah Kejayaan</h3>
@@ -215,8 +252,9 @@
           </div>
         </div>
       </div>
+    </div>
 
-    <div style="text-align:center;margin-top:56px;">
+    <div style="display:flex; justify-content:center; margin-top:56px;">
       <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
         Daftar Sekarang
       </a>
@@ -239,7 +277,8 @@
     <div class="pillars-grid reveal">
       <div class="pillar-card">
         <div class="pillar-image">
-          <img src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=200&h=200&fit=crop" alt="Mosque">
+          <!-- Masjid / mosque Malaysia -->
+          <img src="https://images.unsplash.com/photo-1597138803812-c01534e1dbfc?w=200&h=200&fit=crop&q=80" alt="Mosque Malaysia">
         </div>
         <div class="pillar-number">Teras 1</div>
         <h3 class="pillar-title">Kesucian Agama</h3>
@@ -248,7 +287,8 @@
       
       <div class="pillar-card">
         <div class="pillar-image">
-          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=200&h=200&fit=crop" alt="Protection">
+          <!-- Digital shield / cybersecurity -->
+          <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=200&h=200&fit=crop&q=80" alt="Perlindungan Digital">
         </div>
         <div class="pillar-number">Teras 2</div>
         <h3 class="pillar-title">Perlindungan Sosial</h3>
@@ -257,7 +297,8 @@
       
       <div class="pillar-card">
         <div class="pillar-image">
-          <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=200&h=200&fit=crop" alt="Economy">
+          <!-- Malaysian small business / economy -->
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&h=200&fit=crop&q=80" alt="Ekonomi Muslim">
         </div>
         <div class="pillar-number">Teras 3</div>
         <h3 class="pillar-title">Pemerkasaan Ekonomi</h3>
@@ -266,14 +307,16 @@
       
       <div class="pillar-card">
         <div class="pillar-image">
-          <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=200&h=200&fit=crop" alt="AI Technology">
+          <!-- AI / neural network -->
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=200&h=200&fit=crop&q=80" alt="AI Teknologi">
         </div>
         <div class="pillar-number">Teras 4</div>
-        <h3 class="pillar-title">Teknologi & Privasi</h3>
+        <h3 class="pillar-title">Teknologi &amp; Privasi</h3>
         <p class="pillar-desc">AI real-time filtering, kod identiti rahsia dan perlindungan data PDPA 2010.</p>
       </div>
+    </div>
 
-    <div style="text-align:center;margin-top:56px;">
+    <div style="display:flex; justify-content:center; margin-top:56px;">
       <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
         Daftar Sekarang
       </a>
@@ -296,7 +339,8 @@
     <div class="usp-grid reveal">
       <div class="usp-card">
         <div class="usp-image">
-          <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=200&h=200&fit=crop" alt="Identity Protection">
+          <!-- Identity / MyKad / privacy -->
+          <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=200&h=200&fit=crop&q=80" alt="Identiti Selamat">
         </div>
         <h3 class="usp-title">Identiti Kod Rahsia</h3>
         <p class="usp-desc">Nama sebenar disembunyikan dengan kod unik (JDK-2025-XX) sehingga kedua-dua pihak bersetuju bertemu.</p>
@@ -304,7 +348,8 @@
       
       <div class="usp-card">
         <div class="usp-image">
-          <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=200&h=200&fit=crop" alt="AI Matching">
+          <!-- AI brain / neural matching -->
+          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=200&h=200&fit=crop&q=80" alt="AI Padanan">
         </div>
         <h3 class="usp-title">AI Padanan Saintifik</h3>
         <p class="usp-desc">115 soalan psikologi dianalisis AI untuk padanan 847% lebih tepat berbanding swipe-based apps.</p>
@@ -312,7 +357,8 @@
       
       <div class="usp-card">
         <div class="usp-image">
-          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=200&h=200&fit=crop" alt="Content Filter">
+          <!-- Content filter / shield -->
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=200&h=200&fit=crop&q=80" alt="Content Shield">
         </div>
         <h3 class="usp-title">Real-Time Content Shield</h3>
         <p class="usp-desc">AI menyekat kandungan haram, pertukaran nombor telefon dan ajakan tidak sesuai dalam 0.3 saat.</p>
@@ -320,13 +366,15 @@
       
       <div class="usp-card">
         <div class="usp-image">
-          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=200&h=200&fit=crop" alt="Ecosystem">
+          <!-- Wedding ecosystem / flowers -->
+          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=200&h=200&fit=crop&q=80" alt="Ekosistem">
         </div>
         <h3 class="usp-title">Ekosistem Komprehensif</h3>
         <p class="usp-desc">Satu-satunya platform dari padanan hingga pelamin — wedding planning, vendor booking, e-Nikah.</p>
       </div>
+    </div>
 
-    <div style="text-align:center;margin-top:56px;">
+    <div style="display:flex; justify-content:center; margin-top:56px;">
       <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
         Daftar Sekarang
       </a>
@@ -394,11 +442,11 @@
         </tbody>
       </table>
 
-   <div style="text-align:center; margin-top:56px; display:flex; justify-content:center;">
-  <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
-    Daftar Sekarang
-  </a>
-</div>
+      <div style="display:flex; justify-content:center; margin-top:56px;">
+        <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
+          Daftar Sekarang
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -417,63 +465,128 @@
     
     <div class="questions-grid reveal">
       <div class="dimension-card">
-        <div class="dimension-icon">🧭</div>
+        <div class="dimension-icon">
+          <!-- Compass SVG -->
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="15" stroke="#FFD700" stroke-width="2"/>
+            <circle cx="18" cy="18" r="3" fill="#FFD700"/>
+            <polygon points="18,6 20,17 18,15 16,17" fill="#FFD700"/>
+            <polygon points="18,30 20,19 18,21 16,19" fill="#888"/>
+            <polygon points="6,18 17,16 15,18 17,20" fill="#888"/>
+            <polygon points="30,18 19,16 21,18 19,20" fill="#FFD700"/>
+          </svg>
+        </div>
         <h3 class="dimension-name">Personality Core</h3>
         <div class="dimension-count">10 Soalan Mendalam</div>
         <p class="dimension-desc">Cara berfikir, bertindak dan membawa diri dalam situasi kehidupan harian.</p>
       </div>
       
       <div class="dimension-card">
-        <div class="dimension-icon">🏠</div>
+        <div class="dimension-icon">
+          <!-- Home SVG -->
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 16L18 4L32 16V32H22V22H14V32H4V16Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round" fill="none"/>
+            <rect x="15" y="22" width="6" height="10" rx="1" stroke="#FFD700" stroke-width="1.5"/>
+          </svg>
+        </div>
         <h3 class="dimension-name">Lifestyle Preferences</h3>
         <div class="dimension-count">10 Soalan Terperinci</div>
         <p class="dimension-desc">Rutin harian, gaya hidup, minat dan cara menghabiskan masa lapang.</p>
       </div>
       
       <div class="dimension-card">
-        <div class="dimension-icon">💰</div>
+        <div class="dimension-icon">
+          <!-- Money/coin SVG -->
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="14" stroke="#FFD700" stroke-width="2"/>
+            <path d="M18 10V12M18 24V26M13 16C13 14.3 15.2 13 18 13C20.8 13 23 14.3 23 16C23 17.7 21 18.7 18 19C15 19.3 13 20.3 13 22C13 23.7 15.2 25 18 25C20.8 25 23 23.7 23 22" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
         <h3 class="dimension-name">Financial Mindset</h3>
         <div class="dimension-count">10 Soalan Kritis</div>
         <p class="dimension-desc">Cara mengurus kewangan, komitmen dan matlamat hidup jangka panjang.</p>
       </div>
       
       <div class="dimension-card">
-        <div class="dimension-icon">🕌</div>
+        <div class="dimension-icon">
+          <!-- Mosque/crescent SVG -->
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 28V16C6 12 9 9 13 9H23C27 9 30 12 30 16V28" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M2 28H34" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M18 2C18 2 22 5 18 9C14 5 18 2 18 2Z" fill="#FFD700"/>
+            <rect x="14" y="20" width="8" height="8" rx="1" stroke="#FFD700" stroke-width="1.5"/>
+          </svg>
+        </div>
         <h3 class="dimension-name">Religious Values</h3>
         <div class="dimension-count">10 Soalan Spiritual</div>
         <p class="dimension-desc">Tahap ketaqwaan, nilai agama dan jangkaan spiritual terhadap pasangan.</p>
       </div>
       
       <div class="dimension-card">
-        <div class="dimension-icon">❤️</div>
+        <div class="dimension-icon">
+          <!-- Heart SVG -->
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 30C18 30 4 22 4 12C4 8.1 7.1 5 11 5C13.7 5 16 6.5 18 9C20 6.5 22.3 5 25 5C28.9 5 32 8.1 32 12C32 22 18 30 18 30Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round" fill="rgba(255,215,0,0.1)"/>
+          </svg>
+        </div>
         <h3 class="dimension-name">Love Language</h3>
         <div class="dimension-count">10 Soalan Emosi</div>
         <p class="dimension-desc">Cara menyatakan dan menerima kasih sayang dalam hubungan.</p>
       </div>
       
       <div class="dimension-card">
-        <div class="dimension-icon">🧠</div>
+        <div class="dimension-icon">
+          <!-- Brain SVG -->
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 8C14 8 10 11 10 15C10 17 11 19 12 20C10 21 8 23 8 26C8 28 9.5 30 12 30H24C26.5 30 28 28 28 26C28 23 26 21 24 20C25 19 26 17 26 15C26 11 22 8 18 8Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round" fill="none"/>
+            <line x1="18" y1="8" x2="18" y2="30" stroke="#FFD700" stroke-width="1.5" stroke-dasharray="2 2"/>
+            <circle cx="14" cy="16" r="1.5" fill="#FFD700"/>
+            <circle cx="22" cy="16" r="1.5" fill="#FFD700"/>
+          </svg>
+        </div>
         <h3 class="dimension-name">Emotional Intelligence</h3>
         <div class="dimension-count">10 Soalan Psikologi</div>
         <p class="dimension-desc">Empati, kawalan emosi dan kemampuan memahami perasaan orang lain.</p>
       </div>
       
       <div class="dimension-card">
-        <div class="dimension-icon">👨‍👩‍👧‍👦</div>
+        <div class="dimension-icon">
+          <!-- Family SVG -->
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="9" r="4" stroke="#FFD700" stroke-width="2"/>
+            <circle cx="8" cy="12" r="3" stroke="#FFD700" stroke-width="1.5"/>
+            <circle cx="28" cy="12" r="3" stroke="#FFD700" stroke-width="1.5"/>
+            <path d="M10 28V22C10 20 13 18 18 18C23 18 26 20 26 22V28" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 28V24C4 22.5 5.5 21.5 8 21" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M32 28V24C32 22.5 30.5 21.5 28 21" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
         <h3 class="dimension-name">Family Dynamics</h3>
         <div class="dimension-count">10 Soalan Keluarga</div>
         <p class="dimension-desc">Hubungan dengan keluarga, pengaruh ibubapa dan nilai kekeluargaan.</p>
       </div>
       
       <div class="dimension-card">
-        <div class="dimension-icon">⚡</div>
+        <div class="dimension-icon">
+          <!-- Lightning/conflict SVG -->
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 4L10 20H18L15 32L26 16H18L21 4Z" fill="rgba(255,215,0,0.15)" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <h3 class="dimension-name">Conflict Resolution</h3>
         <div class="dimension-count">10 Soalan Konflik</div>
         <p class="dimension-desc">Cara menangani pergaduhan, ego dan mencari penyelesaian bersama.</p>
       </div>
       
       <div class="dimension-card">
-        <div class="dimension-icon">🔗</div>
+        <div class="dimension-icon">
+          <!-- Chain/link SVG -->
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 22L22 14" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M10 18L8 20C5.8 22.2 5.8 25.8 8 28C10.2 30.2 13.8 30.2 16 28L18 26" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M18 10L20 8C22.2 5.8 25.8 5.8 28 8C30.2 10.2 30.2 13.8 28 16L26 18" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
         <h3 class="dimension-name">Attachment Style</h3>
         <div class="dimension-count">10 Soalan Bonding</div>
         <p class="dimension-desc">Pola kelekatan emosi, keperluan keamanan dan intimacy preferences.</p>
@@ -485,7 +598,6 @@
         + 6 Dimensi Tambahan: Career Ambition (5), Mental Health (5), Marriage Readiness (5), 
         Social Behavior (5), Long-term Compatibility (5), Communication Style (5)
       </p>
-
     </div>
   </div>
 </section>
@@ -506,7 +618,8 @@
       <div class="flow-step">
         <div class="flow-number">1</div>
         <div class="flow-image">
-          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=200&h=200&fit=crop" alt="Matching">
+          <!-- AI matching illustration -->
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=200&h=200&fit=crop&q=80" alt="AI Matching">
         </div>
         <h3 class="flow-title">AI Smart Matching</h3>
         <p class="flow-desc">Algoritma menganalisis 115 jawapan anda dan mencari padanan terbaik berdasarkan keserasian mendalam.</p>
@@ -515,7 +628,8 @@
       <div class="flow-step">
         <div class="flow-number">2</div>
         <div class="flow-image">
-          <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=200&h=200&fit=crop" alt="Wali Approval">
+          <!-- Family / wali approval -->
+          <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?w=200&h=200&fit=crop&q=80" alt="Wali Approval">
         </div>
         <h3 class="flow-title">Persetujuan Wali</h3>
         <p class="flow-desc">Wali pihak perempuan menerima notifikasi dan menilai profil calon untuk memberikan kebenaran awal.</p>
@@ -524,7 +638,8 @@
       <div class="flow-step">
         <div class="flow-number">3</div>
         <div class="flow-image">
-          <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=200&h=200&fit=crop" alt="Protected Communication">
+          <!-- Secure chat / encrypted communication -->
+          <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=200&h=200&fit=crop&q=80" alt="Komunikasi Terlindung">
         </div>
         <h3 class="flow-title">Komunikasi Terlindung</h3>
         <p class="flow-desc">Perbualan dalam platform dengan AI monitoring 24/7 untuk memastikan adab Islam terpelihara.</p>
@@ -535,9 +650,9 @@
       <p style="color: #B0B0B0; font-size: 16px; line-height: 1.8; max-width: 600px; margin: 0 auto 32px;">
         Setiap langkah dipandu oleh tim kaunselor berpengalaman dan mematuhi garis panduan syariah yang ketat untuk memastikan proses ta'aruf yang berkah.
       </p>
-      
+    </div>
 
-    <div style="text-align:center;margin-top:56px;">
+    <div style="display:flex; justify-content:center; margin-top:56px;">
       <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
         Daftar Sekarang
       </a>
@@ -561,22 +676,63 @@
       
       <div class="wedding-mockup">
         <div class="wedding-card">
-          <div class="wedding-icon">🏛️</div>
+          <div class="wedding-icon">
+            <!-- Building SVG -->
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="10" width="24" height="22" rx="2" stroke="#FFD700" stroke-width="1.5"/>
+              <rect x="10" y="14" width="4" height="4" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <rect x="22" y="14" width="4" height="4" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <rect x="10" y="20" width="4" height="4" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <rect x="22" y="20" width="4" height="4" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <rect x="14" y="26" width="8" height="6" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <path d="M4 10H32" stroke="#FFD700" stroke-width="1.5"/>
+              <path d="M14 4L18 10L22 4" stroke="#FFD700" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <div class="wedding-name">Mutiara Barakah</div>
           <div class="wedding-price">RM 7K - 10K</div>
         </div>
         <div class="wedding-card">
-          <div class="wedding-icon">🏨</div>
+          <div class="wedding-icon">
+            <!-- Hotel/stars SVG -->
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="14" width="28" height="18" rx="2" stroke="#FFD700" stroke-width="1.5"/>
+              <rect x="8" y="18" width="5" height="5" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <rect x="16" y="18" width="5" height="5" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <rect x="23" y="18" width="5" height="5" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <rect x="13" y="26" width="10" height="6" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <path d="M10 14V8C10 6.9 10.9 6 12 6H24C25.1 6 26 6.9 26 8V14" stroke="#FFD700" stroke-width="1.5"/>
+              <circle cx="18" cy="10" r="1.5" fill="#FFD700"/>
+            </svg>
+          </div>
           <div class="wedding-name">Sakinah Mawaddah</div>
           <div class="wedding-price">RM 17K - 25K</div>
         </div>
         <div class="wedding-card">
-          <div class="wedding-icon">👑</div>
+          <div class="wedding-icon">
+            <!-- Crown SVG -->
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 28L7 14L13 20L18 8L23 20L29 14L32 28H4Z" stroke="#FFD700" stroke-width="1.5" stroke-linejoin="round" fill="rgba(255,215,0,0.1)"/>
+              <rect x="4" y="28" width="28" height="3" rx="1.5" fill="#FFD700"/>
+              <circle cx="18" cy="7" r="2" fill="#FFD700"/>
+            </svg>
+          </div>
           <div class="wedding-name">Mutiara Diraja</div>
           <div class="wedding-price">RM 56K - 80K</div>
         </div>
         <div class="wedding-card">
-          <div class="wedding-icon">💎</div>
+          <div class="wedding-icon">
+            <!-- Diamond SVG -->
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="18,4 32,14 26,32 10,32 4,14" stroke="#FFD700" stroke-width="1.5" fill="rgba(255,215,0,0.1)" stroke-linejoin="round"/>
+              <polygon points="18,4 32,14 18,14 4,14" stroke="#FFD700" stroke-width="1" fill="rgba(255,215,0,0.05)"/>
+              <line x1="4" y1="14" x2="10" y2="32" stroke="#FFD700" stroke-width="1"/>
+              <line x1="32" y1="14" x2="26" y2="32" stroke="#FFD700" stroke-width="1"/>
+              <line x1="18" y1="14" x2="18" y2="32" stroke="#FFD700" stroke-width="1"/>
+              <line x1="4" y1="14" x2="18" y2="4" stroke="#FFD700" stroke-width="1"/>
+              <line x1="32" y1="14" x2="18" y2="4" stroke="#FFD700" stroke-width="1"/>
+            </svg>
+          </div>
           <div class="wedding-name">Platinum Royal</div>
           <div class="wedding-price">RM 176K - 200K</div>
         </div>
@@ -603,12 +759,10 @@ document.getElementById('icNo')?.addEventListener('input', function(e) {
 function handleImageUpload(event) {
   const file = event.target.files[0];
   if (!file) return;
-  
   if (file.size > 5 * 1024 * 1024) {
     alert('Saiz fail melebihi 5MB. Sila pilih gambar yang lebih kecil.');
     return;
   }
-  
   const uploadArea = event.target.parentElement;
   const reader = new FileReader();
   reader.onload = function(e) {
@@ -627,56 +781,34 @@ function handleImageUpload(event) {
 function validateForm() {
   let valid = true;
   const requiredFields = ['fullName', 'icNo', 'phoneNo', 'emailAddr'];
-  
   requiredFields.forEach(id => {
     const field = document.getElementById(id);
-    if (!field.value.trim()) {
-      field.style.borderColor = '#FF6B6B';
-      valid = false;
-    } else {
-      field.style.borderColor = '';
-    }
+    if (!field.value.trim()) { field.style.borderColor = '#FF6B6B'; valid = false; }
+    else { field.style.borderColor = ''; }
   });
-  
-  // IC validation
   const ic = document.getElementById('icNo').value.replace(/-/g, '');
-  if (ic.length !== 12 || !/^\d+$/.test(ic)) {
-    document.getElementById('icNo').style.borderColor = '#FF6B6B';
-    valid = false;
-  }
-  
-  // Email validation
+  if (ic.length !== 12 || !/^\d+$/.test(ic)) { document.getElementById('icNo').style.borderColor = '#FF6B6B'; valid = false; }
   const email = document.getElementById('emailAddr').value;
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    document.getElementById('emailAddr').style.borderColor = '#FF6B6B';
-    valid = false;
-  }
-  
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('emailAddr').style.borderColor = '#FF6B6B'; valid = false; }
   return valid;
 }
 
-// GENERATE ID
 function generateId() {
   const year = new Date().getFullYear();
   const random = Math.random().toString(36).substr(2, 8).toUpperCase();
   return `JDK-${year}-${random}`;
 }
 
-// FORM SUBMIT HANDLER
 function handleFormSubmit(e) {
   e.preventDefault();
-  
   if (!validateForm()) return;
-  
   if (!document.getElementById('agreeTerms').checked) {
     alert('Sila bersetuju dengan Terma & Syarat untuk meneruskan.');
     return;
   }
-  
   const submitBtn = e.target.querySelector('.btn-submit-premium');
   submitBtn.disabled = true;
   submitBtn.textContent = 'Memproses...';
-  
   const formData = {
     id: generateId(),
     nama: document.getElementById('fullName').value.trim(),
@@ -685,15 +817,11 @@ function handleFormSubmit(e) {
     email: document.getElementById('emailAddr').value.trim(),
     timestamp: new Date().toISOString()
   };
-  
-  // Store in localStorage
   try {
     const existing = JSON.parse(localStorage.getItem('jodohku_registrations') || '[]');
     existing.push(formData);
     localStorage.setItem('jodohku_registrations', JSON.stringify(existing));
-  } catch(err) { /* Storage not available */ }
-  
-  // Show success
+  } catch(err) {}
   setTimeout(() => {
     document.getElementById('formView').style.display = 'none';
     const successView = document.getElementById('successView');
@@ -703,29 +831,16 @@ function handleFormSubmit(e) {
 }
 
 // SCROLL ANIMATIONS
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
-
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
 }, observerOptions);
-
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // NAVBAR SCROLL EFFECT
 window.addEventListener('scroll', () => {
   const navbar = document.querySelector('.navbar');
-  if (window.scrollY > 100) {
-    navbar.style.background = 'rgba(0,0,0,0.95)';
-  } else {
-    navbar.style.background = 'rgba(0,0,0,0.9)';
-  }
+  if (navbar) navbar.style.background = window.scrollY > 100 ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.9)';
 });
 
 // SMOOTH SCROLL
@@ -733,10 +848,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+});
+
+// MODAL FUNCTIONS
+function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
+function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = ''; }
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', function(e) { if (e.target === this) closeModal(this.id); });
 });
 </script>
 
@@ -748,118 +868,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       <button class="modal-close" onclick="closeModal('termsModal')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-meta">
-        Berkuat kuasa: 1 Januari 2025 &nbsp;|&nbsp; Versi: 2.1 &nbsp;|&nbsp; Bahasa: Bahasa Malaysia
-      </div>
-
-      <div class="modal-section">
-        <h3>1. Penerimaan Terma</h3>
-        <p>Dengan mengakses atau menggunakan platform Jodohku.my ("Platform"), anda bersetuju untuk terikat dengan Terma &amp; Syarat ini. Jika anda tidak bersetuju dengan mana-mana bahagian terma ini, anda tidak dibenarkan menggunakan Platform.</p>
-        <p>Platform ini diuruskan oleh <strong>Noble Synergy Ventures</strong> ("Syarikat", "Kami") di bawah undang-undang Malaysia. Penggunaan Platform tertakluk kepada Akta Komunikasi dan Multimedia 1998, Akta Perlindungan Data Peribadi 2010 (PDPA), serta prinsip-prinsip Syariah Islam yang berkaitan.</p>
-      </div>
-
-      <div class="modal-section">
-        <h3>2. Kelayakan Pengguna</h3>
-        <ol>
-          <li>Anda mesti seorang Muslim atau Muslimah yang telah mencapai umur 18 tahun atau ke atas.</li>
-          <li>Anda mesti warganegara Malaysia atau pemastautin tetap yang sah.</li>
-          <li>Anda mesti belum berkahwin atau telah bercerai/diceraikan mengikut undang-undang yang sah.</li>
-          <li>Anda mesti tidak pernah disabitkan dengan mana-mana kesalahan jenayah serius.</li>
-          <li>Anda bersetuju bahawa semua maklumat yang diberikan adalah tepat, terkini dan benar.</li>
-          <li>Pengguna yang memberikan maklumat palsu akan ditamatkan akaun serta merta tanpa bayaran balik.</li>
-        </ol>
-      </div>
-
-      <div class="modal-section">
-        <h3>3. Pendaftaran dan Akaun</h3>
-        <ol>
-          <li>Setiap pengguna hanya dibenarkan memiliki satu (1) akaun sahaja.</li>
-          <li>Pengesahan identiti menggunakan Kad Pengenalan Malaysia (MyKad) adalah wajib.</li>
-          <li>Kata laluan akaun adalah tanggungjawab pengguna sepenuhnya.</li>
-          <li>Kami berhak untuk menamatkan akaun yang mengesyaki penipuan atau penyalahgunaan tanpa notis awal.</li>
-          <li>Akaun yang tidak aktif selama 12 bulan berturut-turut boleh dipadamkan secara automatik.</li>
-        </ol>
-      </div>
-
-      <div class="modal-section">
-        <h3>4. Kod Etika dan Tingkah Laku</h3>
-        <p>Pengguna wajib mematuhi adab Islam dalam semua komunikasi di Platform. Perkara-perkara berikut adalah <strong>dilarang sama sekali</strong>:</p>
-        <ul>
-          <li>Menghantar kandungan lucah, tidak senonoh atau bertentangan dengan nilai Islam.</li>
-          <li>Berkongsi maklumat hubungan peribadi (nombor telefon, alamat, media sosial) di luar Platform sebelum mendapat kebenaran Wali.</li>
-          <li>Berhubung terus dengan pengguna wanita tanpa mematuhi protokol Mod Wali.</li>
-          <li>Menggunakan Platform untuk tujuan selain daripada perkahwinan yang sah.</li>
-          <li>Menyebarkan maklumat palsu atau menipu pengguna lain.</li>
-          <li>Aktiviti penipuan romantik (romance scam) atau eksploitasi kewangan.</li>
-          <li>Menyalin, menjual atau memindahkan akaun kepada pihak ketiga.</li>
-        </ul>
-      </div>
-
-      <div class="modal-section">
-        <h3>5. Sistem Wali dan Mahram</h3>
-        <ol>
-          <li>Penglibatan Wali adalah <strong>diwajibkan</strong> bagi setiap pengguna wanita sebelum sebarang komunikasi dibenarkan.</li>
-          <li>Wali mesti memberikan kebenaran bertulis dalam Platform sebelum proses ta'aruf bermula.</li>
-          <li>Platform akan menghantar notifikasi kepada Wali bagi setiap permintaan padanan.</li>
-          <li>Perbualan antara calon pasangan adalah terbuka kepada pemantauan Wali pada bila-bila masa.</li>
-          <li>Pengguna yang tidak mempunyai Wali yang sah perlu menghubungi pasukan syariah kami untuk panduan.</li>
-        </ol>
-      </div>
-
-      <div class="modal-section">
-        <h3>6. Langganan dan Pembayaran</h3>
-        <ol>
-          <li>Tier langganan: Rahmah (percuma), Mutiara, Sakinah, dan Mawaddah.</li>
-          <li>Semua harga adalah dalam Ringgit Malaysia (RM) dan termasuk cukai berkenaan.</li>
-          <li>Pembayaran diproses melalui Billplz yang mematuhi piawaian keselamatan PCI-DSS.</li>
-          <li>Tiada bayaran balik setelah perkhidmatan premium diaktifkan, melainkan berlaku kegagalan teknikal yang disebabkan oleh Platform.</li>
-          <li>Pembaharuan automatik akan dimaklumkan 7 hari sebelum tarikh tamat.</li>
-          <li>Kami berhak mengubah harga dengan notis 30 hari kepada pelanggan semasa.</li>
-        </ol>
-      </div>
-
-      <div class="modal-section">
-        <h3>7. Hak Harta Intelek</h3>
-        <p>Semua kandungan, reka bentuk, kod, logo, nama jenama dan bahan dalam Platform adalah hak milik eksklusif Noble Synergy Ventures dan dilindungi di bawah undang-undang hak cipta Malaysia. Pengguna dilarang menyalin, mengedar atau mengeksploitasi sebarang kandungan Platform tanpa kebenaran bertulis.</p>
-      </div>
-
-      <div class="modal-section">
-        <h3>8. Penafian dan Had Liabiliti</h3>
-        <ol>
-          <li>Platform adalah perantara digital sahaja. Kami tidak menjamin keserasian atau kejayaan sesebuah perkahwinan.</li>
-          <li>Kami tidak bertanggungjawab atas keputusan peribadi yang dibuat oleh pengguna berdasarkan maklumat dalam Platform.</li>
-          <li>Had liabiliti maksimum kami adalah setara dengan jumlah langganan yang dibayar dalam 3 bulan terakhir.</li>
-          <li>Kami tidak bertanggungjawab atas gangguan perkhidmatan akibat kuasa luar (force majeure).</li>
-        </ol>
-      </div>
-
-      <div class="modal-section">
-        <h3>9. Penghentian Perkhidmatan</h3>
-        <p>Pengguna boleh menamatkan akaun pada bila-bila masa melalui tetapan akaun. Kami berhak menamatkan atau menggantung akaun yang melanggar Terma ini. Setelah penamatan, data pengguna akan dipadam dalam tempoh 90 hari mengikut dasar PDPA.</p>
-      </div>
-
-      <div class="modal-section">
-        <h3>10. Undang-undang Yang Mengawal</h3>
-        <p>Terma ini ditadbir oleh undang-undang Malaysia. Sebarang pertikaian akan diselesaikan di mahkamah yang mempunyai bidang kuasa di Kuala Lumpur, Malaysia. Pengguna bersetuju untuk menyelesaikan pertikaian melalui proses mediasi sebelum litigasi.</p>
-      </div>
-
-      <div class="modal-section">
-        <h3>11. Pindaan Terma</h3>
-        <p>Kami berhak mengubah Terma ini pada bila-bila masa. Pindaan akan dikuatkuasakan 14 hari selepas notifikasi kepada pengguna. Penggunaan berterusan Platform selepas tempoh tersebut dianggap sebagai penerimaan terma yang dipinda.</p>
-      </div>
-
-      <div class="modal-section">
-        <h3>12. Hubungi Kami</h3>
-        <p>Untuk sebarang pertanyaan berkaitan Terma ini:<br>
-        <strong>Noble Synergy Ventures</strong><br>
-        E-mel: legal@jodohku.my<br>
-        Waktu pejabat: Isnin–Jumaat, 9:00 pagi–6:00 petang (WIB)</p>
-      </div>
+      <div class="modal-meta">Berkuat kuasa: 1 Januari 2025 &nbsp;|&nbsp; Versi: 2.1 &nbsp;|&nbsp; Bahasa: Bahasa Malaysia</div>
+      <div class="modal-section"><h3>1. Penerimaan Terma</h3><p>Dengan mengakses atau menggunakan platform Jodohku.my ("Platform"), anda bersetuju untuk terikat dengan Terma &amp; Syarat ini. Platform ini diuruskan oleh <strong>Noble Synergy Ventures</strong> di bawah undang-undang Malaysia.</p></div>
+      <div class="modal-section"><h3>2. Kelayakan Pengguna</h3><ol><li>Anda mesti seorang Muslim atau Muslimah yang telah mencapai umur 18 tahun.</li><li>Anda mesti warganegara Malaysia atau pemastautin tetap yang sah.</li><li>Anda mesti belum berkahwin atau telah bercerai mengikut undang-undang yang sah.</li><li>Semua maklumat yang diberikan mesti tepat, terkini dan benar.</li></ol></div>
+      <div class="modal-section"><h3>3. Kod Etika</h3><p>Pengguna wajib mematuhi adab Islam dalam semua komunikasi. Kandungan lucah, pertukaran maklumat peribadi di luar platform, dan aktiviti penipuan adalah <strong>dilarang sama sekali</strong>.</p></div>
+      <div class="modal-section"><h3>4. Sistem Wali</h3><p>Penglibatan Wali adalah <strong>diwajibkan</strong> bagi setiap pengguna wanita sebelum sebarang komunikasi dibenarkan.</p></div>
+      <div class="modal-section"><h3>5. Hubungi Kami</h3><p><strong>Noble Synergy Ventures</strong><br>E-mel: legal@jodohku.my</p></div>
     </div>
   </div>
 </div>
 
-    <!-- PRIVACY POLICY MODAL -->
+<!-- PRIVACY POLICY MODAL -->
 <div class="modal-overlay" id="privacyModal">
   <div class="modal-box">
     <div class="modal-header">
@@ -867,113 +886,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       <button class="modal-close" onclick="closeModal('privacyModal')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-meta">
-        Berkuat kuasa: 1 Januari 2025 &nbsp;|&nbsp; Mematuhi: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Versi: 2.1
-      </div>
-
-      <div class="modal-section">
-        <h3>1. Tanggungjawab Kami</h3>
-        <p>Noble Synergy Ventures ("Kami") komited untuk melindungi privasi anda. Dasar ini menerangkan cara kami mengumpul, menggunakan, menyimpan dan melindungi data peribadi anda selaras dengan Akta Perlindungan Data Peribadi 2010 (PDPA 2010) Malaysia.</p>
-      </div>
-
-      <div class="modal-section">
-        <h3>2. Data Peribadi Yang Dikumpul</h3>
-        <p>Kami mengumpul kategori-kategori data berikut:</p>
-        <ul>
-          <li><strong>Data Identiti:</strong> Nama penuh, nombor Kad Pengenalan, tarikh lahir, jantina, kewarganegaraan.</li>
-          <li><strong>Data Hubungan:</strong> Alamat e-mel, nombor telefon, alamat kediaman.</li>
-          <li><strong>Data Profil:</strong> Gambar profil, tahap pendidikan, pekerjaan, pendapatan, minat, nilai agama.</li>
-          <li><strong>Data Psikologi:</strong> Jawapan kepada 115 soalan penilaian keserasian (diproses secara tanpa nama).</li>
-          <li><strong>Data Komunikasi:</strong> Log perbualan dalam Platform (dipantau oleh AI untuk mematuhi adab).</li>
-          <li><strong>Data Teknikal:</strong> Alamat IP, jenis peranti, log akses, kuki sesi.</li>
-          <li><strong>Data Kewangan:</strong> Rekod transaksi langganan (nombor kad kredit tidak disimpan oleh kami).</li>
-        </ul>
-      </div>
-
-      <div class="modal-section">
-        <h3>3. Tujuan Penggunaan Data</h3>
-        <ol>
-          <li>Memproses dan mengesahkan pendaftaran akaun pengguna.</li>
-          <li>Menjalankan algoritma AI untuk padanan keserasian berdasarkan 115 soalan.</li>
-          <li>Membolehkan komunikasi yang selamat dan terkawal antara pengguna.</li>
-          <li>Menghantar notifikasi kepada Wali berkaitan aktiviti ta'aruf.</li>
-          <li>Memproses bayaran langganan dengan selamat.</li>
-          <li>Meningkatkan fungsi dan keselamatan Platform.</li>
-          <li>Memenuhi obligasi undang-undang dan peraturan kerajaan.</li>
-          <li>Menghantar maklumat perkhidmatan dan kemas kini penting (bukan pemasaran tanpa persetujuan).</li>
-        </ol>
-      </div>
-
-      <div class="modal-section">
-        <h3>4. Perlindungan Data dan Keselamatan</h3>
-        <ol>
-          <li>Semua data disulitkan menggunakan AES-256 untuk data statik dan TLS 1.3 untuk data dalam transit.</li>
-          <li>Pelayan data berlokasi di Malaysia dan diuruskan oleh pembekal awan berlesen tempatan.</li>
-          <li>Akses dalaman kepada data peribadi adalah terhad kepada kakitangan terlatih dengan kebenaran spesifik.</li>
-          <li>Gambar profil disimpan secara berasingan daripada data identiti pengguna.</li>
-          <li>Audit keselamatan dilakukan setiap suku tahun oleh firma bebas bertauliah.</li>
-          <li>Data psikologi diproses dalam persekitaran terpencil tanpa pengenalan nama.</li>
-        </ol>
-      </div>
-
-      <div class="modal-section">
-        <h3>5. Perkongsian Data dengan Pihak Ketiga</h3>
-        <p>Kami <strong>tidak menjual</strong> data peribadi anda kepada mana-mana pihak ketiga. Data hanya dikongsi dalam keadaan berikut:</p>
-        <ul>
-          <li>Pembekal perkhidmatan teknikal (hosting, pembayaran) di bawah perjanjian kerahsiaan yang ketat.</li>
-          <li>Pihak berkuasa kerajaan jika dikehendaki oleh undang-undang atau perintah mahkamah.</li>
-          <li>Penyedia perkhidmatan Ekosistem Perkahwinan hanya jika pengguna memberikan kebenaran nyata.</li>
-          <li>Wali/Mahram yang telah didaftarkan oleh pengguna dalam sistem.</li>
-        </ul>
-      </div>
-
-      <div class="modal-section">
-        <h3>6. Hak Pengguna di bawah PDPA 2010</h3>
-        <ol>
-          <li><strong>Hak Akses:</strong> Meminta salinan data peribadi yang kami simpan tentang anda.</li>
-          <li><strong>Hak Pindaan:</strong> Membetulkan data yang tidak tepat atau tidak lengkap.</li>
-          <li><strong>Hak Menarik Balik Persetujuan:</strong> Menarik balik kebenaran pemprosesan data pada bila-bila masa.</li>
-          <li><strong>Hak Untuk Dipadam:</strong> Meminta pemadaman data peribadi tertakluk kepada kewajipan undang-undang.</li>
-          <li><strong>Hak Membantah:</strong> Membantah pemprosesan data untuk tujuan pemasaran.</li>
-        </ol>
-        <p>Untuk menggunakan hak-hak ini, hubungi: <strong>privasi@jodohku.my</strong></p>
-      </div>
-
-      <div class="modal-section">
-        <h3>7. Tempoh Penyimpanan Data</h3>
-        <ul>
-          <li>Data akaun aktif: Sepanjang tempoh keahlian aktif.</li>
-          <li>Data akaun yang ditamatkan: 90 hari selepas penamatan, kemudian dipadam secara kekal.</li>
-          <li>Log komunikasi: 12 bulan.</li>
-          <li>Rekod kewangan: 7 tahun mengikut Akta Syarikat 2016.</li>
-          <li>Data audit keselamatan: 3 tahun.</li>
-        </ul>
-      </div>
-
-      <div class="modal-section">
-        <h3>8. Kuki dan Teknologi Penjejakan</h3>
-        <p>Platform menggunakan kuki sesi untuk pengesahan log masuk dan kuki pilihan untuk menyimpan tetapan pengguna. Kami tidak menggunakan kuki pihak ketiga untuk pengiklanan atau penjejakan merentas tapak web. Anda boleh mematikan kuki dalam tetapan pelayar, namun ini mungkin menjejaskan fungsi tertentu Platform.</p>
-      </div>
-
-      <div class="modal-section">
-        <h3>9. Perubahan Dasar Privasi</h3>
-        <p>Kami berhak meminda Dasar Privasi ini dari semasa ke semasa. Pindaan material akan dimaklumkan kepada pengguna melalui e-mel dan notifikasi dalam Platform sekurang-kurangnya 14 hari sebelum berkuat kuasa.</p>
-      </div>
-
-      <div class="modal-section">
-        <h3>10. Aduan dan Pertanyaan</h3>
-        <p>Jika anda mempunyai aduan atau pertanyaan berkaitan privasi data:<br><br>
-        <strong>Pegawai Perlindungan Data (DPO)</strong><br>
-        Noble Synergy Ventures<br>
-        E-mel: privasi@jodohku.my<br>
-        Anda juga boleh membuat aduan kepada <strong>Jabatan Perlindungan Data Peribadi (JPDP)</strong> Malaysia jika tidak berpuas hati dengan respons kami.</p>
-      </div>
+      <div class="modal-meta">Berkuat kuasa: 1 Januari 2025 &nbsp;|&nbsp; Mematuhi: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Versi: 2.1</div>
+      <div class="modal-section"><h3>1. Tanggungjawab Kami</h3><p>Noble Synergy Ventures komited untuk melindungi privasi anda selaras dengan Akta Perlindungan Data Peribadi 2010 (PDPA 2010) Malaysia.</p></div>
+      <div class="modal-section"><h3>2. Data Yang Dikumpul</h3><ul><li><strong>Data Identiti:</strong> Nama penuh, nombor MyKad, tarikh lahir.</li><li><strong>Data Profil:</strong> Gambar, pendidikan, pekerjaan, nilai agama.</li><li><strong>Data Psikologi:</strong> Jawapan 115 soalan (diproses tanpa nama).</li><li><strong>Data Teknikal:</strong> Alamat IP, log akses.</li></ul></div>
+      <div class="modal-section"><h3>3. Hak Pengguna</h3><p>Anda berhak untuk mengakses, meminda, menarik balik kebenaran, dan meminta pemadaman data anda. Hubungi: <strong>privasi@jodohku.my</strong></p></div>
     </div>
   </div>
 </div>
-
-
-
 
 <?php include 'footer.php'; ?>
 
