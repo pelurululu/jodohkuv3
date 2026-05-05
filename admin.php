@@ -55,6 +55,22 @@
 </head>
 
 <body>
+ <!-- Password Gate -->
+<div id="gate" style="display:flex;align-items:center;justify-content:center;min-height:100vh;position:fixed;inset:0;background:#111;z-index:9999;">
+  <div style="text-align:center;">
+    <div style="color:#FFD700;font-size:18px;margin-bottom:20px;">🔐 Jodohku.my Admin</div>
+    <input id="pwInput" type="password" placeholder="Enter password"
+      style="background:#1a1a1a;border:1px solid #333;color:#eee;padding:12px 16px;border-radius:8px;font-family:monospace;font-size:14px;width:260px;outline:none;"
+      onkeydown="if(event.key==='Enter')checkPw()">
+    <div style="margin-top:12px;">
+      <button onclick="checkPw()"
+        style="background:#FFD700;color:#111;border:none;padding:10px 28px;border-radius:8px;font-weight:700;cursor:pointer;font-size:14px;">
+        Enter
+      </button>
+    </div>
+    <div id="pwError" style="color:#ff4444;font-size:13px;margin-top:12px;display:none;">Wrong password.</div>
+  </div>
+</div>
 
 <h1>Jodohku.my — Registrations</h1>
 <div id="status">Loading...</div>
@@ -136,7 +152,20 @@
     `).join('');
   }
 
-  load();
+ 
+ const ADMIN_PW = '<?php echo getenv("ADMIN_PASSWORD"); ?>';
+
+function checkPw() {
+  const val = document.getElementById('pwInput').value;
+  if (val === ADMIN_PW) {
+    document.getElementById('gate').style.display = 'none';
+    load();
+  } else {
+    document.getElementById('pwError').style.display = 'block';
+    document.getElementById('pwInput').value = '';
+    document.getElementById('pwInput').focus();
+  }
+}
 </script>
 
 </body>
