@@ -137,6 +137,7 @@
 </section>
 <div class="gold-shimmer-line"></div>
 
+<!-- IMAGE SLIDER (carousel — Malaysian Muslim relevant images) -->
 <section id="slider" class="slider-section">
   <div class="slider-container">
     <div class="slider-header reveal">
@@ -149,8 +150,9 @@
     
     <div class="image-slider reveal">
       <div class="slider-track">
+        <!-- 1. Padanan Nilai Islam — Quran & marriage values -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1604881988758-f76ad2f7aac1?w=900&h=260&fit=crop&q=80" alt="Muslim Couple Discussion">
+          <img src="https://images.unsplash.com/photo-1564769625905-50e93615e769?w=900&h=260&fit=crop&q=80" alt="Padanan Nilai Islam">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Padanan Berdasarkan Nilai Islam</h3>
@@ -159,8 +161,9 @@
           </div>
         </div>
 
+        <!-- 2. AI Technology — Modern tech with Islamic aesthetic -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=900&h=260&fit=crop&q=80" alt="AI Interface">
+          <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=900&h=260&fit=crop&q=80" alt="AI Technology">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Teknologi AI Terdepan</h3>
@@ -169,8 +172,9 @@
           </div>
         </div>
 
+        <!-- 3. Keselamatan — Privacy & protection -->
         <div class="slide">
-         <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=900&h=260&fit=crop&q=80" alt="Cyber Security">
+          <img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=900&h=260&fit=crop&q=80" alt="Keselamatan Digital">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Keselamatan Maksimum</h3>
@@ -179,8 +183,9 @@
           </div>
         </div>
 
+        <!-- 4. Sistem Wali — Family & elders blessing -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=900&h=260&fit=crop&q=80" alt="Family Discussion Muslim">
+          <img src="https://images.unsplash.com/photo-1591035897819-f4bdf739f446?w=900&h=260&fit=crop&q=80" alt="Sistem Wali">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Sistem Wali Digital</h3>
@@ -189,8 +194,9 @@
           </div>
         </div>
 
+        <!-- 5. Komuniti Muslim Malaysia — Mosque/cultural gathering -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=900&h=260&fit=crop&q=80" alt="Muslim Professionals">
+          <img src="https://images.unsplash.com/photo-1564121211835-e88c852648ab?w=900&h=260&fit=crop&q=80" alt="Komuniti Muslim">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Komuniti Premium Muslim</h3>
@@ -199,8 +205,9 @@
           </div>
         </div>
 
+        <!-- 6. Ekosistem Perkahwinan — Malay wedding decor/pelamin -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=900&h=260&fit=crop&q=80" alt="Wedding Couple Muslim">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&h=260&fit=crop&q=80" alt="Ekosistem Perkahwinan">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Ekosistem Perkahwinan</h3>
@@ -209,8 +216,9 @@
           </div>
         </div>
 
+        <!-- 7. Analitik Data — Compatibility charts/dashboard -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=260&fit=crop&q=80" alt="Data Dashboard">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=260&fit=crop&q=80" alt="Analitik Data">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Analitik Mendalam</h3>
@@ -219,8 +227,9 @@
           </div>
         </div>
 
+        <!-- 8. Aplikasi Mobile — Phone with Malay woman/hijabi user -->
         <div class="slide">
-         <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?w=900&h=260&fit=crop&q=80" alt="Mobile App UI">
+          <img src="https://images.unsplash.com/photo-1633114127408-af671c774b39?w=900&h=260&fit=crop&q=80" alt="Aplikasi Mobile">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Aplikasi Mobile Premium</h3>
@@ -229,8 +238,9 @@
           </div>
         </div>
 
+        <!-- 9. Kaunselor Islam — Muslim counsellor/consultation -->
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&h=260&fit=crop&q=80" alt="Counseling Session">
+          <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=900&h=260&fit=crop&q=80" alt="Kaunselor Islam">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Bimbingan Kaunselor Islam</h3>
@@ -239,8 +249,9 @@
           </div>
         </div>
 
+        <!-- 10. Kisah Kejayaan — Malay wedding couple happily married -->
         <div class="slide">
-        <img src="https://images.unsplash.com/photo-1529634896164-bd4b3c3d9e2e?w=900&h=260&fit=crop&q=80" alt="Happy Muslim Couple">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=900&h=260&fit=crop&q=80" alt="Kisah Kejayaan">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Kisah Kejayaan</h3>
