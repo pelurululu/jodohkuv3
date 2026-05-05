@@ -710,8 +710,8 @@ body {
   .slider-header { margin-bottom: 32px; }
 
   /* COMPARISON — scrollable */
-  .comparison-highlight { padding: 20px 16px; border-radius: 16px; }
-  .comparison-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .comparison-highlight { padding: 20px 12px; border-radius: 16px; }
+  .comparison-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; cursor: grab; }
   .comparison-table { min-width: 520px; font-size: 12px; }
   .comparison-table th,
   .comparison-table td { padding: 11px 10px; }
