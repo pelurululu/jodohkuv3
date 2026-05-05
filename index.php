@@ -8,22 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Tajawal:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>
-  .pillar-image, .usp-image, .flow-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: rgba(255,215,0,0.08);
-    border: 1.5px solid rgba(255,215,0,0.25);
-    margin: 0 auto 16px;
-  }
-  .flow-image {
-    width: 120px;
-    height: 120px;
-  }
+
 </style>
 </head>
 <body>
