@@ -454,6 +454,7 @@
     
     <div class="comparison-highlight reveal">
       <h3 class="comparison-title">Memisahkan Standard: <span class="highlight">Tiada Tandingan</span></h3>
+      <div class="comparison-table-scroll">
       <table class="comparison-table">
         <thead>
           <tr>
@@ -502,6 +503,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
       <div style="display:flex; justify-content:center; margin-top:56px;">
         <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
@@ -945,52 +947,69 @@ async function handleFormSubmit(e) {
 
 // ── TOUCH SWIPE CAROUSEL ──
 (function() {
+  const slider = document.querySelector('.image-slider');
   const track = document.querySelector('.slider-track');
-  if (!track) return;
+  if (!track || !slider) return;
 
   const slides = track.querySelectorAll('.slide');
   const total = slides.length;
   let current = 0;
   let startX = 0;
   let isDragging = false;
+  let autoTimer = null;
 
-  // Stop the CSS auto-slide animation
+  // Kill CSS animation and set up JS control
   track.style.animation = 'none';
+  track.style.willChange = 'transform';
+  slider.style.overflow = 'hidden';
 
-  function goTo(index) {
-    current = (index + total) % total;
-    track.style.transition = 'transform 0.4s ease';
-    track.style.transform = `translateX(-${current * 100}%)`;
+  // Ensure each slide is exactly 100% of the slider width
+  function sizeSLides() {
+    const w = slider.offsetWidth;
+    slides.forEach(s => { s.style.minWidth = w + 'px'; s.style.width = w + 'px'; });
+    track.style.width = (w * total) + 'px';
   }
 
-  // Make each slide full-width
-  slides.forEach(slide => slide.style.minWidth = '100%');
+  function goTo(index, animate = true) {
+    current = (index + total) % total;
+    track.style.transition = animate ? 'transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
+    track.style.transform = `translateX(-${current * slider.offsetWidth}px)`;
+  }
 
-  track.addEventListener('touchstart', e => {
+  function resetTimer() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 4000);
+  }
+
+  sizeSLides();
+  goTo(0, false);
+  resetTimer();
+
+  window.addEventListener('resize', () => { sizeSLides(); goTo(current, false); });
+
+  // Touch
+  slider.addEventListener('touchstart', e => {
     startX = e.touches[0].clientX;
     isDragging = true;
     track.style.transition = 'none';
+    clearInterval(autoTimer);
   }, { passive: true });
 
-  track.addEventListener('touchmove', e => {
+  slider.addEventListener('touchmove', e => {
     if (!isDragging) return;
     const diff = e.touches[0].clientX - startX;
-    track.style.transform = `translateX(calc(-${current * 100}% + ${diff}px))`;
+    track.style.transform = `translateX(${-(current * slider.offsetWidth) + diff}px)`;
   }, { passive: true });
 
-  track.addEventListener('touchend', e => {
+  slider.addEventListener('touchend', e => {
     if (!isDragging) return;
     isDragging = false;
     const diff = e.changedTouches[0].clientX - startX;
     if (diff < -50) goTo(current + 1);
     else if (diff > 50) goTo(current - 1);
     else goTo(current);
+    resetTimer();
   });
-
-  // Auto-advance every 4 seconds
-  setInterval(() => goTo(current + 1), 4000);
-
-  goTo(0);
 })();
 
 // ── SCROLL ANIMATIONS ──
