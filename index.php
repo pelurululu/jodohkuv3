@@ -150,7 +150,7 @@
     <div class="image-slider reveal">
       <div class="slider-track">
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1590076215667-873d6f303457?w=900&h=260&fit=crop&q=80" alt="Padanan Nilai Islam">
+          <img src="https://images.unsplash.com/photo-1604881988758-f76ad2f7aac1?w=900&h=260&fit=crop&q=80" alt="Muslim Couple Discussion">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Padanan Berdasarkan Nilai Islam</h3>
@@ -160,7 +160,7 @@
         </div>
 
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&h=260&fit=crop&q=80" alt="AI Technology">
+          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=900&h=260&fit=crop&q=80" alt="AI Interface">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Teknologi AI Terdepan</h3>
@@ -170,7 +170,7 @@
         </div>
 
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=900&h=260&fit=crop&q=80" alt="Keselamatan Digital">
+         <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=900&h=260&fit=crop&q=80" alt="Cyber Security">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Keselamatan Maksimum</h3>
@@ -180,7 +180,7 @@
         </div>
 
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1576085898323-2183ba9b22ea?w=900&h=260&fit=crop&q=80" alt="Sistem Wali">
+          <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=900&h=260&fit=crop&q=80" alt="Family Discussion Muslim">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Sistem Wali Digital</h3>
@@ -190,7 +190,7 @@
         </div>
 
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&h=260&fit=crop&q=80" alt="Komuniti Muslim">
+          <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=900&h=260&fit=crop&q=80" alt="Muslim Professionals">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Komuniti Premium Muslim</h3>
@@ -200,7 +200,7 @@
         </div>
 
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900&h=260&fit=crop&q=80" alt="Ekosistem Perkahwinan">
+          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=900&h=260&fit=crop&q=80" alt="Wedding Couple Muslim">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Ekosistem Perkahwinan</h3>
@@ -210,7 +210,7 @@
         </div>
 
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&h=260&fit=crop&q=80" alt="Analitik Data">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=260&fit=crop&q=80" alt="Data Dashboard">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Analitik Mendalam</h3>
@@ -220,7 +220,7 @@
         </div>
 
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&h=260&fit=crop&q=80" alt="Aplikasi Mobile">
+         <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?w=900&h=260&fit=crop&q=80" alt="Mobile App UI">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Aplikasi Mobile Premium</h3>
@@ -230,7 +230,7 @@
         </div>
 
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&h=260&fit=crop&q=80" alt="Kaunselor Islam">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&h=260&fit=crop&q=80" alt="Counseling Session">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Bimbingan Kaunselor Islam</h3>
@@ -240,7 +240,7 @@
         </div>
 
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&h=260&fit=crop&q=80" alt="Kisah Kejayaan">
+        <img src="https://images.unsplash.com/photo-1529634896164-bd4b3c3d9e2e?w=900&h=260&fit=crop&q=80" alt="Happy Muslim Couple">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Kisah Kejayaan</h3>
