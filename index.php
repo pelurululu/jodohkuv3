@@ -943,6 +943,56 @@ async function handleFormSubmit(e) {
   document.getElementById('generatedId').textContent = jdk_id;
 }
 
+// ── TOUCH SWIPE CAROUSEL ──
+(function() {
+  const track = document.querySelector('.slider-track');
+  if (!track) return;
+
+  const slides = track.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+  let startX = 0;
+  let isDragging = false;
+
+  // Stop the CSS auto-slide animation
+  track.style.animation = 'none';
+
+  function goTo(index) {
+    current = (index + total) % total;
+    track.style.transition = 'transform 0.4s ease';
+    track.style.transform = `translateX(-${current * 100}%)`;
+  }
+
+  // Make each slide full-width
+  slides.forEach(slide => slide.style.minWidth = '100%');
+
+  track.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    track.style.transition = 'none';
+  }, { passive: true });
+
+  track.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    const diff = e.touches[0].clientX - startX;
+    track.style.transform = `translateX(calc(-${current * 100}% + ${diff}px))`;
+  }, { passive: true });
+
+  track.addEventListener('touchend', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    const diff = e.changedTouches[0].clientX - startX;
+    if (diff < -50) goTo(current + 1);
+    else if (diff > 50) goTo(current - 1);
+    else goTo(current);
+  });
+
+  // Auto-advance every 4 seconds
+  setInterval(() => goTo(current + 1), 4000);
+
+  goTo(0);
+})();
+
 // ── SCROLL ANIMATIONS ──
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
