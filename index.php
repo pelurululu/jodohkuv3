@@ -158,9 +158,9 @@
             </div>
           </div>
         </div>
-        
+
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=900&h=260&fit=crop&q=80" alt="AI Technology">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&h=260&fit=crop&q=80" alt="AI Technology">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Teknologi AI Terdepan</h3>
@@ -170,7 +170,7 @@
         </div>
 
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=900&h=260&fit=crop&q=80" alt="Keselamatan Digital">
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=900&h=260&fit=crop&q=80" alt="Keselamatan Digital">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Keselamatan Maksimum</h3>
@@ -210,7 +210,7 @@
         </div>
 
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1551288049-bbda38a10ad5?w=900&h=260&fit=crop&q=80" alt="Analitik Data">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&h=260&fit=crop&q=80" alt="Analitik Data">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Analitik Mendalam</h3>
@@ -220,7 +220,7 @@
         </div>
 
         <div class="slide">
-          <img src="https://images.unsplash.com/photo-1556656793-062ff9878258?w=900&h=260&fit=crop&q=80" alt="Aplikasi Mobile">
+          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&h=260&fit=crop&q=80" alt="Aplikasi Mobile">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Aplikasi Mobile Premium</h3>
