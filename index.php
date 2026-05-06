@@ -964,6 +964,8 @@ async function handleFormSubmit(e) {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Memproses...';
 
+  try {
+
   const jdk_id = generateId();
   let photo_url = null;
 
@@ -1018,8 +1020,14 @@ if (error) {
   document.getElementById('formView').style.display = 'none';
   document.getElementById('successView').style.display = 'block';
   document.getElementById('generatedId').textContent = jdk_id;
-}
 
+  } catch (err) {
+    console.error('Unexpected error:', err);
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Hantar Permohonan Beta Access';
+    showErrorPopup('Ralat Tidak Dijangka', err.message || 'Sila cuba sebentar lagi.');
+  }
+}
 // ── TOUCH SWIPE CAROUSEL ──
 (function() {
   const slider = document.querySelector('.image-slider');
