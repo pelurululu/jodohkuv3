@@ -948,11 +948,15 @@ async function handleFormSubmit(e) {
     photo_url,
   }]);
 
-  if (error) {
+if (error) {
     console.error('Supabase error:', error.message);
     submitBtn.disabled = false;
     submitBtn.textContent = 'Hantar Permohonan Beta Access';
-    alert('Ralat berlaku: ' + error.message);
+    if (error.message.includes('unique') || error.code === '23505') {
+      alert('Anda telah mendaftar sebelum ini. Setiap IC dan e-mel hanya boleh didaftarkan sekali sahaja.');
+    } else {
+      alert('Ralat berlaku: ' + error.message);
+    }
     return;
   }
 
