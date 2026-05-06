@@ -1626,8 +1626,8 @@ function setLang(lang) {
     }
   });
 
-  // Re-trigger carousel resize after language switch
-  window.dispatchEvent(new Event('resize'));
+// Re-trigger carousel resize after language switch (delay for RTL reflow)
+setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
 
   localStorage.setItem('jdk_lang', lang);
 }
