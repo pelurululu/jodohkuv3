@@ -1158,6 +1158,208 @@ document.querySelectorAll('.modal-overlay').forEach(m => {
   </div>
 </div>
 
+  <script>
+// ── TRANSLATIONS ──
+const i18n = {
+  ms: {
+    nav_cta: 'Daftar Sekarang',
+    nav_platform: 'Platform',
+    nav_kelebihan: 'Kelebihan',
+    nav_perbandingan: 'Perbandingan',
+    hero_badge: 'Platform Ultra-Premium Perkahwinan Islam',
+    hero_title_1: 'Revolusi',
+    hero_title_gold1: 'Saintifik',
+    hero_title_2: 'Padanan Jodoh',
+    hero_title_gold2: 'Berkualiti',
+    hero_subtitle: 'AI Terdepan + 115 Soalan Psikologi = Jodoh Seumur Hidup',
+    hero_desc: 'Jodohku.my menggantikan dating toxic dengan teknologi padanan yang dibangunkan khusus untuk budaya Muslim Malaysia — di mana setiap padanan berpotensi menjadi ikatan yang diberkati Allah.',
+    btn_platform: 'Lihat Platform',
+    btn_mengapa: 'Mengapa Berbeza?',
+    form_title: 'Akses Eksklusif',
+    form_subtitle: 'Jadi antara 500 pengguna terawal yang mendapat akses beta kepada platform revolusioner ini',
+    label_nama: 'Nama Penuh',
+    label_ic: 'No. Kad Pengenalan',
+    label_tel: 'No. Telefon',
+    label_email: 'Alamat E-mel',
+    label_gambar: 'Gambar Profil',
+    upload_text: 'Pilih gambar profil anda',
+    checkbox_text: 'Saya bersetuju dengan ',
+    terms_link: 'Terma & Syarat',
+    and_text: ' dan ',
+    privacy_link: 'Dasar Privasi',
+    checkbox_suffix: ' Jodohku.my yang mematuhi PDPA 2010',
+    btn_submit: 'Hantar Permohonan Beta Access',
+    success_title: 'Pendaftaran Berjaya!',
+    success_msg: 'Tahniah atas tindakan awal anda! Anda telah berjaya mendaftar untuk beta access Jodohku.my. Kami akan menghubungi anda setelah aplikasi jodohku.my berjaya didaftarkan di Playstore dan Appstore. Terima kasih -Admin-',
+    daftar_btn: 'Daftar Sekarang',
+    dir: 'ltr',
+  },
+  en: {
+    nav_cta: 'Register Now',
+    nav_platform: 'Platform',
+    nav_kelebihan: 'Features',
+    nav_perbandingan: 'Comparison',
+    hero_badge: 'Ultra-Premium Islamic Marriage Platform',
+    hero_title_1: 'Scientific',
+    hero_title_gold1: 'Revolution',
+    hero_title_2: 'Quality',
+    hero_title_gold2: 'Matchmaking',
+    hero_subtitle: 'Advanced AI + 115 Psychology Questions = Lifelong Match',
+    hero_desc: 'Jodohku.my replaces toxic dating with matching technology built specifically for Malaysian Muslim culture — where every match has the potential to become a bond blessed by Allah.',
+    btn_platform: 'View Platform',
+    btn_mengapa: 'Why Different?',
+    form_title: 'Exclusive Access',
+    form_subtitle: 'Be among the first 500 users to get beta access to this revolutionary platform',
+    label_nama: 'Full Name',
+    label_ic: 'IC Number',
+    label_tel: 'Phone Number',
+    label_email: 'Email Address',
+    label_gambar: 'Profile Picture',
+    upload_text: 'Choose your profile picture',
+    checkbox_text: 'I agree to the ',
+    terms_link: 'Terms & Conditions',
+    and_text: ' and ',
+    privacy_link: 'Privacy Policy',
+    checkbox_suffix: ' of Jodohku.my compliant with PDPA 2010',
+    btn_submit: 'Submit Beta Access Application',
+    success_title: 'Registration Successful!',
+    success_msg: 'Congratulations on your early action! You have successfully registered for Jodohku.my beta access. We will contact you once the Jodohku.my app is live on Playstore and Appstore. Thank you -Admin-',
+    daftar_btn: 'Register Now',
+    dir: 'ltr',
+  },
+  ar: {
+    nav_cta: 'سجل الآن',
+    nav_platform: 'المنصة',
+    nav_kelebihan: 'المميزات',
+    nav_perbandingan: 'المقارنة',
+    hero_badge: 'منصة الزواج الإسلامي الفاخرة',
+    hero_title_1: 'ثورة',
+    hero_title_gold1: 'علمية',
+    hero_title_2: 'تطابق',
+    hero_title_gold2: 'عالي الجودة',
+    hero_subtitle: 'ذكاء اصطناعي متقدم + ١١٥ سؤالاً نفسياً = شريك العمر',
+    hero_desc: 'تستبدل Jodohku.my المواعدة السامة بتقنية تطابق مبنية خصيصاً لثقافة المسلمين الماليزيين — حيث كل تطابق يحمل إمكانية أن يصبح رابطة يباركها الله.',
+    btn_platform: 'عرض المنصة',
+    btn_mengapa: 'لماذا مختلفة؟',
+    form_title: 'وصول حصري',
+    form_subtitle: 'كن من بين أول ٥٠٠ مستخدم يحصل على وصول تجريبي لهذه المنصة الثورية',
+    label_nama: 'الاسم الكامل',
+    label_ic: 'رقم بطاقة الهوية',
+    label_tel: 'رقم الهاتف',
+    label_email: 'البريد الإلكتروني',
+    label_gambar: 'صورة الملف الشخصي',
+    upload_text: 'اختر صورة ملفك الشخصي',
+    checkbox_text: 'أوافق على ',
+    terms_link: 'الشروط والأحكام',
+    and_text: ' و',
+    privacy_link: 'سياسة الخصوصية',
+    checkbox_suffix: ' لـ Jodohku.my',
+    btn_submit: 'إرسال طلب الوصول التجريبي',
+    success_title: 'تم التسجيل بنجاح!',
+    success_msg: 'تهانينا على تصرفك المبكر! لقد سجلت بنجاح للحصول على وصول تجريبي لـ Jodohku.my. سنتواصل معك بمجرد إطلاق التطبيق على Playstore وAppstore. شكراً لك -الإدارة-',
+    daftar_btn: 'سجل الآن',
+    dir: 'rtl',
+  }
+};
+
+function setLang(lang) {
+  const t = i18n[lang];
+  if (!t) return;
+
+  // Update active button
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+  // RTL/LTR direction
+  document.body.setAttribute('dir', t.dir);
+
+  // Nav
+  const navCta = document.querySelectorAll('[data-i18n="nav_cta"]');
+  navCta.forEach(el => el.textContent = t.nav_cta);
+
+  const navLinks = document.querySelectorAll('.nav-menu a');
+  if (navLinks[0]) navLinks[0].textContent = t.nav_platform;
+  if (navLinks[1]) navLinks[1].textContent = t.nav_kelebihan;
+  if (navLinks[2]) navLinks[2].textContent = t.nav_perbandingan;
+
+  // Hero
+  const heroBadge = document.querySelector('.hero-badge');
+  if (heroBadge) {
+    const svg = heroBadge.querySelector('svg');
+    heroBadge.textContent = t.hero_badge;
+    if (svg) heroBadge.prepend(svg);
+  }
+
+  const heroTitle = document.querySelector('.hero-title');
+  if (heroTitle) {
+    heroTitle.innerHTML = `${t.hero_title_1} <span class="gold">${t.hero_title_gold1}</span><br>${t.hero_title_2} <span class="gold">${t.hero_title_gold2}</span>`;
+  }
+
+  const heroSub = document.querySelector('.hero-subtitle');
+  if (heroSub) heroSub.textContent = t.hero_subtitle;
+
+  const heroDesc = document.querySelector('.hero-description');
+  if (heroDesc) heroDesc.textContent = t.hero_desc;
+
+  const btnPrimary = document.querySelector('.btn-primary-hero');
+  if (btnPrimary) btnPrimary.textContent = t.btn_platform;
+
+  const btnSecondary = document.querySelector('.btn-secondary-hero');
+  if (btnSecondary) btnSecondary.textContent = t.btn_mengapa;
+
+  // Form
+  const formTitle = document.querySelector('.form-title');
+  if (formTitle) formTitle.textContent = t.form_title;
+
+  const formSubtitle = document.querySelector('.form-subtitle');
+  if (formSubtitle) formSubtitle.textContent = t.form_subtitle;
+
+  const labels = document.querySelectorAll('.input-label');
+  const labelKeys = ['label_nama','label_ic','label_tel','label_email','label_gambar'];
+  labels.forEach((lbl, i) => { if (labelKeys[i]) lbl.textContent = t[labelKeys[i]]; });
+
+  const uploadText = document.querySelector('.upload-text');
+  if (uploadText) {
+    const strong = uploadText.querySelector('strong');
+    const strongText = strong ? strong.outerHTML : '<strong>JPG, PNG, WEBP</strong>';
+    uploadText.innerHTML = `${t.upload_text}<br>${strongText} — ${lang === 'ar' ? 'الحد الأقصى ٥ ميغابايت' : lang === 'en' ? 'Maximum 5MB' : 'Maksimum 5MB'}`;
+  }
+
+  const checkboxLabel = document.querySelector('.checkbox-premium label');
+  if (checkboxLabel) {
+    checkboxLabel.innerHTML = `${t.checkbox_text}<a href="#" onclick="openModal('termsModal');return false;">${t.terms_link}</a>${t.and_text}<a href="#" onclick="openModal('privacyModal');return false;">${t.privacy_link}</a>${t.checkbox_suffix}`;
+  }
+
+  const btnSubmit = document.querySelector('.btn-submit-premium');
+  if (btnSubmit && !btnSubmit.disabled) btnSubmit.textContent = t.btn_submit;
+
+  const successTitle = document.querySelector('.success-title');
+  if (successTitle) successTitle.textContent = t.success_title;
+
+  const successMsg = document.querySelector('.success-message');
+  if (successMsg) successMsg.textContent = t.success_msg;
+
+  // All "Daftar Sekarang" buttons
+  document.querySelectorAll('.btn-daftar-section').forEach(btn => btn.textContent = t.daftar_btn);
+
+  // Arabic font override
+  if (lang === 'ar') {
+    document.body.style.fontFamily = "'Tajawal', sans-serif";
+  } else {
+    document.body.style.fontFamily = "'Inter', sans-serif";
+  }
+
+  // Store preference
+  localStorage.setItem('jdk_lang', lang);
+}
+
+// Restore saved language on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('jdk_lang');
+  if (saved && saved !== 'ms') setLang(saved);
+});
+</script>
+
 <?php include 'footer.php'; ?>
 
 </body>
