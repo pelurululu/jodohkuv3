@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Tajawal:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<link rel="icon" type="image/png" href="logokut.png">
-<link rel="apple-touch-icon" href="logokut.png">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
 <meta property="og:title" content="Jodohku.my — Platform Ultra-Premium Perkahwinan Islam">
 <meta property="og:description" content="AI Terdepan + 115 Soalan Psikologi = Jodoh Seumur Hidup">
 <meta property="og:image" content="https://jodohku.my/logokut.png">
