@@ -1559,10 +1559,16 @@ function setLang(lang) {
   if (cmpTh[1]) cmpTh[1].textContent = t.cmp_col2;
   if (cmpTh[2]) cmpTh[2].textContent = t.cmp_col3;
   if (cmpTh[3]) cmpTh[3].textContent = t.cmp_col4;
-  document.querySelectorAll('.comparison-table tbody tr').forEach((row, i) => {
+ document.querySelectorAll('.comparison-table tbody tr').forEach((row, i) => {
     if (t.cmp_rows[i]) {
       const cells = row.querySelectorAll('td');
-      cells.forEach((cell, j) => { cell.textContent = t.cmp_rows[i][j]; });
+      cells.forEach((cell, j) => {
+        // preserve data-label for mobile CSS
+        if (j === 1) cell.setAttribute('data-label', t.cmp_col2);
+        if (j === 2) cell.setAttribute('data-label', t.cmp_col3);
+        if (j === 3) cell.setAttribute('data-label', t.cmp_col4);
+        cell.textContent = t.cmp_rows[i][j];
+      });
     }
   });
 
@@ -1619,6 +1625,9 @@ function setLang(lang) {
       const p = privSections[i].querySelector('p,ul'); if (p) p.innerHTML = s.p;
     }
   });
+
+  // Re-trigger carousel resize after language switch
+  window.dispatchEvent(new Event('resize'));
 
   localStorage.setItem('jdk_lang', lang);
 }
