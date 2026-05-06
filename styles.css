@@ -625,7 +625,6 @@ body {
   .hero-container { grid-template-columns: 1fr; gap: 48px; text-align: center; }
   .hero-description { margin-left: auto; margin-right: auto; }
   .hero-cta-buttons { justify-content: center; }
-
   .pillars-grid   { grid-template-columns: repeat(2, 1fr); }
   .usp-grid       { grid-template-columns: repeat(2, 1fr); }
   .questions-grid { grid-template-columns: repeat(2, 1fr); }
@@ -646,25 +645,17 @@ body {
 }
 
 /* ══════════════════════════════════════
-   RESPONSIVE — 960px (tablet)
+   RESPONSIVE — 768px (mobile)
+   ONLY comparison table changed here
 ══════════════════════════════════════ */
-@media (max-width: 960px) {
-  .nav-menu { display: none; }
-  .nav-container { padding: 14px 24px; }
-  .form-row { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-}
-
 @media (max-width: 768px) {
   .comparison-section { padding: 48px 0; }
   .comparison-highlight { padding: 24px 16px; border-radius: 16px; }
   .comparison-title { font-size: 18px; margin-bottom: 24px; }
   .comparison-table-scroll { overflow: visible; }
-
   .comparison-table { min-width: unset; width: 100%; border-radius: 0; background: transparent; }
   .comparison-table thead { display: none; }
 
-  /* Each row = one feature card */
   .comparison-table tbody tr {
     display: grid;
     grid-template-columns: 1fr;
@@ -675,7 +666,6 @@ body {
     background: rgba(0,0,0,0.4);
   }
 
-  /* Feature name — big gold header of each card */
   .comparison-table tbody td.feature {
     display: block;
     background: linear-gradient(135deg, rgba(26,74,48,0.6), rgba(0,0,0,0.4));
@@ -689,7 +679,6 @@ body {
   }
   .comparison-table tbody td.feature::before { display: none; }
 
-  /* Each platform row inside the card */
   .comparison-table tbody td {
     display: flex;
     justify-content: space-between;
@@ -702,7 +691,6 @@ body {
 
   .comparison-table tbody td:last-child { border-bottom: none; }
 
-  /* Platform label on the left via ::before */
   .comparison-table tbody td::before {
     content: attr(data-label);
     font-size: 11px;
@@ -714,7 +702,6 @@ body {
     margin-right: 12px;
   }
 
-  /* Jodohku row gets green highlight */
   .comparison-table tbody td.jodohku {
     background: rgba(76,175,80,0.1);
     color: var(--emerald-light);
@@ -722,10 +709,7 @@ body {
     border-top: 1px solid rgba(76,175,80,0.2);
   }
 
-  .comparison-table tbody td.jodohku::before {
-    color: var(--gold);
-  }
-
+  .comparison-table tbody td.jodohku::before { color: var(--gold); }
   .comparison-table tbody .cross { color: #555; }
   .comparison-table tbody .check { color: var(--emerald-light); }
 }
