@@ -1162,6 +1162,10 @@ document.querySelectorAll('.modal-overlay').forEach(m => {
 // ── TRANSLATIONS ──
 const i18n = {
   ms: {
+    footer_copyright: '&copy; 2025 <strong>Jodohku.my</strong>. Hak Cipta Terpelihara.',
+footer_initiative: 'Sebuah Inisiatif',
+footer_sub: 'Jodohku.my adalah jenama di bawah portfolio <strong style="color:#555;">Noble Synergy Ventures</strong>',
+footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Platform',
     dir: 'ltr',
     nav_cta: 'Daftar Sekarang',
     nav_platform: 'Platform', nav_kelebihan: 'Kelebihan', nav_perbandingan: 'Perbandingan',
@@ -1272,6 +1276,10 @@ const i18n = {
   },
 
   en: {
+    footer_copyright: '&copy; 2025 <strong>Jodohku.my</strong>. All Rights Reserved.',
+footer_initiative: 'An Initiative by',
+footer_sub: 'Jodohku.my is a brand under the portfolio of <strong style="color:#555;">Noble Synergy Ventures</strong>',
+footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Platform',
     dir: 'ltr',
     nav_cta: 'Register Now',
     nav_platform: 'Platform', nav_kelebihan: 'Features', nav_perbandingan: 'Comparison',
@@ -1374,6 +1382,10 @@ const i18n = {
   },
 
   ar: {
+    footer_copyright: '&copy; 2025 <strong>Jodohku.my</strong>. جميع الحقوق محفوظة.',
+footer_initiative: 'مبادرة من',
+footer_sub: 'Jodohku.my علامة تجارية ضمن محفظة <strong style="color:#555;">Noble Synergy Ventures</strong>',
+footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Platform',
     dir: 'rtl',
     nav_cta: 'سجل الآن',
     nav_platform: 'المنصة', nav_kelebihan: 'المميزات', nav_perbandingan: 'المقارنة',
