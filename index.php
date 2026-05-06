@@ -18,6 +18,11 @@
 <meta name="twitter:title" content="Jodohku.my — Platform Ultra-Premium Perkahwinan Islam">
 <meta name="twitter:description" content="AI Terdepan + 115 Soalan Psikologi = Jodoh Seumur Hidup">
 <meta name="twitter:image" content="https://jodohku.my/logokut.png">
+  
+  <meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+  
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 </style>
