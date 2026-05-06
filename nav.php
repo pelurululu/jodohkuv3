@@ -17,6 +17,12 @@
       <li><a href="#comparison">Perbandingan</a></li>
       
     </ul>
-    <a href="#hero" class="nav-cta">Daftar Sekarang</a>
+   <a href="#hero" class="nav-cta" data-i18n="nav_cta">Daftar Sekarang</a>
+
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('ms')">MS</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('ar')">AR</button>
+    </div>
   </div>
 </nav>
