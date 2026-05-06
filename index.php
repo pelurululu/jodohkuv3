@@ -477,39 +477,39 @@
     <tbody>
       <tr>
         <td class="feature">Penglibatan Wali Mandatory</td>
-        <td class="cross">✗ Tiada</td>
-        <td class="cross">✗ Optional</td>
-        <td class="jodohku check">✓ Diwajibkan</td>
+        <td class="cross" data-label="Tinder / Bumble">✗ Tiada</td>
+        <td class="cross" data-label="MuzMatch">✗ Optional</td>
+        <td class="jodohku check" data-label="Jodohku.my">✓ Diwajibkan</td>
       </tr>
       <tr>
         <td class="feature">Verifikasi Identiti Penuh</td>
-        <td class="cross">✗ Selfie sahaja</td>
-        <td class="cross">✗ Selfie sahaja</td>
-        <td class="jodohku check">✓ MyKad + Biometrik</td>
+        <td class="cross" data-label="Tinder / Bumble">✗ Selfie sahaja</td>
+        <td class="cross" data-label="MuzMatch">✗ Selfie sahaja</td>
+        <td class="jodohku check" data-label="Jodohku.my">✓ MyKad + Biometrik</td>
       </tr>
       <tr>
         <td class="feature">AI Content Filtering</td>
-        <td class="cross">✗ Manual report</td>
-        <td class="cross">✗ Manual report</td>
-        <td class="jodohku check">✓ 0.3 saat</td>
+        <td class="cross" data-label="Tinder / Bumble">✗ Manual report</td>
+        <td class="cross" data-label="MuzMatch">✗ Manual report</td>
+        <td class="jodohku check" data-label="Jodohku.my">✓ 0.3 saat</td>
       </tr>
       <tr>
         <td class="feature">Psikologi Matching</td>
-        <td class="cross">✗ Appearance</td>
-        <td class="cross">✗ Basic</td>
-        <td class="jodohku check">✓ 115 soalan</td>
+        <td class="cross" data-label="Tinder / Bumble">✗ Appearance</td>
+        <td class="cross" data-label="MuzMatch">✗ Basic</td>
+        <td class="jodohku check" data-label="Jodohku.my">✓ 115 soalan</td>
       </tr>
       <tr>
         <td class="feature">Wedding Ecosystem</td>
-        <td class="cross">✗ Berhenti</td>
-        <td class="cross">✗ Berhenti</td>
-        <td class="jodohku check">✓ Hingga pelamin</td>
+        <td class="cross" data-label="Tinder / Bumble">✗ Berhenti</td>
+        <td class="cross" data-label="MuzMatch">✗ Berhenti</td>
+        <td class="jodohku check" data-label="Jodohku.my">✓ Hingga pelamin</td>
       </tr>
       <tr>
         <td class="feature">Shariah Compliance</td>
-        <td class="cross">✗ Tiada</td>
-        <td class="cross">✗ Self-declared</td>
-        <td class="jodohku check">✓ Board certified</td>
+        <td class="cross" data-label="Tinder / Bumble">✗ Tiada</td>
+        <td class="cross" data-label="MuzMatch">✗ Self-declared</td>
+        <td class="jodohku check" data-label="Jodohku.my">✓ Board certified</td>
       </tr>
     </tbody>
   </table>
