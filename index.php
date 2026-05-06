@@ -9,19 +9,22 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
+<meta name="title" content="Jodohku.my - Platform Ultra-Premium Mencari Pasangan">
+<meta name="description" content="Padanan AI + Sekufu">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.jodohku.my/">
 <meta property="og:title" content="Jodohku.my - Platform Ultra-Premium Mencari Pasangan">
 <meta property="og:description" content="Padanan AI + Sekufu">
 <meta property="og:image" content="https://jodohku.my/logokut.png">
-<meta property="og:url" content="https://www.jodohku.my">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Jodohku.my — Platform Ultra-Premium Perkahwinan Islam">
-<meta name="twitter:description" content="AI Terdepan + 115 Soalan Psikologi = Jodoh Seumur Hidup">
-<meta name="twitter:image" content="https://jodohku.my/logokut.png">
-  
-  <meta property="og:image:width" content="1200">
+<meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:type" content="image/png">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://www.jodohku.my/">
+<meta property="twitter:title" content="Jodohku.my — Platform Ultra-Premium Perkahwinan Islam">
+<meta property="twitter:description" content="AI Terdepan + 115 Soalan Psikologi = Jodoh Seumur Hidup">
+<meta property="twitter:image" content="https://jodohku.my/logokut.png">
   
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
