@@ -900,6 +900,57 @@ function generateId() {
   return `JDK-${year}-${random}`;
 }
 
+  function showErrorPopup(title, message) {
+  const existing = document.getElementById('errorPopup');
+  if (existing) existing.remove();
+
+  const popup = document.createElement('div');
+  popup.id = 'errorPopup';
+  popup.style.cssText = `
+    position: fixed; inset: 0; z-index: 99999;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+  `;
+  popup.innerHTML = `
+    <div style="
+      background: linear-gradient(160deg, #1a0000 0%, #000000 100%);
+      border: 2px solid rgba(255,80,80,0.4);
+      border-radius: 20px; max-width: 420px; width: 100%;
+      position: relative; overflow: hidden;
+    ">
+      <div style="
+        position: absolute; top: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(90deg, transparent, #FF4444, #FF8800, #FF4444, transparent);
+      "></div>
+      <div style="padding: 40px 36px; text-align: center;">
+        <div style="
+          width: 70px; height: 70px; margin: 0 auto 20px;
+          background: rgba(255,60,60,0.1); border: 2px solid rgba(255,60,60,0.4);
+          border-radius: 50%; display: flex; align-items: center; justify-content: center;
+          font-size: 32px;
+        ">✗</div>
+        <h3 style="
+          font-family: 'Playfair Display', serif; font-size: 22px;
+          color: #fff; margin-bottom: 14px;
+        ">${title}</h3>
+        <p style="
+          color: #B0B0B0; font-size: 14px; line-height: 1.7; margin-bottom: 28px;
+        ">${message}</p>
+        <button onclick="document.getElementById('errorPopup').remove()" style="
+          background: linear-gradient(135deg, #FF4444, #FF8800);
+          color: #fff; border: none; padding: 12px 36px;
+          border-radius: 8px; font-weight: 700; font-size: 13px;
+          cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
+        ">Tutup</button>
+      </div>
+    </div>
+  `;
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) popup.remove();
+  });
+  document.body.appendChild(popup);
+}
+
 // ── MAIN FORM SUBMIT ──
 async function handleFormSubmit(e) {
   e.preventDefault();
@@ -952,11 +1003,14 @@ if (error) {
     console.error('Supabase error:', error.message);
     submitBtn.disabled = false;
     submitBtn.textContent = 'Hantar Permohonan Beta Access';
-    if (error.message.includes('unique') || error.code === '23505') {
-      alert('Anda telah mendaftar sebelum ini. Setiap IC dan e-mel hanya boleh didaftarkan sekali sahaja.');
-    } else {
-      alert('Ralat berlaku: ' + error.message);
-    }
+    const isDuplicate = error.message.includes('unique') || error.code === '23505';
+    showErrorPopup(isDuplicate
+      ? 'Pendaftaran Didapati Duplikat'
+      : 'Ralat Pendaftaran',
+      isDuplicate
+      ? 'Nombor IC atau e-mel ini telah didaftarkan sebelum ini. Setiap pengguna hanya boleh mendaftar sekali sahaja.'
+      : 'Ralat berlaku semasa pendaftaran. Sila cuba sebentar lagi.'
+    );
     return;
   }
 
