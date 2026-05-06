@@ -646,27 +646,53 @@ body {
 }
 
 /* ══════════════════════════════════════
+   RESPONSIVE — 960px (tablet)
+══════════════════════════════════════ */
+@media (max-width: 960px) {
+  .nav-menu { display: none; }
+  .nav-container { padding: 14px 24px; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+
+/* ══════════════════════════════════════
    RESPONSIVE — 768px (mobile)
 ══════════════════════════════════════ */
 @media (max-width: 768px) {
-  /* NAV */
   .nav-menu { display: none; }
-  .nav-container { padding: 12px 20px; }
-  .nav-cta { padding: 9px 14px; font-size: 11px; }
-  .nav-logo { width: 40px; height: 40px; font-size: 20px; border-radius: 10px; }
-  .nav-title-main, .nav-title { font-size: 17px; }
+  .nav-container { padding: 12px 16px; }
+  .nav-cta { padding: 8px 12px; font-size: 10px; letter-spacing: 0.5px; }
+  .nav-logo { width: 38px; height: 38px; font-size: 18px; border-radius: 9px; }
+  .nav-title-main, .nav-title { font-size: 16px; }
 
-  /* SECTION PADDING */
-  .hero-section { padding: 100px 0 60px; }
+  .hero-section { padding: 90px 0 48px; }
+  .hero-container { grid-template-columns: 1fr; gap: 32px; text-align: center; padding: 0 16px; }
+  .hero-title { font-size: clamp(26px, 8vw, 40px); }
+  .hero-subtitle { font-size: 15px; }
+  .hero-description { font-size: 13px; max-width: 100%; margin-left: auto; margin-right: auto; }
+  .hero-badge { font-size: 9px; padding: 6px 12px; letter-spacing: 1px; }
+  .hero-cta-buttons { flex-direction: column; align-items: stretch; gap: 10px; justify-content: center; }
+  .btn-primary-hero,
+  .btn-secondary-hero { text-align: center; padding: 13px 16px; font-size: 13px; }
+
+  .form-premium-container { padding: 24px 16px; border-radius: 16px; }
+  .form-row { grid-template-columns: 1fr; gap: 12px; }
+  .form-title { font-size: 19px; }
+  .form-subtitle { font-size: 12px; }
+  .input-premium { padding: 12px 14px; font-size: 13px; }
+  .input-label { font-size: 10px; }
+  .upload-area { padding: 18px 12px; }
+  .upload-text { font-size: 12px; }
+  .btn-submit-premium { font-size: 13px; padding: 13px; }
+
   .slider-section,
   .pillars-section,
   .usp-section,
   .comparison-section,
   .questions-section,
   .taaruf-section,
-  .wedding-section { padding: 64px 0; }
+  .wedding-section { padding: 56px 0; }
 
-  /* ALL CONTAINERS */
   .hero-container,
   .slider-container,
   .pillars-container,
@@ -675,121 +701,113 @@ body {
   .questions-container,
   .taaruf-container,
   .wedding-container,
-  .footer-container { padding: 0 20px; }
+  .footer-container { padding: 0 16px; }
 
-  /* HERO */
-  .hero-container { grid-template-columns: 1fr; gap: 36px; text-align: center; }
-  .hero-title { font-size: clamp(28px, 8vw, 44px); }
-  .hero-subtitle { font-size: 15px; }
-  .hero-description { font-size: 14px; max-width: 100%; }
-  .hero-badge { font-size: 10px; padding: 7px 14px; letter-spacing: 1px; }
-  .hero-cta-buttons { flex-direction: column; align-items: stretch; gap: 12px; }
-  .btn-primary-hero,
-  .btn-secondary-hero { text-align: center; padding: 14px 20px; font-size: 14px; }
-
-  /* FORM */
-  .form-premium-container { padding: 28px 20px; border-radius: 16px; }
-  .form-row { grid-template-columns: 1fr; gap: 14px; }
-  .form-title { font-size: 20px; }
-  .upload-area { padding: 22px 16px; }
-
-  /* GRIDS → 1 column */
   .pillars-grid,
   .usp-grid,
-  .questions-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
+  .questions-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
 
-  /* CARDS */
-  .pillar-card, .usp-card, .dimension-card { padding: 26px 18px; }
-  .flow-step { padding: 44px 20px 28px; }
+  .pillar-card, .usp-card, .dimension-card { padding: 24px 16px; border-radius: 16px; }
+  .pillar-image, .usp-image { width: 70px; height: 70px; }
+  .pillar-title, .usp-title, .dimension-name { font-size: 16px; }
+  .pillar-desc, .usp-desc, .dimension-desc { font-size: 13px; }
 
-  /* SLIDER */
-  .slide { height: 200px; }
-  .slide-overlay { padding: 20px; }
-  .slide-title { font-size: 15px; }
-  .slide-desc { font-size: 12px; }
-  .slider-header { margin-bottom: 32px; }
+  .flow-step { padding: 44px 18px 26px; border-radius: 18px; }
+  .flow-image { width: 90px; height: 90px; }
+  .flow-title { font-size: 17px; }
+  .flow-desc { font-size: 13px; }
 
-  /* COMPARISON — scrollable */
-  .comparison-highlight { padding: 20px 12px; border-radius: 16px; }
-  .comparison-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; cursor: grab; }
-  .comparison-table { min-width: 520px; font-size: 12px; }
+  .slide { height: 190px; }
+  .slide-overlay { padding: 16px; }
+  .slide-title { font-size: 14px; }
+  .slide-desc { font-size: 11px; }
+  .slider-header { margin-bottom: 28px; }
+
+  .comparison-highlight { padding: 18px 10px; border-radius: 14px; }
+  .comparison-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .comparison-table { min-width: 500px; font-size: 11px; }
   .comparison-table th,
-  .comparison-table td { padding: 11px 10px; }
-  .comparison-title { font-size: 20px; margin-bottom: 20px; }
+  .comparison-table td { padding: 10px 8px; }
+  .comparison-title { font-size: 18px; margin-bottom: 18px; }
 
-  /* TA'ARUF */
-  .taaruf-flow { grid-template-columns: 1fr; gap: 36px; margin-top: 36px; max-width: 100%; }
+  .taaruf-flow { grid-template-columns: 1fr; gap: 32px; margin-top: 32px; max-width: 100%; }
 
-  /* WEDDING */
-  .wedding-preview { padding: 36px 20px; }
-  .wedding-preview h3 { font-size: 19px; }
+  .wedding-preview { padding: 32px 16px; }
   .wedding-preview::before { display: none; }
-  .wedding-mockup { grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 28px 0; }
+  .wedding-mockup { grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0; }
+  .wedding-card { padding: 18px 12px; }
+  .wedding-explanation { font-size: 13px; }
 
-  /* SECTION TITLES */
-  .section-title-main { font-size: clamp(22px, 6vw, 36px); }
-  .section-desc-main { font-size: 15px; }
-  .slider-header { margin-bottom: 32px; }
+  .section-title-main { font-size: clamp(20px, 6vw, 34px); }
+  .section-desc-main { font-size: 14px; }
+  .section-label { font-size: 10px; letter-spacing: 1.5px; }
 
-  /* MODALS */
-  .modal-overlay { padding: 16px; }
-  .modal-box { border-radius: 14px; max-height: 92vh; }
-  .modal-header { padding: 20px 20px 16px; }
-  .modal-body { padding: 20px 20px 36px; }
-  .modal-title { font-size: 20px; }
+  .modal-overlay { padding: 12px; }
+  .modal-box { border-radius: 14px; max-height: 94vh; }
+  .modal-header { padding: 18px 18px 14px; }
+  .modal-body { padding: 18px 18px 32px; }
+  .modal-title { font-size: 18px; }
 
-  /* FOOTER */
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 40px; }
-  .footer-bottom { flex-direction: column; text-align: center; align-items: center; gap: 12px; }
-  .footer-legal-links { justify-content: center; flex-wrap: wrap; gap: 16px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; padding-bottom: 36px; }
+  .footer-bottom { flex-direction: column; text-align: center; align-items: center; gap: 10px; }
+  .footer-legal-links { justify-content: center; flex-wrap: wrap; gap: 14px; }
   .footer-parent { text-align: center; }
+  .footer-brand-desc { font-size: 13px; }
+  .footer-links a { font-size: 13px; }
 
-  /* DAFTAR BUTTON */
-  .btn-daftar-section { padding: 13px 28px; font-size: 12px; }
+  .btn-daftar-section { padding: 12px 24px; font-size: 11px; display: block; text-align: center; width: 100%; }
 }
 
 /* ══════════════════════════════════════
    RESPONSIVE — 480px (small phones)
 ══════════════════════════════════════ */
 @media (max-width: 480px) {
-  .nav-logo { width: 36px; height: 36px; font-size: 17px; border-radius: 8px; }
-  .nav-title-main, .nav-title { font-size: 15px; }
+  .nav-logo { width: 34px; height: 34px; font-size: 16px; border-radius: 8px; }
+  .nav-title-main, .nav-title { font-size: 14px; }
   .nav-cta { display: none; }
+  .nav-container { padding: 10px 14px; }
 
-  .hero-title { font-size: clamp(24px, 8vw, 34px); }
-  .hero-badge { font-size: 9px; padding: 6px 12px; }
+  .hero-section { padding: 80px 0 40px; }
+  .hero-title { font-size: clamp(22px, 8vw, 30px); }
+  .hero-subtitle { font-size: 14px; }
+  .hero-badge { font-size: 9px; padding: 5px 10px; }
+  .hero-cta-buttons { gap: 8px; }
+  .btn-primary-hero,
+  .btn-secondary-hero { padding: 12px 14px; font-size: 13px; }
 
-  .form-premium-container { padding: 22px 16px; border-radius: 14px; }
-  .form-title { font-size: 19px; }
-  .btn-submit-premium { font-size: 13px; }
+  .form-premium-container { padding: 18px 14px; border-radius: 12px; }
+  .form-title { font-size: 17px; }
+  .btn-submit-premium { font-size: 12px; padding: 12px; letter-spacing: 0; }
 
-  .pillar-card, .usp-card, .dimension-card { padding: 22px 16px; }
-  .flow-step { padding: 40px 16px 24px; }
+  .pillar-card, .usp-card, .dimension-card { padding: 20px 14px; }
+  .flow-step { padding: 40px 14px 22px; }
 
-  .pillar-image, .usp-image { width: 74px; height: 74px; }
-  .flow-image { width: 86px; height: 86px; }
-  .dimension-icon { width: 56px; height: 56px; }
+  .pillar-image, .usp-image { width: 64px; height: 64px; }
+  .flow-image { width: 80px; height: 80px; }
+  .dimension-icon { width: 52px; height: 52px; }
 
-  .slide { height: 175px; }
+  .slide { height: 160px; }
 
-  .comparison-table { min-width: 460px; font-size: 11px; }
+  .comparison-table { min-width: 440px; font-size: 10px; }
   .comparison-table th,
-  .comparison-table td { padding: 9px 8px; }
+  .comparison-table td { padding: 8px 6px; }
+  .comparison-title { font-size: 16px; }
 
-  .wedding-mockup { grid-template-columns: 1fr; gap: 12px; }
-  .wedding-preview { padding: 28px 16px; }
-  .wedding-explanation { font-size: 14px; }
+  .wedding-mockup { grid-template-columns: 1fr; gap: 10px; }
+  .wedding-preview { padding: 24px 14px; }
+  .wedding-explanation { font-size: 13px; }
 
-  .success-title { font-size: 22px; }
-  .success-id { font-size: 14px; padding: 10px 16px; }
+  .success-title { font-size: 20px; }
+  .success-id { font-size: 13px; padding: 9px 14px; }
 
-  .modal-header { padding: 18px 16px 14px; }
-  .modal-body { padding: 16px 16px 32px; }
-  .modal-title { font-size: 18px; }
+  .modal-header { padding: 16px 14px 12px; }
+  .modal-body { padding: 14px 14px 28px; }
+  .modal-title { font-size: 17px; }
 
-  .btn-daftar-section { padding: 12px 20px; font-size: 12px; width: 100%; text-align: center; display: block; }
+  .btn-daftar-section { padding: 11px 18px; font-size: 11px; width: 100%; text-align: center; display: block; }
 
-  .footer-grid { gap: 28px; }
-  .footer-brand-desc { max-width: 100%; }
-  .footer-bottom { gap: 10px; }
+  .footer-grid { gap: 24px; }
+  .footer-brand-desc { max-width: 100%; font-size: 13px; }
+  .footer-bottom { gap: 8px; }
+  .footer-col-title { font-size: 15px; }
 }
