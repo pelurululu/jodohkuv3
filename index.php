@@ -1041,24 +1041,24 @@ if (error) {
   let isDragging = false;
   let autoTimer = null;
 
-  // Kill CSS animation and set up JS control
   track.style.animation = 'none';
   track.style.willChange = 'transform';
+  track.style.direction = 'ltr';
   slider.style.overflow = 'hidden';
+  slider.style.direction = 'ltr';
 
-  // Ensure each slide is exactly 100% of the slider width
   function sizeSLides() {
     const w = slider.offsetWidth;
     slides.forEach(s => { s.style.minWidth = w + 'px'; s.style.width = w + 'px'; });
     track.style.width = (w * total) + 'px';
   }
 
- function goTo(index, animate = true) {
+  function goTo(index, animate = true) {
     current = (index + total) % total;
-    const slideWidth = slides[0].offsetWidth;
+    const w = slides[0].offsetWidth;
     track.style.transition = animate ? 'transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
-    track.style.transform = `translateX(-${current * slideWidth}px)`;
-}
+    track.style.transform = `translateX(-${current * w}px)`;
+  }
 
   function resetTimer() {
     clearInterval(autoTimer);
@@ -1071,7 +1071,6 @@ if (error) {
 
   window.addEventListener('resize', () => { sizeSLides(); goTo(current, false); });
 
-  // Touch
   slider.addEventListener('touchstart', e => {
     startX = e.touches[0].clientX;
     isDragging = true;
@@ -1082,7 +1081,7 @@ if (error) {
   slider.addEventListener('touchmove', e => {
     if (!isDragging) return;
     const diff = e.touches[0].clientX - startX;
-    track.style.transform = `translateX(${-(current * slider.offsetWidth) + diff}px)`;
+    track.style.transform = `translateX(${-(current * slides[0].offsetWidth) + diff}px)`;
   }, { passive: true });
 
   slider.addEventListener('touchend', e => {
