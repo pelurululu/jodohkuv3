@@ -655,208 +655,77 @@ body {
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
 
-/* ══════════════════════════════════════
-   RESPONSIVE — 768px (mobile)
-══════════════════════════════════════ */
 @media (max-width: 768px) {
-  .nav-menu { display: none; }
-  .nav-container { padding: 12px 16px; }
-  .nav-cta { padding: 8px 12px; font-size: 10px; letter-spacing: 0.5px; }
-  .nav-logo { width: 38px; height: 38px; font-size: 18px; border-radius: 9px; }
-  .nav-title-main, .nav-title { font-size: 16px; }
-
-  .hero-section { padding: 90px 0 48px; }
-  .hero-container { grid-template-columns: 1fr; gap: 32px; text-align: center; padding: 0 16px; }
-  .hero-title { font-size: clamp(26px, 8vw, 40px); }
-  .hero-subtitle { font-size: 15px; }
-  .hero-description { font-size: 13px; max-width: 100%; margin-left: auto; margin-right: auto; }
-  .hero-badge { font-size: 9px; padding: 6px 12px; letter-spacing: 1px; }
-  .hero-cta-buttons { flex-direction: column; align-items: stretch; gap: 10px; justify-content: center; }
-  .btn-primary-hero,
-  .btn-secondary-hero { text-align: center; padding: 13px 16px; font-size: 13px; }
-
-  .form-premium-container { padding: 24px 16px; border-radius: 16px; }
-  .form-row { grid-template-columns: 1fr; gap: 12px; }
-  .form-title { font-size: 19px; }
-  .form-subtitle { font-size: 12px; }
-  .input-premium { padding: 12px 14px; font-size: 13px; }
-  .input-label { font-size: 10px; }
-  .upload-area { padding: 18px 12px; }
-  .upload-text { font-size: 12px; }
-  .btn-submit-premium { font-size: 13px; padding: 13px; }
-
-  .slider-section,
-  .pillars-section,
-  .usp-section,
-  .comparison-section,
-  .questions-section,
-  .taaruf-section,
-  .wedding-section { padding: 56px 0; }
-
-  .hero-container,
-  .slider-container,
-  .pillars-container,
-  .usp-container,
-  .comparison-container,
-  .questions-container,
-  .taaruf-container,
-  .wedding-container,
-  .footer-container { padding: 0 16px; }
-
-  .pillars-grid,
-  .usp-grid,
-  .questions-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
-
-  .pillar-card, .usp-card, .dimension-card { padding: 24px 16px; border-radius: 16px; }
-  .pillar-image, .usp-image { width: 70px; height: 70px; }
-  .pillar-title, .usp-title, .dimension-name { font-size: 16px; }
-  .pillar-desc, .usp-desc, .dimension-desc { font-size: 13px; }
-
-  .flow-step { padding: 44px 18px 26px; border-radius: 18px; }
-  .flow-image { width: 90px; height: 90px; }
-  .flow-title { font-size: 17px; }
-  .flow-desc { font-size: 13px; }
-
-  .slide { height: 190px; }
-  .slide-overlay { padding: 16px; }
-  .slide-title { font-size: 14px; }
-  .slide-desc { font-size: 11px; }
-  .slider-header { margin-bottom: 28px; }
-
-  .comparison-highlight { padding: 18px 10px; border-radius: 14px; }
+  .comparison-section { padding: 48px 0; }
+  .comparison-highlight { padding: 24px 16px; border-radius: 16px; }
+  .comparison-title { font-size: 18px; margin-bottom: 24px; }
   .comparison-table-scroll { overflow: visible; }
-  .comparison-table { min-width: unset; width: 100%; font-size: 12px; }
-  .comparison-table th,
-  .comparison-table td { padding: 10px 8px; }
-  .comparison-title { font-size: 18px; margin-bottom: 18px; }
 
-  .taaruf-flow { grid-template-columns: 1fr; gap: 32px; margin-top: 32px; max-width: 100%; }
-
-  .wedding-preview { padding: 32px 16px; }
-  .wedding-preview::before { display: none; }
-  .wedding-mockup { grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0; }
-  .wedding-card { padding: 18px 12px; }
-  .wedding-explanation { font-size: 13px; }
-
-  .section-title-main { font-size: clamp(20px, 6vw, 34px); }
-  .section-desc-main { font-size: 14px; }
-  .section-label { font-size: 10px; letter-spacing: 1.5px; }
-
-  .modal-overlay { padding: 12px; }
-  .modal-box { border-radius: 14px; max-height: 94vh; }
-  .modal-header { padding: 18px 18px 14px; }
-  .modal-body { padding: 18px 18px 32px; }
-  .modal-title { font-size: 18px; }
-
-  .footer-grid { grid-template-columns: 1fr; gap: 28px; padding-bottom: 36px; }
-  .footer-bottom { flex-direction: column; text-align: center; align-items: center; gap: 10px; }
-  .footer-legal-links { justify-content: center; flex-wrap: wrap; gap: 14px; }
-  .footer-parent { text-align: center; }
-  .footer-brand-desc { font-size: 13px; }
-  .footer-links a { font-size: 13px; }
-
-  .btn-daftar-section { padding: 12px 24px; font-size: 11px; display: block; text-align: center; width: 100%; }
-}
-
-/* ══════════════════════════════════════
-   RESPONSIVE — 480px (small phones)
-══════════════════════════════════════ */
-@media (max-width: 480px) {
-  .nav-logo { width: 34px; height: 34px; font-size: 16px; border-radius: 8px; }
-  .nav-title-main, .nav-title { font-size: 14px; }
-  .nav-cta { display: none; }
-  .nav-container { padding: 10px 14px; }
-
-  .hero-section { padding: 80px 0 40px; }
-  .hero-title { font-size: clamp(22px, 8vw, 30px); }
-  .hero-subtitle { font-size: 14px; }
-  .hero-badge { font-size: 9px; padding: 5px 10px; }
-  .hero-cta-buttons { gap: 8px; }
-  .btn-primary-hero,
-  .btn-secondary-hero { padding: 12px 14px; font-size: 13px; }
-
-  .form-premium-container { padding: 18px 14px; border-radius: 12px; }
-  .form-title { font-size: 17px; }
-  .btn-submit-premium { font-size: 12px; padding: 12px; letter-spacing: 0; }
-
-  .pillar-card, .usp-card, .dimension-card { padding: 20px 14px; }
-  .flow-step { padding: 40px 14px 22px; }
-
-  .pillar-image, .usp-image { width: 64px; height: 64px; }
-  .flow-image { width: 80px; height: 80px; }
-  .dimension-icon { width: 52px; height: 52px; }
-
-  .slide { height: 160px; }
-
-  .comparison-table { min-width: 440px; font-size: 10px; }
-  .comparison-table th,
-  .comparison-table td { padding: 8px 6px; }
-  .comparison-title { font-size: 16px; }
-
-  .wedding-mockup { grid-template-columns: 1fr; gap: 10px; }
-  .wedding-preview { padding: 24px 14px; }
-  .wedding-explanation { font-size: 13px; }
-
-  .success-title { font-size: 20px; }
-  .success-id { font-size: 13px; padding: 9px 14px; }
-
-  .modal-header { padding: 16px 14px 12px; }
-  .modal-body { padding: 14px 14px 28px; }
-  .modal-title { font-size: 17px; }
-
-  .btn-daftar-section { padding: 11px 18px; font-size: 11px; width: 100%; text-align: center; display: block; }
-
-  .footer-grid { gap: 24px; }
-  .footer-brand-desc { max-width: 100%; font-size: 13px; }
-  .footer-bottom { gap: 8px; }
-  .footer-col-title { font-size: 15px; }
-}
-
-@media (max-width: 768px) {
-  .comparison-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .comparison-table { min-width: unset; width: 100%; font-size: 11px; }
+  .comparison-table { min-width: unset; width: 100%; border-radius: 0; background: transparent; }
   .comparison-table thead { display: none; }
 
+  /* Each row = one feature card */
   .comparison-table tbody tr {
-    display: block;
-    margin-bottom: 16px;
-    border: 1px solid var(--border-gold);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .comparison-table tbody td {
     display: grid;
     grid-template-columns: 1fr;
-    padding: 10px 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    text-align: left;
-    font-size: 12px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255,215,0,0.2);
+    background: rgba(0,0,0,0.4);
   }
 
+  /* Feature name — big gold header of each card */
   .comparison-table tbody td.feature {
-    background: rgba(26,74,48,0.4);
+    display: block;
+    background: linear-gradient(135deg, rgba(26,74,48,0.6), rgba(0,0,0,0.4));
     color: var(--gold);
+    font-size: 13px;
     font-weight: 700;
-    font-size: 12px;
-    padding: 12px 14px;
-    border-bottom: 1px solid var(--border-gold);
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255,215,0,0.2);
+    text-align: left;
+    letter-spacing: 0.3px;
   }
-
-  .comparison-table tbody td::before {
-    content: attr(data-label);
-    font-size: 10px;
-    color: #888;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 2px;
-  }
-
   .comparison-table tbody td.feature::before { display: none; }
 
-  .comparison-table tbody td.jodohku {
-    background: rgba(76,175,80,0.12);
-    color: var(--emerald-light);
+  /* Each platform row inside the card */
+  .comparison-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 13px;
+    text-align: left;
   }
+
+  .comparison-table tbody td:last-child { border-bottom: none; }
+
+  /* Platform label on the left via ::before */
+  .comparison-table tbody td::before {
+    content: attr(data-label);
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    margin-right: 12px;
+  }
+
+  /* Jodohku row gets green highlight */
+  .comparison-table tbody td.jodohku {
+    background: rgba(76,175,80,0.1);
+    color: var(--emerald-light);
+    font-weight: 700;
+    border-top: 1px solid rgba(76,175,80,0.2);
+  }
+
+  .comparison-table tbody td.jodohku::before {
+    color: var(--gold);
+  }
+
+  .comparison-table tbody .cross { color: #555; }
+  .comparison-table tbody .check { color: var(--emerald-light); }
 }
