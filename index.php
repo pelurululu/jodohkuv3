@@ -12,7 +12,7 @@
 <meta property="og:title" content="Jodohku.my - Platform Ultra-Premium Mencari Pasangan">
 <meta property="og:description" content="Padanan AI + Sekufu">
 <meta property="og:image" content="https://jodohku.my/logokut.png">
-<meta property="og:url" content="https://jodohku.my">
+<meta property="og:url" content="https://www.jodohku.my">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Jodohku.my — Platform Ultra-Premium Perkahwinan Islam">
