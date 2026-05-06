@@ -1499,7 +1499,7 @@ function setLang(lang) {
 
   const fCopy = document.getElementById('footerCopyright'); if (fCopy) fCopy.innerHTML = t.footer_copyright;
 const fInit = document.getElementById('footerInitiative'); if (fInit) fInit.textContent = t.footer_initiative;
-const fSub = document.getElementById('footerSub'); if (fSub) fSub.innerHTML = t.footer_sub;
+const fSubEl = document.getElementById('footerSub'); if (fSubEl) fSubEl.innerHTML = t.footer_sub;
 const fTag = document.getElementById('footerTagline'); if (fTag) fTag.innerHTML = t.footer_tagline;
 
   // NAV
