@@ -464,76 +464,56 @@
 <div class="gold-shimmer-line"></div>
 
 <!-- COMPARISON HIGHLIGHT -->
-<section id="comparison" class="comparison-section">
-  <div class="comparison-container">
-    <div class="slider-header reveal">
-      <div class="section-label">Analisis Mendalam</div>
-      <h2 class="section-title-main">Perbandingan <span class="gold">Teliti</span></h2>
-    </div>
-    
-    <div class="comparison-highlight reveal">
-      <h3 class="comparison-title">Memisahkan Standard: <span class="highlight">Tiada Tandingan</span></h3>
-      <div class="comparison-table-scroll">
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th style="text-align:left;">Kriteria Penting</th>
-            <th>Tinder / Bumble</th>
-            <th>MuzMatch</th>
-            <th class="jodohku">Jodohku.my</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="feature">Penglibatan Wali Mandatory</td>
-            <td class="cross">✗ Tiada</td>
-            <td class="cross">✗ Optional</td>
-            <td class="jodohku check">✓ Diwajibkan</td>
-          </tr>
-          <tr>
-            <td class="feature">Verifikasi Identiti Penuh</td>
-            <td class="cross">✗ Selfie sahaja</td>
-            <td class="cross">✗ Selfie sahaja</td>
-            <td class="jodohku check">✓ MyKad + Biometrik</td>
-          </tr>
-          <tr>
-            <td class="feature">AI Content Filtering Real-Time</td>
-            <td class="cross">✗ Manual report</td>
-            <td class="cross">✗ Manual report</td>
-            <td class="jodohku check">✓ 0.3 saat response</td>
-          </tr>
-          <tr>
-            <td class="feature">Psikologi Matching Algorithm</td>
-            <td class="cross">✗ Appearance based</td>
-            <td class="cross">✗ Basic preferences</td>
-            <td class="jodohku check">✓ 115 soalan saintifik</td>
-          </tr>
-          <tr>
-            <td class="feature">Wedding Ecosystem</td>
-            <td class="cross">✗ Berhenti di match</td>
-            <td class="cross">✗ Berhenti di match</td>
-            <td class="jodohku check">✓ Hingga pelamin</td>
-          </tr>
-          <tr>
-            <td class="feature">Shariah Compliance Audit</td>
-            <td class="cross">✗ Tiada</td>
-            <td class="cross">✗ Self-declared</td>
-            <td class="jodohku check">✓ Board certified</td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-
-      <div style="display:flex; justify-content:center; margin-top:56px;">
-        <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
-          Daftar Sekarang
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="gold-shimmer-line"></div>
-
+<div class="comparison-table-scroll">
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th style="text-align:left;">Kriteria Penting</th>
+        <th>Tinder / Bumble</th>
+        <th>MuzMatch</th>
+        <th class="jodohku">Jodohku.my</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="feature">Penglibatan Wali Mandatory</td>
+        <td class="cross">✗ Tiada</td>
+        <td class="cross">✗ Optional</td>
+        <td class="jodohku check">✓ Diwajibkan</td>
+      </tr>
+      <tr>
+        <td class="feature">Verifikasi Identiti Penuh</td>
+        <td class="cross">✗ Selfie sahaja</td>
+        <td class="cross">✗ Selfie sahaja</td>
+        <td class="jodohku check">✓ MyKad + Biometrik</td>
+      </tr>
+      <tr>
+        <td class="feature">AI Content Filtering</td>
+        <td class="cross">✗ Manual report</td>
+        <td class="cross">✗ Manual report</td>
+        <td class="jodohku check">✓ 0.3 saat</td>
+      </tr>
+      <tr>
+        <td class="feature">Psikologi Matching</td>
+        <td class="cross">✗ Appearance</td>
+        <td class="cross">✗ Basic</td>
+        <td class="jodohku check">✓ 115 soalan</td>
+      </tr>
+      <tr>
+        <td class="feature">Wedding Ecosystem</td>
+        <td class="cross">✗ Berhenti</td>
+        <td class="cross">✗ Berhenti</td>
+        <td class="jodohku check">✓ Hingga pelamin</td>
+      </tr>
+      <tr>
+        <td class="feature">Shariah Compliance</td>
+        <td class="cross">✗ Tiada</td>
+        <td class="cross">✗ Self-declared</td>
+        <td class="jodohku check">✓ Board certified</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <!-- 115 QUESTIONS SYSTEM -->
 <section id="questions" class="questions-section">
   <div class="questions-container">
