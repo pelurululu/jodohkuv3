@@ -625,6 +625,7 @@ body {
   .hero-container { grid-template-columns: 1fr; gap: 48px; text-align: center; }
   .hero-description { margin-left: auto; margin-right: auto; }
   .hero-cta-buttons { justify-content: center; }
+
   .pillars-grid   { grid-template-columns: repeat(2, 1fr); }
   .usp-grid       { grid-template-columns: repeat(2, 1fr); }
   .questions-grid { grid-template-columns: repeat(2, 1fr); }
@@ -646,70 +647,151 @@ body {
 
 /* ══════════════════════════════════════
    RESPONSIVE — 768px (mobile)
-   ONLY comparison table changed here
 ══════════════════════════════════════ */
 @media (max-width: 768px) {
-  .comparison-section { padding: 48px 0; }
-  .comparison-highlight { padding: 24px 16px; border-radius: 16px; }
-  .comparison-title { font-size: 18px; margin-bottom: 24px; }
-  .comparison-table-scroll { overflow: visible; }
-  .comparison-table { min-width: unset; width: 100%; border-radius: 0; background: transparent; }
-  .comparison-table thead { display: none; }
+  /* NAV */
+  .nav-menu { display: none; }
+  .nav-container { padding: 12px 20px; }
+  .nav-cta { padding: 9px 14px; font-size: 11px; }
+  .nav-logo { width: 40px; height: 40px; font-size: 20px; border-radius: 10px; }
+  .nav-title-main, .nav-title { font-size: 17px; }
 
-  .comparison-table tbody tr {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin-bottom: 16px;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(255,215,0,0.2);
-    background: rgba(0,0,0,0.4);
-  }
+  /* SECTION PADDING */
+  .hero-section { padding: 100px 0 60px; }
+  .slider-section,
+  .pillars-section,
+  .usp-section,
+  .comparison-section,
+  .questions-section,
+  .taaruf-section,
+  .wedding-section { padding: 64px 0; }
 
-  .comparison-table tbody td.feature {
-    display: block;
-    background: linear-gradient(135deg, rgba(26,74,48,0.6), rgba(0,0,0,0.4));
-    color: var(--gold);
-    font-size: 13px;
-    font-weight: 700;
-    padding: 14px 16px;
-    border-bottom: 1px solid rgba(255,215,0,0.2);
-    text-align: left;
-    letter-spacing: 0.3px;
-  }
-  .comparison-table tbody td.feature::before { display: none; }
+  /* ALL CONTAINERS */
+  .hero-container,
+  .slider-container,
+  .pillars-container,
+  .usp-container,
+  .comparison-container,
+  .questions-container,
+  .taaruf-container,
+  .wedding-container,
+  .footer-container { padding: 0 20px; }
 
-  .comparison-table tbody td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 11px 16px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    font-size: 13px;
-    text-align: left;
-  }
+  /* HERO */
+  .hero-container { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+  .hero-title { font-size: clamp(28px, 8vw, 44px); }
+  .hero-subtitle { font-size: 15px; }
+  .hero-description { font-size: 14px; max-width: 100%; }
+  .hero-badge { font-size: 10px; padding: 7px 14px; letter-spacing: 1px; }
+  .hero-cta-buttons { flex-direction: column; align-items: stretch; gap: 12px; }
+  .btn-primary-hero,
+  .btn-secondary-hero { text-align: center; padding: 14px 20px; font-size: 14px; }
 
-  .comparison-table tbody td:last-child { border-bottom: none; }
+  /* FORM */
+  .form-premium-container { padding: 28px 20px; border-radius: 16px; }
+  .form-row { grid-template-columns: 1fr; gap: 14px; }
+  .form-title { font-size: 20px; }
+  .upload-area { padding: 22px 16px; }
 
-  .comparison-table tbody td::before {
-    content: attr(data-label);
-    font-size: 11px;
-    font-weight: 600;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    flex-shrink: 0;
-    margin-right: 12px;
-  }
+  /* GRIDS → 1 column */
+  .pillars-grid,
+  .usp-grid,
+  .questions-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
 
-  .comparison-table tbody td.jodohku {
-    background: rgba(76,175,80,0.1);
-    color: var(--emerald-light);
-    font-weight: 700;
-    border-top: 1px solid rgba(76,175,80,0.2);
-  }
+  /* CARDS */
+  .pillar-card, .usp-card, .dimension-card { padding: 26px 18px; }
+  .flow-step { padding: 44px 20px 28px; }
 
-  .comparison-table tbody td.jodohku::before { color: var(--gold); }
-  .comparison-table tbody .cross { color: #555; }
-  .comparison-table tbody .check { color: var(--emerald-light); }
+  /* SLIDER */
+  .slide { height: 200px; }
+  .slide-overlay { padding: 20px; }
+  .slide-title { font-size: 15px; }
+  .slide-desc { font-size: 12px; }
+  .slider-header { margin-bottom: 32px; }
+
+  /* COMPARISON — scrollable */
+  .comparison-highlight { padding: 20px 16px; border-radius: 16px; }
+  .comparison-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .comparison-highlight { padding: 20px 12px; border-radius: 16px; }
+  .comparison-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; cursor: grab; }
+  .comparison-table { min-width: 520px; font-size: 12px; }
+  .comparison-table th,
+  .comparison-table td { padding: 11px 10px; }
+  .comparison-title { font-size: 20px; margin-bottom: 20px; }
+
+  /* TA'ARUF */
+  .taaruf-flow { grid-template-columns: 1fr; gap: 36px; margin-top: 36px; max-width: 100%; }
+
+  /* WEDDING */
+  .wedding-preview { padding: 36px 20px; }
+  .wedding-preview h3 { font-size: 19px; }
+  .wedding-preview::before { display: none; }
+  .wedding-mockup { grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 28px 0; }
+
+  /* SECTION TITLES */
+  .section-title-main { font-size: clamp(22px, 6vw, 36px); }
+  .section-desc-main { font-size: 15px; }
+  .slider-header { margin-bottom: 32px; }
+
+  /* MODALS */
+  .modal-overlay { padding: 16px; }
+  .modal-box { border-radius: 14px; max-height: 92vh; }
+  .modal-header { padding: 20px 20px 16px; }
+  .modal-body { padding: 20px 20px 36px; }
+  .modal-title { font-size: 20px; }
+
+  /* FOOTER */
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 40px; }
+  .footer-bottom { flex-direction: column; text-align: center; align-items: center; gap: 12px; }
+  .footer-legal-links { justify-content: center; flex-wrap: wrap; gap: 16px; }
+  .footer-parent { text-align: center; }
+
+  /* DAFTAR BUTTON */
+  .btn-daftar-section { padding: 13px 28px; font-size: 12px; }
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — 480px (small phones)
+══════════════════════════════════════ */
+@media (max-width: 480px) {
+  .nav-logo { width: 36px; height: 36px; font-size: 17px; border-radius: 8px; }
+  .nav-title-main, .nav-title { font-size: 15px; }
+  .nav-cta { display: none; }
+
+  .hero-title { font-size: clamp(24px, 8vw, 34px); }
+  .hero-badge { font-size: 9px; padding: 6px 12px; }
+
+  .form-premium-container { padding: 22px 16px; border-radius: 14px; }
+  .form-title { font-size: 19px; }
+  .btn-submit-premium { font-size: 13px; }
+
+  .pillar-card, .usp-card, .dimension-card { padding: 22px 16px; }
+  .flow-step { padding: 40px 16px 24px; }
+
+  .pillar-image, .usp-image { width: 74px; height: 74px; }
+  .flow-image { width: 86px; height: 86px; }
+  .dimension-icon { width: 56px; height: 56px; }
+
+  .slide { height: 175px; }
+
+  .comparison-table { min-width: 460px; font-size: 11px; }
+  .comparison-table th,
+  .comparison-table td { padding: 9px 8px; }
+
+  .wedding-mockup { grid-template-columns: 1fr; gap: 12px; }
+  .wedding-preview { padding: 28px 16px; }
+  .wedding-explanation { font-size: 14px; }
+
+  .success-title { font-size: 22px; }
+  .success-id { font-size: 14px; padding: 10px 16px; }
+
+  .modal-header { padding: 18px 16px 14px; }
+  .modal-body { padding: 16px 16px 32px; }
+  .modal-title { font-size: 18px; }
+
+  .btn-daftar-section { padding: 12px 20px; font-size: 12px; width: 100%; text-align: center; display: block; }
+
+  .footer-grid { gap: 28px; }
+  .footer-brand-desc { max-width: 100%; }
+  .footer-bottom { gap: 10px; }
 }
