@@ -714,9 +714,9 @@ body {
   .comparison-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .comparison-highlight { padding: 20px 12px; border-radius: 16px; }
   .comparison-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; cursor: grab; }
-   .comparison-table { min-width: 480px; font-size: 10px; }
+   .comparison-table { min-width: 400px; font-size: 8px; }
   .comparison-table th,
-  .comparison-table td { padding: 8px 7px; }
+  .comparison-table td { padding: 6px 5px; }
   .comparison-title { font-size: 20px; margin-bottom: 20px; }
 
   /* TA'ARUF */
@@ -774,9 +774,9 @@ body {
 
   .slide { height: 175px; }
 
- .comparison-table { min-width: 420px; font-size: 9px; }
+.comparison-table { min-width: 380px; font-size: 7px; }
   .comparison-table th,
-  .comparison-table td { padding: 7px 6px; }
+  .comparison-table td { padding: 5px 4px; }
 
   .wedding-mockup { grid-template-columns: 1fr; gap: 12px; }
   .wedding-preview { padding: 28px 16px; }
