@@ -127,8 +127,7 @@
         </div>
         <h2 class="success-title">Pendaftaran Berjaya!</h2>
         <p class="success-message">
-          Tahniah! Anda telah berjaya mendaftar untuk beta access Jodohku.my. 
-          Kami akan menghubungi anda dalam 24-48 jam.
+          Tahniah atas tindakan awal anda! Anda telah berjaya mendaftar untuk beta access Jodohku.my. Kami akan menghubungi anda setelah aplikasi jodohku.my berjaya didaftarkan di Playstore dan Appstore.Terima kasih -Admin-
         </p>
         <div class="success-id" id="generatedId"></div>
       </div>
