@@ -9,6 +9,15 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" type="image/png" href="logokut.png">
 <link rel="apple-touch-icon" href="logokut.png">
+<meta property="og:title" content="Jodohku.my — Platform Ultra-Premium Perkahwinan Islam">
+<meta property="og:description" content="AI Terdepan + 115 Soalan Psikologi = Jodoh Seumur Hidup">
+<meta property="og:image" content="https://jodohku.my/logokut.png">
+<meta property="og:url" content="https://jodohku.my">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jodohku.my — Platform Ultra-Premium Perkahwinan Islam">
+<meta name="twitter:description" content="AI Terdepan + 115 Soalan Psikologi = Jodoh Seumur Hidup">
+<meta name="twitter:image" content="https://jodohku.my/logokut.png">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 </style>
