@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
-<meta property="og:title" content="Jodohku.my — Platform Ultra-Premium Perkahwinan Islam">
-<meta property="og:description" content="AI Terdepan + 115 Soalan Psikologi = Jodoh Seumur Hidup">
+<meta property="og:title" content="Jodohku.my - Platform Ultra-Premium Mencari Pasangan">
+<meta property="og:description" content="Padanan AI + Sekufu">
 <meta property="og:image" content="https://jodohku.my/logokut.png">
 <meta property="og:url" content="https://jodohku.my">
 <meta property="og:type" content="website">
