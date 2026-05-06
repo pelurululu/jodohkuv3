@@ -1485,6 +1485,11 @@ function setLang(lang) {
   document.body.setAttribute('dir', t.dir);
   document.body.style.fontFamily = lang === 'ar' ? "'Tajawal', sans-serif" : "'Inter', sans-serif";
 
+  const fCopy = document.getElementById('footerCopyright'); if (fCopy) fCopy.innerHTML = t.footer_copyright;
+const fInit = document.getElementById('footerInitiative'); if (fInit) fInit.textContent = t.footer_initiative;
+const fSub = document.getElementById('footerSub'); if (fSub) fSub.innerHTML = t.footer_sub;
+const fTag = document.getElementById('footerTagline'); if (fTag) fTag.innerHTML = t.footer_tagline;
+
   // NAV
   document.querySelectorAll('[data-i18n="nav_cta"]').forEach(el => el.textContent = t.nav_cta);
   const navLinks = document.querySelectorAll('.nav-menu a');
