@@ -464,56 +464,75 @@
 <div class="gold-shimmer-line"></div>
 
 <!-- COMPARISON HIGHLIGHT -->
-<div class="comparison-table-scroll">
-  <table class="comparison-table">
-    <thead>
-      <tr>
-        <th style="text-align:left;">Kriteria Penting</th>
-        <th>Tinder / Bumble</th>
-        <th>MuzMatch</th>
-        <th class="jodohku">Jodohku.my</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="feature">Penglibatan Wali Mandatory</td>
-        <td class="cross" data-label="Tinder / Bumble">✗ Tiada</td>
-        <td class="cross" data-label="MuzMatch">✗ Optional</td>
-        <td class="jodohku check" data-label="Jodohku.my">✓ Diwajibkan</td>
-      </tr>
-      <tr>
-        <td class="feature">Verifikasi Identiti Penuh</td>
-        <td class="cross" data-label="Tinder / Bumble">✗ Selfie sahaja</td>
-        <td class="cross" data-label="MuzMatch">✗ Selfie sahaja</td>
-        <td class="jodohku check" data-label="Jodohku.my">✓ MyKad + Biometrik</td>
-      </tr>
-      <tr>
-        <td class="feature">AI Content Filtering</td>
-        <td class="cross" data-label="Tinder / Bumble">✗ Manual report</td>
-        <td class="cross" data-label="MuzMatch">✗ Manual report</td>
-        <td class="jodohku check" data-label="Jodohku.my">✓ 0.3 saat</td>
-      </tr>
-      <tr>
-        <td class="feature">Psikologi Matching</td>
-        <td class="cross" data-label="Tinder / Bumble">✗ Appearance</td>
-        <td class="cross" data-label="MuzMatch">✗ Basic</td>
-        <td class="jodohku check" data-label="Jodohku.my">✓ 115 soalan</td>
-      </tr>
-      <tr>
-        <td class="feature">Wedding Ecosystem</td>
-        <td class="cross" data-label="Tinder / Bumble">✗ Berhenti</td>
-        <td class="cross" data-label="MuzMatch">✗ Berhenti</td>
-        <td class="jodohku check" data-label="Jodohku.my">✓ Hingga pelamin</td>
-      </tr>
-      <tr>
-        <td class="feature">Shariah Compliance</td>
-        <td class="cross" data-label="Tinder / Bumble">✗ Tiada</td>
-        <td class="cross" data-label="MuzMatch">✗ Self-declared</td>
-        <td class="jodohku check" data-label="Jodohku.my">✓ Board certified</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<!-- COMPARISON HIGHLIGHT -->
+<section id="comparison" class="comparison-section">
+  <div class="comparison-container">
+    <div class="slider-header reveal">
+      <div class="section-label">Analisis Mendalam</div>
+      <h2 class="section-title-main">Perbandingan <span class="gold">Teliti</span></h2>
+    </div>
+
+    <div class="comparison-highlight reveal">
+      <h3 class="comparison-title">Memisahkan Standard: <span class="highlight">Tiada Tandingan</span></h3>
+      <div class="comparison-table-scroll">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th style="text-align:left;">Kriteria Penting</th>
+              <th>Tinder / Bumble</th>
+              <th>MuzMatch</th>
+              <th class="jodohku">Jodohku.my</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature">Penglibatan Wali Mandatory</td>
+              <td class="cross" data-label="Tinder / Bumble">✗ Tiada</td>
+              <td class="cross" data-label="MuzMatch">✗ Optional</td>
+              <td class="jodohku check" data-label="Jodohku.my">✓ Diwajibkan</td>
+            </tr>
+            <tr>
+              <td class="feature">Verifikasi Identiti Penuh</td>
+              <td class="cross" data-label="Tinder / Bumble">✗ Selfie sahaja</td>
+              <td class="cross" data-label="MuzMatch">✗ Selfie sahaja</td>
+              <td class="jodohku check" data-label="Jodohku.my">✓ MyKad + Biometrik</td>
+            </tr>
+            <tr>
+              <td class="feature">AI Content Filtering</td>
+              <td class="cross" data-label="Tinder / Bumble">✗ Manual report</td>
+              <td class="cross" data-label="MuzMatch">✗ Manual report</td>
+              <td class="jodohku check" data-label="Jodohku.my">✓ 0.3 saat</td>
+            </tr>
+            <tr>
+              <td class="feature">Psikologi Matching</td>
+              <td class="cross" data-label="Tinder / Bumble">✗ Appearance</td>
+              <td class="cross" data-label="MuzMatch">✗ Basic</td>
+              <td class="jodohku check" data-label="Jodohku.my">✓ 115 soalan</td>
+            </tr>
+            <tr>
+              <td class="feature">Wedding Ecosystem</td>
+              <td class="cross" data-label="Tinder / Bumble">✗ Berhenti</td>
+              <td class="cross" data-label="MuzMatch">✗ Berhenti</td>
+              <td class="jodohku check" data-label="Jodohku.my">✓ Hingga pelamin</td>
+            </tr>
+            <tr>
+              <td class="feature">Shariah Compliance</td>
+              <td class="cross" data-label="Tinder / Bumble">✗ Tiada</td>
+              <td class="cross" data-label="MuzMatch">✗ Self-declared</td>
+              <td class="jodohku check" data-label="Jodohku.my">✓ Board certified</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display:flex; justify-content:center; margin-top:56px;">
+        <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
+          Daftar Sekarang
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- 115 QUESTIONS SYSTEM -->
 <section id="questions" class="questions-section">
   <div class="questions-container">
