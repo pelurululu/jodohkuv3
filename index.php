@@ -1162,202 +1162,466 @@ document.querySelectorAll('.modal-overlay').forEach(m => {
 // ── TRANSLATIONS ──
 const i18n = {
   ms: {
+    dir: 'ltr',
     nav_cta: 'Daftar Sekarang',
-    nav_platform: 'Platform',
-    nav_kelebihan: 'Kelebihan',
-    nav_perbandingan: 'Perbandingan',
+    nav_platform: 'Platform', nav_kelebihan: 'Kelebihan', nav_perbandingan: 'Perbandingan',
     hero_badge: 'Platform Ultra-Premium Perkahwinan Islam',
-    hero_title_1: 'Revolusi',
-    hero_title_gold1: 'Saintifik',
-    hero_title_2: 'Padanan Jodoh',
-    hero_title_gold2: 'Berkualiti',
+    hero_title: 'Revolusi <span class="gold">Saintifik</span><br>Padanan Jodoh <span class="gold">Berkualiti</span>',
     hero_subtitle: 'AI Terdepan + 115 Soalan Psikologi = Jodoh Seumur Hidup',
     hero_desc: 'Jodohku.my menggantikan dating toxic dengan teknologi padanan yang dibangunkan khusus untuk budaya Muslim Malaysia — di mana setiap padanan berpotensi menjadi ikatan yang diberkati Allah.',
-    btn_platform: 'Lihat Platform',
-    btn_mengapa: 'Mengapa Berbeza?',
+    btn_platform: 'Lihat Platform', btn_mengapa: 'Mengapa Berbeza?',
     form_title: 'Akses Eksklusif',
     form_subtitle: 'Jadi antara 500 pengguna terawal yang mendapat akses beta kepada platform revolusioner ini',
-    label_nama: 'Nama Penuh',
-    label_ic: 'No. Kad Pengenalan',
-    label_tel: 'No. Telefon',
-    label_email: 'Alamat E-mel',
-    label_gambar: 'Gambar Profil',
-    upload_text: 'Pilih gambar profil anda',
-    checkbox_text: 'Saya bersetuju dengan ',
-    terms_link: 'Terma & Syarat',
-    and_text: ' dan ',
-    privacy_link: 'Dasar Privasi',
-    checkbox_suffix: ' Jodohku.my yang mematuhi PDPA 2010',
+    label_nama: 'Nama Penuh', label_ic: 'No. Kad Pengenalan', label_tel: 'No. Telefon', label_email: 'Alamat E-mel', label_gambar: 'Gambar Profil',
+    upload_text: 'Pilih gambar profil anda', upload_size: 'Maksimum 5MB',
+    checkbox_text: 'Saya bersetuju dengan ', terms_link: 'Terma & Syarat', and_text: ' dan ', privacy_link: 'Dasar Privasi', checkbox_suffix: ' Jodohku.my yang mematuhi PDPA 2010',
     btn_submit: 'Hantar Permohonan Beta Access',
     success_title: 'Pendaftaran Berjaya!',
     success_msg: 'Tahniah atas tindakan awal anda! Anda telah berjaya mendaftar untuk beta access Jodohku.my. Kami akan menghubungi anda setelah aplikasi jodohku.my berjaya didaftarkan di Playstore dan Appstore. Terima kasih -Admin-',
     daftar_btn: 'Daftar Sekarang',
-    dir: 'ltr',
+    // SLIDER
+    slider_label: 'Galeri Platform', slider_title: 'Pengalaman <span class="gold">Jodohku.my</span>',
+    slider_desc: '10 aspek utama platform yang mengubah cara Muslim Malaysia mencari pasangan hidup',
+    slides: [
+      { title: 'Padanan Berdasarkan Nilai Islam', desc: 'AI menganalisis keserasian agama, akhlak dan nilai hidup' },
+      { title: 'Teknologi AI Terdepan', desc: '115 soalan psikologi dianalisis menggunakan machine learning' },
+      { title: 'Keselamatan Maksimum', desc: 'Identiti dilindungi dengan kod unik sehingga kedua-dua pihak bersetuju' },
+      { title: 'Sistem Wali Digital', desc: 'Platform pertama yang mewajibkan penglibatan wali dalam proses ta\'aruf' },
+      { title: 'Komuniti Premium Muslim', desc: 'Eksklusif untuk Muslim profesional yang serius mencari jodoh' },
+      { title: 'Ekosistem Perkahwinan', desc: 'Dari padanan hingga pelamin — semua dalam satu platform' },
+      { title: 'Analitik Mendalam', desc: 'Laporan keserasian terperinci berdasarkan 14 dimensi personaliti' },
+      { title: 'Aplikasi Mobile Premium', desc: 'Interface yang elegant dan mudah digunakan untuk iOS dan Android' },
+      { title: 'Bimbingan Kaunselor Islam', desc: 'Tim pakar relationship coach dan kaunselor Islam sentiasa siap membantu' },
+      { title: 'Kisah Kejayaan', desc: 'Beribu pasangan telah menemui jodoh melalui platform kami' },
+    ],
+    // PILLARS
+    pillars_label: '4 Teras Utama', pillars_title: 'Senibina <span class="gold">Platform</span>',
+    pillars_desc: 'Empat tonggak kukuh yang memastikan setiap aspek platform mematuhi nilai Islam dan memberikan pengalaman terbaik',
+    pillars: [
+      { num: 'Teras 1', title: 'Kesucian Agama', desc: 'Menghapuskan ruang zina, memelihara adab, dan menstrukturkan ta\'aruf berlandaskan syariah.' },
+      { num: 'Teras 2', title: 'Perlindungan Sosial', desc: 'Pemerkasaan Mod Wali, perlindungan identiti dan pembanterasan scam romantik.' },
+      { num: 'Teras 3', title: 'Pemerkasaan Ekonomi', desc: 'Rantaian nilai perkahwinan yang menyokong vendor PKS Muslim bersijil halal.' },
+      { num: 'Teras 4', title: 'Teknologi & Privasi', desc: 'AI real-time filtering, kod identiti rahsia dan perlindungan data PDPA 2010.' },
+    ],
+    // USP
+    usp_label: 'Kelebihan Unik', usp_title: 'Mengapa <span class="gold">Tiada Tandingan</span>',
+    usp_desc: 'Empat inovasi revolusioner yang memisahkan Jodohku.my daripada setiap platform perjodohan di dunia',
+    usps: [
+      { title: 'Identiti Kod Rahsia', desc: 'Nama sebenar disembunyikan dengan kod unik (JDK-2025-XX) sehingga kedua-dua pihak bersetuju bertemu.' },
+      { title: 'AI Padanan Saintifik', desc: '115 soalan psikologi dianalisis AI untuk padanan 847% lebih tepat berbanding swipe-based apps.' },
+      { title: 'Real-Time Content Shield', desc: 'AI menyekat kandungan haram, pertukaran nombor telefon dan ajakan tidak sesuai dalam 0.3 saat.' },
+      { title: 'Ekosistem Komprehensif', desc: 'Satu-satunya platform dari padanan hingga pelamin — wedding planning, vendor booking, e-Nikah.' },
+    ],
+    // COMPARISON
+    cmp_label: 'Analisis Mendalam', cmp_title: 'Perbandingan <span class="gold">Teliti</span>',
+    cmp_heading: 'Memisahkan Standard: <span class="highlight">Tiada Tandingan</span>',
+    cmp_col1: 'Kriteria Penting', cmp_col2: 'Tinder / Bumble', cmp_col3: 'MuzMatch', cmp_col4: 'Jodohku.my',
+    cmp_rows: [
+      ['Penglibatan Wali Mandatory','✗ Tiada','✗ Optional','✓ Diwajibkan'],
+      ['Verifikasi Identiti Penuh','✗ Selfie sahaja','✗ Selfie sahaja','✓ MyKad + Biometrik'],
+      ['AI Content Filtering','✗ Manual report','✗ Manual report','✓ 0.3 saat'],
+      ['Psikologi Matching','✗ Appearance','✗ Basic','✓ 115 soalan'],
+      ['Wedding Ecosystem','✗ Berhenti','✗ Berhenti','✓ Hingga pelamin'],
+      ['Shariah Compliance','✗ Tiada','✗ Self-declared','✓ Board certified'],
+    ],
+    // QUESTIONS
+    q_label: 'Sains Padanan', q_title: 'Sistem <span class="gold">115 Soalan</span> Revolusioner',
+    q_desc: 'Formula paling canggih untuk menganalisis keserasian berdasarkan 14 dimensi kepribadian yang dibangunkan khusus untuk Muslim Malaysia',
+    q_extra: '+ 6 Dimensi Tambahan: Career Ambition (5), Mental Health (5), Marriage Readiness (5), Social Behavior (5), Long-term Compatibility (5), Communication Style (5)',
+    dimensions: [
+      { name: 'Personality Core', count: '10 Soalan Mendalam', desc: 'Cara berfikir, bertindak dan membawa diri dalam situasi kehidupan harian.' },
+      { name: 'Lifestyle Preferences', count: '10 Soalan Terperinci', desc: 'Rutin harian, gaya hidup, minat dan cara menghabiskan masa lapang.' },
+      { name: 'Financial Mindset', count: '10 Soalan Kritis', desc: 'Cara mengurus kewangan, komitmen dan matlamat hidup jangka panjang.' },
+      { name: 'Religious Values', count: '10 Soalan Spiritual', desc: 'Tahap ketaqwaan, nilai agama dan jangkaan spiritual terhadap pasangan.' },
+      { name: 'Love Language', count: '10 Soalan Emosi', desc: 'Cara menyatakan dan menerima kasih sayang dalam hubungan.' },
+      { name: 'Emotional Intelligence', count: '10 Soalan Psikologi', desc: 'Empati, kawalan emosi dan kemampuan memahami perasaan orang lain.' },
+      { name: 'Family Dynamics', count: '10 Soalan Keluarga', desc: 'Hubungan dengan keluarga, pengaruh ibubapa dan nilai kekeluargaan.' },
+      { name: 'Conflict Resolution', count: '10 Soalan Konflik', desc: 'Cara menangani pergaduhan, ego dan mencari penyelesaian bersama.' },
+      { name: 'Attachment Style', count: '10 Soalan Bonding', desc: 'Pola kelekatan emosi, keperluan keamanan dan intimacy preferences.' },
+    ],
+    // TAARUF
+    taaruf_label: 'Perjalanan Suci', taaruf_title: 'Proses <span class="gold">Ta\'aruf Digital</span>',
+    taaruf_desc: 'Setiap langkah direka untuk memastikan proses perkenalan yang selamat, terhormat dan patuh syariah sepenuhnya',
+    taaruf_footer: 'Setiap langkah dipandu oleh tim kaunselor berpengalaman dan mematuhi garis panduan syariah yang ketat untuk memastikan proses ta\'aruf yang berkah.',
+    taaruf_steps: [
+      { title: 'AI Smart Matching', desc: 'Algoritma menganalisis 115 jawapan anda dan mencari padanan terbaik berdasarkan keserasian mendalam.' },
+      { title: 'Persetujuan Wali', desc: 'Wali pihak perempuan menerima notifikasi dan menilai profil calon untuk memberikan kebenaran awal.' },
+      { title: 'Komunikasi Terlindung', desc: 'Perbualan dalam platform dengan AI monitoring 24/7 untuk memastikan adab Islam terpelihara.' },
+    ],
+    // WEDDING
+    wed_label: 'Ekosistem Komprehensif', wed_title: 'Spektrum <span class="gold">Ekosistem Perkahwinan</span>',
+    wed_heading: 'Dari Padanan Hingga Pelamin — Semua Dalam Satu Platform',
+    wed_desc: '<strong style="color:var(--gold);font-size:18px;">Spektrum Ekosistem Perkahwinan</strong> adalah rangkaian lengkap vendor halal, pakej majlis, perkhidmatan fotografi, catering dan wedding planning yang terintegrasi dengan platform. Setiap vendor telah melalui proses audit ketat untuk memastikan kualiti premium dan pematuhan syariah. Sistem booking digital membolehkan pasangan merancang majlis impian mereka dengan mudah dan telus.',
+    // MODALS
+    terms_title: 'Terma & Syarat', privacy_title: 'Dasar Privasi',
+    terms_meta: 'Berkuat kuasa: 1 Januari 2025 &nbsp;|&nbsp; Versi: 2.1 &nbsp;|&nbsp; Bahasa: Bahasa Malaysia',
+    privacy_meta: 'Berkuat kuasa: 1 Januari 2025 &nbsp;|&nbsp; Mematuhi: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Versi: 2.1',
+    close_btn: '✕',
+    terms_sections: [
+      { h: '1. Penerimaan Terma', p: 'Dengan mengakses atau menggunakan platform Jodohku.my ("Platform"), anda bersetuju untuk terikat dengan Terma & Syarat ini. Platform ini diuruskan oleh <strong>Noble Synergy Ventures</strong> di bawah undang-undang Malaysia.' },
+      { h: '2. Kelayakan Pengguna', p: '<ol><li>Anda mesti seorang Muslim atau Muslimah yang telah mencapai umur 18 tahun.</li><li>Anda mesti warganegara Malaysia atau pemastautin tetap yang sah.</li><li>Anda mesti belum berkahwin atau telah bercerai mengikut undang-undang yang sah.</li><li>Semua maklumat yang diberikan mesti tepat, terkini dan benar.</li></ol>' },
+      { h: '3. Kod Etika', p: 'Pengguna wajib mematuhi adab Islam dalam semua komunikasi. Kandungan lucah, pertukaran maklumat peribadi di luar platform, dan aktiviti penipuan adalah <strong>dilarang sama sekali</strong>.' },
+      { h: '4. Sistem Wali', p: 'Penglibatan Wali adalah <strong>diwajibkan</strong> bagi setiap pengguna wanita sebelum sebarang komunikasi dibenarkan.' },
+      { h: '5. Hubungi Kami', p: '<strong>Noble Synergy Ventures</strong><br>E-mel: legal@jodohku.my' },
+    ],
+    privacy_sections: [
+      { h: '1. Tanggungjawab Kami', p: 'Noble Synergy Ventures komited untuk melindungi privasi anda selaras dengan Akta Perlindungan Data Peribadi 2010 (PDPA 2010) Malaysia.' },
+      { h: '2. Data Yang Dikumpul', p: '<ul><li><strong>Data Identiti:</strong> Nama penuh, nombor MyKad, tarikh lahir.</li><li><strong>Data Profil:</strong> Gambar, pendidikan, pekerjaan, nilai agama.</li><li><strong>Data Psikologi:</strong> Jawapan 115 soalan (diproses tanpa nama).</li><li><strong>Data Teknikal:</strong> Alamat IP, log akses.</li></ul>' },
+      { h: '3. Hak Pengguna', p: 'Anda berhak untuk mengakses, meminda, menarik balik kebenaran, dan meminta pemadaman data anda. Hubungi: <strong>privasi@jodohku.my</strong>' },
+    ],
   },
+
   en: {
+    dir: 'ltr',
     nav_cta: 'Register Now',
-    nav_platform: 'Platform',
-    nav_kelebihan: 'Features',
-    nav_perbandingan: 'Comparison',
+    nav_platform: 'Platform', nav_kelebihan: 'Features', nav_perbandingan: 'Comparison',
     hero_badge: 'Ultra-Premium Islamic Marriage Platform',
-    hero_title_1: 'Scientific',
-    hero_title_gold1: 'Revolution',
-    hero_title_2: 'Quality',
-    hero_title_gold2: 'Matchmaking',
-    hero_subtitle: 'Advanced AI + 115 Psychology Questions = Lifelong Match',
+    hero_title: 'A Scientific <span class="gold">Revolution</span><br>in Quality <span class="gold">Matchmaking</span>',
+    hero_subtitle: 'Advanced AI + 115 Psychology Questions = A Match for Life',
     hero_desc: 'Jodohku.my replaces toxic dating with matching technology built specifically for Malaysian Muslim culture — where every match has the potential to become a bond blessed by Allah.',
-    btn_platform: 'View Platform',
-    btn_mengapa: 'Why Different?',
+    btn_platform: 'View Platform', btn_mengapa: 'Why Different?',
     form_title: 'Exclusive Access',
     form_subtitle: 'Be among the first 500 users to get beta access to this revolutionary platform',
-    label_nama: 'Full Name',
-    label_ic: 'IC Number',
-    label_tel: 'Phone Number',
-    label_email: 'Email Address',
-    label_gambar: 'Profile Picture',
-    upload_text: 'Choose your profile picture',
-    checkbox_text: 'I agree to the ',
-    terms_link: 'Terms & Conditions',
-    and_text: ' and ',
-    privacy_link: 'Privacy Policy',
-    checkbox_suffix: ' of Jodohku.my compliant with PDPA 2010',
+    label_nama: 'Full Name', label_ic: 'IC Number', label_tel: 'Phone Number', label_email: 'Email Address', label_gambar: 'Profile Picture',
+    upload_text: 'Choose your profile picture', upload_size: 'Maximum 5MB',
+    checkbox_text: 'I agree to the ', terms_link: 'Terms & Conditions', and_text: ' and ', privacy_link: 'Privacy Policy', checkbox_suffix: ' of Jodohku.my compliant with PDPA 2010',
     btn_submit: 'Submit Beta Access Application',
     success_title: 'Registration Successful!',
-    success_msg: 'Congratulations on your early action! You have successfully registered for Jodohku.my beta access. We will contact you once the Jodohku.my app is live on Playstore and Appstore. Thank you -Admin-',
+    success_msg: 'Congratulations on your early action! You have successfully registered for Jodohku.my beta access. We will contact you once the app is live on Playstore and Appstore. Thank you -Admin-',
     daftar_btn: 'Register Now',
-    dir: 'ltr',
+    slider_label: 'Platform Gallery', slider_title: 'The <span class="gold">Jodohku.my</span> Experience',
+    slider_desc: '10 key aspects of the platform transforming how Malaysian Muslims find their life partner',
+    slides: [
+      { title: 'Matching Based on Islamic Values', desc: 'AI analyses religious compatibility, character and life values' },
+      { title: 'Leading AI Technology', desc: '115 psychology questions analysed using machine learning' },
+      { title: 'Maximum Security', desc: 'Identity protected with a unique code until both parties agree to meet' },
+      { title: 'Digital Wali System', desc: 'The first platform to make guardian involvement mandatory in ta\'aruf' },
+      { title: 'Premium Muslim Community', desc: 'Exclusive for serious Muslim professionals seeking a life partner' },
+      { title: 'Wedding Ecosystem', desc: 'From matching to the wedding ceremony — all in one platform' },
+      { title: 'In-Depth Analytics', desc: 'Detailed compatibility report based on 14 personality dimensions' },
+      { title: 'Premium Mobile App', desc: 'Elegant and easy-to-use interface for iOS and Android' },
+      { title: 'Islamic Counsellor Guidance', desc: 'Our team of relationship coaches and Islamic counsellors is always ready to help' },
+      { title: 'Success Stories', desc: 'Thousands of couples have found their match through our platform' },
+    ],
+    pillars_label: '4 Core Pillars', pillars_title: 'Platform <span class="gold">Architecture</span>',
+    pillars_desc: 'Four strong pillars ensuring every aspect of the platform upholds Islamic values and delivers the best experience',
+    pillars: [
+      { num: 'Pillar 1', title: 'Religious Purity', desc: 'Eliminating spaces for sin, preserving conduct, and structuring ta\'aruf based on Shariah.' },
+      { num: 'Pillar 2', title: 'Social Protection', desc: 'Empowering the Wali Mode, identity protection and combating romantic scams.' },
+      { num: 'Pillar 3', title: 'Economic Empowerment', desc: 'A wedding value chain supporting halal-certified Muslim SME vendors.' },
+      { num: 'Pillar 4', title: 'Technology & Privacy', desc: 'AI real-time filtering, secret identity codes and PDPA 2010 data protection.' },
+    ],
+    usp_label: 'Unique Advantages', usp_title: 'Why <span class="gold">Unrivalled</span>',
+    usp_desc: 'Four revolutionary innovations that set Jodohku.my apart from every matchmaking platform in the world',
+    usps: [
+      { title: 'Secret Identity Code', desc: 'Real names are hidden with a unique code (JDK-2025-XX) until both parties agree to meet.' },
+      { title: 'Scientific AI Matching', desc: '115 psychology questions analysed by AI for matches 847% more accurate than swipe-based apps.' },
+      { title: 'Real-Time Content Shield', desc: 'AI blocks prohibited content, phone number exchanges and inappropriate requests in 0.3 seconds.' },
+      { title: 'Comprehensive Ecosystem', desc: 'The only platform from matching to the aisle — wedding planning, vendor booking, e-Nikah.' },
+    ],
+    cmp_label: 'In-Depth Analysis', cmp_title: 'A <span class="gold">Detailed</span> Comparison',
+    cmp_heading: 'Setting the Standard: <span class="highlight">Unrivalled</span>',
+    cmp_col1: 'Key Criteria', cmp_col2: 'Tinder / Bumble', cmp_col3: 'MuzMatch', cmp_col4: 'Jodohku.my',
+    cmp_rows: [
+      ['Mandatory Guardian Involvement','✗ None','✗ Optional','✓ Mandatory'],
+      ['Full Identity Verification','✗ Selfie only','✗ Selfie only','✓ MyKad + Biometric'],
+      ['AI Content Filtering','✗ Manual report','✗ Manual report','✓ 0.3 seconds'],
+      ['Psychology Matching','✗ Appearance','✗ Basic','✓ 115 questions'],
+      ['Wedding Ecosystem','✗ Stops at matching','✗ Stops at matching','✓ Until the aisle'],
+      ['Shariah Compliance','✗ None','✗ Self-declared','✓ Board certified'],
+    ],
+    q_label: 'The Science of Matching', q_title: 'The Revolutionary <span class="gold">115-Question</span> System',
+    q_desc: 'The most sophisticated formula for analysing compatibility across 14 personality dimensions, developed specifically for Malaysian Muslims',
+    q_extra: '+ 6 Additional Dimensions: Career Ambition (5), Mental Health (5), Marriage Readiness (5), Social Behavior (5), Long-term Compatibility (5), Communication Style (5)',
+    dimensions: [
+      { name: 'Personality Core', count: '10 In-Depth Questions', desc: 'How you think, act and carry yourself in everyday life situations.' },
+      { name: 'Lifestyle Preferences', count: '10 Detailed Questions', desc: 'Daily routines, lifestyle, interests and how you spend your free time.' },
+      { name: 'Financial Mindset', count: '10 Critical Questions', desc: 'How you manage finances, commitments and long-term life goals.' },
+      { name: 'Religious Values', count: '10 Spiritual Questions', desc: 'Level of piety, religious values and spiritual expectations of a partner.' },
+      { name: 'Love Language', count: '10 Emotional Questions', desc: 'How you express and receive love in a relationship.' },
+      { name: 'Emotional Intelligence', count: '10 Psychology Questions', desc: 'Empathy, emotional control and the ability to understand others\' feelings.' },
+      { name: 'Family Dynamics', count: '10 Family Questions', desc: 'Relationship with family, parental influence and family values.' },
+      { name: 'Conflict Resolution', count: '10 Conflict Questions', desc: 'How you handle arguments, ego and find solutions together.' },
+      { name: 'Attachment Style', count: '10 Bonding Questions', desc: 'Emotional attachment patterns, need for security and intimacy preferences.' },
+    ],
+    taaruf_label: 'A Sacred Journey', taaruf_title: 'The <span class="gold">Digital Ta\'aruf</span> Process',
+    taaruf_desc: 'Every step is designed to ensure a safe, dignified and fully Shariah-compliant introduction process',
+    taaruf_footer: 'Every step is guided by a team of experienced counsellors and adheres to strict Shariah guidelines to ensure a blessed ta\'aruf process.',
+    taaruf_steps: [
+      { title: 'AI Smart Matching', desc: 'The algorithm analyses your 115 answers and finds the best match based on deep compatibility.' },
+      { title: 'Guardian Approval', desc: 'The female guardian receives a notification and evaluates the candidate\'s profile to grant initial consent.' },
+      { title: 'Protected Communication', desc: 'Conversations within the platform with 24/7 AI monitoring to ensure Islamic conduct is maintained.' },
+    ],
+    wed_label: 'Comprehensive Ecosystem', wed_title: 'The <span class="gold">Wedding Ecosystem</span> Spectrum',
+    wed_heading: 'From Matching to the Aisle — All in One Platform',
+    wed_desc: '<strong style="color:var(--gold);font-size:18px;">The Wedding Ecosystem Spectrum</strong> is a complete network of halal vendors, event packages, photography services, catering and wedding planning integrated into the platform. Every vendor undergoes a rigorous audit to ensure premium quality and Shariah compliance. The digital booking system allows couples to plan their dream event easily and transparently.',
+    terms_title: 'Terms & Conditions', privacy_title: 'Privacy Policy',
+    terms_meta: 'Effective: 1 January 2025 &nbsp;|&nbsp; Version: 2.1 &nbsp;|&nbsp; Language: English',
+    privacy_meta: 'Effective: 1 January 2025 &nbsp;|&nbsp; Compliant with: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Version: 2.1',
+    close_btn: '✕',
+    terms_sections: [
+      { h: '1. Acceptance of Terms', p: 'By accessing or using the Jodohku.my platform ("Platform"), you agree to be bound by these Terms & Conditions. This platform is operated by <strong>Noble Synergy Ventures</strong> under the laws of Malaysia.' },
+      { h: '2. User Eligibility', p: '<ol><li>You must be a Muslim who has reached the age of 18.</li><li>You must be a Malaysian citizen or a valid permanent resident.</li><li>You must be unmarried or lawfully divorced.</li><li>All information provided must be accurate, current and truthful.</li></ol>' },
+      { h: '3. Code of Conduct', p: 'Users must observe Islamic etiquette in all communications. Obscene content, exchange of personal information outside the platform, and fraudulent activities are <strong>strictly prohibited</strong>.' },
+      { h: '4. Guardian System', p: 'Guardian involvement is <strong>mandatory</strong> for every female user before any communication is permitted.' },
+      { h: '5. Contact Us', p: '<strong>Noble Synergy Ventures</strong><br>Email: legal@jodohku.my' },
+    ],
+    privacy_sections: [
+      { h: '1. Our Responsibility', p: 'Noble Synergy Ventures is committed to protecting your privacy in accordance with the Personal Data Protection Act 2010 (PDPA 2010) of Malaysia.' },
+      { h: '2. Data Collected', p: '<ul><li><strong>Identity Data:</strong> Full name, MyKad number, date of birth.</li><li><strong>Profile Data:</strong> Photo, education, occupation, religious values.</li><li><strong>Psychology Data:</strong> Answers to 115 questions (processed anonymously).</li><li><strong>Technical Data:</strong> IP address, access logs.</li></ul>' },
+      { h: '3. User Rights', p: 'You have the right to access, amend, withdraw consent, and request deletion of your data. Contact: <strong>privasi@jodohku.my</strong>' },
+    ],
   },
+
   ar: {
+    dir: 'rtl',
     nav_cta: 'سجل الآن',
-    nav_platform: 'المنصة',
-    nav_kelebihan: 'المميزات',
-    nav_perbandingan: 'المقارنة',
+    nav_platform: 'المنصة', nav_kelebihan: 'المميزات', nav_perbandingan: 'المقارنة',
     hero_badge: 'منصة الزواج الإسلامي الفاخرة',
-    hero_title_1: 'ثورة',
-    hero_title_gold1: 'علمية',
-    hero_title_2: 'تطابق',
-    hero_title_gold2: 'عالي الجودة',
+    hero_title: 'ثورة <span class="gold">علمية</span><br>في تطابق <span class="gold">عالي الجودة</span>',
     hero_subtitle: 'ذكاء اصطناعي متقدم + ١١٥ سؤالاً نفسياً = شريك العمر',
     hero_desc: 'تستبدل Jodohku.my المواعدة السامة بتقنية تطابق مبنية خصيصاً لثقافة المسلمين الماليزيين — حيث كل تطابق يحمل إمكانية أن يصبح رابطة يباركها الله.',
-    btn_platform: 'عرض المنصة',
-    btn_mengapa: 'لماذا مختلفة؟',
+    btn_platform: 'عرض المنصة', btn_mengapa: 'لماذا مختلفة؟',
     form_title: 'وصول حصري',
     form_subtitle: 'كن من بين أول ٥٠٠ مستخدم يحصل على وصول تجريبي لهذه المنصة الثورية',
-    label_nama: 'الاسم الكامل',
-    label_ic: 'رقم بطاقة الهوية',
-    label_tel: 'رقم الهاتف',
-    label_email: 'البريد الإلكتروني',
-    label_gambar: 'صورة الملف الشخصي',
-    upload_text: 'اختر صورة ملفك الشخصي',
-    checkbox_text: 'أوافق على ',
-    terms_link: 'الشروط والأحكام',
-    and_text: ' و',
-    privacy_link: 'سياسة الخصوصية',
-    checkbox_suffix: ' لـ Jodohku.my',
+    label_nama: 'الاسم الكامل', label_ic: 'رقم بطاقة الهوية', label_tel: 'رقم الهاتف', label_email: 'البريد الإلكتروني', label_gambar: 'صورة الملف الشخصي',
+    upload_text: 'اختر صورة ملفك الشخصي', upload_size: 'الحد الأقصى ٥ ميغابايت',
+    checkbox_text: 'أوافق على ', terms_link: 'الشروط والأحكام', and_text: ' و', privacy_link: 'سياسة الخصوصية', checkbox_suffix: ' لـ Jodohku.my',
     btn_submit: 'إرسال طلب الوصول التجريبي',
     success_title: 'تم التسجيل بنجاح!',
     success_msg: 'تهانينا على تصرفك المبكر! لقد سجلت بنجاح للحصول على وصول تجريبي لـ Jodohku.my. سنتواصل معك بمجرد إطلاق التطبيق على Playstore وAppstore. شكراً لك -الإدارة-',
     daftar_btn: 'سجل الآن',
-    dir: 'rtl',
+    slider_label: 'معرض المنصة', slider_title: 'تجربة <span class="gold">Jodohku.my</span>',
+    slider_desc: '١٠ جوانب رئيسية للمنصة تُغيّر طريقة بحث المسلمين الماليزيين عن شريك الحياة',
+    slides: [
+      { title: 'مطابقة مبنية على القيم الإسلامية', desc: 'يحلل الذكاء الاصطناعي التوافق الديني والأخلاقي وقيم الحياة' },
+      { title: 'تقنية الذكاء الاصطناعي المتقدمة', desc: '١١٥ سؤالاً نفسياً يتم تحليلها باستخدام التعلم الآلي' },
+      { title: 'أمان قصوى', desc: 'الهوية محمية برمز فريد حتى يوافق الطرفان على اللقاء' },
+      { title: 'نظام الولي الرقمي', desc: 'المنصة الأولى التي تُلزم بمشاركة الولي في عملية التعارف' },
+      { title: 'مجتمع المسلمين المتميز', desc: 'حصري للمسلمين المحترفين الجادين في البحث عن شريك الحياة' },
+      { title: 'منظومة الزواج', desc: 'من المطابقة إلى حفل الزفاف — كل شيء في منصة واحدة' },
+      { title: 'تحليلات معمّقة', desc: 'تقرير توافق مفصّل مبني على ١٤ بُعداً شخصياً' },
+      { title: 'تطبيق جوال متميز', desc: 'واجهة أنيقة وسهلة الاستخدام لنظامَي iOS وAndroid' },
+      { title: 'إرشاد المستشار الإسلامي', desc: 'فريق متخصص من مدربي العلاقات والمستشارين الإسلاميين دائماً في الخدمة' },
+      { title: 'قصص النجاح', desc: 'آلاف الأزواج وجدوا شريك حياتهم عبر منصتنا' },
+    ],
+    pillars_label: '٤ ركائز أساسية', pillars_title: 'هندسة <span class="gold">المنصة</span>',
+    pillars_desc: 'أربعة ركائز راسخة تضمن أن كل جانب من المنصة يلتزم بالقيم الإسلامية ويقدم أفضل تجربة',
+    pillars: [
+      { num: 'الركيزة ١', title: 'الطهارة الدينية', desc: 'القضاء على مواطن الفتنة، وصون الآداب، وهيكلة التعارف وفق أحكام الشريعة.' },
+      { num: 'الركيزة ٢', title: 'الحماية الاجتماعية', desc: 'تعزيز وضع الولي، وحماية الهوية، ومكافحة عمليات الاحتيال العاطفي.' },
+      { num: 'الركيزة ٣', title: 'التمكين الاقتصادي', desc: 'سلسلة قيمة الزواج التي تدعم موردي المشاريع الصغيرة والمتوسطة المسلمة المعتمدة حلالاً.' },
+      { num: 'الركيزة ٤', title: 'التكنولوجيا والخصوصية', desc: 'تصفية الذكاء الاصطناعي في الوقت الفعلي، ورموز هوية سرية، وحماية البيانات وفق PDPA 2010.' },
+    ],
+    usp_label: 'مميزات فريدة', usp_title: 'لماذا <span class="gold">لا مثيل لها</span>',
+    usp_desc: 'أربع ابتكارات ثورية تُميّز Jodohku.my عن كل منصة مواعدة في العالم',
+    usps: [
+      { title: 'رمز هوية سري', desc: 'يتم إخفاء الأسماء الحقيقية برمز فريد (JDK-2025-XX) حتى يوافق الطرفان على اللقاء.' },
+      { title: 'مطابقة علمية بالذكاء الاصطناعي', desc: '١١٥ سؤالاً نفسياً يحللها الذكاء الاصطناعي لتطابق أدق بنسبة ٨٤٧٪ مقارنةً بتطبيقات السحب.' },
+      { title: 'درع المحتوى الفوري', desc: 'يحجب الذكاء الاصطناعي المحتوى المحرّم وتبادل أرقام الهواتف والدعوات غير اللائقة في ٠.٣ ثانية.' },
+      { title: 'منظومة متكاملة', desc: 'المنصة الوحيدة من المطابقة إلى حفل الزفاف — تخطيط الزفاف، حجز الموردين، النكاح الإلكتروني.' },
+    ],
+    cmp_label: 'تحليل معمّق', cmp_title: 'مقارنة <span class="gold">دقيقة</span>',
+    cmp_heading: 'تحديد المعايير: <span class="highlight">لا مثيل لها</span>',
+    cmp_col1: 'المعيار', cmp_col2: 'Tinder / Bumble', cmp_col3: 'MuzMatch', cmp_col4: 'Jodohku.my',
+    cmp_rows: [
+      ['مشاركة الولي الإلزامية','✗ غير موجود','✗ اختياري','✓ إلزامي'],
+      ['التحقق الكامل من الهوية','✗ سيلفي فقط','✗ سيلفي فقط','✓ بطاقة هوية + بيومتري'],
+      ['تصفية المحتوى بالذكاء الاصطناعي','✗ تقرير يدوي','✗ تقرير يدوي','✓ ٠.٣ ثانية'],
+      ['المطابقة النفسية','✗ المظهر فقط','✗ أساسي','✓ ١١٥ سؤالاً'],
+      ['منظومة الزواج','✗ تتوقف عند المطابقة','✗ تتوقف عند المطابقة','✓ حتى حفل الزفاف'],
+      ['الامتثال للشريعة','✗ غير موجود','✗ تصريح ذاتي','✓ معتمد من مجلس'],
+    ],
+    q_label: 'علم المطابقة', q_title: 'نظام <span class="gold">١١٥ سؤالاً</span> الثوري',
+    q_desc: 'الصيغة الأكثر تطوراً لتحليل التوافق عبر ١٤ بُعداً شخصياً، مُطوَّرة خصيصاً للمسلمين الماليزيين',
+    q_extra: '+ ٦ أبعاد إضافية: الطموح المهني (٥)، الصحة النفسية (٥)، الاستعداد للزواج (٥)، السلوك الاجتماعي (٥)، التوافق طويل الأمد (٥)، أسلوب التواصل (٥)',
+    dimensions: [
+      { name: 'جوهر الشخصية', count: '١٠ أسئلة معمّقة', desc: 'طريقة تفكيرك وتصرفك وتقديم نفسك في مواقف الحياة اليومية.' },
+      { name: 'تفضيلات أسلوب الحياة', count: '١٠ أسئلة مفصّلة', desc: 'الروتين اليومي ونمط الحياة والاهتمامات وطريقة قضاء وقت الفراغ.' },
+      { name: 'العقلية المالية', count: '١٠ أسئلة حرجة', desc: 'طريقة إدارة الشؤون المالية والالتزامات والأهداف الحياتية بعيدة المدى.' },
+      { name: 'القيم الدينية', count: '١٠ أسئلة روحية', desc: 'مستوى التقوى والقيم الدينية والتوقعات الروحية تجاه الشريك.' },
+      { name: 'لغة الحب', count: '١٠ أسئلة عاطفية', desc: 'طريقة التعبير عن المحبة وتلقّيها في العلاقة.' },
+      { name: 'الذكاء العاطفي', count: '١٠ أسئلة نفسية', desc: 'التعاطف والتحكم في المشاعر والقدرة على فهم مشاعر الآخرين.' },
+      { name: 'ديناميكيات الأسرة', count: '١٠ أسئلة عائلية', desc: 'العلاقة مع الأسرة وتأثير الوالدين والقيم الأسرية.' },
+      { name: 'حل النزاعات', count: '١٠ أسئلة نزاع', desc: 'طريقة التعامل مع الخلافات والأنا وإيجاد الحلول المشتركة.' },
+      { name: 'نمط التعلق', count: '١٠ أسئلة ترابط', desc: 'أنماط الارتباط العاطفي والحاجة للأمان وتفضيلات الحميمية.' },
+    ],
+    taaruf_label: 'رحلة مقدسة', taaruf_title: 'عملية <span class="gold">التعارف الرقمي</span>',
+    taaruf_desc: 'كل خطوة مصممة لضمان عملية تعارف آمنة وكريمة ومتوافقة تماماً مع أحكام الشريعة',
+    taaruf_footer: 'كل خطوة يرشدها فريق من المستشارين المتمرسين وتلتزم بإرشادات الشريعة الصارمة لضمان عملية تعارف مباركة.',
+    taaruf_steps: [
+      { title: 'المطابقة الذكية بالذكاء الاصطناعي', desc: 'يحلل الخوارزم إجاباتك الـ١١٥ ويجد أفضل تطابق بناءً على توافق عميق.' },
+      { title: 'موافقة الولي', desc: 'يتلقى ولي المرأة إشعاراً ويقيّم ملف المرشح لمنح الإذن الأولي.' },
+      { title: 'التواصل المحمي', desc: 'المحادثات داخل المنصة مع مراقبة الذكاء الاصطناعي على مدار الساعة لضمان الحفاظ على الآداب الإسلامية.' },
+    ],
+    wed_label: 'منظومة متكاملة', wed_title: 'طيف <span class="gold">منظومة الزواج</span>',
+    wed_heading: 'من المطابقة إلى حفل الزفاف — كل شيء في منصة واحدة',
+    wed_desc: '<strong style="color:var(--gold);font-size:18px;">طيف منظومة الزواج</strong> هو شبكة متكاملة من الموردين الحلال، وباقات المناسبات، وخدمات التصوير، والطعام، وتخطيط الأفراح المتكاملة مع المنصة. خضع كل مورد لعملية تدقيق صارمة لضمان الجودة الفاخرة والامتثال للشريعة. يتيح نظام الحجز الرقمي للأزواج التخطيط لحفل أحلامهم بسهولة وشفافية.',
+    terms_title: 'الشروط والأحكام', privacy_title: 'سياسة الخصوصية',
+    terms_meta: 'نافذ المفعول: ١ يناير ٢٠٢٥ &nbsp;|&nbsp; الإصدار: ٢.١',
+    privacy_meta: 'نافذ المفعول: ١ يناير ٢٠٢٥ &nbsp;|&nbsp; متوافق مع: PDPA 2010 (ماليزيا) &nbsp;|&nbsp; الإصدار: ٢.١',
+    close_btn: '✕',
+    terms_sections: [
+      { h: '١. قبول الشروط', p: 'باستخدامك لمنصة Jodohku.my، فإنك توافق على الالتزام بهذه الشروط والأحكام. تُدار هذه المنصة من قِبَل <strong>Noble Synergy Ventures</strong> وفق قوانين ماليزيا.' },
+      { h: '٢. أهلية المستخدم', p: '<ol><li>يجب أن تكون مسلماً أو مسلمة بلغت سن ١٨ عاماً.</li><li>يجب أن تكون مواطناً ماليزياً أو مقيماً دائماً شرعياً.</li><li>يجب أن تكون أعزباً أو مطلقاً وفق القانون النافذ.</li><li>يجب أن تكون جميع المعلومات المقدمة دقيقة وحديثة وصحيحة.</li></ol>' },
+      { h: '٣. قواعد السلوك', p: 'يلتزم المستخدمون بمراعاة الآداب الإسلامية في جميع المراسلات. المحتوى الفاضح وتبادل المعلومات الشخصية خارج المنصة والأنشطة الاحتيالية <strong>محظورة تماماً</strong>.' },
+      { h: '٤. نظام الولي', p: 'مشاركة الولي <strong>إلزامية</strong> لكل مستخدمة قبل السماح بأي تواصل.' },
+      { h: '٥. تواصل معنا', p: '<strong>Noble Synergy Ventures</strong><br>البريد الإلكتروني: legal@jodohku.my' },
+    ],
+    privacy_sections: [
+      { h: '١. مسؤوليتنا', p: 'تلتزم Noble Synergy Ventures بحماية خصوصيتك وفقاً لقانون حماية البيانات الشخصية لعام ٢٠١٠ (PDPA 2010) في ماليزيا.' },
+      { h: '٢. البيانات المجمّعة', p: '<ul><li><strong>بيانات الهوية:</strong> الاسم الكامل، رقم بطاقة الهوية، تاريخ الميلاد.</li><li><strong>بيانات الملف الشخصي:</strong> الصورة، التعليم، المهنة، القيم الدينية.</li><li><strong>البيانات النفسية:</strong> إجابات الـ١١٥ سؤالاً (تتم معالجتها بصورة مجهولة).</li><li><strong>البيانات التقنية:</strong> عنوان IP، سجلات الوصول.</li></ul>' },
+      { h: '٣. حقوق المستخدم', p: 'يحق لك الوصول إلى بياناتك وتعديلها وسحب الموافقة وطلب حذفها. تواصل عبر: <strong>privasi@jodohku.my</strong>' },
+    ],
   }
 };
-
+    
 function setLang(lang) {
   const t = i18n[lang];
   if (!t) return;
 
-  // Update active button
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
-
-  // RTL/LTR direction
   document.body.setAttribute('dir', t.dir);
+  document.body.style.fontFamily = lang === 'ar' ? "'Tajawal', sans-serif" : "'Inter', sans-serif";
 
-  // Nav
-  const navCta = document.querySelectorAll('[data-i18n="nav_cta"]');
-  navCta.forEach(el => el.textContent = t.nav_cta);
-
+  // NAV
+  document.querySelectorAll('[data-i18n="nav_cta"]').forEach(el => el.textContent = t.nav_cta);
   const navLinks = document.querySelectorAll('.nav-menu a');
   if (navLinks[0]) navLinks[0].textContent = t.nav_platform;
   if (navLinks[1]) navLinks[1].textContent = t.nav_kelebihan;
   if (navLinks[2]) navLinks[2].textContent = t.nav_perbandingan;
 
-  // Hero
-  const heroBadge = document.querySelector('.hero-badge');
-  if (heroBadge) {
-    const svg = heroBadge.querySelector('svg');
-    heroBadge.textContent = t.hero_badge;
-    if (svg) heroBadge.prepend(svg);
-  }
-
+  // HERO
+  const badge = document.querySelector('.hero-badge');
+  if (badge) { const svg = badge.querySelector('svg'); badge.textContent = t.hero_badge; if (svg) badge.prepend(svg); }
   const heroTitle = document.querySelector('.hero-title');
-  if (heroTitle) {
-    heroTitle.innerHTML = `${t.hero_title_1} <span class="gold">${t.hero_title_gold1}</span><br>${t.hero_title_2} <span class="gold">${t.hero_title_gold2}</span>`;
-  }
+  if (heroTitle) heroTitle.innerHTML = t.hero_title;
+  const heroSub = document.querySelector('.hero-subtitle'); if (heroSub) heroSub.textContent = t.hero_subtitle;
+  const heroDesc = document.querySelector('.hero-description'); if (heroDesc) heroDesc.textContent = t.hero_desc;
+  const btnP = document.querySelector('.btn-primary-hero'); if (btnP) btnP.textContent = t.btn_platform;
+  const btnS = document.querySelector('.btn-secondary-hero'); if (btnS) btnS.textContent = t.btn_mengapa;
 
-  const heroSub = document.querySelector('.hero-subtitle');
-  if (heroSub) heroSub.textContent = t.hero_subtitle;
-
-  const heroDesc = document.querySelector('.hero-description');
-  if (heroDesc) heroDesc.textContent = t.hero_desc;
-
-  const btnPrimary = document.querySelector('.btn-primary-hero');
-  if (btnPrimary) btnPrimary.textContent = t.btn_platform;
-
-  const btnSecondary = document.querySelector('.btn-secondary-hero');
-  if (btnSecondary) btnSecondary.textContent = t.btn_mengapa;
-
-  // Form
-  const formTitle = document.querySelector('.form-title');
-  if (formTitle) formTitle.textContent = t.form_title;
-
-  const formSubtitle = document.querySelector('.form-subtitle');
-  if (formSubtitle) formSubtitle.textContent = t.form_subtitle;
-
+  // FORM
+  const fTitle = document.querySelector('.form-title'); if (fTitle) fTitle.textContent = t.form_title;
+  const fSub = document.querySelector('.form-subtitle'); if (fSub) fSub.textContent = t.form_subtitle;
   const labels = document.querySelectorAll('.input-label');
-  const labelKeys = ['label_nama','label_ic','label_tel','label_email','label_gambar'];
-  labels.forEach((lbl, i) => { if (labelKeys[i]) lbl.textContent = t[labelKeys[i]]; });
-
+  ['label_nama','label_ic','label_tel','label_email','label_gambar'].forEach((k,i) => { if (labels[i]) labels[i].textContent = t[k]; });
   const uploadText = document.querySelector('.upload-text');
-  if (uploadText) {
-    const strong = uploadText.querySelector('strong');
-    const strongText = strong ? strong.outerHTML : '<strong>JPG, PNG, WEBP</strong>';
-    uploadText.innerHTML = `${t.upload_text}<br>${strongText} — ${lang === 'ar' ? 'الحد الأقصى ٥ ميغابايت' : lang === 'en' ? 'Maximum 5MB' : 'Maksimum 5MB'}`;
-  }
+  if (uploadText) uploadText.innerHTML = `${t.upload_text}<br><strong>JPG, PNG, WEBP</strong> — ${t.upload_size}`;
+  const cbLabel = document.querySelector('.checkbox-premium label');
+  if (cbLabel) cbLabel.innerHTML = `${t.checkbox_text}<a href="#" onclick="openModal('termsModal');return false;">${t.terms_link}</a>${t.and_text}<a href="#" onclick="openModal('privacyModal');return false;">${t.privacy_link}</a>${t.checkbox_suffix}`;
+  const btnSub = document.querySelector('.btn-submit-premium');
+  if (btnSub && !btnSub.disabled) btnSub.textContent = t.btn_submit;
+  const sTitle = document.querySelector('.success-title'); if (sTitle) sTitle.textContent = t.success_title;
+  const sMsg = document.querySelector('.success-message'); if (sMsg) sMsg.textContent = t.success_msg;
 
-  const checkboxLabel = document.querySelector('.checkbox-premium label');
-  if (checkboxLabel) {
-    checkboxLabel.innerHTML = `${t.checkbox_text}<a href="#" onclick="openModal('termsModal');return false;">${t.terms_link}</a>${t.and_text}<a href="#" onclick="openModal('privacyModal');return false;">${t.privacy_link}</a>${t.checkbox_suffix}`;
-  }
+  // SLIDER
+  const sliderLabel = document.querySelector('#slider .section-label'); if (sliderLabel) sliderLabel.textContent = t.slider_label;
+  const sliderTitle = document.querySelector('#slider .section-title-main'); if (sliderTitle) sliderTitle.innerHTML = t.slider_title;
+  const sliderDesc = document.querySelector('#slider .section-desc-main'); if (sliderDesc) sliderDesc.textContent = t.slider_desc;
+  document.querySelectorAll('.slide').forEach((slide, i) => {
+    if (t.slides[i]) {
+      const h3 = slide.querySelector('.slide-title'); if (h3) h3.textContent = t.slides[i].title;
+      const p = slide.querySelector('.slide-desc'); if (p) p.textContent = t.slides[i].desc;
+    }
+  });
 
-  const btnSubmit = document.querySelector('.btn-submit-premium');
-  if (btnSubmit && !btnSubmit.disabled) btnSubmit.textContent = t.btn_submit;
+  // PILLARS
+  const pilLabel = document.querySelector('#pillars .section-label'); if (pilLabel) pilLabel.textContent = t.pillars_label;
+  const pilTitle = document.querySelector('#pillars .section-title-main'); if (pilTitle) pilTitle.innerHTML = t.pillars_title;
+  const pilDesc = document.querySelector('#pillars .section-desc-main'); if (pilDesc) pilDesc.textContent = t.pillars_desc;
+  document.querySelectorAll('.pillar-card').forEach((card, i) => {
+    if (t.pillars[i]) {
+      const num = card.querySelector('.pillar-number'); if (num) num.textContent = t.pillars[i].num;
+      const h3 = card.querySelector('.pillar-title'); if (h3) h3.textContent = t.pillars[i].title;
+      const p = card.querySelector('.pillar-desc'); if (p) p.textContent = t.pillars[i].desc;
+    }
+  });
 
-  const successTitle = document.querySelector('.success-title');
-  if (successTitle) successTitle.textContent = t.success_title;
+  // USP
+  const uspLabel = document.querySelector('#usp .section-label'); if (uspLabel) uspLabel.textContent = t.usp_label;
+  const uspTitle = document.querySelector('#usp .section-title-main'); if (uspTitle) uspTitle.innerHTML = t.usp_title;
+  const uspDesc = document.querySelector('#usp .section-desc-main'); if (uspDesc) uspDesc.textContent = t.usp_desc;
+  document.querySelectorAll('.usp-card').forEach((card, i) => {
+    if (t.usps[i]) {
+      const h3 = card.querySelector('.usp-title'); if (h3) h3.textContent = t.usps[i].title;
+      const p = card.querySelector('.usp-desc'); if (p) p.textContent = t.usps[i].desc;
+    }
+  });
 
-  const successMsg = document.querySelector('.success-message');
-  if (successMsg) successMsg.textContent = t.success_msg;
+  // COMPARISON
+  const cmpLabel = document.querySelector('#comparison .section-label'); if (cmpLabel) cmpLabel.textContent = t.cmp_label;
+  const cmpTitle = document.querySelector('#comparison .section-title-main'); if (cmpTitle) cmpTitle.innerHTML = t.cmp_title;
+  const cmpHeading = document.querySelector('.comparison-title'); if (cmpHeading) cmpHeading.innerHTML = t.cmp_heading;
+  const cmpTh = document.querySelectorAll('.comparison-table th');
+  if (cmpTh[0]) cmpTh[0].textContent = t.cmp_col1;
+  if (cmpTh[1]) cmpTh[1].textContent = t.cmp_col2;
+  if (cmpTh[2]) cmpTh[2].textContent = t.cmp_col3;
+  if (cmpTh[3]) cmpTh[3].textContent = t.cmp_col4;
+  document.querySelectorAll('.comparison-table tbody tr').forEach((row, i) => {
+    if (t.cmp_rows[i]) {
+      const cells = row.querySelectorAll('td');
+      cells.forEach((cell, j) => { cell.textContent = t.cmp_rows[i][j]; });
+    }
+  });
 
-  // All "Daftar Sekarang" buttons
+  // QUESTIONS
+  const qLabel = document.querySelector('#questions .section-label'); if (qLabel) qLabel.textContent = t.q_label;
+  const qTitle = document.querySelector('#questions .section-title-main'); if (qTitle) qTitle.innerHTML = t.q_title;
+  const qDesc = document.querySelector('#questions .section-desc-main'); if (qDesc) qDesc.textContent = t.q_desc;
+  const qExtra = document.querySelector('#questions p[style]'); if (qExtra) qExtra.textContent = t.q_extra;
+  document.querySelectorAll('.dimension-card').forEach((card, i) => {
+    if (t.dimensions[i]) {
+      const name = card.querySelector('.dimension-name'); if (name) name.textContent = t.dimensions[i].name;
+      const count = card.querySelector('.dimension-count'); if (count) count.textContent = t.dimensions[i].count;
+      const desc = card.querySelector('.dimension-desc'); if (desc) desc.textContent = t.dimensions[i].desc;
+    }
+  });
+
+  // TAARUF
+  const tLabel = document.querySelector('#taaruf .section-label'); if (tLabel) tLabel.textContent = t.taaruf_label;
+  const tTitle = document.querySelector('#taaruf .section-title-main'); if (tTitle) tTitle.innerHTML = t.taaruf_title;
+  const tDesc = document.querySelector('#taaruf .section-desc-main'); if (tDesc) tDesc.textContent = t.taaruf_desc;
+  const tFooter = document.querySelector('#taaruf p[style]'); if (tFooter) tFooter.textContent = t.taaruf_footer;
+  document.querySelectorAll('.flow-step').forEach((step, i) => {
+    if (t.taaruf_steps[i]) {
+      const h3 = step.querySelector('.flow-title'); if (h3) h3.textContent = t.taaruf_steps[i].title;
+      const p = step.querySelector('.flow-desc'); if (p) p.textContent = t.taaruf_steps[i].desc;
+    }
+  });
+
+  // WEDDING
+  const wLabel = document.querySelector('#wedding .section-label'); if (wLabel) wLabel.textContent = t.wed_label;
+  const wTitle = document.querySelector('#wedding .section-title-main'); if (wTitle) wTitle.innerHTML = t.wed_title;
+  const wHeading = document.querySelector('.wedding-preview h3'); if (wHeading) wHeading.textContent = t.wed_heading;
+  const wDesc = document.querySelector('.wedding-explanation'); if (wDesc) wDesc.innerHTML = t.wed_desc;
+
+  // ALL DAFTAR BUTTONS
   document.querySelectorAll('.btn-daftar-section').forEach(btn => btn.textContent = t.daftar_btn);
 
-  // Arabic font override
-  if (lang === 'ar') {
-    document.body.style.fontFamily = "'Tajawal', sans-serif";
-  } else {
-    document.body.style.fontFamily = "'Inter', sans-serif";
-  }
+  // MODALS
+  const termsTitle = document.querySelector('#termsModal .modal-title'); if (termsTitle) termsTitle.textContent = t.terms_title;
+  const privTitle = document.querySelector('#privacyModal .modal-title'); if (privTitle) privTitle.textContent = t.privacy_title;
+  const termsMeta = document.querySelector('#termsModal .modal-meta'); if (termsMeta) termsMeta.innerHTML = t.terms_meta;
+  const privMeta = document.querySelector('#privacyModal .modal-meta'); if (privMeta) privMeta.innerHTML = t.privacy_meta;
+  const termsSections = document.querySelectorAll('#termsModal .modal-section');
+  t.terms_sections.forEach((s, i) => {
+    if (termsSections[i]) {
+      const h3 = termsSections[i].querySelector('h3'); if (h3) h3.textContent = s.h;
+      const p = termsSections[i].querySelector('p,ol,ul'); if (p) p.innerHTML = s.p;
+    }
+  });
+  const privSections = document.querySelectorAll('#privacyModal .modal-section');
+  t.privacy_sections.forEach((s, i) => {
+    if (privSections[i]) {
+      const h3 = privSections[i].querySelector('h3'); if (h3) h3.textContent = s.h;
+      const p = privSections[i].querySelector('p,ul'); if (p) p.innerHTML = s.p;
+    }
+  });
 
-  // Store preference
   localStorage.setItem('jdk_lang', lang);
 }
-
-// Restore saved language on page load
-document.addEventListener('DOMContentLoaded', () => {
-  const saved = localStorage.getItem('jdk_lang');
-  if (saved && saved !== 'ms') setLang(saved);
-});
 </script>
 
 <?php include 'footer.php'; ?>
