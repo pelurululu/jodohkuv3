@@ -1053,11 +1053,12 @@ if (error) {
     track.style.width = (w * total) + 'px';
   }
 
-  function goTo(index, animate = true) {
+ function goTo(index, animate = true) {
     current = (index + total) % total;
+    const slideWidth = slides[0].offsetWidth;
     track.style.transition = animate ? 'transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
-    track.style.transform = `translateX(-${current * slider.offsetWidth}px)`;
-  }
+    track.style.transform = `translateX(-${current * slideWidth}px)`;
+}
 
   function resetTimer() {
     clearInterval(autoTimer);
