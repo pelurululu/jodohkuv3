@@ -213,7 +213,7 @@
 
         <!-- 4. Sistem Wali — Family & elders blessing -->
         <div class="slide">
-          <img src="https://images.pexels.com/photos/7551643/pexels-photo-7551643.jpeg?auto=compress&cs=tinysrgb&w=900&h=260&fit=crop" alt="Family discussion">
+          <img src="images/muslim-family.jpg" alt="Keluarga Muslim berbincang">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Sistem Wali Digital</h3>
