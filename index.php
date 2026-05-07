@@ -279,7 +279,7 @@
 
         <!-- 10. Kisah Kejayaan — Malay wedding couple happily married -->
         <div class="slide">
-          <img src="https://images.pexels.com/photos/7249373/pexels-photo-7249373.jpeg?auto=compress&cs=tinysrgb&w=900&h=260&fit=crop" alt="Happy couple">
+            <img src="images/kisah-kejayaan.jpg" alt="Happy couple">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Kisah Kejayaan</h3>
