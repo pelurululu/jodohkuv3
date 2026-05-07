@@ -289,7 +289,7 @@ body {
 .slider-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
 .image-slider { position: relative; overflow: hidden; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
 .slider-track { display: flex; animation: auto-slide 30s infinite linear; }
-.slide { min-width: 100%; height: 260px; position: relative; flex-shrink: 0; }
+.slide { min-width: 100%; height: 420px; position: relative; flex-shrink: 0; }
 .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .slide-overlay {
   position: absolute; inset: 0;
