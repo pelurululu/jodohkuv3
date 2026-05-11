@@ -118,61 +118,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
 </div>
 
 <script>
-  const { createClient } = supabase;
-  const db = createClient(
-    '<?php echo getenv("SUPABASE_URL"); ?>',
-    '<?php echo getenv("SUPABASE_SERVICE_KEY"); ?>'
-  );
-
-  const modal = document.getElementById('imgModal');
-  const modalImg = document.getElementById('modalImg');
-
-  function openImg(src) {
-    modal.style.display = 'flex';
-    modalImg.src = src;
+async function load() {
+  const res = await fetch('admin_data.php');
+  const data = await res.json();
+  if (data.error) {
+    document.getElementById('status').textContent = 'Error: ' + data.error;
+    return;
   }
+  document.getElementById('status').textContent = '';
+  document.getElementById('count').textContent = data.length + ' registrations';
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = data.map((r, i) => `
+    <tr>
+      <td>${i + 1}</td>
+      <td>${r.photo_url ? `<img src="${r.photo_url}" onclick="openImg(this.src)">` : '<span class="no-photo">—</span>'}</td>
+      <td class="jdk-id">${r.jdk_id}</td>
+      <td>${r.nama}</td>
+      <td>${r.ic}</td>
+      <td>${r.telefon}</td>
+      <td>${r.email}</td>
+      <td>${new Date(r.created_at).toLocaleString('ms-MY')}</td>
+    </tr>
+  `).join('');
+}
 
-  modal.onclick = () => {
-    modal.style.display = 'none';
-    modalImg.src = '';
-  };
-
-  async function load() {
-    const { data, error } = await db
-      .from('registrations')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      document.getElementById('status').textContent = 'Error: ' + error.message;
-      return;
-    }
-
-    document.getElementById('status').textContent = '';
-    document.getElementById('count').textContent = data.length + ' registrations';
-
-    const tbody = document.getElementById('tableBody');
-
-    tbody.innerHTML = data.map((r, i) => `
-      <tr>
-        <td>${i + 1}</td>
-        <td>
-          ${r.photo_url 
-            ? `<img src="${r.photo_url}" onclick="openImg(this.src)">`
-            : '<span class="no-photo">—</span>'
-          }
-        </td>
-        <td class="jdk-id">${r.jdk_id}</td>
-        <td>${r.nama}</td>
-        <td>${r.ic}</td>
-        <td>${r.telefon}</td>
-        <td>${r.email}</td>
-        <td>${new Date(r.created_at).toLocaleString('ms-MY')}</td>
-      </tr>
-    `).join('');
-  }
-
- 
 function checkPw() {
   const val = document.getElementById('pwInput').value;
   fetch('', {
@@ -190,7 +159,6 @@ function checkPw() {
     }
   });
 }
- 
 </script>
 
 </body>
