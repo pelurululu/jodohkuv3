@@ -1,3 +1,17 @@
+<?php
+session_start();
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
+  header('Content-Type: application/json');
+  if ($_POST['pw'] === getenv('ADMIN_PASSWORD')) {
+    $_SESSION['admin'] = true;
+    echo json_encode(['ok' => true]);
+  } else {
+    echo json_encode(['ok' => false]);
+  }
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,19 +167,24 @@
   }
 
  
- const ADMIN_PW = '<?php echo getenv("ADMIN_PASSWORD"); ?>';
-
 function checkPw() {
   const val = document.getElementById('pwInput').value;
-  if (val === ADMIN_PW) {
-    document.getElementById('gate').style.display = 'none';
-    load();
-  } else {
-    document.getElementById('pwError').style.display = 'block';
-    document.getElementById('pwInput').value = '';
-    document.getElementById('pwInput').focus();
-  }
+  fetch('', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'pw=' + encodeURIComponent(val)
+  }).then(r => r.json()).then(res => {
+    if (res.ok) {
+      document.getElementById('gate').style.display = 'none';
+      load();
+    } else {
+      document.getElementById('pwError').style.display = 'block';
+      document.getElementById('pwInput').value = '';
+      document.getElementById('pwInput').focus();
+    }
+  });
 }
+ 
 </script>
 
 </body>
