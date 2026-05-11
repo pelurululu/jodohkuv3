@@ -14,6 +14,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
 if (empty($_SESSION['admin']) && $_SERVER['REQUEST_METHOD'] !== 'POST') {
   // Allow page to load so login form shows, data fetched via admin_data.php which is protected
 }
+
+  // Track failed attempts
+if (!isset($_SESSION['attempts'])) $_SESSION['attempts'] = 0;
+
+if ($_POST['pw'] === getenv('ADMIN_PASSWORD')) {
+  $_SESSION['admin'] = true;
+  $_SESSION['attempts'] = 0;
+  echo json_encode(['ok' => true]);
+} else {
+  $_SESSION['attempts']++;
+  if ($_SESSION['attempts'] >= 5) {
+    echo json_encode(['ok' => false, 'locked' => true]);
+  } else {
+    echo json_encode(['ok' => false]);
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
