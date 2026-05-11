@@ -10,6 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
   }
   exit;
 }
+
+  if (empty($_SESSION['admin'])) {
+  http_response_code(403);
+  echo 'Forbidden';
+  exit;
+}
 ?>
 
 <!DOCTYPE html>
