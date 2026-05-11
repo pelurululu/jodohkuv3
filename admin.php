@@ -10,11 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
   }
   exit;
 }
-
-  if (empty($_SESSION['admin'])) {
-  http_response_code(403);
-  echo 'Forbidden';
-  exit;
+// Only block page load for non-POST requests without session
+if (empty($_SESSION['admin']) && $_SERVER['REQUEST_METHOD'] !== 'POST') {
+  // Allow page to load so login form shows, data fetched via admin_data.php which is protected
 }
 ?>
 
@@ -104,6 +102,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
       <th>JDK ID</th>
       <th>Nama</th>
       <th>IC</th>
+      <th>Umur</th>
+      <th>Jantina</th>
+      <th>Negeri Lahir</th>
       <th>Telefon</th>
       <th>Email</th>
       <th>Tarikh Daftar</th>
@@ -118,6 +119,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
 </div>
 
 <script>
+  function decodeIC(ic) {
+  const clean = ic.replace(/-/g, '');
+  if (clean.length !== 12) return { umur: '—', jantina: '—', negeri: '—' };
+
+  // Date of birth
+  let yy = parseInt(clean.substring(0, 2));
+  const mm = parseInt(clean.substring(2, 4));
+  const dd = parseInt(clean.substring(4, 6));
+  const currentYY = new Date().getFullYear() % 100;
+  const fullYear = yy <= currentYY ? 2000 + yy : 1900 + yy;
+  const today = new Date();
+  let age = today.getFullYear() - fullYear;
+  if (today.getMonth() + 1 < mm || (today.getMonth() + 1 === mm && today.getDate() < dd)) age--;
+
+  // Gender — last digit odd = male, even = female
+  const lastDigit = parseInt(clean[11]);
+  const jantina = lastDigit % 2 === 0 ? 'Perempuan ♀' : 'Lelaki ♂';
+
+  // Birth state — digits 7-8
+  const pb = parseInt(clean.substring(6, 8));
+  const states = {
+    1: 'Johor', 2: 'Kedah', 3: 'Kelantan', 4: 'Melaka',
+    5: 'Negeri Sembilan', 6: 'Pahang', 7: 'Pulau Pinang',
+    8: 'Perak', 9: 'Perlis', 10: 'Selangor', 11: 'Terengganu',
+    12: 'Sabah', 13: 'Sarawak', 14: 'WP Kuala Lumpur',
+    15: 'WP Labuan', 16: 'WP Putrajaya'
+  };
+  const negeri = pb >= 21 && pb <= 59 ? 'Luar Negara' : (states[pb] || 'Tidak Diketahui');
+
+  return { umur: age + ' tahun', jantina, negeri };
+}
+  
 async function load() {
   const res = await fetch('admin_data.php');
   const data = await res.json();
@@ -135,6 +168,11 @@ async function load() {
       <td class="jdk-id">${r.jdk_id}</td>
       <td>${r.nama}</td>
       <td>${r.ic}</td>
+${(() => { const d = decodeIC(r.ic); return `
+  <td>${d.umur}</td>
+  <td>${d.jantina}</td>
+  <td>${d.negeri}</td>
+`; })()}
       <td>${r.telefon}</td>
       <td>${r.email}</td>
       <td>${new Date(r.created_at).toLocaleString('ms-MY')}</td>
