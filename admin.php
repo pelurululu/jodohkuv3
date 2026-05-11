@@ -1,36 +1,23 @@
 <?php
 session_start();
+if (!isset($_SESSION['attempts'])) $_SESSION['attempts'] = 0;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
   header('Content-Type: application/json');
+  if ($_SESSION['attempts'] >= 5) {
+    echo json_encode(['ok' => false, 'locked' => true]);
+    exit;
+  }
   if ($_POST['pw'] === getenv('ADMIN_PASSWORD')) {
     $_SESSION['admin'] = true;
+    $_SESSION['attempts'] = 0;
     echo json_encode(['ok' => true]);
   } else {
+    $_SESSION['attempts']++;
     echo json_encode(['ok' => false]);
   }
   exit;
 }
-// Only block page load for non-POST requests without session
-if (empty($_SESSION['admin']) && $_SERVER['REQUEST_METHOD'] !== 'POST') {
-  // Allow page to load so login form shows, data fetched via admin_data.php which is protected
-}
-
-  // Track failed attempts
-if (!isset($_SESSION['attempts'])) $_SESSION['attempts'] = 0;
-
-if ($_POST['pw'] === getenv('ADMIN_PASSWORD')) {
-  $_SESSION['admin'] = true;
-  $_SESSION['attempts'] = 0;
-  echo json_encode(['ok' => true]);
-} else {
-  $_SESSION['attempts']++;
-  if ($_SESSION['attempts'] >= 5) {
-    echo json_encode(['ok' => false, 'locked' => true]);
-  } else {
-    echo json_encode(['ok' => false]);
-  }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -136,6 +123,19 @@ if ($_POST['pw'] === getenv('ADMIN_PASSWORD')) {
 </div>
 
 <script>
+  const modal = document.getElementById('imgModal');
+const modalImg = document.getElementById('modalImg');
+
+function openImg(src) {
+  modal.style.display = 'flex';
+  modalImg.src = src;
+}
+
+modal.onclick = () => {
+  modal.style.display = 'none';
+  modalImg.src = '';
+};
+  
   function decodeIC(ic) {
   const clean = ic.replace(/-/g, '');
   if (clean.length !== 12) return { umur: '—', jantina: '—', negeri: '—' };
