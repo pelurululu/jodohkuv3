@@ -266,27 +266,7 @@
           </div>
         </div>
 
-        <!-- 9. Kaunselor Islam — Muslim counsellor/consultation -->
-        <div class="slide">
-        <img src="https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=900&h=260&fit=crop" alt="Counseling">
-          <div class="slide-overlay">
-            <div class="slide-content">
-              <h3 class="slide-title">Bimbingan Kaunselor Islam</h3>
-              <p class="slide-desc">Tim pakar relationship coach dan kaunselor Islam sentiasa siap membantu</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 10. Kisah Kejayaan — Malay wedding couple happily married -->
-        <div class="slide">
-            <img src="images/kisah-kejayaan.jpg" alt="Happy couple">
-          <div class="slide-overlay">
-            <div class="slide-content">
-              <h3 class="slide-title">Kisah Kejayaan</h3>
-              <p class="slide-desc">Beribu pasangan telah menemui jodoh melalui platform kami</p>
-            </div>
-          </div>
-        </div>
+      
       </div>
     </div>
 
@@ -772,7 +752,7 @@
     
     <div style="text-align: center; margin-top: 60px;">
       <p style="color: #B0B0B0; font-size: 16px; line-height: 1.8; max-width: 600px; margin: 0 auto 32px;">
-        Setiap langkah dipandu oleh tim kaunselor berpengalaman dan mematuhi garis panduan syariah yang ketat untuk memastikan proses ta'aruf yang berkah.
+      
       </p>
     </div>
 
@@ -904,88 +884,163 @@ function handleImageUpload(event) {
   `;
 }
 
-// ── FORM VALIDATION ──
+// ── SHOW FIELD ERROR ──
+function showFieldError(id, message) {
+  const field = document.getElementById(id);
+  if (!field) return;
+  field.style.borderColor = '#FF6B6B';
+
+  // Remove existing error msg if any
+  const existing = field.parentElement.querySelector('.field-error');
+  if (existing) existing.remove();
+
+  const err = document.createElement('div');
+  err.className = 'field-error';
+  err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:6px;';
+  err.textContent = message;
+  field.parentElement.appendChild(err);
+}
+
+function clearFieldError(id) {
+  const field = document.getElementById(id);
+  if (!field) return;
+  field.style.borderColor = '';
+  const existing = field.parentElement.querySelector('.field-error');
+  if (existing) existing.remove();
+}
+
+// ── SHOW UPLOAD ERROR ──
+function showUploadError(message) {
+  const uploadArea = document.querySelector('.upload-area');
+  if (!uploadArea) return;
+  uploadArea.style.borderColor = '#FF6B6B';
+
+  const existing = uploadArea.parentElement.querySelector('.field-error');
+  if (existing) existing.remove();
+
+  const err = document.createElement('div');
+  err.className = 'field-error';
+  err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:6px;';
+  err.textContent = message;
+  uploadArea.parentElement.appendChild(err);
+}
+
+function clearUploadError() {
+  const uploadArea = document.querySelector('.upload-area');
+  if (!uploadArea) return;
+  uploadArea.style.borderColor = '';
+  const existing = uploadArea.parentElement.querySelector('.field-error');
+  if (existing) existing.remove();
+}
+
+// ── SHOW CHECKBOX ERROR ──
+function showCheckboxError(message) {
+  const cb = document.querySelector('.checkbox-premium');
+  if (!cb) return;
+
+  const existing = cb.querySelector('.field-error');
+  if (existing) existing.remove();
+
+  const err = document.createElement('div');
+  err.className = 'field-error';
+  err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:6px;';
+  err.textContent = message;
+  cb.appendChild(err);
+}
+
+function clearCheckboxError() {
+  const cb = document.querySelector('.checkbox-premium');
+  if (!cb) return;
+  const existing = cb.querySelector('.field-error');
+  if (existing) existing.remove();
+}
+
+// ── MAIN VALIDATION ──
 function validateForm() {
   let valid = true;
-  ['fullName','icNo','phoneNo','emailAddr'].forEach(id => {
-    const field = document.getElementById(id);
-    if (!field.value.trim()) { field.style.borderColor = '#FF6B6B'; valid = false; }
-    else { field.style.borderColor = ''; }
-  });
-  const ic = document.getElementById('icNo').value.replace(/-/g, '');
-  if (ic.length !== 12 || !/^\d+$/.test(ic)) {
-    document.getElementById('icNo').style.borderColor = '#FF6B6B'; valid = false;
+
+  // Full Name
+  const name = document.getElementById('fullName').value.trim();
+  if (!name) {
+    showFieldError('fullName', 'Nama penuh diperlukan.');
+    valid = false;
+  } else if (name.length < 3) {
+    showFieldError('fullName', 'Nama penuh terlalu pendek.');
+    valid = false;
+  } else {
+    clearFieldError('fullName');
   }
-  const email = document.getElementById('emailAddr').value;
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    document.getElementById('emailAddr').style.borderColor = '#FF6B6B'; valid = false;
+
+  // IC Number
+  const icRaw = document.getElementById('icNo').value.replace(/-/g, '');
+  if (!icRaw) {
+    showFieldError('icNo', 'No. Kad Pengenalan diperlukan.');
+    valid = false;
+  } else if (icRaw.length !== 12 || !/^\d+$/.test(icRaw)) {
+    showFieldError('icNo', 'Format IC tidak sah. Contoh: 900101-14-1234');
+    valid = false;
+  } else {
+    clearFieldError('icNo');
   }
+
+  // Phone Number
+  const phone = document.getElementById('phoneNo').value.trim();
+  const phoneRegex = /^(\+?60|0)[1-9]\d{7,9}$/;
+  if (!phone) {
+    showFieldError('phoneNo', 'No. telefon diperlukan.');
+    valid = false;
+  } else if (!phoneRegex.test(phone.replace(/[\s-]/g, ''))) {
+    showFieldError('phoneNo', 'Format no. telefon tidak sah. Contoh: 011-12345678');
+    valid = false;
+  } else {
+    clearFieldError('phoneNo');
+  }
+
+  // Email
+  const email = document.getElementById('emailAddr').value.trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email) {
+    showFieldError('emailAddr', 'Alamat e-mel diperlukan.');
+    valid = false;
+  } else if (!emailRegex.test(email)) {
+    showFieldError('emailAddr', 'Format e-mel tidak sah. Contoh: nama@email.com');
+    valid = false;
+  } else {
+    clearFieldError('emailAddr');
+  }
+
+  // Profile Picture
+  if (!selectedFile) {
+    showUploadError('Sila muat naik gambar profil anda.');
+    valid = false;
+  } else {
+    clearUploadError();
+  }
+
+  // Terms Checkbox
+  if (!document.getElementById('agreeTerms').checked) {
+    showCheckboxError('Sila bersetuju dengan Terma & Syarat untuk meneruskan.');
+    valid = false;
+  } else {
+    clearCheckboxError();
+  }
+
   return valid;
 }
 
-function generateId() {
-  const year = new Date().getFullYear();
-  const random = Math.random().toString(36).substr(2, 8).toUpperCase();
-  return `JDK-${year}-${random}`;
-}
-
-  function showErrorPopup(title, message) {
-  const existing = document.getElementById('errorPopup');
-  if (existing) existing.remove();
-
-  const popup = document.createElement('div');
-  popup.id = 'errorPopup';
-  popup.style.cssText = `
-    position: fixed; inset: 0; z-index: 99999;
-    background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
-    display: flex; align-items: center; justify-content: center; padding: 24px;
-  `;
-  popup.innerHTML = `
-    <div style="
-      background: linear-gradient(160deg, #1a0000 0%, #000000 100%);
-      border: 2px solid rgba(255,80,80,0.4);
-      border-radius: 20px; max-width: 420px; width: 100%;
-      position: relative; overflow: hidden;
-    ">
-      <div style="
-        position: absolute; top: 0; left: 0; right: 0; height: 3px;
-        background: linear-gradient(90deg, transparent, #FF4444, #FF8800, #FF4444, transparent);
-      "></div>
-      <div style="padding: 40px 36px; text-align: center;">
-        <div style="
-          width: 70px; height: 70px; margin: 0 auto 20px;
-          background: rgba(255,60,60,0.1); border: 2px solid rgba(255,60,60,0.4);
-          border-radius: 50%; display: flex; align-items: center; justify-content: center;
-          font-size: 32px;
-        ">✗</div>
-        <h3 style="
-          font-family: 'Playfair Display', serif; font-size: 22px;
-          color: #fff; margin-bottom: 14px;
-        ">${title}</h3>
-        <p style="
-          color: #B0B0B0; font-size: 14px; line-height: 1.7; margin-bottom: 28px;
-        ">${message}</p>
-        <button onclick="document.getElementById('errorPopup').remove()" style="
-          background: linear-gradient(135deg, #FF4444, #FF8800);
-          color: #fff; border: none; padding: 12px 36px;
-          border-radius: 8px; font-weight: 700; font-size: 13px;
-          cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
-        ">Tutup</button>
-      </div>
-    </div>
-  `;
-  popup.addEventListener('click', function(e) {
-    if (e.target === popup) popup.remove();
-  });
-  document.body.appendChild(popup);
-}
+// ── CLEAR ERRORS ON INPUT ──
+['fullName', 'icNo', 'phoneNo', 'emailAddr'].forEach(id => {
+  document.getElementById(id)?.addEventListener('input', () => clearFieldError(id));
+});
+document.getElementById('agreeTerms')?.addEventListener('change', clearCheckboxError);
 
 // ── MAIN FORM SUBMIT ──
 async function handleFormSubmit(e) {
   e.preventDefault();
-  if (!validateForm()) return;
-  if (!document.getElementById('agreeTerms').checked) {
-    alert('Sila bersetuju dengan Terma & Syarat untuk meneruskan.');
+  if (!validateForm()) {
+    // Scroll to first error
+    const firstError = document.querySelector('.field-error');
+    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
 
@@ -994,61 +1049,50 @@ async function handleFormSubmit(e) {
   submitBtn.textContent = 'Memproses...';
 
   try {
+    const jdk_id = generateId();
+    let photo_url = null;
 
-  const jdk_id = generateId();
-  let photo_url = null;
-
-  // ── UPLOAD PHOTO if selected ──
-  if (selectedFile) {
-    const file = selectedFile;
-    const ext = file.name.split('.').pop();
-    const filename = `${jdk_id}.${ext}`;
-
-    const { data: uploadData, error: uploadError } = await db.storage
-      .from('profile-pics')
-      .upload(filename, file);
-
-    console.log('Upload result:', uploadData, uploadError);
-
-    if (uploadError) {
-      console.error('Upload error:', uploadError.message);
-    } else {
-      const { data: urlData } = db.storage
+    if (selectedFile) {
+      const ext = selectedFile.name.split('.').pop();
+      const filename = `${jdk_id}.${ext}`;
+      const { data: uploadData, error: uploadError } = await db.storage
         .from('profile-pics')
-        .getPublicUrl(filename);
-      photo_url = urlData.publicUrl;
+        .upload(filename, selectedFile);
+
+      if (uploadError) {
+        console.error('Upload error:', uploadError.message);
+      } else {
+        const { data: urlData } = db.storage.from('profile-pics').getPublicUrl(filename);
+        photo_url = urlData.publicUrl;
+      }
     }
-  }
 
-  // ── INSERT ROW ──
-  const { error } = await db.from('registrations').insert([{
-    jdk_id,
-    nama:    document.getElementById('fullName').value.trim(),
-    ic:      document.getElementById('icNo').value,
-    telefon: document.getElementById('phoneNo').value.trim(),
-    email:   document.getElementById('emailAddr').value.trim(),
-    photo_url,
-  }]);
+    const { error } = await db.from('registrations').insert([{
+      jdk_id,
+      nama:    document.getElementById('fullName').value.trim(),
+      ic:      document.getElementById('icNo').value,
+      telefon: document.getElementById('phoneNo').value.trim(),
+      email:   document.getElementById('emailAddr').value.trim(),
+      photo_url,
+    }]);
 
-if (error) {
-    console.error('Supabase error:', error.message);
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Hantar Permohonan Beta Access';
-    const isDuplicate = error.message.includes('unique') || error.code === '23505';
-    showErrorPopup(isDuplicate
-      ? 'Pendaftaran Didapati Duplikat'
-      : 'Ralat Pendaftaran',
-      isDuplicate
-      ? 'Nombor IC atau e-mel ini telah didaftarkan sebelum ini. Setiap pengguna hanya boleh mendaftar sekali sahaja.'
-      : 'Ralat berlaku semasa pendaftaran. Sila cuba sebentar lagi.'
-    );
-    return;
-  }
+    if (error) {
+      console.error('Supabase error:', error.message);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Hantar Permohonan Beta Access';
+      const isDuplicate = error.message.includes('unique') || error.code === '23505';
+      showErrorPopup(
+        isDuplicate ? 'Pendaftaran Didapati Duplikat' : 'Ralat Pendaftaran',
+        isDuplicate
+          ? 'Nombor IC atau e-mel ini telah didaftarkan sebelum ini. Setiap pengguna hanya boleh mendaftar sekali sahaja.'
+          : 'Ralat berlaku semasa pendaftaran. Sila cuba sebentar lagi.'
+      );
+      return;
+    }
 
-  // ── SUCCESS ──
-  document.getElementById('formView').style.display = 'none';
-  document.getElementById('successView').style.display = 'block';
-  document.getElementById('generatedId').textContent = jdk_id;
+    document.getElementById('formView').style.display = 'none';
+    document.getElementById('successView').style.display = 'block';
+    document.getElementById('generatedId').textContent = jdk_id;
 
   } catch (err) {
     console.error('Unexpected error:', err);
@@ -1057,6 +1101,8 @@ if (error) {
     showErrorPopup('Ralat Tidak Dijangka', err.message || 'Sila cuba sebentar lagi.');
   }
 }
+
+  
 // ── TOUCH SWIPE CAROUSEL ──
 (function() {
   const slider = document.querySelector('.image-slider');
