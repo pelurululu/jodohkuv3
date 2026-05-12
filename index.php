@@ -7,8 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Tajawal:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' 
-  data-cf-beacon='{"token": "YOUR_TOKEN_HERE"}'></script>
   
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" type="image/png" href="logo.png">
