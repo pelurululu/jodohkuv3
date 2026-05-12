@@ -1029,17 +1029,22 @@ function clearCheckboxError() {
 function validateForm() {
   let valid = true;
 
-  // Full Name
-  const name = document.getElementById('fullName').value.trim();
-  if (!name) {
-    showFieldError('fullName', 'Nama penuh diperlukan.');
-    valid = false;
-  } else if (name.length < 3) {
-    showFieldError('fullName', 'Nama penuh terlalu pendek.');
-    valid = false;
-  } else {
-    clearFieldError('fullName');
-  }
+ 
+// Full Name
+const name = document.getElementById('fullName').value.trim();
+const nameRegex = /^[a-zA-Z\s\/\'\-\.]+$/;
+if (!name) {
+  showFieldError('fullName', 'Nama penuh diperlukan.');
+  valid = false;
+} else if (name.length < 3) {
+  showFieldError('fullName', 'Nama penuh terlalu pendek.');
+  valid = false;
+} else if (!nameRegex.test(name)) {
+  showFieldError('fullName', 'Nama penuh hanya boleh mengandungi huruf sahaja.');
+  valid = false;
+} else {
+  clearFieldError('fullName');
+}
 
   // IC Number — advanced validation
   const icValue = document.getElementById('icNo').value;
@@ -1103,8 +1108,19 @@ function validateForm() {
 }
 
 // ── CLEAR ERRORS ON INPUT ──
-['fullName', 'phoneNo', 'emailAddr'].forEach(id => {
+['phoneNo', 'emailAddr'].forEach(id => {
   document.getElementById(id)?.addEventListener('input', () => clearFieldError(id));
+});
+
+// Name — real-time letters only
+document.getElementById('fullName')?.addEventListener('input', () => {
+  const name = document.getElementById('fullName').value.trim();
+  const nameRegex = /^[a-zA-Z\s\/\'\-\.]+$/;
+  if (name && !nameRegex.test(name)) {
+    showFieldError('fullName', 'Nama penuh hanya boleh mengandungi huruf sahaja.');
+  } else {
+    clearFieldError('fullName');
+  }
 });
 
 // IC — real-time advanced validation
