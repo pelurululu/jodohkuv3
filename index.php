@@ -1176,7 +1176,7 @@ async function handleFormSubmit(e) {
   if (uploadError) {
     console.error('Upload error:', uploadError.message);
     submitBtn.disabled = false;
-    submitBtn.textContent = v().btn_submit;
+   submitBtn.textContent = (i18n[localStorage.getItem('jdk_lang') || 'ms'] || i18n['ms']).btn_submit;
     showErrorPopup(v().photo_upload_fail_title, v().photo_upload_fail_msg);
     return;
   }
@@ -1188,7 +1188,7 @@ async function handleFormSubmit(e) {
   if (!photo_url) {
     console.error('photo_url is null after upload');
     submitBtn.disabled = false;
-    submitBtn.textContent = v().btn_submit;
+    submitBtn.textContent = (i18n[localStorage.getItem('jdk_lang') || 'ms'] || i18n['ms']).btn_submit;
     showErrorPopup(v().photo_upload_fail_title, v().photo_upload_fail_msg);
     return;
   }
@@ -1197,7 +1197,7 @@ async function handleFormSubmit(e) {
 // ── HARD GUARD: block insert if no file was selected ──
 if (!photo_url) {
   submitBtn.disabled = false;
-  submitBtn.textContent = v().btn_submit;
+  submitBtn.textContent = (i18n[localStorage.getItem('jdk_lang') || 'ms'] || i18n['ms']).btn_submit;
   showErrorPopup(v().photo_upload_fail_title, v().photo_upload_fail_msg);
   return;
 }
@@ -1214,7 +1214,7 @@ if (!photo_url) {
     if (error) {
       console.error('Supabase error:', error.message);
       submitBtn.disabled = false;
-      submitBtn.textContent = v().btn_submit;                   // ✅ CHANGED
+      submitBtn.textContent = (i18n[localStorage.getItem('jdk_lang') || 'ms'] || i18n['ms']).btn_submit;                 // ✅ CHANGED
       const isDuplicate = error.message.includes('unique') || error.code === '23505';
       showErrorPopup(
         isDuplicate ? v().duplicate_title : v().error_title,   // ✅ CHANGED
@@ -1230,7 +1230,7 @@ if (!photo_url) {
   } catch (err) {
     console.error('Unexpected error:', err);
     submitBtn.disabled = false;
-    submitBtn.textContent = v().btn_submit;                     // ✅ CHANGED
+   submitBtn.textContent = (i18n[localStorage.getItem('jdk_lang') || 'ms'] || i18n['ms']).btn_submit;                    // ✅ CHANGED
     showErrorPopup(v().unexpected_title, err.message || v().error_msg); // ✅ CHANGED
   }
 }
