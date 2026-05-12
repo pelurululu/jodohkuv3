@@ -40,7 +40,6 @@
   
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-</style>
 </head>
 <body>
   
@@ -259,7 +258,7 @@
 
         <!-- 8. Aplikasi Mobile — Phone with Malay woman/hijabi user -->
         <div class="slide">
-          <img src="	https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&h=260&fit=crop&q=80" alt="Aplikasi Mobile">
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&h=260&fit=crop&q=80" alt="Aplikasi Mobile">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Aplikasi Mobile Premium</h3>
@@ -1032,7 +1031,7 @@ function validateForm() {
  
 // Full Name
 const name = document.getElementById('fullName').value.trim();
-const nameRegex = /^[a-zA-Z\s\/\'\-\.]+$/;
+const nameRegex = /^[a-zA-Z\u0600-\u06FF\s\/\'\-\.]+$/;
 if (!name) {
   showFieldError('fullName', 'Nama penuh diperlukan.');
   valid = false;
@@ -1115,7 +1114,7 @@ if (!name) {
 // Name — real-time letters only
 document.getElementById('fullName')?.addEventListener('input', () => {
   const name = document.getElementById('fullName').value.trim();
-  const nameRegex = /^[a-zA-Z\s\/\'\-\.]+$/;
+  const nameRegex = /^[a-zA-Z\u0600-\u06FF\s\/\'\-\.]+$/; // ✅
   if (name && !nameRegex.test(name)) {
     showFieldError('fullName', 'Nama penuh hanya boleh mengandungi huruf sahaja.');
   } else {
@@ -1147,7 +1146,7 @@ document.getElementById('agreeTerms')?.addEventListener('change', clearCheckboxE
 // ── GENERATE ID ──
 function generateId() {
   const year = new Date().getFullYear();
-  const random = Math.random().toString(36).substr(2, 8).toUpperCase();
+  const random = crypto.randomUUID().replace(/-/g,'').substring(0,8).toUpperCase();
   return `JDK-${year}-${random}`;
 }
 
@@ -1212,8 +1211,15 @@ async function handleFormSubmit(e) {
         .from('profile-pics')
         .upload(filename, selectedFile);
 
-      if (uploadError) {
+     if (uploadError) {
         console.error('Upload error:', uploadError.message);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Hantar Permohonan Beta Access';
+        showErrorPopup(
+          'Ralat Muat Naik Gambar',
+          'Gambar profil anda gagal dimuat naik. Sila cuba gambar lain atau semak sambungan internet anda.'
+        );
+        return;
       } else {
         const { data: urlData } = db.storage.from('profile-pics').getPublicUrl(filename);
         photo_url = urlData.publicUrl;
@@ -1412,7 +1418,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
     daftar_btn: 'Daftar Sekarang',
     // SLIDER
     slider_label: 'Galeri Platform', slider_title: 'Pengalaman <span class="gold">Jodohku.my</span>',
-    slider_desc: '10 aspek utama platform yang mengubah cara Muslim Malaysia mencari pasangan hidup',
+    slider_desc: '8 aspek utama platform yang mengubah cara Muslim Malaysia mencari pasangan hidup',
     slides: [
       { title: 'Padanan Berdasarkan Nilai Islam', desc: 'AI menganalisis keserasian agama, akhlak dan nilai hidup' },
       { title: 'Teknologi AI Terdepan', desc: '115 soalan psikologi dianalisis menggunakan machine learning' },
@@ -1422,8 +1428,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
       { title: 'Ekosistem Perkahwinan', desc: 'Dari padanan hingga pelamin — semua dalam satu platform' },
       { title: 'Analitik Mendalam', desc: 'Laporan keserasian terperinci berdasarkan 14 dimensi personaliti' },
       { title: 'Aplikasi Mobile Premium', desc: 'Interface yang elegant dan mudah digunakan untuk iOS dan Android' },
-      { title: 'Bimbingan Kaunselor Islam', desc: 'Tim pakar relationship coach dan kaunselor Islam sentiasa siap membantu' },
-      { title: 'Kisah Kejayaan', desc: 'Beribu pasangan telah menemui jodoh melalui platform kami' },
+     
     ],
     // PILLARS
     pillars_label: '4 Teras Utama', pillars_title: 'Senibina <span class="gold">Platform</span>',
@@ -1525,7 +1530,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
     success_msg: 'Congratulations on your early action! You have successfully registered for Jodohku.my beta access. We will contact you once the app is live on Playstore and Appstore. Thank you -Admin-',
     daftar_btn: 'Register Now',
     slider_label: 'Platform Gallery', slider_title: 'The <span class="gold">Jodohku.my</span> Experience',
-    slider_desc: '10 key aspects of the platform transforming how Malaysian Muslims find their life partner',
+    slider_desc: '8 key aspects of the platform transforming how Malaysian Muslims find their life partner',
     slides: [
       { title: 'Matching Based on Islamic Values', desc: 'AI analyses religious compatibility, character and life values' },
       { title: 'Leading AI Technology', desc: '115 psychology questions analysed using machine learning' },
@@ -1535,8 +1540,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
       { title: 'Wedding Ecosystem', desc: 'From matching to the wedding ceremony — all in one platform' },
       { title: 'In-Depth Analytics', desc: 'Detailed compatibility report based on 14 personality dimensions' },
       { title: 'Premium Mobile App', desc: 'Elegant and easy-to-use interface for iOS and Android' },
-      { title: 'Islamic Counsellor Guidance', desc: 'Our team of relationship coaches and Islamic counsellors is always ready to help' },
-      { title: 'Success Stories', desc: 'Thousands of couples have found their match through our platform' },
+      
     ],
     pillars_label: '4 Core Pillars', pillars_title: 'Platform <span class="gold">Architecture</span>',
     pillars_desc: 'Four strong pillars ensuring every aspect of the platform upholds Islamic values and delivers the best experience',
@@ -1631,7 +1635,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
     success_msg: 'تهانينا على تصرفك المبكر! لقد سجلت بنجاح للحصول على وصول تجريبي لـ Jodohku.my. سنتواصل معك بمجرد إطلاق التطبيق على Playstore وAppstore. شكراً لك -الإدارة-',
     daftar_btn: 'سجل الآن',
     slider_label: 'معرض المنصة', slider_title: 'تجربة <span class="gold">Jodohku.my</span>',
-    slider_desc: '١٠ جوانب رئيسية للمنصة تُغيّر طريقة بحث المسلمين الماليزيين عن شريك الحياة',
+    slider_desc: '٨ جوانب رئيسية للمنصة تُغيّر طريقة بحث المسلمين الماليزيين عن شريك الحياة',
     slides: [
       { title: 'مطابقة مبنية على القيم الإسلامية', desc: 'يحلل الذكاء الاصطناعي التوافق الديني والأخلاقي وقيم الحياة' },
       { title: 'تقنية الذكاء الاصطناعي المتقدمة', desc: '١١٥ سؤالاً نفسياً يتم تحليلها باستخدام التعلم الآلي' },
@@ -1641,8 +1645,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
       { title: 'منظومة الزواج', desc: 'من المطابقة إلى حفل الزفاف — كل شيء في منصة واحدة' },
       { title: 'تحليلات معمّقة', desc: 'تقرير توافق مفصّل مبني على ١٤ بُعداً شخصياً' },
       { title: 'تطبيق جوال متميز', desc: 'واجهة أنيقة وسهلة الاستخدام لنظامَي iOS وAndroid' },
-      { title: 'إرشاد المستشار الإسلامي', desc: 'فريق متخصص من مدربي العلاقات والمستشارين الإسلاميين دائماً في الخدمة' },
-      { title: 'قصص النجاح', desc: 'آلاف الأزواج وجدوا شريك حياتهم عبر منصتنا' },
+     
     ],
     pillars_label: '٤ ركائز أساسية', pillars_title: 'هندسة <span class="gold">المنصة</span>',
     pillars_desc: 'أربعة ركائز راسخة تضمن أن كل جانب من المنصة يلتزم بالقيم الإسلامية ويقدم أفضل تجربة',
@@ -1756,7 +1759,7 @@ const fTag = document.getElementById('footerTagline'); if (fTag) fTag.innerHTML 
   const cbLabel = document.querySelector('.checkbox-premium label');
   if (cbLabel) cbLabel.innerHTML = `${t.checkbox_text}<a href="#" onclick="openModal('termsModal');return false;">${t.terms_link}</a>${t.and_text}<a href="#" onclick="openModal('privacyModal');return false;">${t.privacy_link}</a>${t.checkbox_suffix}`;
   const btnSub = document.querySelector('.btn-submit-premium');
-  if (btnSub && !btnSub.disabled) btnSub.textContent = t.btn_submit;
+  if (btnSub) btnSub.textContent = t.btn_submit; // ✅
   const sTitle = document.querySelector('.success-title'); if (sTitle) sTitle.textContent = t.success_title;
   const sMsg = document.querySelector('.success-message'); if (sMsg) sMsg.textContent = t.success_msg;
 
@@ -1875,6 +1878,11 @@ setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
 
   localStorage.setItem('jdk_lang', lang);
 }
+
+    // ── RESTORE LANGUAGE ON LOAD ──
+const savedLang = localStorage.getItem('jdk_lang');
+if (savedLang && i18n[savedLang]) setLang(savedLang);
+    
 </script>
 
 <?php include 'footer.php'; ?>
