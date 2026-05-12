@@ -865,57 +865,56 @@ document.getElementById('icNo')?.addEventListener('input', function(e) {
   e.target.value = v;
 });
 
+// ── VALIDATION TRANSLATION HELPER ──                          // ✅ NEW
+function v() {
+  const lang = localStorage.getItem('jdk_lang') || 'ms';
+  return (i18n[lang] || i18n['ms']).validation;
+}
+
 // ── ADVANCED IC VALIDATION ──
 function validateIC(icFormatted) {
+  const vt = v();                                               // ✅ CHANGED
   const ic = icFormatted.replace(/-/g, '');
 
-  if (!ic || ic.length !== 12 || !/^\d{12}$/.test(ic)) {
-    return { valid: false, error: 'No. IC mesti mengandungi tepat 12 digit angka.' };
-  }
-  if (/^(\d)\1{11}$/.test(ic)) {
-    return { valid: false, error: 'No. IC tidak sah — corak berulang dikesan.' };
-  }
+  if (!ic || ic.length !== 12 || !/^\d{12}$/.test(ic))
+    return { valid: false, error: vt.ic_invalid };             // ✅ CHANGED
+  if (/^(\d)\1{11}$/.test(ic))
+    return { valid: false, error: vt.ic_repeat };              // ✅ CHANGED
+
   const sequential = '0123456789012345678901234567890';
   const reverseSeq = '9876543210987654321098765432109';
-  if (sequential.includes(ic.slice(0, 10)) || reverseSeq.includes(ic.slice(0, 10))) {
-    return { valid: false, error: 'No. IC tidak sah — urutan nombor palsu dikesan.' };
-  }
+  if (sequential.includes(ic.slice(0, 10)) || reverseSeq.includes(ic.slice(0, 10)))
+    return { valid: false, error: vt.ic_sequential };          // ✅ CHANGED
 
   const yy = parseInt(ic.substring(0, 2));
   const mm = parseInt(ic.substring(2, 4));
   const dd = parseInt(ic.substring(4, 6));
 
-  if (mm < 1 || mm > 12) {
-    return { valid: false, error: 'No. IC tidak sah — bulan lahir tidak wujud (digit 3-4).' };
-  }
+  if (mm < 1 || mm > 12)
+    return { valid: false, error: vt.ic_month };               // ✅ CHANGED
 
   const currentYear = new Date().getFullYear();
   const fullYear = yy <= (currentYear % 100) ? 2000 + yy : 1900 + yy;
   const daysInMonth = new Date(fullYear, mm, 0).getDate();
-  if (dd < 1 || dd > daysInMonth) {
-    return { valid: false, error: `No. IC tidak sah — tarikh lahir tidak wujud (digit 5-6, bulan ${mm} hanya ${daysInMonth} hari).` };
-  }
+  if (dd < 1 || dd > daysInMonth)
+    return { valid: false, error: vt.ic_day(mm, daysInMonth) }; // ✅ CHANGED
 
   const dob = new Date(fullYear, mm - 1, dd);
-  if (dob > new Date()) {
-    return { valid: false, error: 'No. IC tidak sah — tarikh lahir adalah pada masa hadapan.' };
-  }
+  if (dob > new Date())
+    return { valid: false, error: vt.ic_future };              // ✅ CHANGED
 
   const age = (new Date() - dob) / (1000 * 60 * 60 * 24 * 365.25);
-  if (age > 120) {
-    return { valid: false, error: 'No. IC tidak sah — tarikh lahir melebihi 120 tahun.' };
-  }
+  if (age > 120)
+    return { valid: false, error: vt.ic_old };                 // ✅ CHANGED
 
   const stateCode = parseInt(ic.substring(6, 8));
   const validStateCodes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
   const isValidState = validStateCodes.includes(stateCode) || (stateCode >= 21 && stateCode <= 59);
-  if (!isValidState) {
-    return { valid: false, error: `No. IC tidak sah — kod negeri tidak diiktiraf (digit 7-8: ${ic.substring(6, 8)}).` };
-  }
+  if (!isValidState)
+    return { valid: false, error: vt.ic_state(ic.substring(6, 8)) }; // ✅ CHANGED
 
   const lastDigit = parseInt(ic[11]);
   const gender = lastDigit % 2 === 0 ? 'Perempuan' : 'Lelaki';
-
   return {
     valid: true,
     gender,
@@ -1026,82 +1025,45 @@ function clearCheckboxError() {
 
 // ── MAIN FORM VALIDATION ──
 function validateForm() {
+  const vt = v();                                               // ✅ CHANGED
   let valid = true;
 
- 
-// Full Name
-const name = document.getElementById('fullName').value.trim();
-const nameRegex = /^[a-zA-Z\u0600-\u06FF\s\/\'\-\.]+$/;
-if (!name) {
-  showFieldError('fullName', 'Nama penuh diperlukan.');
-  valid = false;
-} else if (name.length < 3) {
-  showFieldError('fullName', 'Nama penuh terlalu pendek.');
-  valid = false;
-} else if (!nameRegex.test(name)) {
-  showFieldError('fullName', 'Nama penuh hanya boleh mengandungi huruf sahaja.');
-  valid = false;
-} else {
-  clearFieldError('fullName');
-}
+  // Full Name
+  const name = document.getElementById('fullName').value.trim();
+  const nameRegex = /^[a-zA-Z\u0600-\u06FF\s\/\'\-\.]+$/;
+  if (!name) { showFieldError('fullName', vt.name_required); valid = false; }            // ✅ CHANGED
+  else if (name.length < 3) { showFieldError('fullName', vt.name_short); valid = false; } // ✅ CHANGED
+  else if (!nameRegex.test(name)) { showFieldError('fullName', vt.name_invalid); valid = false; } // ✅ CHANGED
+  else { clearFieldError('fullName'); }
 
   // IC Number — advanced validation
   const icValue = document.getElementById('icNo').value;
   const icResult = validateIC(icValue);
-  if (!icValue.replace(/-/g,'')) {
-    showFieldError('icNo', 'No. Kad Pengenalan diperlukan.');
-    clearICHint();
-    valid = false;
-  } else if (!icResult.valid) {
-    showFieldError('icNo', icResult.error);
-    clearICHint();
-    valid = false;
-  } else {
-    clearFieldError('icNo');
-    showICHint(icResult);
-  }
+  if (!icValue.replace(/-/g,'')) { showFieldError('icNo', vt.ic_required); clearICHint(); valid = false; } // ✅ CHANGED
+  else if (!icResult.valid) { showFieldError('icNo', icResult.error); clearICHint(); valid = false; }
+  else { clearFieldError('icNo'); showICHint(icResult); }
 
   // Phone Number
   const phone = document.getElementById('phoneNo').value.trim();
   const phoneRegex = /^(\+?60|0)[1-9]\d{7,9}$/;
-  if (!phone) {
-    showFieldError('phoneNo', 'No. telefon diperlukan.');
-    valid = false;
-  } else if (!phoneRegex.test(phone.replace(/[\s-]/g, ''))) {
-    showFieldError('phoneNo', 'Format no. telefon tidak sah. Contoh: 011-12345678');
-    valid = false;
-  } else {
-    clearFieldError('phoneNo');
-  }
+  if (!phone) { showFieldError('phoneNo', vt.phone_required); valid = false; }           // ✅ CHANGED
+  else if (!phoneRegex.test(phone.replace(/[\s-]/g, ''))) { showFieldError('phoneNo', vt.phone_invalid); valid = false; } // ✅ CHANGED
+  else { clearFieldError('phoneNo'); }
 
   // Email
   const email = document.getElementById('emailAddr').value.trim();
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email) {
-    showFieldError('emailAddr', 'Alamat e-mel diperlukan.');
-    valid = false;
-  } else if (!emailRegex.test(email)) {
-    showFieldError('emailAddr', 'Format e-mel tidak sah. Contoh: nama@email.com');
-    valid = false;
-  } else {
-    clearFieldError('emailAddr');
-  }
+  if (!email) { showFieldError('emailAddr', vt.email_required); valid = false; }         // ✅ CHANGED
+  else if (!emailRegex.test(email)) { showFieldError('emailAddr', vt.email_invalid); valid = false; } // ✅ CHANGED
+  else { clearFieldError('emailAddr'); }
 
   // Profile Picture
-  if (!selectedFile) {
-    showUploadError('Sila muat naik gambar profil anda.');
-    valid = false;
-  } else {
-    clearUploadError();
-  }
+  if (!selectedFile) { showUploadError(vt.photo_required); valid = false; }              // ✅ CHANGED
+  else { clearUploadError(); }
 
   // Terms Checkbox
-  if (!document.getElementById('agreeTerms').checked) {
-    showCheckboxError('Sila bersetuju dengan Terma & Syarat untuk meneruskan.');
-    valid = false;
-  } else {
-    clearCheckboxError();
-  }
+  if (!document.getElementById('agreeTerms').checked) { showCheckboxError(vt.terms_required); valid = false; } // ✅ CHANGED
+  else { clearCheckboxError(); }
 
   return valid;
 }
@@ -1111,12 +1073,12 @@ if (!name) {
   document.getElementById(id)?.addEventListener('input', () => clearFieldError(id));
 });
 
-// Name — real-time letters only
+// Name — real-time letters only (translated)                   // ✅ CHANGED
 document.getElementById('fullName')?.addEventListener('input', () => {
   const name = document.getElementById('fullName').value.trim();
-  const nameRegex = /^[a-zA-Z\u0600-\u06FF\s\/\'\-\.]+$/; // ✅
+  const nameRegex = /^[a-zA-Z\u0600-\u06FF\s\/\'\-\.]+$/;
   if (name && !nameRegex.test(name)) {
-    showFieldError('fullName', 'Nama penuh hanya boleh mengandungi huruf sahaja.');
+    showFieldError('fullName', v().name_invalid);               // ✅ CHANGED
   } else {
     clearFieldError('fullName');
   }
@@ -1198,7 +1160,7 @@ async function handleFormSubmit(e) {
 
   const submitBtn = e.target.querySelector('.btn-submit-premium');
   submitBtn.disabled = true;
-  submitBtn.textContent = 'Memproses...';
+  submitBtn.textContent = v().processing;                       // ✅ CHANGED
 
   try {
     const jdk_id = generateId();
@@ -1211,14 +1173,11 @@ async function handleFormSubmit(e) {
         .from('profile-pics')
         .upload(filename, selectedFile);
 
-     if (uploadError) {
+      if (uploadError) {
         console.error('Upload error:', uploadError.message);
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Hantar Permohonan Beta Access';
-        showErrorPopup(
-          'Ralat Muat Naik Gambar',
-          'Gambar profil anda gagal dimuat naik. Sila cuba gambar lain atau semak sambungan internet anda.'
-        );
+        submitBtn.textContent = v().btn_submit;                 // ✅ CHANGED
+        showErrorPopup(v().photo_upload_fail_title, v().photo_upload_fail_msg); // ✅ CHANGED
         return;
       } else {
         const { data: urlData } = db.storage.from('profile-pics').getPublicUrl(filename);
@@ -1238,13 +1197,11 @@ async function handleFormSubmit(e) {
     if (error) {
       console.error('Supabase error:', error.message);
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Hantar Permohonan Beta Access';
+      submitBtn.textContent = v().btn_submit;                   // ✅ CHANGED
       const isDuplicate = error.message.includes('unique') || error.code === '23505';
       showErrorPopup(
-        isDuplicate ? 'Pendaftaran Didapati Duplikat' : 'Ralat Pendaftaran',
-        isDuplicate
-          ? 'Nombor IC atau e-mel ini telah didaftarkan sebelum ini. Setiap pengguna hanya boleh mendaftar sekali sahaja.'
-          : 'Ralat berlaku semasa pendaftaran. Sila cuba sebentar lagi.'
+        isDuplicate ? v().duplicate_title : v().error_title,   // ✅ CHANGED
+        isDuplicate ? v().duplicate_msg   : v().error_msg      // ✅ CHANGED
       );
       return;
     }
@@ -1256,8 +1213,8 @@ async function handleFormSubmit(e) {
   } catch (err) {
     console.error('Unexpected error:', err);
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Hantar Permohonan Beta Access';
-    showErrorPopup('Ralat Tidak Dijangka', err.message || 'Sila cuba sebentar lagi.');
+    submitBtn.textContent = v().btn_submit;                     // ✅ CHANGED
+    showErrorPopup(v().unexpected_title, err.message || v().error_msg); // ✅ CHANGED
   }
 }
 
