@@ -1166,24 +1166,41 @@ async function handleFormSubmit(e) {
     const jdk_id = generateId();
     let photo_url = null;
 
-    if (selectedFile) {
-      const ext = selectedFile.name.split('.').pop();
-      const filename = `${jdk_id}.${ext}`;
-      const { data: uploadData, error: uploadError } = await db.storage
-        .from('profile-pics')
-        .upload(filename, selectedFile);
+   if (selectedFile) {
+  const ext = selectedFile.name.split('.').pop();
+  const filename = `${jdk_id}.${ext}`;
+  const { data: uploadData, error: uploadError } = await db.storage
+    .from('profile-pics')
+    .upload(filename, selectedFile);
 
-      if (uploadError) {
-        console.error('Upload error:', uploadError.message);
-        submitBtn.disabled = false;
-        submitBtn.textContent = v().btn_submit;                 // ✅ CHANGED
-        showErrorPopup(v().photo_upload_fail_title, v().photo_upload_fail_msg); // ✅ CHANGED
-        return;
-      } else {
-        const { data: urlData } = db.storage.from('profile-pics').getPublicUrl(filename);
-        photo_url = urlData.publicUrl;
-      }
-    }
+  if (uploadError) {
+    console.error('Upload error:', uploadError.message);
+    submitBtn.disabled = false;
+    submitBtn.textContent = v().btn_submit;
+    showErrorPopup(v().photo_upload_fail_title, v().photo_upload_fail_msg);
+    return;
+  }
+
+  const { data: urlData } = db.storage.from('profile-pics').getPublicUrl(filename);
+  photo_url = urlData?.publicUrl || null;
+
+  // ── HARD GUARD: block insert if URL is missing ──
+  if (!photo_url) {
+    console.error('photo_url is null after upload');
+    submitBtn.disabled = false;
+    submitBtn.textContent = v().btn_submit;
+    showErrorPopup(v().photo_upload_fail_title, v().photo_upload_fail_msg);
+    return;
+  }
+}
+
+// ── HARD GUARD: block insert if no file was selected ──
+if (!photo_url) {
+  submitBtn.disabled = false;
+  submitBtn.textContent = v().btn_submit;
+  showErrorPopup(v().photo_upload_fail_title, v().photo_upload_fail_msg);
+  return;
+}
 
     const { error } = await db.from('registrations').insert([{
       jdk_id,
