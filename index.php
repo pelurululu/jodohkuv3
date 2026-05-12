@@ -866,6 +866,83 @@ document.getElementById('icNo')?.addEventListener('input', function(e) {
   e.target.value = v;
 });
 
+// ── ADVANCED IC VALIDATION ──
+function validateIC(icFormatted) {
+  const ic = icFormatted.replace(/-/g, '');
+
+  if (!ic || ic.length !== 12 || !/^\d{12}$/.test(ic)) {
+    return { valid: false, error: 'No. IC mesti mengandungi tepat 12 digit angka.' };
+  }
+  if (/^(\d)\1{11}$/.test(ic)) {
+    return { valid: false, error: 'No. IC tidak sah — corak berulang dikesan.' };
+  }
+  const sequential = '0123456789012345678901234567890';
+  const reverseSeq = '9876543210987654321098765432109';
+  if (sequential.includes(ic.slice(0, 10)) || reverseSeq.includes(ic.slice(0, 10))) {
+    return { valid: false, error: 'No. IC tidak sah — urutan nombor palsu dikesan.' };
+  }
+
+  const yy = parseInt(ic.substring(0, 2));
+  const mm = parseInt(ic.substring(2, 4));
+  const dd = parseInt(ic.substring(4, 6));
+
+  if (mm < 1 || mm > 12) {
+    return { valid: false, error: 'No. IC tidak sah — bulan lahir tidak wujud (digit 3-4).' };
+  }
+
+  const currentYear = new Date().getFullYear();
+  const fullYear = yy <= (currentYear % 100) ? 2000 + yy : 1900 + yy;
+  const daysInMonth = new Date(fullYear, mm, 0).getDate();
+  if (dd < 1 || dd > daysInMonth) {
+    return { valid: false, error: `No. IC tidak sah — tarikh lahir tidak wujud (digit 5-6, bulan ${mm} hanya ${daysInMonth} hari).` };
+  }
+
+  const dob = new Date(fullYear, mm - 1, dd);
+  if (dob > new Date()) {
+    return { valid: false, error: 'No. IC tidak sah — tarikh lahir adalah pada masa hadapan.' };
+  }
+
+  const age = (new Date() - dob) / (1000 * 60 * 60 * 24 * 365.25);
+  if (age > 120) {
+    return { valid: false, error: 'No. IC tidak sah — tarikh lahir melebihi 120 tahun.' };
+  }
+
+  const stateCode = parseInt(ic.substring(6, 8));
+  const validStateCodes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+  const isValidState = validStateCodes.includes(stateCode) || (stateCode >= 21 && stateCode <= 59);
+  if (!isValidState) {
+    return { valid: false, error: `No. IC tidak sah — kod negeri tidak diiktiraf (digit 7-8: ${ic.substring(6, 8)}).` };
+  }
+
+  const lastDigit = parseInt(ic[11]);
+  const gender = lastDigit % 2 === 0 ? 'Perempuan' : 'Lelaki';
+
+  return {
+    valid: true,
+    gender,
+    dob: `${dd.toString().padStart(2,'0')}/${mm.toString().padStart(2,'0')}/${fullYear}`,
+    age: Math.floor(age),
+    stateCode
+  };
+}
+
+// ── IC HINT HELPER ──
+function showICHint(result) {
+  const field = document.getElementById('icNo');
+  const existing = field.parentElement.querySelector('.field-hint');
+  if (existing) existing.remove();
+  const hint = document.createElement('div');
+  hint.className = 'field-hint';
+  hint.style.cssText = 'color:#4CAF50;font-size:11px;margin-top:5px;';
+  hint.textContent = `✓ ${result.gender} · Lahir: ${result.dob} · Umur: ${result.age} tahun`;
+  field.parentElement.appendChild(hint);
+}
+
+function clearICHint() {
+  const existing = document.getElementById('icNo')?.parentElement.querySelector('.field-hint');
+  if (existing) existing.remove();
+}
+
 // ── IMAGE UPLOAD HANDLER ──
 function handleImageUpload(event) {
   const file = event.target.files[0];
@@ -886,16 +963,13 @@ function handleImageUpload(event) {
   `;
 }
 
-// ── SHOW FIELD ERROR ──
+// ── SHOW / CLEAR FIELD ERRORS ──
 function showFieldError(id, message) {
   const field = document.getElementById(id);
   if (!field) return;
   field.style.borderColor = '#FF6B6B';
-
-  // Remove existing error msg if any
   const existing = field.parentElement.querySelector('.field-error');
   if (existing) existing.remove();
-
   const err = document.createElement('div');
   err.className = 'field-error';
   err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:6px;';
@@ -911,15 +985,12 @@ function clearFieldError(id) {
   if (existing) existing.remove();
 }
 
-// ── SHOW UPLOAD ERROR ──
 function showUploadError(message) {
   const uploadArea = document.querySelector('.upload-area');
   if (!uploadArea) return;
   uploadArea.style.borderColor = '#FF6B6B';
-
   const existing = uploadArea.parentElement.querySelector('.field-error');
   if (existing) existing.remove();
-
   const err = document.createElement('div');
   err.className = 'field-error';
   err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:6px;';
@@ -935,14 +1006,11 @@ function clearUploadError() {
   if (existing) existing.remove();
 }
 
-// ── SHOW CHECKBOX ERROR ──
 function showCheckboxError(message) {
   const cb = document.querySelector('.checkbox-premium');
   if (!cb) return;
-
   const existing = cb.querySelector('.field-error');
   if (existing) existing.remove();
-
   const err = document.createElement('div');
   err.className = 'field-error';
   err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:6px;';
@@ -957,7 +1025,7 @@ function clearCheckboxError() {
   if (existing) existing.remove();
 }
 
-// ── MAIN VALIDATION ──
+// ── MAIN FORM VALIDATION ──
 function validateForm() {
   let valid = true;
 
@@ -973,16 +1041,20 @@ function validateForm() {
     clearFieldError('fullName');
   }
 
-  // IC Number
-  const icRaw = document.getElementById('icNo').value.replace(/-/g, '');
-  if (!icRaw) {
+  // IC Number — advanced validation
+  const icValue = document.getElementById('icNo').value;
+  const icResult = validateIC(icValue);
+  if (!icValue.replace(/-/g,'')) {
     showFieldError('icNo', 'No. Kad Pengenalan diperlukan.');
+    clearICHint();
     valid = false;
-  } else if (icRaw.length !== 12 || !/^\d+$/.test(icRaw)) {
-    showFieldError('icNo', 'Format IC tidak sah. Contoh: 900101-14-1234');
+  } else if (!icResult.valid) {
+    showFieldError('icNo', icResult.error);
+    clearICHint();
     valid = false;
   } else {
     clearFieldError('icNo');
+    showICHint(icResult);
   }
 
   // Phone Number
@@ -1031,12 +1103,32 @@ function validateForm() {
 }
 
 // ── CLEAR ERRORS ON INPUT ──
-['fullName', 'icNo', 'phoneNo', 'emailAddr'].forEach(id => {
+['fullName', 'phoneNo', 'emailAddr'].forEach(id => {
   document.getElementById(id)?.addEventListener('input', () => clearFieldError(id));
 });
+
+// IC — real-time advanced validation
+document.getElementById('icNo')?.addEventListener('input', () => {
+  const icValue = document.getElementById('icNo').value;
+  const clean = icValue.replace(/-/g, '');
+  if (clean.length === 12) {
+    const result = validateIC(icValue);
+    if (!result.valid) {
+      showFieldError('icNo', result.error);
+      clearICHint();
+    } else {
+      clearFieldError('icNo');
+      showICHint(result);
+    }
+  } else {
+    clearFieldError('icNo');
+    clearICHint();
+  }
+});
+
 document.getElementById('agreeTerms')?.addEventListener('change', clearCheckboxError);
 
-  // ── GENERATE ID ──
+// ── GENERATE ID ──
 function generateId() {
   const year = new Date().getFullYear();
   const random = Math.random().toString(36).substr(2, 8).toUpperCase();
@@ -1047,7 +1139,6 @@ function generateId() {
 function showErrorPopup(title, message) {
   const existing = document.getElementById('errorPopup');
   if (existing) existing.remove();
-
   const popup = document.createElement('div');
   popup.id = 'errorPopup';
   popup.style.cssText = `
@@ -1085,7 +1176,6 @@ function showErrorPopup(title, message) {
 async function handleFormSubmit(e) {
   e.preventDefault();
   if (!validateForm()) {
-    // Scroll to first error
     const firstError = document.querySelector('.field-error');
     if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
@@ -1149,7 +1239,6 @@ async function handleFormSubmit(e) {
   }
 }
 
-  
 // ── TOUCH SWIPE CAROUSEL ──
 (function() {
   const slider = document.querySelector('.image-slider');
