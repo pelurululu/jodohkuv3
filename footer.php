@@ -27,3 +27,5 @@
     </div>
   </div>
 </footer>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "413a1edbb52c409cb0c0c6cf3891faa2"}'></script><!-- End Cloudflare Web Analytics -->
