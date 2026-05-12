@@ -859,10 +859,10 @@ let selectedFile = null;
 
 // ── IC FORMATTING ──
 document.getElementById('icNo')?.addEventListener('input', function(e) {
-  let v = e.target.value.replace(/\D/g, '');
-  if (v.length > 6 && v.length <= 8) v = v.slice(0,6) + '-' + v.slice(6);
-  else if (v.length > 8) v = v.slice(0,6) + '-' + v.slice(6,8) + '-' + v.slice(8,12);
-  e.target.value = v;
+  let raw = e.target.value.replace(/\D/g, '');
+  if (raw.length > 6 && raw.length <= 8) raw = raw.slice(0,6) + '-' + raw.slice(6);
+  else if (raw.length > 8) raw = raw.slice(0,6) + '-' + raw.slice(6,8) + '-' + raw.slice(8,12);
+  e.target.value = raw;
 });
 
 // ── VALIDATION TRANSLATION HELPER ──                          // ✅ NEW
