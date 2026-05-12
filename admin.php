@@ -106,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
       <th>JDK ID</th>
       <th>Nama</th>
       <th>IC</th>
+      <th>Tarikh Lahir</th>
       <th>Umur</th>
       <th>Jantina</th>
       <th>Negeri Lahir</th>
@@ -165,7 +166,8 @@ modal.onclick = () => {
   };
   const negeri = pb >= 21 && pb <= 59 ? 'Luar Negara' : (states[pb] || 'Tidak Diketahui');
 
-  return { umur: age + ' tahun', jantina, negeri };
+ const dobFormatted = `${dd.toString().padStart(2,'0')}/${mm.toString().padStart(2,'0')}/${fullYear}`;
+  return { umur: age + ' tahun', jantina, negeri, dob: dobFormatted };
 }
   
 async function load() {
@@ -186,6 +188,7 @@ async function load() {
       <td>${r.nama}</td>
       <td>${r.ic}</td>
 ${(() => { const d = decodeIC(r.ic); return `
+  <td>${d.dob}</td>
   <td>${d.umur}</td>
   <td>${d.jantina}</td>
   <td>${d.negeri}</td>
