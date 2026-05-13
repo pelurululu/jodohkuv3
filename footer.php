@@ -3,26 +3,15 @@
   <div class="footer-container">
 
     <!-- Privacy Notice -->
-    <div style="
-      border-bottom: 1px solid rgba(255,215,0,0.1);
-      padding: 20px 0;
-      margin-bottom: 0;
-    ">
-      <p style="
-        font-size: 11.5px;
-        color: #555;
-        line-height: 1.7;
-        text-align: center;
-        max-width: 860px;
-        margin: 0 auto;
-        font-family: 'Inter', sans-serif;
-      ">
-        <strong style="color: #777;">Jodohku.my</strong> komited melindungi data peribadi pengguna. 
+    <div style="border-bottom:1px solid rgba(255,215,0,0.1);padding:20px 0;">
+      <p style="font-size:11.5px;color:#555;line-height:1.7;text-align:center;max-width:860px;margin:0 auto;font-family:'Inter',sans-serif;">
+        <strong style="color:#777;">Jodohku.my</strong> komited melindungi data peribadi pengguna. 
         Data seperti nama penuh, nombor IC, nombor telefon dan maklumat profil dikumpul hanya untuk 
         tujuan pendaftaran, pengesahan identiti, keselamatan komuniti, pencegahan penipuan dan 
         penyediaan perkhidmatan. Maklumat IC tidak dipaparkan kepada pengguna lain. Dengan menggunakan 
         Jodohku.my, anda bersetuju dengan 
-        <a href="#" style="color: rgba(255,215,0,0.5); text-decoration: none; border-bottom: 1px solid rgba(255,215,0,0.2); transition: color 0.3s;">
+        <a href="#" onclick="openModal('privacyModal');return false;" 
+           style="color:rgba(255,215,0,0.5);text-decoration:none;border-bottom:1px solid rgba(255,215,0,0.2);">
           Polisi Privasi &amp; Notis Perlindungan Data Peribadi
         </a> kami.
       </p>
