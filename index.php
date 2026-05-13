@@ -1357,7 +1357,7 @@ document.querySelectorAll('.modal-overlay').forEach(m => {
       <button class="modal-close" onclick="closeModal('privacyModal')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-meta">Berkuat kuasa: [Masukkan tarikh] &nbsp;|&nbsp; Mematuhi: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Versi: 3.0</div>
+      <div class="modal-meta">Berkuat kuasa: 01/05/2026 &nbsp;|&nbsp; Mematuhi: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Versi: 3.0</div>
  
       <div class="modal-section"><h3>1. Pengenalan</h3><p>Polisi Privasi &amp; Notis Perlindungan Data Peribadi ini menerangkan bagaimana Jodohku.my ("Jodohku", "kami", "kita" atau "platform ini") mengumpul, menggunakan, menyimpan, melindungi dan mendedahkan data peribadi pengguna selaras dengan Akta Perlindungan Data Peribadi 2010 (PDPA/APDP) dan undang-undang berkaitan di Malaysia. Dengan menggunakan laman web, aplikasi, borang pendaftaran atau perkhidmatan Jodohku.my, anda bersetuju dengan pemprosesan data peribadi anda seperti yang dinyatakan dalam polisi ini.</p></div>
  
@@ -1387,7 +1387,7 @@ document.querySelectorAll('.modal-overlay').forEach(m => {
  
       <div class="modal-section"><h3>14. Pindaan Polisi</h3><p>Kami boleh mengemas kini polisi ini dari semasa ke semasa. Sebarang perubahan akan dipaparkan di website Jodohku.my dengan tarikh kuat kuasa terkini. Penggunaan berterusan terhadap perkhidmatan kami selepas perubahan dibuat dianggap sebagai persetujuan kepada polisi yang dikemas kini.</p></div>
  
-      <div class="modal-section"><h3>15. Hubungi Kami</h3><p>Jika anda mempunyai pertanyaan, permintaan akses, pembetulan data, pemadaman akaun atau aduan berkaitan data peribadi, sila hubungi:<br><br><strong>Jodohku.my</strong><br>E-mel: <strong>privasi@jodohku.my</strong><br>Website: <a href="https://www.jodohku.my" style="color:var(--gold, #FFD700);">https://www.jodohku.my</a><br><br><em>Tajuk e-mel cadangan: "Permintaan Data Peribadi / PDPA"</em></p></div>
+      <div class="modal-section"><h3>15. Hubungi Kami</h3><p>Jika anda mempunyai pertanyaan, permintaan akses, pembetulan data, pemadaman akaun atau aduan berkaitan data peribadi, sila hubungi:<br><br><strong>Jodohku.my</strong><br>E-mel: <strong>inquiry@jodohku.my</strong><br>Website: <a href="https://www.jodohku.my" style="color:var(--gold, #FFD700);">https://www.jodohku.my</a><br><br><em>Tajuk e-mel cadangan: "Permintaan Data Peribadi / PDPA"</em></p></div>
     </div>
   </div>
 </div>
