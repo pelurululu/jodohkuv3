@@ -1437,6 +1437,7 @@ const i18n = {
 footer_initiative: 'Sebuah Inisiatif',
 footer_sub: 'Jodohku.my adalah jenama di bawah portfolio <strong style="color:#555;">Noble Synergy Ventures</strong>',
 footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Platform',
+    footer_privacy_notice: '<strong style="color:#777;">Jodohku.my</strong> komited melindungi data peribadi pengguna. Data seperti nama penuh, nombor IC, nombor telefon dan maklumat profil dikumpul hanya untuk tujuan pendaftaran, pengesahan identiti, keselamatan komuniti, pencegahan penipuan dan penyediaan perkhidmatan. Maklumat IC tidak dipaparkan kepada pengguna lain. Dengan menggunakan Jodohku.my, anda bersetuju dengan <a href="#" onclick="openModal(\'privacyModal\');return false;" style="color:rgba(255,215,0,0.5);text-decoration:none;border-bottom:1px solid rgba(255,215,0,0.2);">Polisi Privasi &amp; Notis Perlindungan Data Peribadi</a> kami.',
     dir: 'ltr',
     nav_cta: 'Daftar Sekarang',
     nav_platform: 'Platform', nav_kelebihan: 'Kelebihan', nav_perbandingan: 'Perbandingan',
@@ -1600,6 +1601,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
 footer_initiative: 'An Initiative by',
 footer_sub: 'Jodohku.my is a brand under the portfolio of <strong style="color:#555;">Noble Synergy Ventures</strong>',
 footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Platform',
+    footer_privacy_notice: '<strong style="color:#777;">Jodohku.my</strong> is committed to protecting your personal data. Information such as full name, IC number, phone number and profile details are collected solely for registration, identity verification, community safety, fraud prevention and service delivery. Your IC number is not displayed to other users. By using Jodohku.my, you agree to our <a href="#" onclick="openModal(\'privacyModal\');return false;" style="color:rgba(255,215,0,0.5);text-decoration:none;border-bottom:1px solid rgba(255,215,0,0.2);">Privacy Policy &amp; Personal Data Protection Notice</a>.',
     dir: 'ltr',
     nav_cta: 'Register Now',
     nav_platform: 'Platform', nav_kelebihan: 'Features', nav_perbandingan: 'Comparison',
@@ -1754,6 +1756,7 @@ unexpected_title: 'خطأ غير متوقع',
 footer_initiative: 'مبادرة من',
 footer_sub: 'Jodohku.my علامة تجارية ضمن محفظة <strong style="color:#555;">Noble Synergy Ventures</strong>',
 footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Platform',
+    footer_privacy_notice: '<strong style="color:#777;">Jodohku.my</strong> ملتزمة بحماية بياناتك الشخصية. يتم جمع المعلومات مثل الاسم الكامل ورقم الهوية ورقم الهاتف وتفاصيل الملف الشخصي فقط لأغراض التسجيل والتحقق من الهوية وسلامة المجتمع ومنع الاحتيال وتقديم الخدمات. لن يتم عرض رقم هويتك للمستخدمين الآخرين. باستخدامك Jodohku.my، فإنك توافق على <a href="#" onclick="openModal(\'privacyModal\');return false;" style="color:rgba(255,215,0,0.5);text-decoration:none;border-bottom:1px solid rgba(255,215,0,0.2);">سياسة الخصوصية وإشعار حماية البيانات الشخصية</a>.',
     dir: 'rtl',
     nav_cta: 'سجل الآن',
     nav_platform: 'المنصة', nav_kelebihan: 'المميزات', nav_perbandingan: 'المقارنة',
@@ -1884,6 +1887,7 @@ function setLang(lang) {
 const fInit = document.getElementById('footerInitiative'); if (fInit) fInit.textContent = t.footer_initiative;
 const fSubEl = document.getElementById('footerSub'); if (fSubEl) fSubEl.innerHTML = t.footer_sub;
 const fTag = document.getElementById('footerTagline'); if (fTag) fTag.innerHTML = t.footer_tagline;
+  const fPrivacy = document.getElementById('footerPrivacyNotice'); if (fPrivacy) fPrivacy.innerHTML = t.footer_privacy_notice;
 
   // NAV
   document.querySelectorAll('[data-i18n="nav_cta"]').forEach(el => el.textContent = t.nav_cta);
