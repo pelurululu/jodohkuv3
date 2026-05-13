@@ -1581,7 +1581,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
       { h: '5. Hubungi Kami', p: '<strong>Noble Synergy Ventures</strong><br>E-mel: legal@jodohku.my' },
   ],
     privacy_title: 'Dasar Privasi & Notis Perlindungan Data Peribadi',
-    privacy_meta: 'Berkuat kuasa: [Masukkan tarikh] &nbsp;|&nbsp; Mematuhi: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Versi: 3.0',
+    privacy_meta: 'Berkuat kuasa: 01/05/2026 &nbsp;|&nbsp; Mematuhi: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Versi: 3.0',
     privacy_sections: [
       { h: '1. Pengenalan', p: 'Polisi Privasi ini menerangkan bagaimana Jodohku.my mengumpul, menggunakan, menyimpan, melindungi dan mendedahkan data peribadi pengguna selaras dengan PDPA 2010.' },
       { h: '2. Data Peribadi Yang Kami Kumpul', p: '<ul><li><strong>Maklumat identiti:</strong> nama penuh, nombor kad pengenalan/MyKad, tarikh lahir, umur, jantina, status perkahwinan.</li><li><strong>Maklumat hubungan:</strong> nombor telefon, alamat e-mel, negeri/daerah.</li><li><strong>Maklumat profil:</strong> gambar profil, biodata, minat, kriteria pasangan.</li><li><strong>Maklumat teknikal:</strong> alamat IP, jenis peranti, pelayar, cookies.</li></ul>' },
@@ -1597,7 +1597,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
       { h: '12. Cookies', p: 'Kami menggunakan cookies untuk fungsi log masuk, tetapan pengguna dan analisis penggunaan.' },
       { h: '13. Pautan Pihak Ketiga', p: 'Kami tidak bertanggungjawab terhadap polisi privasi laman pihak ketiga.' },
       { h: '14. Pindaan Polisi', p: 'Polisi ini boleh dikemas kini dari semasa ke semasa. Penggunaan berterusan dianggap persetujuan kepada polisi terkini.' },
-      { h: '15. Hubungi Kami', p: '<strong>Jodohku.my</strong><br>E-mel: <strong>privasi@jodohku.my</strong><br><a href="https://www.jodohku.my" style="color:var(--gold,#FFD700);">https://www.jodohku.my</a>' },
+      { h: '15. Hubungi Kami', p: '<strong>Jodohku.my</strong><br>E-mel: <strong>inquiry@jodohku.my</strong><br><a href="https://www.jodohku.my" style="color:var(--gold,#FFD700);">https://www.jodohku.my</a>' },
     ],
   },
 
@@ -1738,7 +1738,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
       { h: '5. Contact Us', p: '<strong>Noble Synergy Ventures</strong><br>Email: legal@jodohku.my' },
     ],
     privacy_title: 'Privacy Policy & Personal Data Protection Notice',
-    privacy_meta: 'Effective: [Insert date] &nbsp;|&nbsp; Compliant with: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Version: 3.0',
+    privacy_meta: 'Effective: 01/05/2026 &nbsp;|&nbsp; Compliant with: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Version: 3.0',
     privacy_sections: [
       { h: '1. Introduction', p: 'This Privacy Policy explains how Jodohku.my collects, uses, stores, protects and discloses user personal data in accordance with PDPA 2010.' },
       { h: '2. Personal Data We Collect', p: '<ul><li><strong>Identity:</strong> full name, IC/MyKad number, date of birth, age, gender, marital status.</li><li><strong>Contact:</strong> phone number, email, state/district.</li><li><strong>Profile:</strong> profile photo, bio, interests, partner criteria.</li><li><strong>Technical:</strong> IP address, device type, browser, cookies.</li></ul>' },
@@ -1754,7 +1754,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
       { h: '12. Cookies', p: 'We use cookies for login functions, user settings and usage analytics.' },
       { h: '13. Third-Party Links', p: 'We are not responsible for the privacy policies of third-party websites.' },
       { h: '14. Policy Amendments', p: 'This policy may be updated from time to time. Continued use constitutes acceptance of the updated policy.' },
-      { h: '15. Contact Us', p: '<strong>Jodohku.my</strong><br>Email: <strong>privasi@jodohku.my</strong><br><a href="https://www.jodohku.my" style="color:var(--gold,#FFD700);">https://www.jodohku.my</a>' },
+      { h: '15. Contact Us', p: '<strong>Jodohku.my</strong><br>Email: <strong>inquiry@jodohku.my</strong><br><a href="https://www.jodohku.my" style="color:var(--gold,#FFD700);">https://www.jodohku.my</a>' },
     ],
   },
 
@@ -1894,7 +1894,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
       { h: '٥. تواصل معنا', p: '<strong>Noble Synergy Ventures</strong><br>البريد الإلكتروني: legal@jodohku.my' },
     ],
     privacy_title: 'سياسة الخصوصية وإشعار حماية البيانات الشخصية',
-    privacy_meta: 'نافذ المفعول: [أدخل التاريخ] &nbsp;|&nbsp; متوافق مع: PDPA 2010 (ماليزيا) &nbsp;|&nbsp; الإصدار: 3.0',
+    privacy_meta: 'نافذ المفعول: 01/05/2026 &nbsp;|&nbsp; متوافق مع: PDPA 2010 (ماليزيا) &nbsp;|&nbsp; الإصدار: 3.0',
     privacy_sections: [
       { h: '١. مقدمة', p: 'توضح هذه السياسة كيفية قيام Jodohku.my بجمع بيانات المستخدمين الشخصية واستخدامها وحمايتها وفقاً لقانون PDPA 2010.' },
       { h: '٢. البيانات الشخصية التي نجمعها', p: '<ul><li><strong>الهوية:</strong> الاسم الكامل، رقم الهوية/MyKad، تاريخ الميلاد، العمر، الجنس، الحالة الاجتماعية.</li><li><strong>الاتصال:</strong> رقم الهاتف، البريد الإلكتروني، الولاية/المنطقة.</li><li><strong>الملف الشخصي:</strong> صورة الملف، السيرة الذاتية، الاهتمامات، معايير الشريك.</li><li><strong>التقنية:</strong> عنوان IP، نوع الجهاز، المتصفح، ملفات تعريف الارتباط.</li></ul>' },
@@ -1910,7 +1910,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
       { h: '١٢. ملفات تعريف الارتباط', p: 'نستخدم ملفات تعريف الارتباط لوظائف تسجيل الدخول وإعدادات المستخدم وتحليل الاستخدام.' },
       { h: '١٣. روابط أطراف ثالثة', p: 'لسنا مسؤولين عن سياسات خصوصية مواقع الأطراف الثالثة.' },
       { h: '١٤. تعديلات السياسة', p: 'قد يتم تحديث هذه السياسة من حين لآخر. الاستمرار في الاستخدام يُعدّ موافقة على السياسة المحدّثة.' },
-      { h: '١٥. تواصل معنا', p: '<strong>Jodohku.my</strong><br>البريد الإلكتروني: <strong>privasi@jodohku.my</strong><br><a href="https://www.jodohku.my" style="color:var(--gold,#FFD700);">https://www.jodohku.my</a>' },
+      { h: '١٥. تواصل معنا', p: '<strong>Jodohku.my</strong><br>البريد الإلكتروني: <strong>inquiry@jodohku.my</strong><br><a href="https://www.jodohku.my" style="color:var(--gold,#FFD700);">https://www.jodohku.my</a>' },
     ],
   }
 };
