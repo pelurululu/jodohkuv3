@@ -951,14 +951,54 @@ function handleImageUpload(event) {
     return;
   }
   selectedFile = file;
-  const uploadArea = event.target.parentElement;
-  uploadArea.innerHTML = `
-    <div style="text-align:center; color:var(--gold);">
-      <div style="font-size:24px; margin-bottom:8px;">✓</div>
-      <div style="font-size:13px;">${v().upload_success}</div>
-      <div style="font-size:12px; color:#B0B0B0; margin-top:4px;">${file.name}</div>
-    </div>
-  `;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const uploadArea = document.querySelector('.upload-area');
+    uploadArea.innerHTML = `
+      <div style="text-align:center;">
+        <div style="position:relative; display:inline-block; margin-bottom:12px;">
+          <img 
+            src="${e.target.result}" 
+            alt="Preview"
+            style="
+              width:110px; height:110px; object-fit:cover;
+              border-radius:50%; border:3px solid var(--gold);
+              box-shadow:0 0 20px rgba(255,215,0,0.3);
+              display:block;
+            "
+          >
+          <div style="
+            position:absolute; bottom:4px; right:4px;
+            width:28px; height:28px; border-radius:50%;
+            background:linear-gradient(135deg,var(--emerald),var(--emerald-light));
+            border:2px solid var(--gold);
+            display:flex; align-items:center; justify-content:center;
+            font-size:14px; color:#fff;
+          ">✓</div>
+        </div>
+        <div style="font-size:13px; color:var(--gold); font-weight:600; margin-bottom:4px;">
+          ${v().upload_success}
+        </div>
+        <div style="font-size:11px; color:#888; margin-bottom:10px;">
+          ${file.name}
+        </div>
+        <label style="
+          display:inline-block; cursor:pointer;
+          font-size:11px; color:#666;
+          border:1px solid rgba(255,255,255,0.1);
+          padding:5px 14px; border-radius:20px;
+          transition:all 0.3s;
+        "
+        onmouseover="this.style.borderColor='rgba(255,215,0,0.4)';this.style.color='var(--gold)'"
+        onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#666'"
+        >
+          ${v().upload_change}
+          <input type="file" accept="image/*" onchange="handleImageUpload(event)" style="display:none;">
+        </label>
+      </div>
+    `;
+  };
+  reader.readAsDataURL(file);
 }
 
 // ── SHOW / CLEAR FIELD ERRORS ──
@@ -1431,6 +1471,7 @@ const i18n = {
   ic_hint: (gender, dob, age) => `✓ ${gender} · Lahir: ${dob} · Umur: ${age} tahun`,
   gender_male: 'Lelaki',
   gender_female: 'Perempuan',
+  upload_change: 'Tukar Gambar',
 },
     
     footer_copyright: '&copy; 2025 <strong>Jodohku.my</strong>. Hak Cipta Terpelihara.',
@@ -1595,6 +1636,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
   ic_hint: (gender, dob, age) => `✓ ${gender} · DOB: ${dob} · Age: ${age}`,
   gender_male: 'Male',
   gender_female: 'Female',
+  upload_change: 'Change Photo',
 },
     
     footer_copyright: '&copy; 2025 <strong>Jodohku.my</strong>. All Rights Reserved.',
@@ -1751,6 +1793,7 @@ unexpected_title: 'خطأ غير متوقع',
   ic_hint: (gender, dob, age) => `✓ ${gender} · تاريخ الميلاد: ${dob} · العمر: ${age}`,
   gender_male: 'ذكر',
   gender_female: 'أنثى',
+  upload_change: 'تغيير الصورة',
 },
     footer_copyright: '&copy; 2025 <strong>Jodohku.my</strong>. جميع الحقوق محفوظة.',
 footer_initiative: 'مبادرة من',
