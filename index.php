@@ -1521,9 +1521,9 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
     wed_heading: 'Dari Padanan Hingga Pelamin — Semua Dalam Satu Platform',
     wed_desc: '<strong style="color:var(--gold);font-size:18px;">Spektrum Ekosistem Perkahwinan</strong> adalah rangkaian lengkap vendor halal, pakej majlis, perkhidmatan fotografi, catering dan wedding planning yang terintegrasi dengan platform. Setiap vendor telah melalui proses audit ketat untuk memastikan kualiti premium dan pematuhan syariah. Sistem booking digital membolehkan pasangan merancang majlis impian mereka dengan mudah dan telus.',
     // MODALS
-    terms_title: 'Terma & Syarat', privacy_title: 'Dasar Privasi',
+    terms_title: 'Terma & Syarat', 
     terms_meta: 'Berkuat kuasa: 1 Januari 2025 &nbsp;|&nbsp; Versi: 2.1 &nbsp;|&nbsp; Bahasa: Bahasa Malaysia',
-    privacy_meta: 'Berkuat kuasa: 1 Januari 2025 &nbsp;|&nbsp; Mematuhi: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Versi: 2.1',
+   
     close_btn: '✕',
     terms_sections: [
       { h: '1. Penerimaan Terma', p: 'Dengan mengakses atau menggunakan platform Jodohku.my ("Platform"), anda bersetuju untuk terikat dengan Terma & Syarat ini. Platform ini diuruskan oleh <strong>Noble Synergy Ventures</strong> di bawah undang-undang Malaysia.' },
@@ -1532,11 +1532,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
       { h: '4. Sistem Wali', p: 'Penglibatan Wali adalah <strong>diwajibkan</strong> bagi setiap pengguna wanita sebelum sebarang komunikasi dibenarkan.' },
       { h: '5. Hubungi Kami', p: '<strong>Noble Synergy Ventures</strong><br>E-mel: legal@jodohku.my' },
     ],
-    privacy_sections: [
-      { h: '1. Tanggungjawab Kami', p: 'Noble Synergy Ventures komited untuk melindungi privasi anda selaras dengan Akta Perlindungan Data Peribadi 2010 (PDPA 2010) Malaysia.' },
-      { h: '2. Data Yang Dikumpul', p: '<ul><li><strong>Data Identiti:</strong> Nama penuh, nombor MyKad, tarikh lahir.</li><li><strong>Data Profil:</strong> Gambar, pendidikan, pekerjaan, nilai agama.</li><li><strong>Data Psikologi:</strong> Jawapan 115 soalan (diproses tanpa nama).</li><li><strong>Data Teknikal:</strong> Alamat IP, log akses.</li></ul>' },
-      { h: '3. Hak Pengguna', p: 'Anda berhak untuk mengakses, meminda, menarik balik kebenaran, dan meminta pemadaman data anda. Hubungi: <strong>privasi@jodohku.my</strong>' },
-    ],
+  
   },
 
   en: {
@@ -1656,9 +1652,9 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
     wed_label: 'Comprehensive Ecosystem', wed_title: 'The <span class="gold">Wedding Ecosystem</span> Spectrum',
     wed_heading: 'From Matching to the Aisle — All in One Platform',
     wed_desc: '<strong style="color:var(--gold);font-size:18px;">The Wedding Ecosystem Spectrum</strong> is a complete network of halal vendors, event packages, photography services, catering and wedding planning integrated into the platform. Every vendor undergoes a rigorous audit to ensure premium quality and Shariah compliance. The digital booking system allows couples to plan their dream event easily and transparently.',
-    terms_title: 'Terms & Conditions', privacy_title: 'Privacy Policy',
+    terms_title: 'Terms & Conditions',
     terms_meta: 'Effective: 1 January 2025 &nbsp;|&nbsp; Version: 2.1 &nbsp;|&nbsp; Language: English',
-    privacy_meta: 'Effective: 1 January 2025 &nbsp;|&nbsp; Compliant with: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Version: 2.1',
+   
     close_btn: '✕',
     terms_sections: [
       { h: '1. Acceptance of Terms', p: 'By accessing or using the Jodohku.my platform ("Platform"), you agree to be bound by these Terms & Conditions. This platform is operated by <strong>Noble Synergy Ventures</strong> under the laws of Malaysia.' },
@@ -1667,11 +1663,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
       { h: '4. Guardian System', p: 'Guardian involvement is <strong>mandatory</strong> for every female user before any communication is permitted.' },
       { h: '5. Contact Us', p: '<strong>Noble Synergy Ventures</strong><br>Email: legal@jodohku.my' },
     ],
-    privacy_sections: [
-      { h: '1. Our Responsibility', p: 'Noble Synergy Ventures is committed to protecting your privacy in accordance with the Personal Data Protection Act 2010 (PDPA 2010) of Malaysia.' },
-      { h: '2. Data Collected', p: '<ul><li><strong>Identity Data:</strong> Full name, MyKad number, date of birth.</li><li><strong>Profile Data:</strong> Photo, education, occupation, religious values.</li><li><strong>Psychology Data:</strong> Answers to 115 questions (processed anonymously).</li><li><strong>Technical Data:</strong> IP address, access logs.</li></ul>' },
-      { h: '3. User Rights', p: 'You have the right to access, amend, withdraw consent, and request deletion of your data. Contact: <strong>privasi@jodohku.my</strong>' },
-    ],
+    
   },
 
   ar: {
@@ -1791,9 +1783,9 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
     wed_label: 'منظومة متكاملة', wed_title: 'طيف <span class="gold">منظومة الزواج</span>',
     wed_heading: 'من المطابقة إلى حفل الزفاف — كل شيء في منصة واحدة',
     wed_desc: '<strong style="color:var(--gold);font-size:18px;">طيف منظومة الزواج</strong> هو شبكة متكاملة من الموردين الحلال، وباقات المناسبات، وخدمات التصوير، والطعام، وتخطيط الأفراح المتكاملة مع المنصة. خضع كل مورد لعملية تدقيق صارمة لضمان الجودة الفاخرة والامتثال للشريعة. يتيح نظام الحجز الرقمي للأزواج التخطيط لحفل أحلامهم بسهولة وشفافية.',
-    terms_title: 'الشروط والأحكام', privacy_title: 'سياسة الخصوصية',
+    terms_title: 'الشروط والأحكام',
     terms_meta: 'نافذ المفعول: ١ يناير ٢٠٢٥ &nbsp;|&nbsp; الإصدار: ٢.١',
-    privacy_meta: 'نافذ المفعول: ١ يناير ٢٠٢٥ &nbsp;|&nbsp; متوافق مع: PDPA 2010 (ماليزيا) &nbsp;|&nbsp; الإصدار: ٢.١',
+  
     close_btn: '✕',
     terms_sections: [
       { h: '١. قبول الشروط', p: 'باستخدامك لمنصة Jodohku.my، فإنك توافق على الالتزام بهذه الشروط والأحكام. تُدار هذه المنصة من قِبَل <strong>Noble Synergy Ventures</strong> وفق قوانين ماليزيا.' },
@@ -1802,13 +1794,76 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
       { h: '٤. نظام الولي', p: 'مشاركة الولي <strong>إلزامية</strong> لكل مستخدمة قبل السماح بأي تواصل.' },
       { h: '٥. تواصل معنا', p: '<strong>Noble Synergy Ventures</strong><br>البريد الإلكتروني: legal@jodohku.my' },
     ],
-    privacy_sections: [
-      { h: '١. مسؤوليتنا', p: 'تلتزم Noble Synergy Ventures بحماية خصوصيتك وفقاً لقانون حماية البيانات الشخصية لعام ٢٠١٠ (PDPA 2010) في ماليزيا.' },
-      { h: '٢. البيانات المجمّعة', p: '<ul><li><strong>بيانات الهوية:</strong> الاسم الكامل، رقم بطاقة الهوية، تاريخ الميلاد.</li><li><strong>بيانات الملف الشخصي:</strong> الصورة، التعليم، المهنة، القيم الدينية.</li><li><strong>البيانات النفسية:</strong> إجابات الـ١١٥ سؤالاً (تتم معالجتها بصورة مجهولة).</li><li><strong>البيانات التقنية:</strong> عنوان IP، سجلات الوصول.</li></ul>' },
-      { h: '٣. حقوق المستخدم', p: 'يحق لك الوصول إلى بياناتك وتعديلها وسحب الموافقة وطلب حذفها. تواصل عبر: <strong>privasi@jodohku.my</strong>' },
-    ],
+   
   }
 };
+    const privacy_ar = {
+  privacy_title: 'سياسة الخصوصية وإشعار حماية البيانات الشخصية',
+  privacy_meta: 'نافذ المفعول: [أدخل التاريخ] &nbsp;|&nbsp; متوافق مع: PDPA 2010 (ماليزيا) &nbsp;|&nbsp; الإصدار: 3.0',
+  privacy_sections: [
+    {
+      h: '١. مقدمة',
+      p: 'توضح سياسة الخصوصية وإشعار حماية البيانات الشخصية هذه كيفية قيام Jodohku.my ("Jodohku" أو "نحن" أو "المنصة") بجمع بيانات المستخدمين الشخصية واستخدامها وتخزينها وحمايتها والإفصاح عنها وفقاً لقانون حماية البيانات الشخصية لعام 2010 (PDPA 2010) والقوانين ذات الصلة في ماليزيا. باستخدامك لموقع Jodohku.my أو تطبيقه أو نماذج التسجيل أو خدماته، فإنك توافق على معالجة بياناتك الشخصية كما هو موضح في هذه السياسة.'
+    },
+    {
+      h: '٢. البيانات الشخصية التي نجمعها',
+      p: '<ul><li><strong>معلومات الهوية:</strong> الاسم الكامل، رقم بطاقة الهوية/MyKad، تاريخ الميلاد، العمر، الجنس، الحالة الاجتماعية.</li><li><strong>معلومات الاتصال:</strong> رقم الهاتف، البريد الإلكتروني، الولاية/المنطقة.</li><li><strong>معلومات الملف الشخصي:</strong> صورة الملف، السيرة الذاتية، الاهتمامات، معايير الشريك وغيرها مما تختار إدراجه.</li><li><strong>معلومات الحساب:</strong> اسم المستخدم، كلمة المرور المشفرة، سجلات تسجيل الدخول، حالة التحقق.</li><li><strong>المعلومات التقنية:</strong> عنوان IP، نوع الجهاز، المتصفح، ملفات تعريف الارتباط، سجلات استخدام الموقع.</li><li><strong>معلومات التواصل:</strong> الرسائل المرسلة إلى Jodohku، الشكاوى، سجلات دعم العملاء.</li></ul>'
+    },
+    {
+      h: '٣. لماذا نحتاج إلى اسمك الكامل ورقم هويتك',
+      p: '<ul><li><strong>التحقق من الهوية:</strong> للتأكد من أن المستخدمين المسجلين أفراد حقيقيون وليسوا حسابات وهمية.</li><li><strong>التحقق من العمر:</strong> للتأكد من استيفاء المستخدمين للحد الأدنى من العمر المطلوب.</li><li><strong>منع الاحتيال والنصب:</strong> للحد من مخاطر انتحال الشخصية والحسابات المكررة واحتيال المشاعر وإساءة استخدام المنصة.</li><li><strong>سلامة المجتمع:</strong> لحماية المستخدمين الآخرين ودعم الإجراءات المتخذة ضد بلاغات السلوك المسيء.</li><li><strong>إدارة الشكاوى الداخلية:</strong> يمكن استخدام معلومات الهوية في المراجعة الداخلية عند ورود بلاغات احتيال أو تحرش.</li><li><strong>الامتثال القانوني:</strong> عند الاقتضاء بموجب القانون أو أمر المحكمة أو الجهات المختصة.</li></ul><p style="margin-top:8px;"><em>لن يتم عرض رقم هويتك علنياً للمستخدمين الآخرين.</em></p>'
+    },
+    {
+      h: '٤. أغراض معالجة البيانات الشخصية',
+      p: '<ol><li>إنشاء حسابات المستخدمين وإدارتها.</li><li>التحقق من هوية المستخدمين وأعمارهم.</li><li>توفير وظيفة المطابقة أو البحث عن الشريك.</li><li>عرض معلومات الملف الشخصي التي تختار مشاركتها.</li><li>التواصل معك بشأن حسابك أو الأمان أو تحديثات الخدمة.</li><li>معالجة المدفوعات أو الاشتراكات عند الاقتضاء.</li><li>إدارة الشكاوى والاستفسارات ودعم العملاء.</li><li>رصد الاحتيال والحسابات الوهمية والتحرش وإساءة استخدام المنصة والتصدي لها.</li><li>تحسين الموقع والتطبيق والأمان وتجربة المستخدم.</li><li>الامتثال للمتطلبات القانونية أو الإجراءات القانونية.</li></ol>'
+    },
+    {
+      h: '٥. أساس الموافقة',
+      p: 'بتقديمك بياناتك الشخصية إلى Jodohku.my، فإنك توافق على قيامنا بجمع تلك البيانات وتخزينها واستخدامها ومعالجتها للأغراض المذكورة. إذا لم توافق على تقديم معلومات معينة مطلوبة، فقد لا نتمكن من توفير وصول كامل لخدمات Jodohku.my، بما في ذلك وظائف التسجيل والتحقق والمطابقة.'
+    },
+    {
+      h: '٦. الإفصاح عن البيانات الشخصية لأطراف ثالثة',
+      p: '<p>نحن <strong>لا نبيع</strong> بياناتك الشخصية لأطراف ثالثة. غير أنه قد يتم الإفصاح عن بياناتك للأطراف التالية عند الضرورة:</p><ul><li>مزودو خدمات الاستضافة والسحابة وقواعد البيانات وأمان الأنظمة.</li><li>مزودو خدمات الدفع عند إجراء المعاملات.</li><li>مزودو خدمات البريد الإلكتروني والرسائل القصيرة والإشعارات.</li><li>فرق الدعم والمديرون والمشرفون في Jodohku.</li><li>المستشارون القانونيون والمدققون والمستشارون المهنيون.</li><li>الجهات المختصة والمحاكم ووكالات الإنفاذ حين يستوجبه القانون.</li><li>أطراف أخرى تفوّضها أنت شخصياً.</li></ul><p style="margin-top:8px;">يتم كل إفصاح وفق ضرورة معقولة وصلة بخدمات Jodohku.my.</p>'
+    },
+    {
+      h: '٧. أمان البيانات الشخصية',
+      p: '<p>نتخذ تدابير أمنية معقولة لحماية بياناتك الشخصية من الضياع أو سوء الاستخدام أو الوصول غير المصرح به أو الإفصاح أو التعديل أو الإتلاف، وتشمل:</p><ul><li>الوصول مقتصر على المسؤولين المخوّلين فقط.</li><li>استخدام كلمات المرور وضوابط الوصول.</li><li>تخزين البيانات في أنظمة محمية.</li><li>التشفير أو الحماية التقنية المناسبة.</li><li>مراقبة الأنشطة المشبوهة ومراجعات أمنية دورية.</li></ul><p style="margin-top:8px;"><em>لا يمكن ضمان أن أي نظام إلكتروني آمن بنسبة 100%.</em></p>'
+    },
+    {
+      h: '٨. مدة الاحتفاظ بالبيانات',
+      p: 'لن نحتفظ ببياناتك الشخصية إلا للمدة اللازمة لتحقيق الأغراض المذكورة في هذه السياسة، بما يشمل إدارة الحسابات والأمان ومنع الاحتيال وسجلات المعاملات وتسوية النزاعات والامتثال القانوني. إذا تم حذف حسابك أو أصبح غير نشط، فقد نحتفظ ببعض البيانات لفترة معقولة لأغراض أمنية أو تدقيقية أو قانونية أو للحيلولة دون إساءة الاستخدام.'
+    },
+    {
+      h: '٩. حقوقك كمستخدم',
+      p: '<p>يمكنك التواصل معنا من أجل:</p><ol><li>طلب الاطلاع على بياناتك الشخصية.</li><li>تصحيح البيانات غير الدقيقة أو غير المكتملة.</li><li>سحب الموافقة مع مراعاة القيود القانونية ومتطلبات تشغيل الخدمة.</li><li>طلب حذف حسابك أو بيانات معينة.</li><li>الاستفسار عن كيفية استخدام بياناتك.</li><li>تقديم شكوى تتعلق بمعالجة البيانات الشخصية.</li></ol><p style="margin-top:8px;">يمكن تقديم الطلبات عبر معلومات الاتصال الواردة في نهاية هذه السياسة.</p>'
+    },
+    {
+      h: '١٠. دقة المعلومات',
+      p: 'أنت مسؤول عن التأكد من أن المعلومات المقدمة إلى Jodohku.my صحيحة ودقيقة وكاملة ومحدّثة. يحق لنا تعليق الحسابات أو إنهاؤها إذا تبيّن أن المعلومات المقدمة كاذبة أو مضللة أو ناقصة أو مستخدمة لأغراض احتيالية.'
+    },
+    {
+      h: '١١. البيانات المعروضة للمستخدمين الآخرين',
+      p: 'قد تكون بعض المعلومات في ملفك الشخصي مرئية للمستخدمين الآخرين، مثل اسم العرض والعمر أو الفئة العمرية والولاية/المنطقة وصورة الملف الشخصي والسيرة الذاتية الموجزة ومعايير الشريك. أما المعلومات الحساسة كرقم بطاقة الهوية ورقم الهاتف والبريد الإلكتروني والعنوان الكامل وبيانات التحقق الداخلية فـ<strong>لن تُعرض علنياً</strong> إلا إذا اخترت الكشف عنها أو اقتضى القانون ذلك.'
+    },
+    {
+      h: '١٢. ملفات تعريف الارتباط وتقنيات التتبع',
+      p: 'قد يستخدم Jodohku.my ملفات تعريف الارتباط أو تقنيات مماثلة لتمكين وظائف تسجيل الدخول وحفظ إعدادات المستخدم وتحليل استخدام الموقع وتحسين الأداء والأمان وتقديم تجربة أفضل للمستخدم. يمكنك تعديل إعدادات ملفات تعريف الارتباط عبر متصفحك، غير أن بعض وظائف الموقع قد تتأثر.'
+    },
+    {
+      h: '١٣. الروابط الخارجية لمواقع أطراف ثالثة',
+      p: 'قد يحتوي موقع Jodohku.my على روابط لمواقع أطراف ثالثة. لسنا مسؤولين عن محتوى تلك المواقع أو سياسات خصوصيتها أو ممارساتها الأمنية. نشجعك على قراءة سياسات خصوصيتها قبل تقديم أي بيانات شخصية.'
+    },
+    {
+      h: '١٤. تعديلات السياسة',
+      p: 'قد نحدّث هذه السياسة من حين لآخر. ستُنشر أي تغييرات على موقع Jodohku.my مع تاريخ سريان محدّث. يُعدّ استمرار استخدامك لخدماتنا بعد أي تغييرات موافقةً على السياسة المحدّثة.'
+    },
+    {
+      h: '١٥. تواصل معنا',
+      p: '<strong>Jodohku.my</strong><br>البريد الإلكتروني: <strong>privasi@jodohku.my</strong><br>الموقع: https://www.jodohku.my<br><em>العنوان المقترح للبريد الإلكتروني: "طلب بيانات شخصية / PDPA"</em>'
+    }
+  ]
+};
+    
     
 function setLang(lang) {
   const t = i18n[lang];
