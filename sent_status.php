@@ -1,13 +1,5 @@
 <?php
-// ============================================================
-//  sent_status.php — Read / write email-sent flags
-//  Stored in data/sent_status.json on the server
-//  so state syncs across all devices / browsers
-// ============================================================
-
 session_start();
-
-// Must be logged-in admin
 if (empty($_SESSION['admin'])) {
     http_response_code(403);
     echo json_encode(['error' => 'Unauthorized']);
@@ -16,31 +8,43 @@ if (empty($_SESSION['admin'])) {
 
 header('Content-Type: application/json');
 
-$dataFile = __DIR__ . '/data/sent_status.json';
+$url = getenv('SUPABASE_URL');
+$key = getenv('SUPABASE_SERVICE_KEY');
 
-// ── Load current state ──────────────────────────────────────
-function loadSent(string $file): array {
-    if (!file_exists($file)) return [];
-    $decoded = json_decode(file_get_contents($file), true);
-    return is_array($decoded) ? $decoded : [];
+function supabase(string $method, string $endpoint, ?array $body = null): string {
+    global $url, $key;
+    $ch = curl_init($url . '/rest/v1/' . $endpoint);
+    $headers = [
+        'apikey: ' . $key,
+        'Authorization: Bearer ' . $key,
+        'Content-Type: application/json',
+        'Prefer: return=minimal'
+    ];
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    if ($body !== null) {
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
+    }
+    $res = curl_exec($ch);
+    curl_close($ch);
+    return $res ?: '[]';
 }
 
-// ── Save state ──────────────────────────────────────────────
-function saveSent(string $file, array $data): void {
-    file_put_contents($file, json_encode($data), LOCK_EX);
-}
-
-// ── GET — return full sent list ─────────────────────────────
+// GET — return all sent jdk_ids as { jdk_id: true }
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    echo json_encode(loadSent($dataFile));
+    $rows = json_decode(supabase('GET', 'sent_status?select=jdk_id'), true);
+    $map  = [];
+    foreach ($rows as $row) $map[$row['jdk_id']] = true;
+    echo json_encode($map);
     exit;
 }
 
-// ── POST — toggle a single jdk_id ──────────────────────────
+// POST — mark one as sent or unsent
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $body   = json_decode(file_get_contents('php://input'), true);
-    $jdkId  = trim($body['jdk_id'] ?? '');
-    $sent   = (bool)($body['sent']   ?? false);
+    $body  = json_decode(file_get_contents('php://input'), true);
+    $jdkId = trim($body['jdk_id'] ?? '');
+    $sent  = (bool)($body['sent'] ?? false);
 
     if (!$jdkId) {
         http_response_code(400);
@@ -48,22 +52,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $current = loadSent($dataFile);
-
     if ($sent) {
-        $current[$jdkId] = true;
+        // Upsert
+        supabase('POST', 'sent_status?on_conflict=jdk_id', [
+            'jdk_id'  => $jdkId,
+            'sent_at' => date('c')
+        ]);
     } else {
-        unset($current[$jdkId]);
+        // Delete
+        supabase('DELETE', 'sent_status?jdk_id=eq.' . urlencode($jdkId));
     }
 
-    saveSent($dataFile, $current);
-    echo json_encode(['ok' => true, 'total_sent' => count($current)]);
+    echo json_encode(['ok' => true]);
     exit;
 }
 
-// ── DELETE — clear everything ───────────────────────────────
+// DELETE — clear all
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-    saveSent($dataFile, []);
+    supabase('DELETE', 'sent_status?jdk_id=neq.null');
     echo json_encode(['ok' => true]);
     exit;
 }
