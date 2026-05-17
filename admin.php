@@ -161,6 +161,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
   <button class="ftab" onclick="setFilter('unsent',this)">Belum Hantar</button>
   <button class="ftab" onclick="setFilter('sent',this)">Dah Hantar</button>
   <button id="clearBtn" onclick="clearAllSent()">Reset semua ✕</button>
+  <button id="exportBtn" onclick="exportToExcel()"
+  style="padding:6px 14px;border-radius:6px;border:1px solid #444;background:transparent;
+  color:#4ade80;font-family:monospace;font-size:11px;cursor:pointer;transition:all 0.15s;"
+  onmouseover="this.style.borderColor='#4ade80'" onmouseout="this.style.borderColor='#444'">
+  Export Excel ↓
+</button>
 </div>
 
 <table>
@@ -292,8 +298,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
     });
   }
 
-  // ── Clear all ──
-  async function clearAllSent() {
+  // ──  all ──
+  async function AllSent() {
     if (!confirm('Reset semua tanda hantar? Ini tidak boleh diundo.')) return;
     setSyncStatus('syncing', '⟳ Memadam…');
     try {
@@ -395,6 +401,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
       }
     });
   }
+
+  function exportToExcel() {
+  const headers = ['#','JDK ID','Nama','IC','Tarikh Lahir','Umur','Jantina','Negeri Lahir','Telefon','Email','Tarikh Daftar','Status Hantar'];
+  const rows = allData.map((r, i) => {
+    const d = decodeIC(r.ic);
+    return [
+      i + 1,
+      r.jdk_id,
+      r.nama,
+      r.ic,
+      d.dob,
+      d.umur,
+      d.jantina,
+      r.negeri,
+      r.telefon,
+      r.email,
+      new Date(r.created_at).toLocaleString('ms-MY'),
+      sentSet.has(r.jdk_id) ? 'Dah Hantar' : 'Belum Hantar'
+    ];
+  });
+
+  const csvContent = [headers, ...rows]
+    .map(row => row.map(cell => `"${String(cell ?? '').replace(/"/g, '""')}"`).join(','))
+    .join('\n');
+
+  const BOM = '\uFEFF'; // ensures Excel reads UTF-8 (Malay characters) correctly
+  const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = `jodohku_registrations_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+  
 </script>
 
 </body>
