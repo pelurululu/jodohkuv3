@@ -402,6 +402,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
     });
   }
 
+  function formatPhone(phone) {
+  let p = phone.replace(/\D/g, ''); // strip non-digits
+  if (p.startsWith('0')) p = '60' + p.slice(1);
+  if (!p.startsWith('60')) p = '60' + p;
+  return p;
+}
+
   function exportToExcel() {
   const headers = ['#','JDK ID','Nama','IC','Tarikh Lahir','Umur','Jantina','Negeri Lahir','Telefon','Email','Tarikh Daftar','Status Hantar'];
   const rows = allData.map((r, i) => {
@@ -415,7 +422,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
       d.umur,
       d.jantina,
       d.negeri,
-      r.telefon,
+      formatPhone(r.telefon),
       r.email,
       new Date(r.created_at).toLocaleString('ms-MY'),
       sentSet.has(r.jdk_id) ? 'Dah Hantar' : 'Belum Hantar'
