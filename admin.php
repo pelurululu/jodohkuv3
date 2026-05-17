@@ -414,7 +414,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pw'])) {
       d.dob,
       d.umur,
       d.jantina,
-      r.negeri,
+      d.negeri,
       r.telefon,
       r.email,
       new Date(r.created_at).toLocaleString('ms-MY'),
