@@ -1265,18 +1265,19 @@ if (!photo_url) {
     }
 
     // Send to Google Apps Script for Sheet + Email
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyIRCUUCJiqoXeIeDI1ZAqyY39vobcsP49kdKqqxMVFiEWbe_Ed0ql5d4WmVA0Tm8Md/exec';
-    fetch(scriptURL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        fullName: document.getElementById('fullName').value.trim(),
-        icNo:     document.getElementById('icNo').value,
-        phoneNo:  document.getElementById('phoneNo').value.trim(),
-        emailAddr: document.getElementById('emailAddr').value.trim()
-      })
-    }).catch(err => console.log('Apps Script error:', err));
+   // Send to Google Apps Script for Sheet + Email
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyIRCUUCJiqoXeIeDI1ZAqyY39vobcsP49kdKqqxMVFiEWbe_Ed0ql5d4WmVA0Tm8Md/exec';
+const formData = new URLSearchParams({
+  fullName: document.getElementById('fullName').value.trim(),
+  icNo:     document.getElementById('icNo').value,
+  phoneNo:  document.getElementById('phoneNo').value.trim(),
+  emailAddr: document.getElementById('emailAddr').value.trim()
+});
+fetch(scriptURL, {
+  method: 'POST',
+  mode: 'no-cors',
+  body: formData
+}).catch(err => console.log('Apps Script error:', err));
 
     document.getElementById('formView').style.display = 'none';
     document.getElementById('successView').style.display = 'block';
