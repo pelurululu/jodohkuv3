@@ -557,3 +557,40 @@
       .ecosystem-photo { min-height: 260px; }
       th, td { padding: 14px 16px; }
     }
+
+/* ADD these to styles.css */
+.navbar { 
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(8,7,6,.88);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(216,192,138,.16);
+}
+.nav-container { 
+  display: flex; align-items: center; 
+  justify-content: space-between;
+  min-height: 76px; gap: 18px;
+  width: min(1180px, calc(100% - 44px));
+  margin-inline: auto;
+}
+.nav-title-main { 
+  font-size: 21px; font-weight: 900;
+  color: var(--text); letter-spacing: -.02em;
+}
+.nav-dot-my { color: var(--champagne); }
+.nav-menu { 
+  display: flex; gap: 28px; list-style: none;
+  padding: 0; margin: 0;
+  color: rgba(255,255,255,.72); font-size: 13px;
+}
+.nav-menu a { transition: color .2s; }
+.nav-menu a:hover { color: var(--champagne); }
+.lang-switcher { display: flex; gap: 6px; }
+.lang-btn { 
+  background: transparent; border: 1px solid rgba(229,207,151,.3);
+  color: rgba(255,255,255,.6); padding: 4px 10px;
+  border-radius: 6px; cursor: pointer; font-size: 12px;
+}
+.lang-btn.active { 
+  background: rgba(216,192,138,.2); 
+  color: var(--champagne);
+}
