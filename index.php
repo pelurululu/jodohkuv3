@@ -46,415 +46,1392 @@
   
   <?php include 'nav.php'; ?>
 
-<!-- 
-==============================================
-REPLACEMENT INSTRUCTIONS
-==============================================
-In your index.php, find this line:
-    <main id="top">
-And this line (near the bottom, before the scripts):
-    </main>
-
-Replace EVERYTHING between and including those
-two tags with the block below.
-
-Keep everything else untouched:
-- <nav> block (nav.php)
-- All <script> tags
-- Both modals (#termsModal, #privacyModal)
-- <footer> block (footer.php)
-- Cloudflare beacon script
-==============================================
--->
-
-<main id="top">
-
-  <!-- ═══════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════ -->
-  <section class="hero" id="hero">
-    <div class="container hero-wrap">
-
-      <div class="hero-copy reveal">
-        <span class="eyebrow hero-badge">Platform Taaruf Premium Muslim Malaysia</span>
-        <h1 class="hero-title">AI Terdepan + Sistem Taaruf &amp; Keserasian = <span class="gold-text">Padanan Jodoh Lebih Bermakna</span></h1>
-        <p class="lead hero-description">Platform taaruf berasaskan nilai Islam, keselamatan berlapis dan analisis keserasian yang membantu anda mencari calon pasangan dengan lebih serius, sopan dan terarah.</p>
-        <p class="hero-subtitle" style="display:none;">AI Terdepan + Sistem Taaruf &amp; Keserasian = Padanan Jodoh Lebih Bermakna</p>
-        <div class="hero-actions">
-          <a class="btn primary btn-primary-hero" href="#daftar">Mohon Akses Awal</a>
-          <a class="btn secondary btn-secondary-hero" href="#padanan">Lihat Sistem Padanan</a>
-        </div>
-        <div class="trust-row" aria-label="Kepercayaan platform">
-          <div class="trust-item"><strong>Syariah</strong>Beradab, sopan dan terpelihara</div>
-          <div class="trust-item"><strong>AI</strong>Analisis nilai &amp; keserasian</div>
-          <div class="trust-item"><strong>Wali</strong>Proses lebih yakin dan tersusun</div>
-        </div>
+<!-- HERO WITH FORM -->
+<section id="hero" class="hero-section">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg class="hero-crown-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 19L4.5 9L9 14L12 6L15 14L19.5 9L22 19H2Z" fill="#FFD700" stroke="#FFD700" stroke-width="1.5" stroke-linejoin="round"/>
+          <rect x="2" y="19" width="20" height="2" rx="1" fill="#FFD700"/>
+        </svg>
+        Platform Ultra-Premium Perkahwinan Islam
       </div>
-
-      <aside class="hero-side reveal" id="daftar">
-        <div class="form-card">
-          <h3 class="form-title">Akses Awal Beta</h3>
-          <p class="form-subtitle">Jadilah antara yang terawal mencuba platform premium ini.</p>
-          <div class="form-grid" id="registrationForm">
-            <label class="input-label" for="nameInput" style="display:none;">Nama Penuh</label>
-            <input class="field" id="nameInput" type="text" name="name" placeholder="Nama penuh" autocomplete="name">
-
-            <label class="input-label" for="icInput" style="display:none;">No. Kad Pengenalan</label>
-            <input class="field" id="icInput" type="text" name="ic" placeholder="No. Kad Pengenalan (12 digit)">
-
-            <label class="input-label" for="phoneInput" style="display:none;">No. Telefon</label>
-            <input class="field" id="phoneInput" type="tel" name="phone" placeholder="Nombor telefon" autocomplete="tel">
-
-            <label class="input-label" for="emailInput" style="display:none;">Alamat E-mel</label>
-            <input class="field" id="emailInput" type="email" name="email" placeholder="Emel" autocomplete="email">
-
-            <label class="input-label" for="profilePhoto" style="display:none;">Gambar Profil</label>
-            <label class="upload" for="profilePhoto">
-              <strong id="uploadTitle">Pilih gambar profil</strong>
-              <span class="upload-text">JPG, PNG atau WEBP — maksimum 5MB</span>
-            </label>
-            <input id="profilePhoto" name="profilePhoto" type="file" accept="image/jpeg,image/png,image/webp" hidden>
-
-            <div class="checkbox-premium" style="display:flex;align-items:flex-start;gap:10px;margin-top:4px;">
-              <input type="checkbox" id="termsCheck" style="margin-top:3px;accent-color:#c4a064;min-width:16px;">
-              <label for="termsCheck" style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.5;">
-                Saya bersetuju dengan <a href="#" onclick="openModal('termsModal');return false;" style="color:var(--champagne);">Terma &amp; Syarat</a> dan <a href="#" onclick="openModal('privacyModal');return false;" style="color:var(--champagne);">Dasar Privasi</a> Jodohku.my yang mematuhi PDPA 2010
-              </label>
+      <h1 class="hero-title">
+        Revolusi <span class="gold">Saintifik</span><br>
+        Padanan Jodoh <span class="gold">Berkualiti</span>
+      </h1>
+      <p class="hero-subtitle">
+        AI Terdepan + 115 Soalan Psikologi = Jodoh Seumur Hidup
+      </p>
+      <p class="hero-description">
+        Jodohku.my menggantikan dating toxic dengan teknologi padanan yang dibangunkan khusus untuk budaya Muslim Malaysia — di mana setiap padanan berpotensi menjadi ikatan yang diberkati Allah.
+      </p>
+      <div class="hero-cta-buttons">
+        <a href="#slider" class="btn-primary-hero">Lihat Platform</a>
+        <a href="#comparison" class="btn-secondary-hero">Mengapa Berbeza?</a>
+      </div>
+    </div>
+    
+    <!-- PREMIUM FORM -->
+    <div class="form-premium-container">
+      <div id="formView">
+        <div class="form-header">
+          <div class="form-crown">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 38L9 18L18 28L24 12L30 28L39 18L44 38H4Z" fill="#FFD700" stroke="#FFA000" stroke-width="2" stroke-linejoin="round"/>
+              <rect x="4" y="38" width="40" height="4" rx="2" fill="#FFD700"/>
+              <circle cx="24" cy="10" r="3" fill="#FFD700"/>
+              <circle cx="7" cy="16" r="2.5" fill="#FFD700"/>
+              <circle cx="41" cy="16" r="2.5" fill="#FFD700"/>
+            </svg>
+          </div>
+          <h2 class="form-title">Akses Eksklusif</h2>
+          <p class="form-subtitle">
+            Jadi antara 500 pengguna terawal yang mendapat akses beta kepada platform revolusioner ini
+          </p>
+        </div>
+        
+        <form class="form-premium" onsubmit="handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="input-group">
+              <label class="input-label">Nama Penuh</label>
+              <input class="input-premium" type="text" id="fullName" placeholder="Siti Aminah binti Abdullah" required>
             </div>
-
-            <button class="btn primary btn-submit-premium" type="button" onclick="handleFormSubmit()">Mohon Akses Awal</button>
+            <div class="input-group">
+              <label class="input-label">No. Kad Pengenalan</label>
+              <input class="input-premium" type="text" id="icNo" placeholder="XXXXXX-XX-XXXX" maxlength="14" required>
+            </div>
           </div>
-          <div id="successMessage" style="display:none;text-align:center;padding:20px 0;">
-            <p class="success-title" style="color:var(--champagne);font-size:18px;font-weight:800;margin-bottom:8px;">Pendaftaran Berjaya!</p>
-            <p class="success-message" style="color:rgba(255,255,255,.7);font-size:14px;">Tahniah atas tindakan awal anda! Kami akan menghubungi anda setelah aplikasi berjaya didaftarkan.</p>
+          
+          <div class="form-row">
+            <div class="input-group">
+              <label class="input-label">No. Telefon</label>
+              <input class="input-premium" type="tel" id="phoneNo" placeholder="01X-XXXXXXXX" required>
+            </div>
+            <div class="input-group">
+              <label class="input-label">Alamat E-mel</label>
+              <input class="input-premium" type="email" id="emailAddr" placeholder="nama@email.com" required>
+            </div>
           </div>
-          <div class="mini-note">Maklumat anda disimpan secara sulit dan tidak dipaparkan tanpa izin.</div>
-        </div>
-      </aside>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       GALLERY / PENGALAMAN PREMIUM
-  ═══════════════════════════════════════ -->
-  <section class="section cream" id="kelebihan">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Pengalaman Premium</span>
-        <h2>Sistem Taaruf Premium Berteknologi AI</h2>
-        <p class="lead">Direka supaya proses mencari pasangan menjadi lebih selamat, matang, visual dan dipercayai.</p>
+          
+          <div class="input-group">
+            <label class="input-label">Gambar Profil</label>
+            <div class="upload-area">
+              <input type="file" id="profilePic" accept="image/*" onchange="handleImageUpload(event)">
+              <div class="upload-icon">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="10" width="30" height="22" rx="4" stroke="#FFD700" stroke-width="2"/>
+                  <circle cx="18" cy="21" r="6" stroke="#FFD700" stroke-width="2"/>
+                  <circle cx="18" cy="21" r="2.5" fill="#FFD700"/>
+                  <path d="M13 10L15 6H21L23 10" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"/>
+                  <circle cx="28" cy="15" r="1.5" fill="#FFD700"/>
+                </svg>
+              </div>
+              <div class="upload-text">
+                Pilih gambar profil anda<br>
+                <strong>JPG, PNG, WEBP</strong> — Maksimum 5MB
+              </div>
+            </div>
+          </div>
+          
+          <div class="checkbox-premium">
+            <input type="checkbox" id="agreeTerms" required>
+            <label for="agreeTerms">
+              Saya bersetuju dengan <a href="#" onclick="openModal('termsModal');return false;">Terma &amp; Syarat</a> dan <a href="#" onclick="openModal('privacyModal');return false;">Dasar Privasi</a> Jodohku.my yang mematuhi PDPA 2010
+            </label>
+          </div>
+          
+          <button type="submit" class="btn-submit-premium">
+            Hantar Permohonan Beta Access
+          </button>
+        </form>
       </div>
-      <div class="gallery-grid">
-
-        <div class="photo-card reveal">
-          <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Taaruf Beradab">
-          <span class="photo-label">Taaruf</span>
-          <div class="card-copy">
-            <h3>Taaruf Beradab</h3>
-            <p>Proses perkenalan yang sopan, tersusun dan mengikut adab Islam.</p>
-          </div>
+      
+      <!-- SUCCESS STATE -->
+      <div class="success-state" id="successView">
+        <div class="success-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 20L16 28L32 12" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
-
-        <div class="photo-card reveal">
-          <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Analisis AI">
-          <span class="photo-label">AI</span>
-          <div class="card-copy">
-            <h3>Analisis AI Pintar</h3>
-            <p>Teknologi AI menganalisis keserasian nilai dan personaliti anda.</p>
-          </div>
-        </div>
-
-        <div class="photo-card reveal">
-          <img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Keluarga bahagia">
-          <span class="photo-label">Keluarga</span>
-          <div class="card-copy">
-            <h3>Keluarga Bahagia</h3>
-            <p>Matlamat akhir setiap padanan — rumah tangga yang harmoni dan diberkati.</p>
-          </div>
-        </div>
-
-        <div class="photo-card reveal">
-          <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Majlis perkahwinan">
-          <span class="photo-label">Nikah</span>
-          <div class="card-copy">
-            <h3>Majlis Perkahwinan</h3>
-            <p>Dari taaruf hingga ke jenjang pelamin yang penuh keberkatan.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       TERAS UTAMA (CORE GRID)
-  ═══════════════════════════════════════ -->
-  <section class="section compact cream" id="teras">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Teras Utama</span>
-        <h2>Tiga Asas Yang Membuatkan Jodohku.my Berbeza</h2>
-      </div>
-      <div class="core-grid">
-
-        <div class="image-panel reveal">
-          <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Keselamatan & Privasi">
-          <span class="photo-label">Keselamatan</span>
-          <div class="panel-copy">
-            <h3>Keselamatan &amp; Privasi</h3>
-            <p>Identiti anda dilindungi sepenuhnya. Nombor IC, telefon dan e-mel tidak didedahkan kepada mana-mana pengguna lain tanpa izin anda.</p>
-          </div>
-        </div>
-
-        <div class="image-panel reveal">
-          <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Padanan AI">
-          <span class="photo-label">AI</span>
-          <div class="panel-copy">
-            <h3>Padanan Berteknologi AI</h3>
-            <p>Algoritma AI menganalisis keserasian nilai, akhlak dan personaliti anda untuk mencadangkan pasangan yang paling serasi.</p>
-          </div>
-        </div>
-
-        <div class="image-panel reveal">
-          <img src="https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Taaruf Syariah">
-          <span class="photo-label">Syariah</span>
-          <div class="panel-copy">
-            <h3>Taaruf Berlandaskan Syariah</h3>
-            <p>Setiap langkah proses taaruf direka mengikut adab Islam — beradab, terkawal dan melibatkan wali dengan cara yang betul.</p>
-          </div>
-        </div>
-
+        <h2 class="success-title">Pendaftaran Berjaya!</h2>
+        <p class="success-message">
+          Tahniah atas tindakan awal anda! Anda telah berjaya mendaftar untuk beta access Jodohku.my. Kami akan menghubungi anda setelah aplikasi jodohku.my berjaya didaftarkan di Playstore dan Appstore.Terima kasih -Admin-
+        </p>
+        <div class="success-id" id="generatedId"></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+<div class="gold-shimmer-line"></div>
 
-  <!-- ═══════════════════════════════════════
-       COMPARISON TABLE
-  ═══════════════════════════════════════ -->
-  <section class="section dark" id="comparison">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow section-label">Kenapa Berbeza</span>
-        <h2 class="section-title-main">Lebih Serius Daripada Aplikasi Biasa</h2>
+<!-- IMAGE SLIDER (carousel — Malaysian Muslim relevant images) -->
+<section id="slider" class="slider-section">
+  <div class="slider-container">
+    <div class="slider-header reveal">
+      <div class="section-label">Galeri Platform</div>
+      <h2 class="section-title-main">Pengalaman <span class="gold">Jodohku.my</span></h2>
+      <p class="section-desc-main">
+        10 aspek utama platform yang mengubah cara Muslim Malaysia mencari pasangan hidup
+      </p>
+    </div>
+    
+    <div class="image-slider reveal">
+      <div class="slider-track">
+        <!-- 1. Padanan Nilai Islam — Quran & marriage values -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1564769625905-50e93615e769?w=900&h=260&fit=crop&q=80" alt="Padanan Nilai Islam">
+          <div class="slide-overlay">
+            <div class="slide-content">
+              <h3 class="slide-title">Padanan Berdasarkan Nilai Islam</h3>
+              <p class="slide-desc">AI menganalisis keserasian agama, akhlak dan nilai hidup</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. AI Technology — Modern tech with Islamic aesthetic -->
+        <div class="slide">
+          <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=900&h=260&fit=crop" alt="AI technology">
+          <div class="slide-overlay">
+            <div class="slide-content">
+              <h3 class="slide-title">Teknologi AI Terdepan</h3>
+              <p class="slide-desc">115 soalan psikologi dianalisis menggunakan machine learning</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Keselamatan — Privacy & protection -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=900&h=260&fit=crop&q=80" alt="Cyber Security">
+          <div class="slide-overlay">
+            <div class="slide-content">
+              <h3 class="slide-title">Keselamatan Maksimum</h3>
+              <p class="slide-desc">Identiti dilindungi dengan kod unik sehingga kedua-dua pihak bersetuju</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Sistem Wali — Family & elders blessing -->
+        <div class="slide">
+          <img src="images/muslim-family.jpg" alt="Keluarga Muslim berbincang">
+          <div class="slide-overlay">
+            <div class="slide-content">
+              <h3 class="slide-title">Sistem Wali Digital</h3>
+              <p class="slide-desc">Platform pertama yang mewajibkan penglibatan wali dalam proses ta'aruf</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Komuniti Muslim Malaysia — Mosque/cultural gathering -->
+        <div class="slide">
+            <img src="images/komuniti-muslim.jpg" alt="Muslim Professionals">
+          <div class="slide-overlay">
+            <div class="slide-content">
+              <h3 class="slide-title">Komuniti Premium Muslim</h3>
+              <p class="slide-desc">Eksklusif untuk Muslim profesional yang serius mencari jodoh</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Ekosistem Perkahwinan — Malay wedding decor/pelamin -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=900&h=260&fit=crop&q=80" alt="Wedding Couple Muslim">
+          <div class="slide-overlay">
+            <div class="slide-content">
+              <h3 class="slide-title">Ekosistem Perkahwinan</h3>
+              <p class="slide-desc">Dari padanan hingga pelamin — semua dalam satu platform</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Analitik Data — Compatibility charts/dashboard -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=900&h=260&fit=crop&q=80" alt="Analitik Data">
+          <div class="slide-overlay">
+            <div class="slide-content">
+              <h3 class="slide-title">Analitik Mendalam</h3>
+              <p class="slide-desc">Laporan keserasian terperinci berdasarkan 14 dimensi personaliti</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Aplikasi Mobile — Phone with Malay woman/hijabi user -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&h=260&fit=crop&q=80" alt="Aplikasi Mobile">
+          <div class="slide-overlay">
+            <div class="slide-content">
+              <h3 class="slide-title">Aplikasi Mobile Premium</h3>
+              <p class="slide-desc">Interface yang elegant dan mudah digunakan untuk iOS dan Android</p>
+            </div>
+          </div>
+        </div>
+
+      
       </div>
-      <div class="table-shell reveal">
-        <table class="comparison-table" aria-label="Perbandingan Jodohku.my dengan aplikasi biasa">
+    </div>
+
+    <div style="display:flex; justify-content:center; margin-top:56px;">
+      <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
+        Daftar Sekarang
+      </a>
+    </div>
+  </div>
+</section>
+<div class="gold-shimmer-line"></div>
+
+<!-- PILLARS -->
+<section id="pillars" class="pillars-section">
+  <div class="pillars-container">
+    <div class="slider-header reveal">
+      <div class="section-label">4 Teras Utama</div>
+      <h2 class="section-title-main">Senibina <span class="gold">Platform</span></h2>
+      <p class="section-desc-main">
+        Empat tonggak kukuh yang memastikan setiap aspek platform mematuhi nilai Islam dan memberikan pengalaman terbaik
+      </p>
+    </div>
+    
+    <div class="pillars-grid reveal">
+
+      <!-- Teras 1: Kesucian Agama — Mosque/crescent -->
+      <div class="pillar-card">
+        <div class="pillar-image">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 42V24C9 18 13.5 13.5 19.5 13.5H34.5C40.5 13.5 45 18 45 24V42" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M3 42H51" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M27 3C27 3 33 7.5 27 13.5C21 7.5 27 3 27 3Z" fill="#FFD700"/>
+            <rect x="21" y="30" width="12" height="12" rx="1.5" stroke="#FFD700" stroke-width="2"/>
+            <!-- crescent moon top right -->
+            <path d="M40 6C40 6 44 8 42 12C39 10 40 6 40 6Z" fill="#FFD700" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="pillar-number">Teras 1</div>
+        <h3 class="pillar-title">Kesucian Agama</h3>
+        <p class="pillar-desc">Menghapuskan ruang zina, memelihara adab, dan menstrukturkan ta'aruf berlandaskan syariah.</p>
+      </div>
+
+      <!-- Teras 2: Perlindungan Sosial — Shield -->
+      <div class="pillar-card">
+        <div class="pillar-image">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M27 6L9 13.5V27C9 36.9 17.1 46.2 27 48C36.9 46.2 45 36.9 45 27V13.5L27 6Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round" fill="rgba(255,215,0,0.07)"/>
+            <path d="M19 27L24 32L35 21" stroke="#FFD700" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="pillar-number">Teras 2</div>
+        <h3 class="pillar-title">Perlindungan Sosial</h3>
+        <p class="pillar-desc">Pemerkasaan Mod Wali, perlindungan identiti dan pembanterasan scam romantik.</p>
+      </div>
+
+      <!-- Teras 3: Pemerkasaan Ekonomi — Growth/chart -->
+      <div class="pillar-card">
+        <div class="pillar-image">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="9" y="30" width="8" height="15" rx="2" fill="rgba(255,215,0,0.15)" stroke="#FFD700" stroke-width="1.8"/>
+            <rect x="23" y="21" width="8" height="24" rx="2" fill="rgba(255,215,0,0.15)" stroke="#FFD700" stroke-width="1.8"/>
+            <rect x="37" y="12" width="8" height="33" rx="2" fill="rgba(255,215,0,0.2)" stroke="#FFD700" stroke-width="1.8"/>
+            <path d="M9 27L23 18L37 9" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 2"/>
+            <circle cx="37" cy="9" r="3" fill="#FFD700"/>
+          </svg>
+        </div>
+        <div class="pillar-number">Teras 3</div>
+        <h3 class="pillar-title">Pemerkasaan Ekonomi</h3>
+        <p class="pillar-desc">Rantaian nilai perkahwinan yang menyokong vendor PKS Muslim bersijil halal.</p>
+      </div>
+
+      <!-- Teras 4: Teknologi & Privasi — Circuit/AI -->
+      <div class="pillar-card">
+        <div class="pillar-image">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="18" y="18" width="18" height="18" rx="3" stroke="#FFD700" stroke-width="2" fill="rgba(255,215,0,0.07)"/>
+            <circle cx="27" cy="27" r="4" fill="#FFD700" opacity="0.8"/>
+            <!-- circuit lines -->
+            <line x1="27" y1="6" x2="27" y2="18" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="27" y1="36" x2="27" y2="48" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="6" y1="27" x2="18" y2="27" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="36" y1="27" x2="48" y2="27" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="27" cy="6" r="2.5" fill="#FFD700" opacity="0.5"/>
+            <circle cx="27" cy="48" r="2.5" fill="#FFD700" opacity="0.5"/>
+            <circle cx="6" cy="27" r="2.5" fill="#FFD700" opacity="0.5"/>
+            <circle cx="48" cy="27" r="2.5" fill="#FFD700" opacity="0.5"/>
+            <line x1="18" y1="18" x2="10" y2="10" stroke="#FFD700" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+            <line x1="36" y1="18" x2="44" y2="10" stroke="#FFD700" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+            <line x1="18" y1="36" x2="10" y2="44" stroke="#FFD700" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+            <line x1="36" y1="36" x2="44" y2="44" stroke="#FFD700" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="pillar-number">Teras 4</div>
+        <h3 class="pillar-title">Teknologi &amp; Privasi</h3>
+        <p class="pillar-desc">AI real-time filtering, kod identiti rahsia dan perlindungan data PDPA 2010.</p>
+      </div>
+
+    </div>
+
+    <div style="display:flex; justify-content:center; margin-top:56px;">
+      <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
+        Daftar Sekarang
+      </a>
+    </div>
+  </div>
+</section>
+<div class="gold-shimmer-line"></div>
+
+<!-- USP -->
+<section id="usp" class="usp-section">
+  <div class="usp-container">
+    <div class="slider-header reveal">
+      <div class="section-label">Kelebihan Unik</div>
+      <h2 class="section-title-main">Mengapa <span class="gold">Tiada Tandingan</span></h2>
+      <p class="section-desc-main">
+        Empat inovasi revolusioner yang memisahkan Jodohku.my daripada setiap platform perjodohan di dunia
+      </p>
+    </div>
+    
+    <div class="usp-grid reveal">
+
+      <!-- USP 1: Identiti Kod Rahsia — ID card / lock -->
+      <div class="usp-card">
+        <div class="usp-image">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7" y="15" width="40" height="28" rx="4" stroke="#FFD700" stroke-width="2" fill="rgba(255,215,0,0.06)"/>
+            <circle cx="18" cy="27" r="5" stroke="#FFD700" stroke-width="1.8"/>
+            <line x1="28" y1="23" x2="41" y2="23" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="28" y1="28" x2="38" y2="28" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="28" y1="33" x2="35" y2="33" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/>
+            <!-- lock overlay -->
+            <rect x="34" y="33" width="14" height="11" rx="2" fill="#0a0a0a" stroke="#FFD700" stroke-width="1.5"/>
+            <path d="M37 33V30C37 27.8 39.8 26 41 26C42.2 26 45 27.8 45 30V33" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="41" cy="38" r="1.5" fill="#FFD700"/>
+          </svg>
+        </div>
+        <h3 class="usp-title">Identiti Kod Rahsia</h3>
+        <p class="usp-desc">Nama sebenar disembunyikan dengan kod unik (JDK-2025-XX) sehingga kedua-dua pihak bersetuju bertemu.</p>
+      </div>
+
+      <!-- USP 2: AI Padanan Saintifik — Brain/neural -->
+      <div class="usp-card">
+        <div class="usp-image">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M27 12C21 12 15 16.5 15 22.5C15 25.5 16.5 28.5 18 30C15 31.5 12 34.5 12 39C12 42 14.3 45 18 45H36C39.8 45 42 42 42 39C42 34.5 39 31.5 36 30C37.5 28.5 39 25.5 39 22.5C39 16.5 33 12 27 12Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round" fill="rgba(255,215,0,0.06)"/>
+            <line x1="27" y1="12" x2="27" y2="45" stroke="#FFD700" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <circle cx="21" cy="24" r="2.5" fill="#FFD700"/>
+            <circle cx="33" cy="24" r="2.5" fill="#FFD700"/>
+            <path d="M21 33C21 33 24 36 27 36C30 36 33 33 33 33" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="usp-title">AI Padanan Saintifik</h3>
+        <p class="usp-desc">115 soalan psikologi dianalisis AI untuk padanan 847% lebih tepat berbanding swipe-based apps.</p>
+      </div>
+
+      <!-- USP 3: Real-Time Content Shield — Filter/radar -->
+      <div class="usp-card">
+        <div class="usp-image">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="27" cy="27" r="20" stroke="#FFD700" stroke-width="1.5" opacity="0.3"/>
+            <circle cx="27" cy="27" r="13" stroke="#FFD700" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="27" cy="27" r="6" stroke="#FFD700" stroke-width="1.5"/>
+            <circle cx="27" cy="27" r="2.5" fill="#FFD700"/>
+            <!-- sweep line -->
+            <line x1="27" y1="27" x2="27" y2="7" stroke="#FFD700" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+            <path d="M27 27 L42 17" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+            <!-- blocked X -->
+            <circle cx="42" cy="12" r="5" fill="rgba(255,80,80,0.15)" stroke="#FF6B6B" stroke-width="1.5"/>
+            <line x1="39.5" y1="9.5" x2="44.5" y2="14.5" stroke="#FF6B6B" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="44.5" y1="9.5" x2="39.5" y2="14.5" stroke="#FF6B6B" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="usp-title">Real-Time Content Shield</h3>
+        <p class="usp-desc">AI menyekat kandungan haram, pertukaran nombor telefon dan ajakan tidak sesuai dalam 0.3 saat.</p>
+      </div>
+
+      <!-- USP 4: Ekosistem Komprehensif — rings/chain -->
+      <div class="usp-card">
+        <div class="usp-image">
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- wedding rings -->
+            <circle cx="21" cy="30" r="10" stroke="#FFD700" stroke-width="2.2" fill="none"/>
+            <circle cx="33" cy="30" r="10" stroke="#FFD700" stroke-width="2.2" fill="rgba(255,215,0,0.07)"/>
+            <!-- diamond on top -->
+            <polygon points="27,8 32,14 27,17 22,14" stroke="#FFD700" stroke-width="1.5" fill="rgba(255,215,0,0.15)" stroke-linejoin="round"/>
+            <line x1="22" y1="14" x2="32" y2="14" stroke="#FFD700" stroke-width="1"/>
+            <line x1="27" y1="8" x2="27" y2="14" stroke="#FFD700" stroke-width="1" opacity="0.5"/>
+          </svg>
+        </div>
+        <h3 class="usp-title">Ekosistem Komprehensif</h3>
+        <p class="usp-desc">Satu-satunya platform dari padanan hingga pelamin — wedding planning, vendor booking, e-Nikah.</p>
+      </div>
+
+    </div>
+
+    <div style="display:flex; justify-content:center; margin-top:56px;">
+      <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
+        Daftar Sekarang
+      </a>
+    </div>
+  </div>
+</section>
+<div class="gold-shimmer-line"></div>
+
+<!-- COMPARISON HIGHLIGHT -->
+<!-- COMPARISON HIGHLIGHT -->
+<section id="comparison" class="comparison-section">
+  <div class="comparison-container">
+    <div class="slider-header reveal">
+      <div class="section-label">Analisis Mendalam</div>
+      <h2 class="section-title-main">Perbandingan <span class="gold">Teliti</span></h2>
+    </div>
+
+    <div class="comparison-highlight reveal">
+      <h3 class="comparison-title">Memisahkan Standard: <span class="highlight">Tiada Tandingan</span></h3>
+      <div class="comparison-table-scroll">
+        <table class="comparison-table">
           <thead>
             <tr>
-              <th>Ciri-Ciri</th>
-              <th>Jodohku.my</th>
+              <th style="text-align:left;">Kriteria Penting</th>
               <th>Tinder / Bumble</th>
-              <th>Aplikasi Biasa</th>
+              <th>MuzMatch</th>
+              <th class="jodohku">Jodohku.my</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Tujuan</td><td><span class="tick">✓</span> Perkahwinan &amp; jangka panjang</td><td>✗ Kenalan, dating</td><td>Kenalan, dating atau hiburan</td></tr>
-            <tr><td>Pendekatan</td><td><span class="tick">✓</span> Taaruf berstruktur &amp; kerahsiaan mendalam</td><td>✗ Swipe, rupa</td><td>Swipe, rupa dan lokasi</td></tr>
-            <tr><td>Analisis</td><td><span class="tick">✓</span> AI + sistem taaruf &amp; keserasian</td><td>✗ Appearance</td><td>Algoritma asas</td></tr>
-            <tr><td>Keterlibatan Wali</td><td><span class="tick">✓</span> Ada sistem wali digital</td><td>✗ Tiada</td><td>Tiada</td></tr>
-            <tr><td>Privasi</td><td><span class="tick">✓</span> Identiti terlindung &amp; terkawal</td><td>✗ Selfie sahaja</td><td>Terhad</td></tr>
-            <tr><td>Ekosistem</td><td><span class="tick">✓</span> Dari taaruf hingga selepas nikah</td><td>✗ Berhenti</td><td>Tiada sokongan lanjutan</td></tr>
+            <tr>
+              <td class="feature">Penglibatan Wali Mandatory</td>
+              <td class="cross" data-label="Tinder / Bumble">✗ Tiada</td>
+              <td class="cross" data-label="MuzMatch">✗ Optional</td>
+              <td class="jodohku check" data-label="Jodohku.my">✓ Diwajibkan</td>
+            </tr>
+            <tr>
+              <td class="feature">Verifikasi Identiti Penuh</td>
+              <td class="cross" data-label="Tinder / Bumble">✗ Selfie sahaja</td>
+              <td class="cross" data-label="MuzMatch">✗ Selfie sahaja</td>
+              <td class="jodohku check" data-label="Jodohku.my">✓ MyKad + Biometrik</td>
+            </tr>
+            <tr>
+              <td class="feature">AI Content Filtering</td>
+              <td class="cross" data-label="Tinder / Bumble">✗ Manual report</td>
+              <td class="cross" data-label="MuzMatch">✗ Manual report</td>
+              <td class="jodohku check" data-label="Jodohku.my">✓ 0.3 saat</td>
+            </tr>
+            <tr>
+              <td class="feature">Psikologi Matching</td>
+              <td class="cross" data-label="Tinder / Bumble">✗ Appearance</td>
+              <td class="cross" data-label="MuzMatch">✗ Basic</td>
+              <td class="jodohku check" data-label="Jodohku.my">✓ 115 soalan</td>
+            </tr>
+            <tr>
+              <td class="feature">Wedding Ecosystem</td>
+              <td class="cross" data-label="Tinder / Bumble">✗ Berhenti</td>
+              <td class="cross" data-label="MuzMatch">✗ Berhenti</td>
+              <td class="jodohku check" data-label="Jodohku.my">✓ Hingga pelamin</td>
+            </tr>
+            <tr>
+              <td class="feature">Shariah Compliance</td>
+              <td class="cross" data-label="Tinder / Bumble">✗ Tiada</td>
+              <td class="cross" data-label="MuzMatch">✗ Self-declared</td>
+              <td class="jodohku check" data-label="Jodohku.my">✓ Board certified</td>
+            </tr>
           </tbody>
         </table>
       </div>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════
-       PADANAN / SCIENCE CARDS
-  ═══════════════════════════════════════ -->
-  <section class="section dark" id="padanan">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Sains Padanan</span>
-        <h2>Sistem Taaruf &amp; Keserasian Revolusioner</h2>
-        <p class="lead">Sistem kami menilai dua aspek utama supaya padanan yang dicadangkan bukan sekadar nampak sesuai, tetapi mempunyai asas hidup yang lebih serasi dan beradab.</p>
-      </div>
-
-      <div class="science-wrap">
-
-        <!-- TAARUF CARD -->
-        <article class="science-card reveal">
-          <div class="science-copy">
-            <span class="eyebrow">Taaruf</span>
-            <h3>Taaruf</h3>
-            <p>Membantu pengguna memperkenalkan diri dengan tersusun, sopan dan jelas mengikut adab Islam sebelum proses padanan diteruskan.</p>
-            <ul class="title-list">
-              <li>Niat &amp; Tujuan Perkahwinan</li>
-              <li>Latar Diri &amp; Identiti</li>
-              <li>Agama &amp; Amalan Harian</li>
-              <li>Akhlak &amp; Adab</li>
-              <li>Keluarga &amp; Hubungan</li>
-              <li>Pendidikan &amp; Kerjaya</li>
-              <li>Kewangan &amp; Nafkah</li>
-              <li>Tempat Tinggal &amp; Gaya Hidup</li>
-              <li>Komunikasi</li>
-              <li>Emosi &amp; Konflik</li>
-              <li>Kesihatan &amp; Penjagaan Diri</li>
-              <li>Masa Lapang &amp; Minat</li>
-              <li>Rutin Harian</li>
-              <li>Perancangan Masa Depan</li>
-              <li>Anak &amp; Keibubapaan</li>
-              <li>Peranan Suami Isteri</li>
-              <li>Batas Pergaulan &amp; Media Sosial</li>
-              <li>Pengurusan Rumah</li>
-              <li>Cabaran Hidup</li>
-              <li>Sosial &amp; Komuniti</li>
-              <li>Nilai Peribadi</li>
-              <li>Proses Taaruf &amp; Istikharah</li>
-            </ul>
-            <div class="highlight">Taaruf bukan sekadar mengenal nama dan umur. Ia membantu memahami niat, pegangan agama, keluarga, emosi dan persediaan seseorang untuk membina rumah tangga.</div>
-          </div>
-        </article>
-
-        <!-- KESERASIAN CARD -->
-        <article class="science-card reverse reveal">
-          <div class="science-copy">
-            <span class="eyebrow">Uji Keserasian</span>
-            <h3>Uji Keserasian</h3>
-            <p>Menilai kecocokan dua individu apabila mula dipadankan untuk melihat potensi kehidupan bersama selepas perkahwinan.</p>
-            <ul class="title-list">
-              <li>Matlamat Hidup &amp; Nilai</li>
-              <li>Agama &amp; Ibadah Bersama</li>
-              <li>Komunikasi Pasangan</li>
-              <li>Konflik &amp; Memaafkan</li>
-              <li>Kewangan Rumahtangga</li>
-              <li>Kerjaya &amp; Masa</li>
-              <li>Keluarga Mertua</li>
-              <li>Anak &amp; Pendidikan</li>
-              <li>Gaya Hidup &amp; Rutin</li>
-              <li>Rumah &amp; Kerja Domestik</li>
-              <li>Emosi &amp; Kasih Sayang</li>
-              <li>Sosial, Privasi &amp; Digital</li>
-              <li>Keputusan Besar</li>
-              <li>Cabaran &amp; Krisis</li>
-              <li>Romantik Selepas Nikah</li>
-            </ul>
-            <div class="highlight">Uji Keserasian membantu melihat bukan sahaja siapa yang nampak sesuai, tetapi siapa yang mampu hidup bersama dengan matang, realistik dan saling melengkapi.</div>
-          </div>
-        </article>
-
-      </div>
-      <p class="science-end reveal">Dua seksyen ini membolehkan Jodohku.my menilai calon pasangan dengan lebih adil, beradab dan mendalam — daripada niat perkahwinan hingga keserasian kehidupan selepas nikah.</p>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       STEPS / HOW IT WORKS
-  ═══════════════════════════════════════ -->
-  <section class="section cream" id="cara">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Proses Taaruf</span>
-        <h2>Bagaimana Ia Berfungsi?</h2>
-      </div>
-      <div class="steps">
-
-        <article class="step-card reveal">
-          <div class="step-img">
-            <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Daftar dan lengkapkan profil">
-            <span class="step-number">1</span>
-          </div>
-          <div class="step-body">
-            <h3>Daftar &amp; Lengkapkan Profil</h3>
-            <p>Cipta profil lengkap dengan maklumat diri, foto dan latar belakang anda secara peribadi dan selamat.</p>
-          </div>
-        </article>
-
-        <article class="step-card reveal">
-          <div class="step-img">
-            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Jawab soalan taaruf">
-            <span class="step-number">2</span>
-          </div>
-          <div class="step-body">
-            <h3>Jawab Soalan Taaruf &amp; Keserasian</h3>
-            <p>Lengkapkan borang taaruf dan uji keserasian untuk membantu sistem memahami diri dan nilai anda dengan mendalam.</p>
-          </div>
-        </article>
-
-        <article class="step-card reveal">
-          <div class="step-img">
-            <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Terima cadangan padanan AI">
-            <span class="step-number">3</span>
-          </div>
-          <div class="step-body">
-            <h3>Terima Cadangan Padanan AI</h3>
-            <p>AI akan mencadangkan calon yang paling serasi berdasarkan analisis mendalam nilai, akhlak dan keserasian anda.</p>
-          </div>
-        </article>
-
-        <article class="step-card reveal">
-          <div class="step-img">
-            <img src="https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Semak profil calon">
-            <span class="step-number">4</span>
-          </div>
-          <div class="step-body">
-            <h3>Semak Profil Calon</h3>
-            <p>Lihat profil calon yang dicadangkan dan nyatakan minat anda dengan sopan melalui platform yang selamat dan terkawal.</p>
-          </div>
-        </article>
-
-        <article class="step-card reveal">
-          <div class="step-img">
-            <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Taaruf dengan wali">
-            <span class="step-number">5</span>
-          </div>
-          <div class="step-body">
-            <h3>Taaruf Dengan Wali</h3>
-            <p>Teruskan proses dengan restu dan pemantauan wali yang sesuai mengikut adab Islam.</p>
-          </div>
-        </article>
-
+      <div style="display:flex; justify-content:center; margin-top:56px;">
+        <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
+          Daftar Sekarang
+        </a>
       </div>
     </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       ECOSYSTEM
-  ═══════════════════════════════════════ -->
-  <section class="section compact cream" id="ekosistem">
-    <div class="container">
-      <div class="ecosystem reveal">
-        <div class="ecosystem-copy">
-          <span class="eyebrow">Ekosistem Lengkap</span>
-          <h2>Daripada Taaruf Hingga Pelamin</h2>
-          <p>Kami bukan sekadar platform taaruf. Kami menemani anda sepanjang perjalanan menuju ke jenjang pelamin dan kehidupan berumah tangga.</p>
-          <div class="ecosystem-list">
-            <span>Taaruf Beradab</span>
-            <span>Bimbingan Perkahwinan</span>
-            <span>Persiapan Rumah Tangga</span>
-            <span>Sokongan Selepas Nikah</span>
-          </div>
-          <div style="margin-top:28px;">
-            <a class="btn primary btn-daftar-section" href="#daftar">Daftar Sekarang</a>
-          </div>
+  </div>
+</section>
+<!-- 115 QUESTIONS SYSTEM -->
+<section id="questions" class="questions-section">
+  <div class="questions-container">
+    <div class="slider-header reveal">
+      <div class="section-label">Sains Padanan</div>
+      <h2 class="section-title-main">Sistem <span class="gold">115 Soalan</span> Revolusioner</h2>
+      <p class="section-desc-main">
+        Formula paling canggih untuk menganalisis keserasian berdasarkan 14 dimensi kepribadian yang dibangunkan khusus untuk Muslim Malaysia
+      </p>
+    </div>
+    
+    <div class="questions-grid reveal">
+      <div class="dimension-card">
+        <div class="dimension-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="15" stroke="#FFD700" stroke-width="2"/>
+            <circle cx="18" cy="18" r="3" fill="#FFD700"/>
+            <polygon points="18,6 20,17 18,15 16,17" fill="#FFD700"/>
+            <polygon points="18,30 20,19 18,21 16,19" fill="#888"/>
+            <polygon points="6,18 17,16 15,18 17,20" fill="#888"/>
+            <polygon points="30,18 19,16 21,18 19,20" fill="#FFD700"/>
+          </svg>
         </div>
-        <div class="ecosystem-photo">
-          <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Ekosistem perkahwinan">
+        <h3 class="dimension-name">Personality Core</h3>
+        <div class="dimension-count">10 Soalan Mendalam</div>
+        <p class="dimension-desc">Cara berfikir, bertindak dan membawa diri dalam situasi kehidupan harian.</p>
+      </div>
+      
+      <div class="dimension-card">
+        <div class="dimension-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 16L18 4L32 16V32H22V22H14V32H4V16Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round" fill="none"/>
+            <rect x="15" y="22" width="6" height="10" rx="1" stroke="#FFD700" stroke-width="1.5"/>
+          </svg>
         </div>
+        <h3 class="dimension-name">Lifestyle Preferences</h3>
+        <div class="dimension-count">10 Soalan Terperinci</div>
+        <p class="dimension-desc">Rutin harian, gaya hidup, minat dan cara menghabiskan masa lapang.</p>
+      </div>
+      
+      <div class="dimension-card">
+        <div class="dimension-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="14" stroke="#FFD700" stroke-width="2"/>
+            <path d="M18 10V12M18 24V26M13 16C13 14.3 15.2 13 18 13C20.8 13 23 14.3 23 16C23 17.7 21 18.7 18 19C15 19.3 13 20.3 13 22C13 23.7 15.2 25 18 25C20.8 25 23 23.7 23 22" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="dimension-name">Financial Mindset</h3>
+        <div class="dimension-count">10 Soalan Kritis</div>
+        <p class="dimension-desc">Cara mengurus kewangan, komitmen dan matlamat hidup jangka panjang.</p>
+      </div>
+      
+      <div class="dimension-card">
+        <div class="dimension-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 28V16C6 12 9 9 13 9H23C27 9 30 12 30 16V28" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M2 28H34" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M18 2C18 2 22 5 18 9C14 5 18 2 18 2Z" fill="#FFD700"/>
+            <rect x="14" y="20" width="8" height="8" rx="1" stroke="#FFD700" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="dimension-name">Religious Values</h3>
+        <div class="dimension-count">10 Soalan Spiritual</div>
+        <p class="dimension-desc">Tahap ketaqwaan, nilai agama dan jangkaan spiritual terhadap pasangan.</p>
+      </div>
+      
+      <div class="dimension-card">
+        <div class="dimension-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 30C18 30 4 22 4 12C4 8.1 7.1 5 11 5C13.7 5 16 6.5 18 9C20 6.5 22.3 5 25 5C28.9 5 32 8.1 32 12C32 22 18 30 18 30Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round" fill="rgba(255,215,0,0.1)"/>
+          </svg>
+        </div>
+        <h3 class="dimension-name">Love Language</h3>
+        <div class="dimension-count">10 Soalan Emosi</div>
+        <p class="dimension-desc">Cara menyatakan dan menerima kasih sayang dalam hubungan.</p>
+      </div>
+      
+      <div class="dimension-card">
+        <div class="dimension-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 8C14 8 10 11 10 15C10 17 11 19 12 20C10 21 8 23 8 26C8 28 9.5 30 12 30H24C26.5 30 28 28 28 26C28 23 26 21 24 20C25 19 26 17 26 15C26 11 22 8 18 8Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round" fill="none"/>
+            <line x1="18" y1="8" x2="18" y2="30" stroke="#FFD700" stroke-width="1.5" stroke-dasharray="2 2"/>
+            <circle cx="14" cy="16" r="1.5" fill="#FFD700"/>
+            <circle cx="22" cy="16" r="1.5" fill="#FFD700"/>
+          </svg>
+        </div>
+        <h3 class="dimension-name">Emotional Intelligence</h3>
+        <div class="dimension-count">10 Soalan Psikologi</div>
+        <p class="dimension-desc">Empati, kawalan emosi dan kemampuan memahami perasaan orang lain.</p>
+      </div>
+      
+      <div class="dimension-card">
+        <div class="dimension-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="9" r="4" stroke="#FFD700" stroke-width="2"/>
+            <circle cx="8" cy="12" r="3" stroke="#FFD700" stroke-width="1.5"/>
+            <circle cx="28" cy="12" r="3" stroke="#FFD700" stroke-width="1.5"/>
+            <path d="M10 28V22C10 20 13 18 18 18C23 18 26 20 26 22V28" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 28V24C4 22.5 5.5 21.5 8 21" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M32 28V24C32 22.5 30.5 21.5 28 21" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="dimension-name">Family Dynamics</h3>
+        <div class="dimension-count">10 Soalan Keluarga</div>
+        <p class="dimension-desc">Hubungan dengan keluarga, pengaruh ibubapa dan nilai kekeluargaan.</p>
+      </div>
+      
+      <div class="dimension-card">
+        <div class="dimension-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 4L10 20H18L15 32L26 16H18L21 4Z" fill="rgba(255,215,0,0.15)" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="dimension-name">Conflict Resolution</h3>
+        <div class="dimension-count">10 Soalan Konflik</div>
+        <p class="dimension-desc">Cara menangani pergaduhan, ego dan mencari penyelesaian bersama.</p>
+      </div>
+      
+      <div class="dimension-card">
+        <div class="dimension-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 22L22 14" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M10 18L8 20C5.8 22.2 5.8 25.8 8 28C10.2 30.2 13.8 30.2 16 28L18 26" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M18 10L20 8C22.2 5.8 25.8 5.8 28 8C30.2 10.2 30.2 13.8 28 16L26 18" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="dimension-name">Attachment Style</h3>
+        <div class="dimension-count">10 Soalan Bonding</div>
+        <p class="dimension-desc">Pola kelekatan emosi, keperluan keamanan dan intimacy preferences.</p>
       </div>
     </div>
-  </section>
+    
+    <div style="text-align: center; margin-top: 60px;">
+      <p style="color: #B0B0B0; font-size: 16px; margin-bottom: 32px;">
+        + 6 Dimensi Tambahan: Career Ambition (5), Mental Health (5), Marriage Readiness (5), 
+        Social Behavior (5), Long-term Compatibility (5), Communication Style (5)
+      </p>
+    </div>
+  </div>
+</section>
+<div class="gold-shimmer-line"></div>
 
-  <!-- ═══════════════════════════════════════
-       FINAL CTA
-  ═══════════════════════════════════════ -->
-  <section class="section dark compact">
-    <div class="container">
-      <div class="final-cta reveal">
-        <div>
-          <h2>Bersedia mencuba pengalaman taaruf yang lebih premium?</h2>
-          <p>Daftar sekarang dan dapatkan akses awal ke platform Jodohku.my.</p>
+<!-- TA'ARUF FLOW -->
+<section id="taaruf" class="taaruf-section">
+  <div class="taaruf-container">
+    <div class="slider-header reveal">
+      <div class="section-label">Perjalanan Suci</div>
+      <h2 class="section-title-main">Proses <span class="gold">Ta'aruf Digital</span></h2>
+      <p class="section-desc-main">
+        Setiap langkah direka untuk memastikan proses perkenalan yang selamat, terhormat dan patuh syariah sepenuhnya
+      </p>
+    </div>
+    
+    <div class="taaruf-flow reveal">
+
+      <!-- Step 1: AI Smart Matching -->
+      <div class="flow-step">
+        <div class="flow-number">1</div>
+        <div class="flow-image">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- two profiles -->
+            <circle cx="20" cy="22" r="8" stroke="#FFD700" stroke-width="2" fill="rgba(255,215,0,0.07)"/>
+            <circle cx="44" cy="22" r="8" stroke="#FFD700" stroke-width="2" fill="rgba(255,215,0,0.07)"/>
+            <path d="M8 48V42C8 38 13 35 20 35" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <path d="M56 48V42C56 38 51 35 44 35" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <!-- connecting heart -->
+            <path d="M32 38C32 38 26 34 26 30C26 27.2 28.2 25 31 25C31.7 25 32.4 25.2 33 25.5C33.6 25.2 34.3 25 35 25C37.8 25 40 27.2 40 30C40 34 32 38 32 38Z" fill="rgba(255,215,0,0.2)" stroke="#FFD700" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
         </div>
-        <a class="btn primary btn-daftar-section" href="#daftar">Daftar Sekarang</a>
+        <h3 class="flow-title">AI Smart Matching</h3>
+        <p class="flow-desc">Algoritma menganalisis 115 jawapan anda dan mencari padanan terbaik berdasarkan keserasian mendalam.</p>
+      </div>
+
+      <!-- Step 2: Persetujuan Wali -->
+      <div class="flow-step">
+        <div class="flow-number">2</div>
+        <div class="flow-image">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- elder figure -->
+            <circle cx="32" cy="16" r="8" stroke="#FFD700" stroke-width="2" fill="rgba(255,215,0,0.07)"/>
+            <path d="M16 52V44C16 40 23 36 32 36C41 36 48 40 48 44V52" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+            <!-- approval checkmark shield -->
+            <path d="M32 36C32 36 24 39 24 46C24 50.4 27.6 54 32 54C36.4 54 40 50.4 40 46C40 39 32 36 32 36Z" fill="rgba(255,215,0,0.1)" stroke="#FFD700" stroke-width="1.5"/>
+            <path d="M28 46L31 49L37 43" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="flow-title">Persetujuan Wali</h3>
+        <p class="flow-desc">Wali pihak perempuan menerima notifikasi dan menilai profil calon untuk memberikan kebenaran awal.</p>
+      </div>
+
+      <!-- Step 3: Komunikasi Terlindung -->
+      <div class="flow-step">
+        <div class="flow-number">3</div>
+        <div class="flow-image">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- chat bubble with lock -->
+            <path d="M10 14C10 11.8 11.8 10 14 10H50C52.2 10 54 11.8 54 14V38C54 40.2 52.2 42 50 42H36L26 54V42H14C11.8 42 10 40.2 10 38V14Z" stroke="#FFD700" stroke-width="2" fill="rgba(255,215,0,0.06)" stroke-linejoin="round"/>
+            <!-- lock icon inside chat -->
+            <rect x="26" y="22" width="12" height="10" rx="2" stroke="#FFD700" stroke-width="1.8"/>
+            <path d="M29 22V19.5C29 17.6 30.3 16 32 16C33.7 16 35 17.6 35 19.5V22" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="32" cy="27" r="1.5" fill="#FFD700"/>
+          </svg>
+        </div>
+        <h3 class="flow-title">Komunikasi Terlindung</h3>
+        <p class="flow-desc">Perbualan dalam platform dengan AI monitoring 24/7 untuk memastikan adab Islam terpelihara.</p>
+      </div>
+
+    </div>
+    
+    <div style="text-align: center; margin-top: 60px;">
+      <p style="color: #B0B0B0; font-size: 16px; line-height: 1.8; max-width: 600px; margin: 0 auto 32px;">
+      
+      </p>
+    </div>
+
+    <div style="display:flex; justify-content:center; margin-top:56px;">
+      <a href="#hero" class="btn-daftar-section" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});return false;">
+        Daftar Sekarang
+      </a>
+    </div>
+  </div>
+</section>
+<div class="gold-shimmer-line"></div>
+
+<!-- WEDDING ECOSYSTEM -->
+<section id="wedding" class="wedding-section">
+  <div class="wedding-container">
+    <div class="slider-header reveal">
+      <div class="section-label">Ekosistem Komprehensif</div>
+      <h2 class="section-title-main">Spektrum <span class="gold">Ekosistem Perkahwinan</span></h2>
+    </div>
+    
+    <div class="wedding-preview reveal">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 28px; color: var(--pearl); margin-bottom: 24px;">
+        Dari Padanan Hingga Pelamin — Semua Dalam Satu Platform
+      </h3>
+      
+      <div class="wedding-mockup">
+        <div class="wedding-card">
+          <div class="wedding-icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="10" width="24" height="22" rx="2" stroke="#FFD700" stroke-width="1.5"/>
+              <rect x="10" y="14" width="4" height="4" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <rect x="22" y="14" width="4" height="4" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <rect x="10" y="20" width="4" height="4" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <rect x="22" y="20" width="4" height="4" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <rect x="14" y="26" width="8" height="6" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <path d="M4 10H32" stroke="#FFD700" stroke-width="1.5"/>
+              <path d="M14 4L18 10L22 4" stroke="#FFD700" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="wedding-name">Mutiara Barakah</div>
+          <div class="wedding-price">RM 7K - 10K</div>
+        </div>
+        <div class="wedding-card">
+          <div class="wedding-icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="14" width="28" height="18" rx="2" stroke="#FFD700" stroke-width="1.5"/>
+              <rect x="8" y="18" width="5" height="5" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <rect x="16" y="18" width="5" height="5" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <rect x="23" y="18" width="5" height="5" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <rect x="13" y="26" width="10" height="6" rx="1" stroke="#FFD700" stroke-width="1.2"/>
+              <path d="M10 14V8C10 6.9 10.9 6 12 6H24C25.1 6 26 6.9 26 8V14" stroke="#FFD700" stroke-width="1.5"/>
+              <circle cx="18" cy="10" r="1.5" fill="#FFD700"/>
+            </svg>
+          </div>
+          <div class="wedding-name">Sakinah Mawaddah</div>
+          <div class="wedding-price">RM 17K - 25K</div>
+        </div>
+        <div class="wedding-card">
+          <div class="wedding-icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 28L7 14L13 20L18 8L23 20L29 14L32 28H4Z" stroke="#FFD700" stroke-width="1.5" stroke-linejoin="round" fill="rgba(255,215,0,0.1)"/>
+              <rect x="4" y="28" width="28" height="3" rx="1.5" fill="#FFD700"/>
+              <circle cx="18" cy="7" r="2" fill="#FFD700"/>
+            </svg>
+          </div>
+          <div class="wedding-name">Mutiara Diraja</div>
+          <div class="wedding-price">RM 56K - 80K</div>
+        </div>
+        <div class="wedding-card">
+          <div class="wedding-icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="18,4 32,14 26,32 10,32 4,14" stroke="#FFD700" stroke-width="1.5" fill="rgba(255,215,0,0.1)" stroke-linejoin="round"/>
+              <polygon points="18,4 32,14 18,14 4,14" stroke="#FFD700" stroke-width="1" fill="rgba(255,215,0,0.05)"/>
+              <line x1="4" y1="14" x2="10" y2="32" stroke="#FFD700" stroke-width="1"/>
+              <line x1="32" y1="14" x2="26" y2="32" stroke="#FFD700" stroke-width="1"/>
+              <line x1="18" y1="14" x2="18" y2="32" stroke="#FFD700" stroke-width="1"/>
+              <line x1="4" y1="14" x2="18" y2="4" stroke="#FFD700" stroke-width="1"/>
+              <line x1="32" y1="14" x2="18" y2="4" stroke="#FFD700" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="wedding-name">Platinum Royal</div>
+          <div class="wedding-price">RM 176K - 200K</div>
+        </div>
+      </div>
+      
+      <div class="wedding-explanation">
+        <strong style="color: var(--gold); font-size: 18px;">Spektrum Ekosistem Perkahwinan</strong> adalah rangkaian lengkap vendor halal, pakej majlis, perkhidmatan fotografi, catering dan wedding planning yang terintegrasi dengan platform. Setiap vendor telah melalui proses audit ketat untuk memastikan kualiti premium dan pematuhan syariah. Sistem booking digital membolehkan pasangan merancang majlis impian mereka dengan mudah dan telus.
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-</main>
 
-  <?php include 'footer.php'; ?>
+<script>
+// ── SUPABASE INIT ──
+const { createClient } = supabase;
+const supabaseUrl = '<?php echo getenv("SUPABASE_URL"); ?>';
+const supabaseKey = '<?php echo getenv("SUPABASE_ANON_KEY"); ?>';
+const db = createClient(supabaseUrl, supabaseKey);
+
+// ── STORE SELECTED FILE ──
+let selectedFile = null;
+
+// ── IC FORMATTING ──
+document.getElementById('icNo')?.addEventListener('input', function(e) {
+  let raw = e.target.value.replace(/\D/g, '');
+  if (raw.length > 6 && raw.length <= 8) raw = raw.slice(0,6) + '-' + raw.slice(6);
+  else if (raw.length > 8) raw = raw.slice(0,6) + '-' + raw.slice(6,8) + '-' + raw.slice(8,12);
+  e.target.value = raw;
+});
+
+// ── VALIDATION TRANSLATION HELPER ──                          // ✅ NEW
+function v() {
+  const lang = localStorage.getItem('jdk_lang') || 'ms';
+  return (i18n[lang] || i18n['ms']).validation;
+}
+
+// ── ADVANCED IC VALIDATION ──
+function validateIC(icFormatted) {
+  const vt = v();                                               // ✅ CHANGED
+  const ic = icFormatted.replace(/-/g, '');
+
+  if (!ic || ic.length !== 12 || !/^\d{12}$/.test(ic))
+    return { valid: false, error: vt.ic_invalid };             // ✅ CHANGED
+  if (/^(\d)\1{11}$/.test(ic))
+    return { valid: false, error: vt.ic_repeat };              // ✅ CHANGED
+
+  const sequential = '0123456789012345678901234567890';
+  const reverseSeq = '9876543210987654321098765432109';
+  if (sequential.includes(ic.slice(0, 10)) || reverseSeq.includes(ic.slice(0, 10)))
+    return { valid: false, error: vt.ic_sequential };          // ✅ CHANGED
+
+  const yy = parseInt(ic.substring(0, 2));
+  const mm = parseInt(ic.substring(2, 4));
+  const dd = parseInt(ic.substring(4, 6));
+
+  if (mm < 1 || mm > 12)
+    return { valid: false, error: vt.ic_month };               // ✅ CHANGED
+
+  const currentYear = new Date().getFullYear();
+  const fullYear = yy <= (currentYear % 100) ? 2000 + yy : 1900 + yy;
+  const daysInMonth = new Date(fullYear, mm, 0).getDate();
+  if (dd < 1 || dd > daysInMonth)
+    return { valid: false, error: vt.ic_day(mm, daysInMonth) }; // ✅ CHANGED
+
+  const dob = new Date(fullYear, mm - 1, dd);
+  if (dob > new Date())
+    return { valid: false, error: vt.ic_future };              // ✅ CHANGED
+
+  const age = (new Date() - dob) / (1000 * 60 * 60 * 24 * 365.25);
+  if (age > 120)
+    return { valid: false, error: vt.ic_old };                 // ✅ CHANGED
+
+  const stateCode = parseInt(ic.substring(6, 8));
+  const validStateCodes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+  const isValidState = validStateCodes.includes(stateCode) || (stateCode >= 21 && stateCode <= 59);
+  if (!isValidState)
+    return { valid: false, error: vt.ic_state(ic.substring(6, 8)) }; // ✅ CHANGED
+
+  const lastDigit = parseInt(ic[11]);
+  const gender = lastDigit % 2 === 0 ? v().gender_female : v().gender_male;
+  return {
+    valid: true,
+    gender,
+    dob: `${dd.toString().padStart(2,'0')}/${mm.toString().padStart(2,'0')}/${fullYear}`,
+    age: Math.floor(age),
+    stateCode
+  };
+}
+
+// ── IC HINT HELPER ──
+function showICHint(result) {
+  const field = document.getElementById('icNo');
+  const existing = field.parentElement.querySelector('.field-hint');
+  if (existing) existing.remove();
+  const hint = document.createElement('div');
+  hint.className = 'field-hint';
+  hint.style.cssText = 'color:#4CAF50;font-size:11px;margin-top:5px;';
+  hint.textContent = v().ic_hint(result.gender, result.dob, result.age);
+  field.parentElement.appendChild(hint);
+}
+
+function clearICHint() {
+  const existing = document.getElementById('icNo')?.parentElement.querySelector('.field-hint');
+  if (existing) existing.remove();
+}
+
+// ── IMAGE UPLOAD HANDLER ──
+function handleImageUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) {
+    alert(v().image_too_large);
+    event.target.value = '';
+    return;
+  }
+  selectedFile = file;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const uploadArea = document.querySelector('.upload-area');
+    uploadArea.innerHTML = `
+      <div style="text-align:center;">
+        <div style="position:relative; display:inline-block; margin-bottom:12px;">
+          <img 
+            src="${e.target.result}" 
+            alt="Preview"
+            style="
+              width:110px; height:110px; object-fit:cover;
+              border-radius:50%; border:3px solid var(--gold);
+              box-shadow:0 0 20px rgba(255,215,0,0.3);
+              display:block;
+            "
+          >
+          <div style="
+            position:absolute; bottom:4px; right:4px;
+            width:28px; height:28px; border-radius:50%;
+            background:linear-gradient(135deg,var(--emerald),var(--emerald-light));
+            border:2px solid var(--gold);
+            display:flex; align-items:center; justify-content:center;
+            font-size:14px; color:#fff;
+          ">✓</div>
+        </div>
+        <div style="font-size:13px; color:var(--gold); font-weight:600; margin-bottom:4px;">
+          ${v().upload_success}
+        </div>
+        <div style="font-size:11px; color:#888; margin-bottom:10px;">
+          ${file.name}
+        </div>
+        <label style="
+          display:inline-block; cursor:pointer;
+          font-size:11px; color:#666;
+          border:1px solid rgba(255,255,255,0.1);
+          padding:5px 14px; border-radius:20px;
+          transition:all 0.3s;
+        "
+        onmouseover="this.style.borderColor='rgba(255,215,0,0.4)';this.style.color='var(--gold)'"
+        onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#666'"
+        >
+          ${v().upload_change}
+          <input type="file" accept="image/*" onchange="handleImageUpload(event)" style="display:none;">
+        </label>
+      </div>
+    `;
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── SHOW / CLEAR FIELD ERRORS ──
+function showFieldError(id, message) {
+  const field = document.getElementById(id);
+  if (!field) return;
+  field.style.borderColor = '#FF6B6B';
+  const existing = field.parentElement.querySelector('.field-error');
+  if (existing) existing.remove();
+  const err = document.createElement('div');
+  err.className = 'field-error';
+  err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:6px;';
+  err.textContent = message;
+  field.parentElement.appendChild(err);
+}
+
+function clearFieldError(id) {
+  const field = document.getElementById(id);
+  if (!field) return;
+  field.style.borderColor = '';
+  const existing = field.parentElement.querySelector('.field-error');
+  if (existing) existing.remove();
+}
+
+function showUploadError(message) {
+  const uploadArea = document.querySelector('.upload-area');
+  if (!uploadArea) return;
+  uploadArea.style.borderColor = '#FF6B6B';
+  const existing = uploadArea.parentElement.querySelector('.field-error');
+  if (existing) existing.remove();
+  const err = document.createElement('div');
+  err.className = 'field-error';
+  err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:6px;';
+  err.textContent = message;
+  uploadArea.parentElement.appendChild(err);
+}
+
+function clearUploadError() {
+  const uploadArea = document.querySelector('.upload-area');
+  if (!uploadArea) return;
+  uploadArea.style.borderColor = '';
+  const existing = uploadArea.parentElement.querySelector('.field-error');
+  if (existing) existing.remove();
+}
+
+function showCheckboxError(message) {
+  const cb = document.querySelector('.checkbox-premium');
+  if (!cb) return;
+  const existing = cb.querySelector('.field-error');
+  if (existing) existing.remove();
+  const err = document.createElement('div');
+  err.className = 'field-error';
+  err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:6px;';
+  err.textContent = message;
+  cb.appendChild(err);
+}
+
+function clearCheckboxError() {
+  const cb = document.querySelector('.checkbox-premium');
+  if (!cb) return;
+  const existing = cb.querySelector('.field-error');
+  if (existing) existing.remove();
+}
+
+// ── MAIN FORM VALIDATION ──
+function validateForm() {
+  const vt = v();                                               // ✅ CHANGED
+  let valid = true;
+
+  // Full Name
+  const name = document.getElementById('fullName').value.trim();
+  const nameRegex = /^[a-zA-Z\u0600-\u06FF\s\/\'\-\.]+$/;
+  if (!name) { showFieldError('fullName', vt.name_required); valid = false; }            // ✅ CHANGED
+  else if (name.length < 3) { showFieldError('fullName', vt.name_short); valid = false; } // ✅ CHANGED
+  else if (!nameRegex.test(name)) { showFieldError('fullName', vt.name_invalid); valid = false; } // ✅ CHANGED
+  else { clearFieldError('fullName'); }
+
+  // IC Number — advanced validation
+  const icValue = document.getElementById('icNo').value;
+  const icResult = validateIC(icValue);
+  if (!icValue.replace(/-/g,'')) { showFieldError('icNo', vt.ic_required); clearICHint(); valid = false; } // ✅ CHANGED
+  else if (!icResult.valid) { showFieldError('icNo', icResult.error); clearICHint(); valid = false; }
+  else { clearFieldError('icNo'); showICHint(icResult); }
+
+  // Phone Number
+  const phone = document.getElementById('phoneNo').value.trim();
+  const phoneRegex = /^(\+?60|0)[1-9]\d{7,9}$/;
+  if (!phone) { showFieldError('phoneNo', vt.phone_required); valid = false; }           // ✅ CHANGED
+  else if (!phoneRegex.test(phone.replace(/[\s-]/g, ''))) { showFieldError('phoneNo', vt.phone_invalid); valid = false; } // ✅ CHANGED
+  else { clearFieldError('phoneNo'); }
+
+  // Email
+  const email = document.getElementById('emailAddr').value.trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email) { showFieldError('emailAddr', vt.email_required); valid = false; }         // ✅ CHANGED
+  else if (!emailRegex.test(email)) { showFieldError('emailAddr', vt.email_invalid); valid = false; } // ✅ CHANGED
+  else { clearFieldError('emailAddr'); }
+
+  // Profile Picture
+  if (!selectedFile) { showUploadError(vt.photo_required); valid = false; }              // ✅ CHANGED
+  else { clearUploadError(); }
+
+  // Terms Checkbox
+  if (!document.getElementById('agreeTerms').checked) { showCheckboxError(vt.terms_required); valid = false; } // ✅ CHANGED
+  else { clearCheckboxError(); }
+
+  return valid;
+}
+
+// ── CLEAR ERRORS ON INPUT ──
+['phoneNo', 'emailAddr'].forEach(id => {
+  document.getElementById(id)?.addEventListener('input', () => clearFieldError(id));
+});
+
+// Name — real-time letters only (translated)                   // ✅ CHANGED
+document.getElementById('fullName')?.addEventListener('input', () => {
+  const name = document.getElementById('fullName').value.trim();
+  const nameRegex = /^[a-zA-Z\u0600-\u06FF\s\/\'\-\.]+$/;
+  if (name && !nameRegex.test(name)) {
+    showFieldError('fullName', v().name_invalid);               // ✅ CHANGED
+  } else {
+    clearFieldError('fullName');
+  }
+});
+
+// IC — real-time advanced validation
+document.getElementById('icNo')?.addEventListener('input', () => {
+  const icValue = document.getElementById('icNo').value;
+  const clean = icValue.replace(/-/g, '');
+  if (clean.length === 12) {
+    const result = validateIC(icValue);
+    if (!result.valid) {
+      showFieldError('icNo', result.error);
+      clearICHint();
+    } else {
+      clearFieldError('icNo');
+      showICHint(result);
+    }
+  } else {
+    clearFieldError('icNo');
+    clearICHint();
+  }
+});
+
+document.getElementById('agreeTerms')?.addEventListener('change', clearCheckboxError);
+
+// ── GENERATE ID ──
+function generateId() {
+  const year = new Date().getFullYear();
+  const random = crypto.randomUUID().replace(/-/g,'').substring(0,8).toUpperCase();
+  return `JDK-${year}-${random}`;
+}
+
+// ── ERROR POPUP ──
+function showErrorPopup(title, message) {
+  const existing = document.getElementById('errorPopup');
+  if (existing) existing.remove();
+  const popup = document.createElement('div');
+  popup.id = 'errorPopup';
+  popup.style.cssText = `
+    position: fixed; inset: 0; z-index: 99999;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+  `;
+  popup.innerHTML = `
+    <div style="
+      background: linear-gradient(160deg, #1a0000 0%, #000000 100%);
+      border: 2px solid rgba(255,80,80,0.4);
+      border-radius: 20px; max-width: 420px; width: 100%;
+      position: relative;
+    ">
+      <div style="padding: 40px 36px; text-align: center;">
+        <div style="font-size:32px; margin-bottom:16px;">✗</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:22px; color:#fff; margin-bottom:14px;">${title}</h3>
+        <p style="color:#B0B0B0; font-size:14px; line-height:1.7; margin-bottom:28px;">${message}</p>
+        <button onclick="document.getElementById('errorPopup').remove()" style="
+          background: linear-gradient(135deg, #FF4444, #FF8800);
+          color:#fff; border:none; padding:12px 36px;
+          border-radius:8px; font-weight:700; font-size:13px;
+          cursor:pointer; text-transform:uppercase; letter-spacing:1px;
+        ">${v().close_btn}</button>
+      </div>
+    </div>
+  `;
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) popup.remove();
+  });
+  document.body.appendChild(popup);
+}
+
+// ── MAIN FORM SUBMIT ──
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  if (!validateForm()) {
+    const firstError = document.querySelector('.field-error');
+    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  const submitBtn = e.target.querySelector('.btn-submit-premium');
+  submitBtn.disabled = true;
+  submitBtn.textContent = v().processing;                       // ✅ CHANGED
+
+  try {
+    const jdk_id = generateId();
+    let photo_url = null;
+
+   if (selectedFile) {
+  const ext = selectedFile.name.split('.').pop();
+  const filename = `${jdk_id}.${ext}`;
+  const { data: uploadData, error: uploadError } = await db.storage
+    .from('profile-pics')
+    .upload(filename, selectedFile);
+
+  if (uploadError) {
+    console.error('Upload error:', uploadError.message);
+    submitBtn.disabled = false;
+   submitBtn.textContent = (i18n[localStorage.getItem('jdk_lang') || 'ms'] || i18n['ms']).btn_submit;
+    showErrorPopup(v().photo_upload_fail_title, v().photo_upload_fail_msg);
+    return;
+  }
+
+  const { data: urlData } = db.storage.from('profile-pics').getPublicUrl(filename);
+  photo_url = urlData?.publicUrl || null;
+
+  // ── HARD GUARD: block insert if URL is missing ──
+  if (!photo_url) {
+    console.error('photo_url is null after upload');
+    submitBtn.disabled = false;
+    submitBtn.textContent = (i18n[localStorage.getItem('jdk_lang') || 'ms'] || i18n['ms']).btn_submit;
+    showErrorPopup(v().photo_upload_fail_title, v().photo_upload_fail_msg);
+    return;
+  }
+}
+
+// ── HARD GUARD: block insert if no file was selected ──
+if (!photo_url) {
+  submitBtn.disabled = false;
+  submitBtn.textContent = (i18n[localStorage.getItem('jdk_lang') || 'ms'] || i18n['ms']).btn_submit;
+  showErrorPopup(v().photo_upload_fail_title, v().photo_upload_fail_msg);
+  return;
+}
+
+    const { error } = await db.from('registrations').insert([{
+      jdk_id,
+      nama:    document.getElementById('fullName').value.trim(),
+      ic:      document.getElementById('icNo').value,
+      telefon: document.getElementById('phoneNo').value.trim(),
+      email:   document.getElementById('emailAddr').value.trim(),
+      photo_url,
+    }]);
+
+    if (error) {
+      console.error('Supabase error:', error.message);
+      submitBtn.disabled = false;
+      submitBtn.textContent = (i18n[localStorage.getItem('jdk_lang') || 'ms'] || i18n['ms']).btn_submit;                 // ✅ CHANGED
+      const isDuplicate = error.message.includes('unique') || error.code === '23505';
+      showErrorPopup(
+        isDuplicate ? v().duplicate_title : v().error_title,   // ✅ CHANGED
+        isDuplicate ? v().duplicate_msg   : v().error_msg      // ✅ CHANGED
+      );
+      return;
+    }
+
+    document.getElementById('formView').style.display = 'none';
+    document.getElementById('successView').style.display = 'block';
+    document.getElementById('generatedId').textContent = jdk_id;
+
+  } catch (err) {
+    console.error('Unexpected error:', err);
+    submitBtn.disabled = false;
+   submitBtn.textContent = (i18n[localStorage.getItem('jdk_lang') || 'ms'] || i18n['ms']).btn_submit;                    // ✅ CHANGED
+    showErrorPopup(v().unexpected_title, err.message || v().error_msg); // ✅ CHANGED
+  }
+}
+
+// ── TOUCH SWIPE CAROUSEL ──
+(function() {
+  const slider = document.querySelector('.image-slider');
+  const track = document.querySelector('.slider-track');
+  if (!track || !slider) return;
+
+  const slides = track.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+  let startX = 0;
+  let isDragging = false;
+  let autoTimer = null;
+
+  track.style.animation = 'none';
+  track.style.willChange = 'transform';
+  track.style.direction = 'ltr';
+  slider.style.overflow = 'hidden';
+  slider.style.direction = 'ltr';
+
+  function sizeSLides() {
+    const w = slider.offsetWidth;
+    slides.forEach(s => { s.style.minWidth = w + 'px'; s.style.width = w + 'px'; });
+    track.style.width = (w * total) + 'px';
+  }
+
+  function goTo(index, animate = true) {
+    current = (index + total) % total;
+    const w = slides[0].offsetWidth;
+    track.style.transition = animate ? 'transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
+    track.style.transform = `translateX(-${current * w}px)`;
+  }
+
+  function resetTimer() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 4000);
+  }
+
+  sizeSLides();
+  goTo(0, false);
+  resetTimer();
+
+  window.addEventListener('resize', () => { sizeSLides(); goTo(current, false); });
+
+  slider.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    track.style.transition = 'none';
+    clearInterval(autoTimer);
+  }, { passive: true });
+
+  slider.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    const diff = e.touches[0].clientX - startX;
+    track.style.transform = `translateX(${-(current * slides[0].offsetWidth) + diff}px)`;
+  }, { passive: true });
+
+  slider.addEventListener('touchend', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    const diff = e.changedTouches[0].clientX - startX;
+    if (diff < -50) goTo(current + 1);
+    else if (diff > 50) goTo(current - 1);
+    else goTo(current);
+    resetTimer();
+  });
+})();
+
+// ── SCROLL ANIMATIONS ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── NAVBAR SCROLL ──
+window.addEventListener('scroll', () => {
+  const navbar = document.querySelector('.navbar');
+  if (navbar) navbar.style.background = window.scrollY > 100 ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.9)';
+});
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// ── MODALS ──
+function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
+function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = ''; }
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', function(e) { if (e.target === this) closeModal(this.id); });
+});
+</script>
+
+<!-- TERMS & CONDITIONS MODAL -->
+<div class="modal-overlay" id="termsModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2 class="modal-title">Terma &amp; Syarat</h2>
+      <button class="modal-close" onclick="closeModal('termsModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meta">Berkuat kuasa: 1 Januari 2025 &nbsp;|&nbsp; Versi: 2.1 &nbsp;|&nbsp; Bahasa: Bahasa Malaysia</div>
+      <div class="modal-section"><h3>1. Penerimaan Terma</h3><p>Dengan mengakses atau menggunakan platform Jodohku.my ("Platform"), anda bersetuju untuk terikat dengan Terma &amp; Syarat ini. Platform ini diuruskan oleh <strong>Noble Synergy Ventures</strong> di bawah undang-undang Malaysia.</p></div>
+      <div class="modal-section"><h3>2. Kelayakan Pengguna</h3><ol><li>Anda mesti seorang Muslim atau Muslimah yang telah mencapai umur 18 tahun.</li><li>Anda mesti warganegara Malaysia atau pemastautin tetap yang sah.</li><li>Anda mesti belum berkahwin atau telah bercerai mengikut undang-undang yang sah.</li><li>Semua maklumat yang diberikan mesti tepat, terkini dan benar.</li></ol></div>
+      <div class="modal-section"><h3>3. Kod Etika</h3><p>Pengguna wajib mematuhi adab Islam dalam semua komunikasi. Kandungan lucah, pertukaran maklumat peribadi di luar platform, dan aktiviti penipuan adalah <strong>dilarang sama sekali</strong>.</p></div>
+      <div class="modal-section"><h3>4. Sistem Wali</h3><p>Penglibatan Wali adalah <strong>diwajibkan</strong> bagi setiap pengguna wanita sebelum sebarang komunikasi dibenarkan.</p></div>
+      <div class="modal-section"><h3>5. Hubungi Kami</h3><p><strong>Noble Synergy Ventures</strong><br>E-mel: legal@jodohku.my</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRIVACY POLICY MODAL -->
+<div class="modal-overlay" id="privacyModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2 class="modal-title">Dasar Privasi &amp; Notis Perlindungan Data Peribadi</h2>
+      <button class="modal-close" onclick="closeModal('privacyModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meta">Berkuat kuasa: 01/05/2026 &nbsp;|&nbsp; Mematuhi: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Versi: 3.0</div>
+ 
+      <div class="modal-section"><h3>1. Pengenalan</h3><p>Polisi Privasi &amp; Notis Perlindungan Data Peribadi ini menerangkan bagaimana Jodohku.my ("Jodohku", "kami", "kita" atau "platform ini") mengumpul, menggunakan, menyimpan, melindungi dan mendedahkan data peribadi pengguna selaras dengan Akta Perlindungan Data Peribadi 2010 (PDPA/APDP) dan undang-undang berkaitan di Malaysia. Dengan menggunakan laman web, aplikasi, borang pendaftaran atau perkhidmatan Jodohku.my, anda bersetuju dengan pemprosesan data peribadi anda seperti yang dinyatakan dalam polisi ini.</p></div>
+ 
+      <div class="modal-section"><h3>2. Data Peribadi Yang Kami Kumpul</h3><p>Kami mungkin mengumpul data peribadi berikut daripada anda:</p><ul><li><strong>Maklumat identiti:</strong> nama penuh, nombor kad pengenalan/MyKad, tarikh lahir, umur, jantina, status perkahwinan.</li><li><strong>Maklumat hubungan:</strong> nombor telefon, alamat e-mel, negeri/daerah tempat tinggal.</li><li><strong>Maklumat profil:</strong> gambar profil, biodata ringkas, maklumat latar belakang, minat, kriteria pasangan dan maklumat lain yang anda pilih untuk isi dalam profil.</li><li><strong>Maklumat akaun:</strong> username, kata laluan yang disulitkan, rekod log masuk, status verifikasi akaun.</li><li><strong>Maklumat teknikal:</strong> alamat IP, jenis peranti, pelayar internet, cookies, rekod penggunaan website.</li><li><strong>Maklumat komunikasi:</strong> mesej atau pertanyaan yang dihantar kepada pihak Jodohku, laporan aduan, rekod sokongan pelanggan.</li></ul></div>
+ 
+      <div class="modal-section"><h3>3. Kenapa Kami Memerlukan Nama Penuh dan Nombor IC</h3><p>Jodohku.my ialah platform perkenalan dan pencarian jodoh yang melibatkan kepercayaan, keselamatan dan identiti pengguna. Kami memerlukan nama penuh dan nombor kad pengenalan untuk tujuan berikut:</p><ul><li><strong>Pengesahan identiti:</strong> untuk memastikan pengguna yang mendaftar ialah individu sebenar dan bukan akaun palsu.</li><li><strong>Pengesahan umur:</strong> untuk memastikan pengguna memenuhi syarat umur minimum yang ditetapkan.</li><li><strong>Pencegahan penipuan dan scam:</strong> untuk mengurangkan risiko penyamaran identiti, akaun berganda, scam percintaan dan penyalahgunaan platform.</li><li><strong>Keselamatan komuniti:</strong> untuk melindungi pengguna lain dan membantu pihak Jodohku mengambil tindakan sekiranya berlaku laporan salah laku.</li><li><strong>Pengurusan aduan dalaman:</strong> jika terdapat aduan berkaitan penipuan, gangguan atau penyamaran, maklumat identiti boleh digunakan untuk semakan dalaman.</li><li><strong>Pematuhan undang-undang:</strong> sekiranya diperlukan oleh undang-undang, perintah mahkamah, pihak berkuasa atau proses undang-undang yang sah.</li></ul><p style="margin-top:10px;"><em>Nombor IC anda tidak akan dipaparkan secara awam kepada pengguna lain.</em></p></div>
+ 
+      <div class="modal-section"><h3>4. Tujuan Pemprosesan Data Peribadi</h3><p>Kami memproses data peribadi anda untuk tujuan berikut:</p><ol><li>Membuka dan mengurus akaun pengguna.</li><li>Mengesahkan identiti dan umur pengguna.</li><li>Menyediakan fungsi padanan atau pencarian jodoh.</li><li>Memaparkan maklumat profil yang anda pilih untuk dikongsi.</li><li>Menghubungi anda berkaitan akaun, keselamatan, transaksi atau kemas kini perkhidmatan.</li><li>Memproses pembayaran, langganan atau promosi jika berkaitan.</li><li>Mengurus aduan, pertanyaan dan sokongan pelanggan.</li><li>Mengesan, mencegah dan menangani penipuan, akaun palsu, gangguan atau penyalahgunaan platform.</li><li>Menambah baik website, aplikasi, keselamatan dan pengalaman pengguna.</li><li>Mematuhi kehendak undang-undang, peraturan, pihak berkuasa atau proses undang-undang.</li></ol></div>
+ 
+      <div class="modal-section"><h3>5. Asas Persetujuan</h3><p>Dengan menghantar data peribadi anda kepada Jodohku.my, anda memberi persetujuan kepada kami untuk mengumpul, menyimpan, menggunakan dan memproses data tersebut bagi tujuan yang dinyatakan dalam polisi ini. Sekiranya anda tidak bersetuju untuk memberikan maklumat tertentu yang diperlukan, kami mungkin tidak dapat menyediakan akses penuh kepada perkhidmatan Jodohku.my, termasuk fungsi pendaftaran, verifikasi atau padanan pengguna.</p></div>
+ 
+      <div class="modal-section"><h3>6. Pendedahan Data Peribadi Kepada Pihak Ketiga</h3><p>Kami tidak menjual data peribadi anda kepada pihak ketiga. Walau bagaimanapun, data peribadi anda mungkin didedahkan kepada pihak berikut jika perlu:</p><ul><li>Penyedia hosting, cloud, pangkalan data dan keselamatan sistem.</li><li>Penyedia pembayaran jika anda membuat transaksi.</li><li>Penyedia perkhidmatan e-mel, SMS atau notifikasi.</li><li>Pasukan sokongan, pentadbir atau moderator Jodohku.</li><li>Penasihat undang-undang, auditor atau perunding profesional.</li><li>Pihak berkuasa, mahkamah atau agensi penguatkuasaan jika diwajibkan oleh undang-undang.</li><li>Pihak lain yang anda sendiri benarkan.</li></ul><p style="margin-top:10px;">Semua pendedahan dibuat berdasarkan keperluan yang munasabah dan berkaitan dengan tujuan perkhidmatan Jodohku.my.</p></div>
+ 
+      <div class="modal-section"><h3>7. Keselamatan Data Peribadi</h3><p>Kami akan mengambil langkah keselamatan yang munasabah untuk melindungi data peribadi anda daripada kehilangan, penyalahgunaan, akses tanpa kebenaran, pendedahan, perubahan atau pemusnahan. Langkah keselamatan termasuk:</p><ul><li>Akses terhad kepada pentadbir yang diberi kuasa sahaja.</li><li>Penggunaan kata laluan dan kawalan akses.</li><li>Penyimpanan data dalam sistem yang dilindungi.</li><li>Enkripsi atau perlindungan teknikal yang sesuai.</li><li>Pemantauan aktiviti mencurigakan.</li><li>Semakan keselamatan dari semasa ke semasa.</li></ul><p style="margin-top:10px;"><em>Walaupun kami berusaha melindungi data anda, tiada sistem atas talian yang boleh dijamin 100% selamat.</em></p></div>
+ 
+      <div class="modal-section"><h3>8. Tempoh Penyimpanan Data</h3><p>Kami hanya akan menyimpan data peribadi anda selama mana ia diperlukan untuk tujuan yang dinyatakan dalam polisi ini, termasuk untuk tujuan akaun pengguna, keselamatan, pencegahan penipuan, rekod transaksi, penyelesaian pertikaian dan pematuhan undang-undang. Jika akaun anda dipadamkan atau tidak aktif, kami boleh memadam, menyahaktifkan atau menyimpan data tertentu untuk tempoh yang munasabah jika diperlukan bagi tujuan keselamatan, audit, rekod undang-undang atau pencegahan penyalahgunaan.</p></div>
+ 
+      <div class="modal-section"><h3>9. Hak Anda Sebagai Pengguna</h3><p>Anda boleh menghubungi kami untuk:</p><ol><li>Meminta akses kepada data peribadi anda.</li><li>Membetulkan data yang tidak tepat atau tidak lengkap.</li><li>Menarik balik persetujuan tertakluk kepada had undang-undang dan operasi perkhidmatan.</li><li>Meminta pemadaman akaun atau data tertentu.</li><li>Bertanya bagaimana data anda digunakan.</li><li>Membuat aduan berkaitan pemprosesan data peribadi.</li></ol><p style="margin-top:10px;">Permintaan boleh dibuat melalui maklumat hubungan di bahagian akhir polisi ini.</p></div>
+ 
+      <div class="modal-section"><h3>10. Ketepatan Maklumat</h3><p>Anda bertanggungjawab memastikan maklumat yang diberikan kepada Jodohku.my adalah benar, tepat, lengkap dan terkini. Kami berhak menggantung atau menamatkan akaun jika maklumat yang diberikan didapati palsu, mengelirukan, tidak lengkap atau digunakan untuk tujuan penipuan.</p></div>
+ 
+      <div class="modal-section"><h3>11. Data Yang Dipaparkan Kepada Pengguna Lain</h3><p>Maklumat tertentu dalam profil anda mungkin dipaparkan kepada pengguna lain, contohnya nama paparan, umur atau lingkungan umur, negeri/daerah, gambar profil, biodata ringkas dan kriteria pasangan. Maklumat sensitif seperti nombor IC, nombor telefon, e-mel, alamat penuh dan maklumat dalaman verifikasi <strong>tidak akan dipaparkan secara awam</strong> kecuali anda sendiri memilih untuk mendedahkannya atau jika diwajibkan oleh undang-undang.</p></div>
+ 
+      <div class="modal-section"><h3>12. Cookies dan Teknologi Penjejakan</h3><p>Jodohku.my mungkin menggunakan cookies atau teknologi serupa untuk membolehkan fungsi log masuk, menyimpan tetapan pengguna, menganalisis penggunaan website, meningkatkan prestasi dan keselamatan, serta menyediakan pengalaman pengguna yang lebih baik. Anda boleh mengubah tetapan cookies melalui pelayar internet anda, tetapi sesetengah fungsi website mungkin tidak berfungsi dengan sempurna.</p></div>
+ 
+      <div class="modal-section"><h3>13. Pautan ke Laman Pihak Ketiga</h3><p>Website Jodohku.my mungkin mengandungi pautan ke laman pihak ketiga. Kami tidak bertanggungjawab terhadap kandungan, polisi privasi atau amalan keselamatan laman pihak ketiga tersebut. Anda digalakkan membaca polisi privasi mereka sebelum memberikan sebarang data peribadi.</p></div>
+ 
+      <div class="modal-section"><h3>14. Pindaan Polisi</h3><p>Kami boleh mengemas kini polisi ini dari semasa ke semasa. Sebarang perubahan akan dipaparkan di website Jodohku.my dengan tarikh kuat kuasa terkini. Penggunaan berterusan terhadap perkhidmatan kami selepas perubahan dibuat dianggap sebagai persetujuan kepada polisi yang dikemas kini.</p></div>
+ 
+      <div class="modal-section"><h3>15. Hubungi Kami</h3><p>Jika anda mempunyai pertanyaan, permintaan akses, pembetulan data, pemadaman akaun atau aduan berkaitan data peribadi, sila hubungi:<br><br><strong>Jodohku.my</strong><br>E-mel: <strong>inquiry@jodohku.my</strong><br>Website: <a href="https://www.jodohku.my" style="color:var(--gold, #FFD700);">https://www.jodohku.my</a><br><br><em>Tajuk e-mel cadangan: "Permintaan Data Peribadi / PDPA"</em></p></div>
+    </div>
+  </div>
+</div>
 
   <script>
 // ── TRANSLATIONS ──
@@ -938,49 +1915,6 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
     ],
   }
 };
-
-    document.querySelector('.form-card form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = this.querySelector('button[type="submit"]');
-  btn.textContent = 'Menghantar...';
-  btn.disabled = true;
-
-  const data = {
-    name: this.name.value,
-    email: this.email.value,
-    phone: this.phone.value,
-  };
-
-  // Replace with your actual Supabase or API endpoint
-  console.log('Form data:', data);
-  
-  // Show success
-  this.innerHTML = '<p style="color:var(--champagne);text-align:center;padding:20px;">✅ Pendaftaran berjaya! Kami akan hubungi anda.</p>';
-});
-
-    function openModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-}
-
-// Close on backdrop click
-document.addEventListener('click', function(e) {
-  if (e.target.classList.contains('modal-overlay')) {
-    e.target.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-});
    
     
     
@@ -1149,93 +2083,10 @@ setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
     // ── RESTORE LANGUAGE ON LOAD ──
 const savedLang = localStorage.getItem('jdk_lang');
 if (savedLang && i18n[savedLang]) setLang(savedLang);
-
-    <script>
-// File input label update
-const profilePhoto = document.getElementById('profilePhoto');
-const uploadTitle = document.getElementById('uploadTitle');
-if (profilePhoto && uploadTitle) {
-  profilePhoto.addEventListener('change', () => {
-    const file = profilePhoto.files && profilePhoto.files[0];
-    uploadTitle.textContent = file ? file.name : 'Pilih gambar profil';
-  });
-}
-
-// Reveal on scroll
-const revealItems = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-revealItems.forEach((item) => observer.observe(item));
-
-// Form submit handler
-function handleFormSubmit() {
-  const form = document.getElementById('registrationForm');
-  const success = document.getElementById('successMessage');
-  console.log('Form submitted');
-  if (form && success) {
-    form.style.display = 'none';
-    success.style.display = 'block';
-  }
-}
-</script>
     
 </script>
 
 <?php include 'footer.php'; ?>
-
-  <!-- Terms Modal -->
-<div id="termsModal" class="modal-overlay" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#1a1610;border:1px solid rgba(216,192,138,.2);border-radius:24px;max-width:720px;width:100%;max-height:80vh;overflow-y:auto;padding:40px;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
-      <h2 class="modal-title" style="color:var(--champagne);font-family:Georgia,serif;font-size:28px;margin:0;">Terma & Syarat</h2>
-      <button onclick="closeModal('termsModal')" style="background:none;border:none;color:rgba(255,255,255,.6);font-size:24px;cursor:pointer;">✕</button>
-    </div>
-    <p class="modal-meta" style="color:rgba(255,255,255,.4);font-size:12px;margin-bottom:24px;">Berkuat kuasa: 1 Januari 2025 | Versi: 2.1</p>
-    <div class="modal-section"><h3 style="color:var(--champagne);margin-bottom:8px;">1. Penerimaan Terma</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">Dengan mengakses atau menggunakan platform Jodohku.my, anda bersetuju untuk terikat dengan Terma & Syarat ini.</p></div>
-    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">2. Kelayakan Pengguna</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">Anda mesti seorang Muslim/Muslimah berumur 18 tahun ke atas, warganegara Malaysia, dan belum berkahwin atau telah bercerai secara sah.</p></div>
-    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">3. Kod Etika</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">Pengguna wajib mematuhi adab Islam dalam semua komunikasi. Kandungan lucah dan aktiviti penipuan adalah dilarang sama sekali.</p></div>
-    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">4. Sistem Wali</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">Penglibatan Wali adalah diwajibkan bagi setiap pengguna wanita sebelum sebarang komunikasi dibenarkan.</p></div>
-    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">5. Hubungi Kami</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">E-mel: legal@jodohku.my</p></div>
-  </div>
-</div>
-
-<!-- Privacy Modal -->
-<div id="privacyModal" class="modal-overlay" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#1a1610;border:1px solid rgba(216,192,138,.2);border-radius:24px;max-width:720px;width:100%;max-height:80vh;overflow-y:auto;padding:40px;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
-      <h2 class="modal-title" style="color:var(--champagne);font-family:Georgia,serif;font-size:24px;margin:0;">Dasar Privasi & Notis Perlindungan Data</h2>
-      <button onclick="closeModal('privacyModal')" style="background:none;border:none;color:rgba(255,255,255,.6);font-size:24px;cursor:pointer;">✕</button>
-    </div>
-    <p class="modal-meta" style="color:rgba(255,255,255,.4);font-size:12px;margin-bottom:24px;">Berkuat kuasa: 01/05/2026 | Mematuhi: PDPA 2010 | Versi: 3.0</p>
-    <div class="modal-section"><h3 style="color:var(--champagne);margin-bottom:8px;">1. Pengenalan</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">Polisi ini menerangkan bagaimana Jodohku.my mengumpul, menggunakan, menyimpan dan melindungi data peribadi pengguna selaras dengan PDPA 2010.</p></div>
-    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">2. Data Yang Dikumpul</h3><ul style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.9;padding-left:20px;"><li>Nama penuh, nombor IC, tarikh lahir, jantina</li><li>Nombor telefon, e-mel, negeri</li><li>Gambar profil, biodata, minat</li><li>Alamat IP, jenis peranti, cookies</li></ul></div>
-    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">3. Kenapa Kami Perlukan IC Anda</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">Untuk pengesahan identiti, pengesahan umur, pencegahan penipuan dan keselamatan komuniti. <strong style="color:var(--champagne);">Nombor IC tidak dipaparkan kepada pengguna lain.</strong></p></div>
-    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">4. Hak Anda</h3><ul style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.9;padding-left:20px;"><li>Meminta akses kepada data anda</li><li>Membetulkan data yang tidak tepat</li><li>Menarik balik persetujuan</li><li>Meminta pemadaman akaun</li></ul></div>
-    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">5. Hubungi Kami</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">E-mel: inquiry@jodohku.my</p></div>
-  </div>
-</div>
-
-  <div id="termsModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; padding:20px;">
-  <div style="background:#1d1811; border:1px solid var(--line); padding:30px; max-width:600px; width:100%; max-height:80vh; overflow-y:auto; border-radius:16px; color:#fff; position:relative;">
-    <button onclick="closeModal('termsModal')" style="position:absolute; top:15px; right:15px; background:none; border:none; color:var(--champagne); font-size:20px; cursor:pointer;">✕</button>
-    <h2 style="color:var(--champagne); margin-bottom:15px;">Terma &amp; Syarat</h2>
-    <p>Dengan menggunakan platform Jodohku.my, anda bersetuju untuk mematuhi semua terma kelayakan Muslim/Muslimah berumur 18 tahun ke atas, dan bersetuju melalui proses pengesahan identiti demi keselamatan komuniti.</p>
-  </div>
-</div>
-
-<div id="privacyModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; padding:20px;">
-  <div style="background:#1d1811; border:1px solid var(--line); padding:30px; max-width:600px; width:100%; max-height:80vh; overflow-y:auto; border-radius:16px; color:#fff; position:relative;">
-    <button onclick="closeModal('privacyModal')" style="position:absolute; top:15px; right:15px; background:none; border:none; color:var(--champagne); font-size:20px; cursor:pointer;">✕</button>
-    <h2 style="color:var(--champagne); margin-bottom:15px;">Dasar Privasi (PDPA 2010)</h2>
-    <p>Kami melindungi data peribadi anda dengan ketat. Maklumat No. IC dan butiran peribadi dikumpul secara sulit semata-mata untuk pengesahan profil dan pencegahan fraud, serta tidak akan dikongsi kepada pihak ketiga tanpa keizinan bertulis.</p>
-  </div>
-</div>
 
 </body>
 </html>
