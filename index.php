@@ -687,6 +687,49 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
     ],
   }
 };
+
+    document.querySelector('.form-card form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type="submit"]');
+  btn.textContent = 'Menghantar...';
+  btn.disabled = true;
+
+  const data = {
+    name: this.name.value,
+    email: this.email.value,
+    phone: this.phone.value,
+  };
+
+  // Replace with your actual Supabase or API endpoint
+  console.log('Form data:', data);
+  
+  // Show success
+  this.innerHTML = '<p style="color:var(--champagne);text-align:center;padding:20px;">✅ Pendaftaran berjaya! Kami akan hubungi anda.</p>';
+});
+
+    function openModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+}
+
+// Close on backdrop click
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('modal-overlay')) {
+    e.target.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+});
    
     
     
@@ -859,6 +902,38 @@ if (savedLang && i18n[savedLang]) setLang(savedLang);
 </script>
 
 <?php include 'footer.php'; ?>
+
+  <!-- Terms Modal -->
+<div id="termsModal" class="modal-overlay" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#1a1610;border:1px solid rgba(216,192,138,.2);border-radius:24px;max-width:720px;width:100%;max-height:80vh;overflow-y:auto;padding:40px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+      <h2 class="modal-title" style="color:var(--champagne);font-family:Georgia,serif;font-size:28px;margin:0;">Terma & Syarat</h2>
+      <button onclick="closeModal('termsModal')" style="background:none;border:none;color:rgba(255,255,255,.6);font-size:24px;cursor:pointer;">✕</button>
+    </div>
+    <p class="modal-meta" style="color:rgba(255,255,255,.4);font-size:12px;margin-bottom:24px;">Berkuat kuasa: 1 Januari 2025 | Versi: 2.1</p>
+    <div class="modal-section"><h3 style="color:var(--champagne);margin-bottom:8px;">1. Penerimaan Terma</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">Dengan mengakses atau menggunakan platform Jodohku.my, anda bersetuju untuk terikat dengan Terma & Syarat ini.</p></div>
+    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">2. Kelayakan Pengguna</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">Anda mesti seorang Muslim/Muslimah berumur 18 tahun ke atas, warganegara Malaysia, dan belum berkahwin atau telah bercerai secara sah.</p></div>
+    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">3. Kod Etika</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">Pengguna wajib mematuhi adab Islam dalam semua komunikasi. Kandungan lucah dan aktiviti penipuan adalah dilarang sama sekali.</p></div>
+    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">4. Sistem Wali</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">Penglibatan Wali adalah diwajibkan bagi setiap pengguna wanita sebelum sebarang komunikasi dibenarkan.</p></div>
+    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">5. Hubungi Kami</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">E-mel: legal@jodohku.my</p></div>
+  </div>
+</div>
+
+<!-- Privacy Modal -->
+<div id="privacyModal" class="modal-overlay" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#1a1610;border:1px solid rgba(216,192,138,.2);border-radius:24px;max-width:720px;width:100%;max-height:80vh;overflow-y:auto;padding:40px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+      <h2 class="modal-title" style="color:var(--champagne);font-family:Georgia,serif;font-size:24px;margin:0;">Dasar Privasi & Notis Perlindungan Data</h2>
+      <button onclick="closeModal('privacyModal')" style="background:none;border:none;color:rgba(255,255,255,.6);font-size:24px;cursor:pointer;">✕</button>
+    </div>
+    <p class="modal-meta" style="color:rgba(255,255,255,.4);font-size:12px;margin-bottom:24px;">Berkuat kuasa: 01/05/2026 | Mematuhi: PDPA 2010 | Versi: 3.0</p>
+    <div class="modal-section"><h3 style="color:var(--champagne);margin-bottom:8px;">1. Pengenalan</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">Polisi ini menerangkan bagaimana Jodohku.my mengumpul, menggunakan, menyimpan dan melindungi data peribadi pengguna selaras dengan PDPA 2010.</p></div>
+    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">2. Data Yang Dikumpul</h3><ul style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.9;padding-left:20px;"><li>Nama penuh, nombor IC, tarikh lahir, jantina</li><li>Nombor telefon, e-mel, negeri</li><li>Gambar profil, biodata, minat</li><li>Alamat IP, jenis peranti, cookies</li></ul></div>
+    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">3. Kenapa Kami Perlukan IC Anda</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">Untuk pengesahan identiti, pengesahan umur, pencegahan penipuan dan keselamatan komuniti. <strong style="color:var(--champagne);">Nombor IC tidak dipaparkan kepada pengguna lain.</strong></p></div>
+    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">4. Hak Anda</h3><ul style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.9;padding-left:20px;"><li>Meminta akses kepada data anda</li><li>Membetulkan data yang tidak tepat</li><li>Menarik balik persetujuan</li><li>Meminta pemadaman akaun</li></ul></div>
+    <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">5. Hubungi Kami</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">E-mel: inquiry@jodohku.my</p></div>
+  </div>
+</div>
 
 </body>
 </html>
