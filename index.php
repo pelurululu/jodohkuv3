@@ -1264,6 +1264,20 @@ if (!photo_url) {
       return;
     }
 
+    // Send to Google Apps Script for Sheet + Email
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyIRCUUCJiqoXeIeDI1ZAqyY39vobcsP49kdKqqxMVFiEWbe_Ed0ql5d4WmVA0Tm8Md/exec';
+    fetch(scriptURL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fullName: document.getElementById('fullName').value.trim(),
+        icNo:     document.getElementById('icNo').value,
+        phoneNo:  document.getElementById('phoneNo').value.trim(),
+        emailAddr: document.getElementById('emailAddr').value.trim()
+      })
+    }).catch(err => console.log('Apps Script error:', err));
+
     document.getElementById('formView').style.display = 'none';
     document.getElementById('successView').style.display = 'block';
     document.getElementById('generatedId').textContent = jdk_id;
@@ -2084,79 +2098,7 @@ setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
 const savedLang = localStorage.getItem('jdk_lang');
 if (savedLang && i18n[savedLang]) setLang(savedLang);
 
-function handleFormSubmit(event) {
-  event.preventDefault(); // Menghalang halaman daripada 'refresh'
-  
-  // 1. Ambil nilai daripada input borang secara manual (jika masih diperlukan untuk logik lain)
-  const fullName = document.getElementById('fullName')?.value || '';
-  const icNo = document.getElementById('icNo')?.value || '';
-  const phoneNo = document.getElementById('phoneNo')?.value || '';
-  const emailAddr = document.getElementById('emailAddr')?.value || '';
 
-  // 2. Sediakan URL Google Apps Script anda
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbyIRCUUCJiqoXeIeDI1ZAqyY39vobcsP49kdKqqxMVFiEWbe_Ed0ql5d4WmVA0Tm8Md/exec';
-
-  // 3. Tukar teks butang submit untuk menunjukkan indikasi sedang memproses
-  const submitBtn = document.querySelector('.btn-submit-premium') || event.submitter;
-  let originalBtnText = "";
-  if (submitBtn) {
-    originalBtnText = submitBtn.innerText;
-    submitBtn.innerText = "Sila tunggu...";
-    submitBtn.disabled = true;
-  }
-
-  // 4. Cipta objek URLSearchParams untuk menghantar data
-  const bodyData = new URLSearchParams();
-  
-  // Membaca input automatik berdasarkan atribut 'name' yang ada pada borang HTML
-  const formElement = document.querySelector('.form-premium') || event.target;
-  if (formElement) {
-    for (const pair of new FormData(formElement)) {
-      bodyData.append(pair[0], pair[1]);
-    }
-  }
-
-  // 5. Masukkan URL gambar yang anda dapat dari Supabase secara manual (jika wujud)
-  if (typeof photo_url !== 'undefined' && photo_url) {
-    bodyData.append('photoUrl', photo_url);
-  }
-
-  // 6. Hantar data menggunakan Fetch API ke Google Sheet
-  fetch(scriptURL, {
-    method: 'POST',
-    mode: 'no-cors', // Penting untuk mengelakkan isu sekatan CORS cross-origin
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: bodyData.toString()
-  })
-  .then(() => {
-    // Selesai memproses - Jana ID Akses rawak untuk paparan kejayaan
-    const mockId = "JDK-" + Math.floor(1000 + Math.random() * 9000);
-    
-    // Alihkan paparan form kepada paparan sukses
-    const formView = document.getElementById('formView');
-    const successView = document.getElementById('successView');
-    
-    if (formView) formView.style.display = 'none';
-    if (successView) successView.style.display = 'block';
-    
-    const generatedIdElem = document.getElementById('generatedId');
-    if (generatedIdElem) {
-      generatedIdElem.innerText = "ID Akses Anda: " + mockId;
-    }
-  })
-  .catch(error => {
-    console.error('Ralat pendaftaran:', error);
-    alert('Maaf, ralat sistem berlaku. Sila cuba sebentar lagi.');
-    
-    // Set semula butang jika gagal
-    if (submitBtn) {
-      submitBtn.innerText = originalBtnText;
-      submitBtn.disabled = false;
-    }
-  });
-}
     
 </script>
 
