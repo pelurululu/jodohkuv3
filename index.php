@@ -46,193 +46,413 @@
   
   <?php include 'nav.php'; ?>
 
- <main id="top">
-    <section class="hero">
-      <div class="container hero-wrap">
-        <div class="hero-copy reveal">
-          <span class="eyebrow">Platform Taaruf Premium Muslim Malaysia</span>
-          <h1>AI Terdepan + Sistem Taaruf & Keserasian = <span class="gold-text">Padanan Jodoh Lebih Bermakna</span></h1>
-          <p class="lead">Platform taaruf berasaskan nilai Islam, keselamatan berlapis dan analisis keserasian yang membantu anda mencari calon pasangan dengan lebih serius, sopan dan terarah.</p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#daftar">Mohon Akses Awal</a>
-            <a class="btn secondary" href="#padanan">Lihat Sistem Padanan</a>
+<!-- 
+==============================================
+REPLACEMENT INSTRUCTIONS
+==============================================
+In your index.php, find this line:
+    <main id="top">
+And this line (near the bottom, before the scripts):
+    </main>
+
+Replace EVERYTHING between and including those
+two tags with the block below.
+
+Keep everything else untouched:
+- <nav> block (nav.php)
+- All <script> tags
+- Both modals (#termsModal, #privacyModal)
+- <footer> block (footer.php)
+- Cloudflare beacon script
+==============================================
+-->
+
+<main id="top">
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="container hero-wrap">
+
+      <div class="hero-copy reveal">
+        <span class="eyebrow hero-badge">Platform Taaruf Premium Muslim Malaysia</span>
+        <h1 class="hero-title">AI Terdepan + Sistem Taaruf &amp; Keserasian = <span class="gold-text">Padanan Jodoh Lebih Bermakna</span></h1>
+        <p class="lead hero-description">Platform taaruf berasaskan nilai Islam, keselamatan berlapis dan analisis keserasian yang membantu anda mencari calon pasangan dengan lebih serius, sopan dan terarah.</p>
+        <p class="hero-subtitle" style="display:none;">AI Terdepan + Sistem Taaruf &amp; Keserasian = Padanan Jodoh Lebih Bermakna</p>
+        <div class="hero-actions">
+          <a class="btn primary btn-primary-hero" href="#daftar">Mohon Akses Awal</a>
+          <a class="btn secondary btn-secondary-hero" href="#padanan">Lihat Sistem Padanan</a>
+        </div>
+        <div class="trust-row" aria-label="Kepercayaan platform">
+          <div class="trust-item"><strong>Syariah</strong>Beradab, sopan dan terpelihara</div>
+          <div class="trust-item"><strong>AI</strong>Analisis nilai &amp; keserasian</div>
+          <div class="trust-item"><strong>Wali</strong>Proses lebih yakin dan tersusun</div>
+        </div>
+      </div>
+
+      <aside class="hero-side reveal" id="daftar">
+        <div class="form-card">
+          <h3 class="form-title">Akses Awal Beta</h3>
+          <p class="form-subtitle">Jadilah antara yang terawal mencuba platform premium ini.</p>
+          <div class="form-grid" id="registrationForm">
+            <label class="input-label" for="nameInput" style="display:none;">Nama Penuh</label>
+            <input class="field" id="nameInput" type="text" name="name" placeholder="Nama penuh" autocomplete="name">
+
+            <label class="input-label" for="icInput" style="display:none;">No. Kad Pengenalan</label>
+            <input class="field" id="icInput" type="text" name="ic" placeholder="No. Kad Pengenalan (12 digit)">
+
+            <label class="input-label" for="phoneInput" style="display:none;">No. Telefon</label>
+            <input class="field" id="phoneInput" type="tel" name="phone" placeholder="Nombor telefon" autocomplete="tel">
+
+            <label class="input-label" for="emailInput" style="display:none;">Alamat E-mel</label>
+            <input class="field" id="emailInput" type="email" name="email" placeholder="Emel" autocomplete="email">
+
+            <label class="input-label" for="profilePhoto" style="display:none;">Gambar Profil</label>
+            <label class="upload" for="profilePhoto">
+              <strong id="uploadTitle">Pilih gambar profil</strong>
+              <span class="upload-text">JPG, PNG atau WEBP — maksimum 5MB</span>
+            </label>
+            <input id="profilePhoto" name="profilePhoto" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+
+            <div class="checkbox-premium" style="display:flex;align-items:flex-start;gap:10px;margin-top:4px;">
+              <input type="checkbox" id="termsCheck" style="margin-top:3px;accent-color:#c4a064;min-width:16px;">
+              <label for="termsCheck" style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.5;">
+                Saya bersetuju dengan <a href="#" onclick="openModal('termsModal');return false;" style="color:var(--champagne);">Terma &amp; Syarat</a> dan <a href="#" onclick="openModal('privacyModal');return false;" style="color:var(--champagne);">Dasar Privasi</a> Jodohku.my yang mematuhi PDPA 2010
+              </label>
+            </div>
+
+            <button class="btn primary btn-submit-premium" type="button" onclick="handleFormSubmit()">Mohon Akses Awal</button>
           </div>
-          <div class="trust-row" aria-label="Kepercayaan platform">
-            <div class="trust-item"><strong>Syariah</strong>Beradab, sopan dan terpelihara</div>
-            <div class="trust-item"><strong>AI</strong>Analisis nilai & keserasian</div>
-            <div class="trust-item"><strong>Wali</strong>Proses lebih yakin dan tersusun</div>
+          <div id="successMessage" style="display:none;text-align:center;padding:20px 0;">
+            <p class="success-title" style="color:var(--champagne);font-size:18px;font-weight:800;margin-bottom:8px;">Pendaftaran Berjaya!</p>
+            <p class="success-message" style="color:rgba(255,255,255,.7);font-size:14px;">Tahniah atas tindakan awal anda! Kami akan menghubungi anda setelah aplikasi berjaya didaftarkan.</p>
           </div>
+          <div class="mini-note">Maklumat anda disimpan secara sulit dan tidak dipaparkan tanpa izin.</div>
         </div>
-        <aside class="hero-side reveal" id="daftar">
-          <form class="form-card" action="#" method="post">
-            <h3>Akses Awal Beta</h3>
-            <p>Jadilah antara yang terawal mencuba platform premium ini.</p>
-            <div class="form-grid">
-              <input class="field" type="text" name="name" placeholder="Nama penuh" autocomplete="name">
-              <input class="field" type="email" name="email" placeholder="Emel" autocomplete="email">
-              <input class="field" type="tel" name="phone" placeholder="Nombor telefon" autocomplete="tel">
-              <label class="upload" for="profilePhoto"><strong id="uploadTitle">Pilih gambar profil</strong><span>JPG, PNG atau WEBP — maksimum 5MB</span></label>
-              <input id="profilePhoto" name="profilePhoto" type="file" accept="image/jpeg,image/png,image/webp" hidden>
-              <button class="btn primary" type="submit">Mohon Akses Awal</button>
-            </div>
-            <div class="mini-note">Maklumat anda disimpan secara sulit dan tidak dipaparkan tanpa izin.</div>
-          </form>
-        </aside>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       GALLERY / PENGALAMAN PREMIUM
+  ═══════════════════════════════════════ -->
+  <section class="section cream" id="kelebihan">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Pengalaman Premium</span>
+        <h2>Sistem Taaruf Premium Berteknologi AI</h2>
+        <p class="lead">Direka supaya proses mencari pasangan menjadi lebih selamat, matang, visual dan dipercayai.</p>
       </div>
-    </section>
+      <div class="gallery-grid">
 
-    <section class="section cream" id="kelebihan">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Pengalaman Premium</span>
-          <h2>Sistem Taaruf Premium Berteknologi AI</h2>
-          <p class="lead">Direka supaya proses mencari pasangan menjadi lebih selamat, matang, visual dan dipercayai.</p>
-        </div>
-       <div class="gallery-grid">
-  <div class="gallery-item"><img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Pasangan Muslim berbincang"><div class="gallery-caption">Taaruf Beradab</div></div>
-  <div class="gallery-item"><img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Analisis AI"><div class="gallery-caption">Analisis AI Pintar</div></div>
-  <div class="gallery-item"><img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Keluarga bahagia"><div class="gallery-caption">Keluarga Bahagia</div></div>
-  <div class="gallery-item"><img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Majlis perkahwinan"><div class="gallery-caption">Majlis Perkahwinan</div></div>
-  <div class="gallery-item"><img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Privasi terlindung"><div class="gallery-caption">Privasi Terlindung</div></div>
-  <div class="gallery-item"><img src="https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Platform premium"><div class="gallery-caption">Platform Premium</div></div>
-</div>
-      </div>
-    </section>
-
-    <section class="section compact cream" id="teras">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Teras Utama</span>
-          <h2>Tiga Asas Yang Membuatkan Jodohku.my Berbeza</h2>
-        </div>
-        <div class="core-grid">
-  <article class="core-card reveal">
-    <div class="core-icon">🛡️</div>
-    <h3>Keselamatan & Privasi</h3>
-    <p>Identiti anda dilindungi sepenuhnya. Nombor IC, telefon dan e-mel tidak didedahkan kepada mana-mana pengguna lain tanpa izin anda.</p>
-  </article>
-  <article class="core-card reveal">
-    <div class="core-icon">🤖</div>
-    <h3>Padanan Berteknologi AI</h3>
-    <p>Algoritma AI menganalisis keserasian nilai, akhlak dan personaliti anda untuk mencadangkan pasangan yang paling serasi.</p>
-  </article>
-  <article class="core-card reveal">
-    <div class="core-icon">🕌</div>
-    <h3>Taaruf Berlandaskan Syariah</h3>
-    <p>Setiap langkah proses taaruf direka mengikut adab Islam — beradab, terkawal dan melibatkan wali dengan cara yang betul.</p>
-  </article>
-</div>
-      </div>
-    </section>
-
-    <section class="section dark">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Kenapa Berbeza</span>
-          <h2>Lebih Serius Daripada Aplikasi Biasa</h2>
-        </div>
-        <div class="table-shell reveal">
-          <table aria-label="Perbandingan Jodohku.my dengan aplikasi biasa">
-            <thead><tr><th>Ciri-Ciri</th><th>Jodohku.my</th><th>Aplikasi Biasa</th></tr></thead>
-            <tbody>
-              <tr><td>Tujuan</td><td><span class="tick">✓</span> Perkahwinan & jangka panjang</td><td>Kenalan, dating atau hiburan</td></tr>
-              <tr><td>Pendekatan</td><td><span class="tick">✓</span> Taaruf berstruktur & kerahsiaan mendalam</td><td>Swipe, rupa dan lokasi</td></tr>
-              <tr><td>Analisis</td><td><span class="tick">✓</span> AI + sistem taaruf & keserasian</td><td>Algoritma asas</td></tr>
-              <tr><td>Keterlibatan Wali</td><td><span class="tick">✓</span> Ada sistem wali digital</td><td>Tiada</td></tr>
-              <tr><td>Privasi</td><td><span class="tick">✓</span> Identiti terlindung & terkawal</td><td>Terhad</td></tr>
-              <tr><td>Ekosistem</td><td><span class="tick">✓</span> Dari taaruf hingga selepas nikah</td><td>Tiada sokongan lanjutan</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section class="section dark" id="padanan">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Sains Padanan</span>
-          <h2>Sistem Taaruf & Keserasian Revolusioner</h2>
-          <p class="lead">Sistem kami menilai dua aspek utama supaya padanan yang dicadangkan bukan sekadar nampak sesuai, tetapi mempunyai asas hidup yang lebih serasi dan beradab.</p>
-        </div>
-        <div class="science-wrap">
-          <article class="science-card reveal">
-            <div class="science-copy">
-              <span class="eyebrow">Taaruf</span>
-              <h3>Taaruf</h3>
-              <p>Membantu pengguna memperkenalkan diri dengan tersusun, sopan dan jelas mengikut adab Islam sebelum proses padanan diteruskan.</p>
-              <ul class="title-list">
-                <li>Niat &amp; Tujuan Perkahwinan</li><li>Latar Diri &amp; Identiti</li><li>Agama &amp; Amalan Harian</li><li>Akhlak &amp; Adab</li><li>Keluarga &amp; Hubungan</li><li>Pendidikan &amp; Kerjaya</li><li>Kewangan &amp; Nafkah</li><li>Tempat Tinggal &amp; Gaya Hidup</li><li>Komunikasi</li><li>Emosi &amp; Konflik</li><li>Kesihatan &amp; Penjagaan Diri</li><li>Masa Lapang &amp; Minat</li><li>Rutin Harian</li><li>Perancangan Masa Depan</li><li>Anak &amp; Keibubapaan</li><li>Peranan Suami Isteri</li><li>Batas Pergaulan &amp; Media Sosial</li><li>Pengurusan Rumah</li><li>Cabaran Hidup</li><li>Sosial &amp; Komuniti</li><li>Nilai Peribadi</li><li>Proses Taaruf &amp; Istikharah</li>
-              </ul>
-              <div class="highlight">Taaruf bukan sekadar mengenal nama dan umur. Ia membantu memahami niat, pegangan agama, keluarga, emosi dan persediaan seseorang untuk membina rumah tangga.</div>
-            </div>
-          </article>
-
-          <article class="science-card reverse reveal">
-            <div class="science-copy">
-              <span class="eyebrow">Uji Keserasian</span>
-              <h3>Uji Keserasian</h3>
-              <p>Menilai kecocokan dua individu apabila mula dipadankan untuk melihat potensi kehidupan bersama selepas perkahwinan.</p>
-              <ul class="title-list">
-                <li>Matlamat Hidup &amp; Nilai</li><li>Agama &amp; Ibadah Bersama</li><li>Komunikasi Pasangan</li><li>Konflik &amp; Memaafkan</li><li>Kewangan Rumahtangga</li><li>Kerjaya &amp; Masa</li><li>Keluarga Mertua</li><li>Anak &amp; Pendidikan</li><li>Gaya Hidup &amp; Rutin</li><li>Rumah &amp; Kerja Domestik</li><li>Emosi &amp; Kasih Sayang</li><li>Sosial, Privasi &amp; Digital</li><li>Keputusan Besar</li><li>Cabaran &amp; Krisis</li><li>Romantik Selepas Nikah</li>
-              </ul>
-              <div class="highlight">Uji Keserasian membantu melihat bukan sahaja siapa yang nampak sesuai, tetapi siapa yang mampu hidup bersama dengan matang, realistik dan saling melengkapi.</div>
-            </div>
-          </article>
-        </div>
-        <p class="science-end reveal">Dua seksyen ini membolehkan Jodohku.my menilai calon pasangan dengan lebih adil, beradab dan mendalam — daripada niat perkahwinan hingga keserasian kehidupan selepas nikah.</p>
-      </div>
-    </section>
-
-    <section class="section cream" id="cara">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Proses Taaruf</span>
-          <h2>Bagaimana Ia Berfungsi?</h2>
-        </div>
-        <div class="steps">
-          <article class="step-card reveal"><div class="step-img"><img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Daftar dan lengkapkan profil"><span class="step-number">1</span></div><div class="step-body"><h3>Daftar & Lengkapkan Profil</h3><p>Cipta profil lengkap dengan maklumat diri, foto dan latar belakang anda secara peribadi dan selamat.</p></div></article>
-
-<article class="step-card reveal"><div class="step-img"><img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Jawab soalan taaruf dan keserasian"><span class="step-number">2</span></div><div class="step-body"><h3>Jawab Soalan Taaruf & Keserasian</h3><p>Lengkapkan borang taaruf dan uji keserasian untuk membantu sistem memahami diri dan nilai anda dengan mendalam.</p></div></article>
-
-<article class="step-card reveal"><div class="step-img"><img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Terima cadangan padanan AI"><span class="step-number">3</span></div><div class="step-body"><h3>Terima Cadangan Padanan AI</h3><p>AI akan mencadangkan calon yang paling serasi berdasarkan analisis mendalam nilai, akhlak dan keserasian anda.</p></div></article>
-
-<article class="step-card reveal"><div class="step-img"><img src="https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Semak profil calon"><span class="step-number">4</span></div><div class="step-body"><h3>Semak Profil Calon</h3><p>Lihat profil calon yang dicadangkan dan nyatakan minat anda dengan sopan melalui platform yang selamat dan terkawal.</p></div></article>
-
-<article class="step-card reveal"><div class="step-img"><img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Taaruf dengan wali"><span class="step-number">5</span></div><div class="step-body"><h3>Taaruf Dengan Wali</h3><p>Teruskan proses dengan restu dan pemantauan wali yang sesuai mengikut adab Islam.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section compact cream" id="ekosistem">
-      <div class="container">
-        <div class="ecosystem reveal">
-          <div class="ecosystem-copy">
-            <span class="eyebrow">Ekosistem Lengkap</span>
-            <h2>Daripada Taaruf Hingga Pelamin</h2>
-            <p>Kami bukan sekadar platform taaruf. Kami menemani anda sepanjang perjalanan menuju ke jenjang pelamin dan kehidupan berumah tangga.</p>
-            <div class="ecosystem-list">
-              <span>Taaruf Beradab</span>
-              <span>Bimbingan Perkahwinan</span>
-              <span>Persiapan Rumah Tangga</span>
-              <span>Sokongan Selepas Nikah</span>
-            </div>
+        <div class="photo-card reveal">
+          <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Taaruf Beradab">
+          <span class="photo-label">Taaruf</span>
+          <div class="card-copy">
+            <h3>Taaruf Beradab</h3>
+            <p>Proses perkenalan yang sopan, tersusun dan mengikut adab Islam.</p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section dark compact">
-      <div class="container">
-        <div class="final-cta reveal">
-          <div>
-            <h2>Bersedia mencuba pengalaman taaruf yang lebih premium?</h2>
-            <p>Daftar sekarang dan dapatkan akses awal ke platform Jodohku.my.</p>
+        <div class="photo-card reveal">
+          <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Analisis AI">
+          <span class="photo-label">AI</span>
+          <div class="card-copy">
+            <h3>Analisis AI Pintar</h3>
+            <p>Teknologi AI menganalisis keserasian nilai dan personaliti anda.</p>
           </div>
-          <a class="btn primary" href="#daftar">Daftar Sekarang</a>
+        </div>
+
+        <div class="photo-card reveal">
+          <img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Keluarga bahagia">
+          <span class="photo-label">Keluarga</span>
+          <div class="card-copy">
+            <h3>Keluarga Bahagia</h3>
+            <p>Matlamat akhir setiap padanan — rumah tangga yang harmoni dan diberkati.</p>
+          </div>
+        </div>
+
+        <div class="photo-card reveal">
+          <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Majlis perkahwinan">
+          <span class="photo-label">Nikah</span>
+          <div class="card-copy">
+            <h3>Majlis Perkahwinan</h3>
+            <p>Dari taaruf hingga ke jenjang pelamin yang penuh keberkatan.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       TERAS UTAMA (CORE GRID)
+  ═══════════════════════════════════════ -->
+  <section class="section compact cream" id="teras">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Teras Utama</span>
+        <h2>Tiga Asas Yang Membuatkan Jodohku.my Berbeza</h2>
+      </div>
+      <div class="core-grid">
+
+        <div class="image-panel reveal">
+          <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Keselamatan & Privasi">
+          <span class="photo-label">Keselamatan</span>
+          <div class="panel-copy">
+            <h3>Keselamatan &amp; Privasi</h3>
+            <p>Identiti anda dilindungi sepenuhnya. Nombor IC, telefon dan e-mel tidak didedahkan kepada mana-mana pengguna lain tanpa izin anda.</p>
+          </div>
+        </div>
+
+        <div class="image-panel reveal">
+          <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Padanan AI">
+          <span class="photo-label">AI</span>
+          <div class="panel-copy">
+            <h3>Padanan Berteknologi AI</h3>
+            <p>Algoritma AI menganalisis keserasian nilai, akhlak dan personaliti anda untuk mencadangkan pasangan yang paling serasi.</p>
+          </div>
+        </div>
+
+        <div class="image-panel reveal">
+          <img src="https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Taaruf Syariah">
+          <span class="photo-label">Syariah</span>
+          <div class="panel-copy">
+            <h3>Taaruf Berlandaskan Syariah</h3>
+            <p>Setiap langkah proses taaruf direka mengikut adab Islam — beradab, terkawal dan melibatkan wali dengan cara yang betul.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       COMPARISON TABLE
+  ═══════════════════════════════════════ -->
+  <section class="section dark" id="comparison">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow section-label">Kenapa Berbeza</span>
+        <h2 class="section-title-main">Lebih Serius Daripada Aplikasi Biasa</h2>
+      </div>
+      <div class="table-shell reveal">
+        <table class="comparison-table" aria-label="Perbandingan Jodohku.my dengan aplikasi biasa">
+          <thead>
+            <tr>
+              <th>Ciri-Ciri</th>
+              <th>Jodohku.my</th>
+              <th>Tinder / Bumble</th>
+              <th>Aplikasi Biasa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Tujuan</td><td><span class="tick">✓</span> Perkahwinan &amp; jangka panjang</td><td>✗ Kenalan, dating</td><td>Kenalan, dating atau hiburan</td></tr>
+            <tr><td>Pendekatan</td><td><span class="tick">✓</span> Taaruf berstruktur &amp; kerahsiaan mendalam</td><td>✗ Swipe, rupa</td><td>Swipe, rupa dan lokasi</td></tr>
+            <tr><td>Analisis</td><td><span class="tick">✓</span> AI + sistem taaruf &amp; keserasian</td><td>✗ Appearance</td><td>Algoritma asas</td></tr>
+            <tr><td>Keterlibatan Wali</td><td><span class="tick">✓</span> Ada sistem wali digital</td><td>✗ Tiada</td><td>Tiada</td></tr>
+            <tr><td>Privasi</td><td><span class="tick">✓</span> Identiti terlindung &amp; terkawal</td><td>✗ Selfie sahaja</td><td>Terhad</td></tr>
+            <tr><td>Ekosistem</td><td><span class="tick">✓</span> Dari taaruf hingga selepas nikah</td><td>✗ Berhenti</td><td>Tiada sokongan lanjutan</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PADANAN / SCIENCE CARDS
+  ═══════════════════════════════════════ -->
+  <section class="section dark" id="padanan">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sains Padanan</span>
+        <h2>Sistem Taaruf &amp; Keserasian Revolusioner</h2>
+        <p class="lead">Sistem kami menilai dua aspek utama supaya padanan yang dicadangkan bukan sekadar nampak sesuai, tetapi mempunyai asas hidup yang lebih serasi dan beradab.</p>
+      </div>
+
+      <div class="science-wrap">
+
+        <!-- TAARUF CARD -->
+        <article class="science-card reveal">
+          <div class="science-copy">
+            <span class="eyebrow">Taaruf</span>
+            <h3>Taaruf</h3>
+            <p>Membantu pengguna memperkenalkan diri dengan tersusun, sopan dan jelas mengikut adab Islam sebelum proses padanan diteruskan.</p>
+            <ul class="title-list">
+              <li>Niat &amp; Tujuan Perkahwinan</li>
+              <li>Latar Diri &amp; Identiti</li>
+              <li>Agama &amp; Amalan Harian</li>
+              <li>Akhlak &amp; Adab</li>
+              <li>Keluarga &amp; Hubungan</li>
+              <li>Pendidikan &amp; Kerjaya</li>
+              <li>Kewangan &amp; Nafkah</li>
+              <li>Tempat Tinggal &amp; Gaya Hidup</li>
+              <li>Komunikasi</li>
+              <li>Emosi &amp; Konflik</li>
+              <li>Kesihatan &amp; Penjagaan Diri</li>
+              <li>Masa Lapang &amp; Minat</li>
+              <li>Rutin Harian</li>
+              <li>Perancangan Masa Depan</li>
+              <li>Anak &amp; Keibubapaan</li>
+              <li>Peranan Suami Isteri</li>
+              <li>Batas Pergaulan &amp; Media Sosial</li>
+              <li>Pengurusan Rumah</li>
+              <li>Cabaran Hidup</li>
+              <li>Sosial &amp; Komuniti</li>
+              <li>Nilai Peribadi</li>
+              <li>Proses Taaruf &amp; Istikharah</li>
+            </ul>
+            <div class="highlight">Taaruf bukan sekadar mengenal nama dan umur. Ia membantu memahami niat, pegangan agama, keluarga, emosi dan persediaan seseorang untuk membina rumah tangga.</div>
+          </div>
+        </article>
+
+        <!-- KESERASIAN CARD -->
+        <article class="science-card reverse reveal">
+          <div class="science-copy">
+            <span class="eyebrow">Uji Keserasian</span>
+            <h3>Uji Keserasian</h3>
+            <p>Menilai kecocokan dua individu apabila mula dipadankan untuk melihat potensi kehidupan bersama selepas perkahwinan.</p>
+            <ul class="title-list">
+              <li>Matlamat Hidup &amp; Nilai</li>
+              <li>Agama &amp; Ibadah Bersama</li>
+              <li>Komunikasi Pasangan</li>
+              <li>Konflik &amp; Memaafkan</li>
+              <li>Kewangan Rumahtangga</li>
+              <li>Kerjaya &amp; Masa</li>
+              <li>Keluarga Mertua</li>
+              <li>Anak &amp; Pendidikan</li>
+              <li>Gaya Hidup &amp; Rutin</li>
+              <li>Rumah &amp; Kerja Domestik</li>
+              <li>Emosi &amp; Kasih Sayang</li>
+              <li>Sosial, Privasi &amp; Digital</li>
+              <li>Keputusan Besar</li>
+              <li>Cabaran &amp; Krisis</li>
+              <li>Romantik Selepas Nikah</li>
+            </ul>
+            <div class="highlight">Uji Keserasian membantu melihat bukan sahaja siapa yang nampak sesuai, tetapi siapa yang mampu hidup bersama dengan matang, realistik dan saling melengkapi.</div>
+          </div>
+        </article>
+
+      </div>
+      <p class="science-end reveal">Dua seksyen ini membolehkan Jodohku.my menilai calon pasangan dengan lebih adil, beradab dan mendalam — daripada niat perkahwinan hingga keserasian kehidupan selepas nikah.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       STEPS / HOW IT WORKS
+  ═══════════════════════════════════════ -->
+  <section class="section cream" id="cara">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Proses Taaruf</span>
+        <h2>Bagaimana Ia Berfungsi?</h2>
+      </div>
+      <div class="steps">
+
+        <article class="step-card reveal">
+          <div class="step-img">
+            <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Daftar dan lengkapkan profil">
+            <span class="step-number">1</span>
+          </div>
+          <div class="step-body">
+            <h3>Daftar &amp; Lengkapkan Profil</h3>
+            <p>Cipta profil lengkap dengan maklumat diri, foto dan latar belakang anda secara peribadi dan selamat.</p>
+          </div>
+        </article>
+
+        <article class="step-card reveal">
+          <div class="step-img">
+            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Jawab soalan taaruf">
+            <span class="step-number">2</span>
+          </div>
+          <div class="step-body">
+            <h3>Jawab Soalan Taaruf &amp; Keserasian</h3>
+            <p>Lengkapkan borang taaruf dan uji keserasian untuk membantu sistem memahami diri dan nilai anda dengan mendalam.</p>
+          </div>
+        </article>
+
+        <article class="step-card reveal">
+          <div class="step-img">
+            <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Terima cadangan padanan AI">
+            <span class="step-number">3</span>
+          </div>
+          <div class="step-body">
+            <h3>Terima Cadangan Padanan AI</h3>
+            <p>AI akan mencadangkan calon yang paling serasi berdasarkan analisis mendalam nilai, akhlak dan keserasian anda.</p>
+          </div>
+        </article>
+
+        <article class="step-card reveal">
+          <div class="step-img">
+            <img src="https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Semak profil calon">
+            <span class="step-number">4</span>
+          </div>
+          <div class="step-body">
+            <h3>Semak Profil Calon</h3>
+            <p>Lihat profil calon yang dicadangkan dan nyatakan minat anda dengan sopan melalui platform yang selamat dan terkawal.</p>
+          </div>
+        </article>
+
+        <article class="step-card reveal">
+          <div class="step-img">
+            <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Taaruf dengan wali">
+            <span class="step-number">5</span>
+          </div>
+          <div class="step-body">
+            <h3>Taaruf Dengan Wali</h3>
+            <p>Teruskan proses dengan restu dan pemantauan wali yang sesuai mengikut adab Islam.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       ECOSYSTEM
+  ═══════════════════════════════════════ -->
+  <section class="section compact cream" id="ekosistem">
+    <div class="container">
+      <div class="ecosystem reveal">
+        <div class="ecosystem-copy">
+          <span class="eyebrow">Ekosistem Lengkap</span>
+          <h2>Daripada Taaruf Hingga Pelamin</h2>
+          <p>Kami bukan sekadar platform taaruf. Kami menemani anda sepanjang perjalanan menuju ke jenjang pelamin dan kehidupan berumah tangga.</p>
+          <div class="ecosystem-list">
+            <span>Taaruf Beradab</span>
+            <span>Bimbingan Perkahwinan</span>
+            <span>Persiapan Rumah Tangga</span>
+            <span>Sokongan Selepas Nikah</span>
+          </div>
+          <div style="margin-top:28px;">
+            <a class="btn primary btn-daftar-section" href="#daftar">Daftar Sekarang</a>
+          </div>
+        </div>
+        <div class="ecosystem-photo">
+          <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Ekosistem perkahwinan">
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FINAL CTA
+  ═══════════════════════════════════════ -->
+  <section class="section dark compact">
+    <div class="container">
+      <div class="final-cta reveal">
+        <div>
+          <h2>Bersedia mencuba pengalaman taaruf yang lebih premium?</h2>
+          <p>Daftar sekarang dan dapatkan akses awal ke platform Jodohku.my.</p>
+        </div>
+        <a class="btn primary btn-daftar-section" href="#daftar">Daftar Sekarang</a>
+      </div>
+    </div>
+  </section>
+
+</main>
 
   <script>
 // ── TRANSLATIONS ──
@@ -927,6 +1147,41 @@ setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
     // ── RESTORE LANGUAGE ON LOAD ──
 const savedLang = localStorage.getItem('jdk_lang');
 if (savedLang && i18n[savedLang]) setLang(savedLang);
+
+    <script>
+// File input label update
+const profilePhoto = document.getElementById('profilePhoto');
+const uploadTitle = document.getElementById('uploadTitle');
+if (profilePhoto && uploadTitle) {
+  profilePhoto.addEventListener('change', () => {
+    const file = profilePhoto.files && profilePhoto.files[0];
+    uploadTitle.textContent = file ? file.name : 'Pilih gambar profil';
+  });
+}
+
+// Reveal on scroll
+const revealItems = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealItems.forEach((item) => observer.observe(item));
+
+// Form submit handler
+function handleFormSubmit() {
+  const form = document.getElementById('registrationForm');
+  const success = document.getElementById('successMessage');
+  console.log('Form submitted');
+  if (form && success) {
+    form.style.display = 'none';
+    success.style.display = 'block';
+  }
+}
+</script>
     
 </script>
 
