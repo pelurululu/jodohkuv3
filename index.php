@@ -2102,7 +2102,7 @@ if (savedLang && i18n[savedLang]) setLang(savedLang);
   };
 
   // TUKAR DI SINI: Letakkan URL Web App Google Apps Script anda yang disalin dari Bahagian 2 tadi
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbwLF5-gRz3OR51atmBIEIWDcs8eve55hOOIPXqzd3wb2-sS3qsIxilSsEUE7yqFwDLl/exec';
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyIRCUUCJiqoXeIeDI1ZAqyY39vobcsP49kdKqqxMVFiEWbe_Ed0ql5d4WmVA0Tm8Md/exec';
   
   // Tukar teks butang submit untuk menunjukkan indikasi sedang memproses
   const submitBtn = document.querySelector('.btn-submit-premium') || event.submitter;
