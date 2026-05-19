@@ -93,60 +93,60 @@
           </p>
         </div>
         
-        <form class="form-premium" onsubmit="handleFormSubmit(event)">
-          <div class="form-row">
-            <div class="input-group">
-              <label class="input-label">Nama Penuh</label>
-              <input class="input-premium" type="text" id="fullName" placeholder="Siti Aminah binti Abdullah" required>
-            </div>
-            <div class="input-group">
-              <label class="input-label">No. Kad Pengenalan</label>
-              <input class="input-premium" type="text" id="icNo" placeholder="XXXXXX-XX-XXXX" maxlength="14" required>
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="input-group">
-              <label class="input-label">No. Telefon</label>
-              <input class="input-premium" type="tel" id="phoneNo" placeholder="01X-XXXXXXXX" required>
-            </div>
-            <div class="input-group">
-              <label class="input-label">Alamat E-mel</label>
-              <input class="input-premium" type="email" id="emailAddr" name="emailAddr" placeholder="nama@email.com" required>
-            </div>
-          </div>
-          
-          <div class="input-group">
-            <label class="input-label">Gambar Profil</label>
-            <div class="upload-area">
-              <input type="file" id="profilePic" accept="image/*" onchange="handleImageUpload(event)">
-              <div class="upload-icon">
-                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="3" y="10" width="30" height="22" rx="4" stroke="#FFD700" stroke-width="2"/>
-                  <circle cx="18" cy="21" r="6" stroke="#FFD700" stroke-width="2"/>
-                  <circle cx="18" cy="21" r="2.5" fill="#FFD700"/>
-                  <path d="M13 10L15 6H21L23 10" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"/>
-                  <circle cx="28" cy="15" r="1.5" fill="#FFD700"/>
-                </svg>
-              </div>
-              <div class="upload-text">
-                Pilih gambar profil anda<br>
-                <strong>JPG, PNG, WEBP</strong> — Maksimum 5MB
-              </div>
-            </div>
-          </div>
-          
-          <div class="checkbox-premium">
-            <input type="checkbox" id="agreeTerms" required>
-            <label for="agreeTerms">
-              Saya bersetuju dengan <a href="#" onclick="openModal('termsModal');return false;">Terma &amp; Syarat</a> dan <a href="#" onclick="openModal('privacyModal');return false;">Dasar Privasi</a> Jodohku.my yang mematuhi PDPA 2010
-            </label>
-          </div>
-          
-          <button type="submit" class="btn-submit-premium">
-            Hantar Permohonan Beta Access
-          </button>
-        </form>
+   <form class="form-premium" onsubmit="handleFormSubmit(event)">
+  <div class="form-row">
+    <div class="input-group">
+      <label class="input-label">Nama Penuh</label>
+      <input class="input-premium" type="text" id="fullName" name="fullName" placeholder="Siti Aminah binti Abdullah" required>
+    </div>
+    <div class="input-group">
+      <label class="input-label">No. Kad Pengenalan</label>
+      <input class="input-premium" type="text" id="icNo" name="icNo" placeholder="XXXXXX-XX-XXXX" maxlength="14" required>
+    </div>
+  </div>
+  
+  <div class="form-row">
+    <div class="input-group">
+      <label class="input-label">No. Telefon</label>
+      <input class="input-premium" type="tel" id="phoneNo" name="phoneNo" placeholder="01X-XXXXXXXX" required>
+    </div>
+    <div class="input-group">
+      <label class="input-label">Alamat E-mel</label>
+      <input class="input-premium" type="email" id="emailAddr" name="emailAddr" placeholder="nama@email.com" required>
+    </div>
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">Gambar Profil</label>
+    <div class="upload-area">
+      <input type="file" id="profilePic" accept="image/*" onchange="handleImageUpload(event)">
+      <div class="upload-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="10" width="30" height="22" rx="4" stroke="#FFD700" stroke-width="2"/>
+          <circle cx="18" cy="21" r="6" stroke="#FFD700" stroke-width="2"/>
+          <circle cx="18" cy="21" r="2.5" fill="#FFD700"/>
+          <path d="M13 10L15 6H21L23 10" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="28" cy="15" r="1.5" fill="#FFD700"/>
+        </svg>
+      </div>
+      <div class="upload-text">
+        Pilih gambar profil anda<br>
+        <strong>JPG, PNG, WEBP</strong> — Maksimum 5MB
+      </div>
+    </div>
+  </div>
+  
+  <div class="checkbox-premium">
+    <input type="checkbox" id="agreeTerms" required>
+    <label for="agreeTerms">
+      Saya bersetuju dengan <a href="#" onclick="openModal('termsModal');return false;">Terma &amp; Syarat</a> dan <a href="#" onclick="openModal('privacyModal');return false;">Dasar Privasi</a> Jodohku.my yang mematuhi PDPA 2010
+    </label>
+  </div>
+  
+  <button type="submit" class="btn-submit-premium">
+    Hantar Permohonan Beta Access
+  </button>
+</form>
       </div>
       
       <!-- SUCCESS STATE -->
@@ -2084,42 +2084,44 @@ setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
 const savedLang = localStorage.getItem('jdk_lang');
 if (savedLang && i18n[savedLang]) setLang(savedLang);
 
-    function handleFormSubmit(event) {
+function handleFormSubmit(event) {
   event.preventDefault(); // Menghalang halaman daripada 'refresh'
   
-  // Ambil nilai daripada input borang (id input anda: fullName, icNo, phoneNo, emailAddr)
-  const fullName = document.getElementById('fullName').value;
-  const icNo = document.getElementById('icNo').value;
-  const phoneNo = document.getElementById('phoneNo').value;
-  const emailAddr = document.getElementById('emailAddr').value;
-  
-  // Bungkus data menjadi objek JSON
-  const formData = {
-    fullName: fullName,
-    icNo: icNo,
-    phoneNo: phoneNo,
-    emailAddr: emailAddr
-  };
+  // 1. Ambil nilai daripada input borang secara manual (jika masih diperlukan untuk logik lain)
+  const fullName = document.getElementById('fullName')?.value || '';
+  const icNo = document.getElementById('icNo')?.value || '';
+  const phoneNo = document.getElementById('phoneNo')?.value || '';
+  const emailAddr = document.getElementById('emailAddr')?.value || '';
 
-  // TUKAR DI SINI: Letakkan URL Web App Google Apps Script anda yang disalin dari Bahagian 2 tadi
+  // 2. Sediakan URL Google Apps Script anda
   const scriptURL = 'https://script.google.com/macros/s/AKfycbyIRCUUCJiqoXeIeDI1ZAqyY39vobcsP49kdKqqxMVFiEWbe_Ed0ql5d4WmVA0Tm8Md/exec';
-  
-  // Tukar teks butang submit untuk menunjukkan indikasi sedang memproses
+
+  // 3. Tukar teks butang submit untuk menunjukkan indikasi sedang memproses
   const submitBtn = document.querySelector('.btn-submit-premium') || event.submitter;
   let originalBtnText = "";
-  if(submitBtn) {
+  if (submitBtn) {
     originalBtnText = submitBtn.innerText;
     submitBtn.innerText = "Sila tunggu...";
     submitBtn.disabled = true;
   }
 
- // Convert your formData object into standard URLSearchParams
+  // 4. Cipta objek URLSearchParams untuk menghantar data
   const bodyData = new URLSearchParams();
-  for (const pair of new FormData(document.querySelector('form'))) { // Or adjust to your specific formData variable
+  
+  // Membaca input automatik berdasarkan atribut 'name' yang ada pada borang HTML
+  const formElement = document.querySelector('.form-premium') || event.target;
+  if (formElement) {
+    for (const pair of new FormData(formElement)) {
       bodyData.append(pair[0], pair[1]);
+    }
   }
 
-  // Hantar data menggunakan Fetch API ke Google Sheet
+  // 5. Masukkan URL gambar yang anda dapat dari Supabase secara manual (jika wujud)
+  if (typeof photo_url !== 'undefined' && photo_url) {
+    bodyData.append('photoUrl', photo_url);
+  }
+
+  // 6. Hantar data menggunakan Fetch API ke Google Sheet
   fetch(scriptURL, {
     method: 'POST',
     mode: 'no-cors', // Penting untuk mengelakkan isu sekatan CORS cross-origin
@@ -2133,11 +2135,14 @@ if (savedLang && i18n[savedLang]) setLang(savedLang);
     const mockId = "JDK-" + Math.floor(1000 + Math.random() * 9000);
     
     // Alihkan paparan form kepada paparan sukses
-    document.getElementById('formView').style.display = 'none';
-    document.getElementById('successView').style.display = 'block';
+    const formView = document.getElementById('formView');
+    const successView = document.getElementById('successView');
+    
+    if (formView) formView.style.display = 'none';
+    if (successView) successView.style.display = 'block';
     
     const generatedIdElem = document.getElementById('generatedId');
-    if(generatedIdElem) {
+    if (generatedIdElem) {
       generatedIdElem.innerText = "ID Akses Anda: " + mockId;
     }
   })
@@ -2146,11 +2151,12 @@ if (savedLang && i18n[savedLang]) setLang(savedLang);
     alert('Maaf, ralat sistem berlaku. Sila cuba sebentar lagi.');
     
     // Set semula butang jika gagal
-    if(submitBtn) {
+    if (submitBtn) {
       submitBtn.innerText = originalBtnText;
       submitBtn.disabled = false;
     }
   });
+}
     
 </script>
 
