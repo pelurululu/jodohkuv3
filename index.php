@@ -2083,6 +2083,70 @@ setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
     // ── RESTORE LANGUAGE ON LOAD ──
 const savedLang = localStorage.getItem('jdk_lang');
 if (savedLang && i18n[savedLang]) setLang(savedLang);
+
+    function handleFormSubmit(event) {
+  event.preventDefault(); // Menghalang halaman daripada 'refresh'
+  
+  // Ambil nilai daripada input borang (id input anda: fullName, icNo, phoneNo, emailAddr)
+  const fullName = document.getElementById('fullName').value;
+  const icNo = document.getElementById('icNo').value;
+  const phoneNo = document.getElementById('phoneNo').value;
+  const emailAddr = document.getElementById('emailAddr').value;
+  
+  // Bungkus data menjadi objek JSON
+  const formData = {
+    fullName: fullName,
+    icNo: icNo,
+    phoneNo: phoneNo,
+    emailAddr: emailAddr
+  };
+
+  // TUKAR DI SINI: Letakkan URL Web App Google Apps Script anda yang disalin dari Bahagian 2 tadi
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwLF5-gRz3OR51atmBIEIWDcs8eve55hOOIPXqzd3wb2-sS3qsIxilSsEUE7yqFwDLl/exec';
+  
+  // Tukar teks butang submit untuk menunjukkan indikasi sedang memproses
+  const submitBtn = document.querySelector('.btn-submit-premium') || event.submitter;
+  let originalBtnText = "";
+  if(submitBtn) {
+    originalBtnText = submitBtn.innerText;
+    submitBtn.innerText = "Sila tunggu...";
+    submitBtn.disabled = true;
+  }
+
+  // Hantar data menggunakan Fetch API ke Google Sheet
+  fetch(scriptURL, {
+    method: 'POST',
+    mode: 'no-cors', // Penting untuk mengelakkan isu sekatan CORS cross-origin
+    cache: 'no-cache',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+  .then(() => {
+    // Selesai memproses - Jana ID Akses rawak untuk paparan kejayaan
+    const mockId = "JDK-" + Math.floor(1000 + Math.random() * 9000);
+    
+    // Alihkan paparan form kepada paparan sukses (seperti reka bentuk sedia ada anda)
+    document.getElementById('formView').style.display = 'none';
+    document.getElementById('successView').style.display = 'block';
+    
+    const generatedIdElem = document.getElementById('generatedId');
+    if(generatedIdElem) {
+      generatedIdElem.innerText = "ID Akses Anda: " + mockId;
+    }
+  })
+  .catch(error => {
+    console.error('Ralat pendaftaran:', error);
+    alert('Maaf, ralat sistem berlaku. Sila cuba sebentar lagi.');
+    
+    // Set semula butang jika gagal
+    if(submitBtn) {
+      submitBtn.innerText = originalBtnText;
+      submitBtn.disabled = false;
+    }
+  });
+}
     
 </script>
 
