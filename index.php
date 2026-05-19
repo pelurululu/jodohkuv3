@@ -112,7 +112,7 @@
             </div>
             <div class="input-group">
               <label class="input-label">Alamat E-mel</label>
-              <input class="input-premium" type="email" id="emailAddr" placeholder="nama@email.com" required>
+              <input class="input-premium" type="email" id="emailAddr" name="emailAddr" placeholder="nama@email.com" required>
             </div>
           </div>
           
@@ -2113,21 +2113,26 @@ if (savedLang && i18n[savedLang]) setLang(savedLang);
     submitBtn.disabled = true;
   }
 
+ // Convert your formData object into standard URLSearchParams
+  const bodyData = new URLSearchParams();
+  for (const pair of new FormData(document.querySelector('form'))) { // Or adjust to your specific formData variable
+      bodyData.append(pair[0], pair[1]);
+  }
+
   // Hantar data menggunakan Fetch API ke Google Sheet
   fetch(scriptURL, {
     method: 'POST',
     mode: 'no-cors', // Penting untuk mengelakkan isu sekatan CORS cross-origin
-    cache: 'no-cache',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: JSON.stringify(formData)
+    body: bodyData.toString()
   })
   .then(() => {
     // Selesai memproses - Jana ID Akses rawak untuk paparan kejayaan
     const mockId = "JDK-" + Math.floor(1000 + Math.random() * 9000);
     
-    // Alihkan paparan form kepada paparan sukses (seperti reka bentuk sedia ada anda)
+    // Alihkan paparan form kepada paparan sukses
     document.getElementById('formView').style.display = 'none';
     document.getElementById('successView').style.display = 'block';
     
@@ -2146,7 +2151,6 @@ if (savedLang && i18n[savedLang]) setLang(savedLang);
       submitBtn.disabled = false;
     }
   });
-}
     
 </script>
 
