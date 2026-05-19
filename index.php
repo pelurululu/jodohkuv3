@@ -454,6 +454,8 @@ Keep everything else untouched:
 
 </main>
 
+  <?php include 'footer.php'; ?>
+
   <script>
 // ── TRANSLATIONS ──
 const i18n = {
@@ -1216,6 +1218,22 @@ function handleFormSubmit() {
     <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">3. Kenapa Kami Perlukan IC Anda</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">Untuk pengesahan identiti, pengesahan umur, pencegahan penipuan dan keselamatan komuniti. <strong style="color:var(--champagne);">Nombor IC tidak dipaparkan kepada pengguna lain.</strong></p></div>
     <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">4. Hak Anda</h3><ul style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.9;padding-left:20px;"><li>Meminta akses kepada data anda</li><li>Membetulkan data yang tidak tepat</li><li>Menarik balik persetujuan</li><li>Meminta pemadaman akaun</li></ul></div>
     <div class="modal-section" style="margin-top:20px;"><h3 style="color:var(--champagne);margin-bottom:8px;">5. Hubungi Kami</h3><p style="color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;">E-mel: inquiry@jodohku.my</p></div>
+  </div>
+</div>
+
+  <div id="termsModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; padding:20px;">
+  <div style="background:#1d1811; border:1px solid var(--line); padding:30px; max-width:600px; width:100%; max-height:80vh; overflow-y:auto; border-radius:16px; color:#fff; position:relative;">
+    <button onclick="closeModal('termsModal')" style="position:absolute; top:15px; right:15px; background:none; border:none; color:var(--champagne); font-size:20px; cursor:pointer;">✕</button>
+    <h2 style="color:var(--champagne); margin-bottom:15px;">Terma &amp; Syarat</h2>
+    <p>Dengan menggunakan platform Jodohku.my, anda bersetuju untuk mematuhi semua terma kelayakan Muslim/Muslimah berumur 18 tahun ke atas, dan bersetuju melalui proses pengesahan identiti demi keselamatan komuniti.</p>
+  </div>
+</div>
+
+<div id="privacyModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; padding:20px;">
+  <div style="background:#1d1811; border:1px solid var(--line); padding:30px; max-width:600px; width:100%; max-height:80vh; overflow-y:auto; border-radius:16px; color:#fff; position:relative;">
+    <button onclick="closeModal('privacyModal')" style="position:absolute; top:15px; right:15px; background:none; border:none; color:var(--champagne); font-size:20px; cursor:pointer;">✕</button>
+    <h2 style="color:var(--champagne); margin-bottom:15px;">Dasar Privasi (PDPA 2010)</h2>
+    <p>Kami melindungi data peribadi anda dengan ketat. Maklumat No. IC dan butiran peribadi dikumpul secara sulit semata-mata untuk pengesahan profil dan pencegahan fraud, serta tidak akan dikongsi kepada pihak ketiga tanpa keizinan bertulis.</p>
   </div>
 </div>
 
