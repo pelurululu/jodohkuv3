@@ -1395,7 +1395,7 @@ document.querySelectorAll('.modal-overlay').forEach(m => {
       <button class="modal-close" onclick="closeModal('termsModal')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-meta">Berkuat kuasa: 1 Januari 2025 &nbsp;|&nbsp; Versi: 2.1 &nbsp;|&nbsp; Bahasa: Bahasa Malaysia</div>
+      <div class="modal-meta">Berkuat kuasa: 1 Januari 2026 &nbsp;|&nbsp; Versi: 2.1 &nbsp;|&nbsp; Bahasa: Bahasa Malaysia</div>
       <div class="modal-section"><h3>1. Penerimaan Terma</h3><p>Dengan mengakses atau menggunakan platform Jodohku.my ("Platform"), anda bersetuju untuk terikat dengan Terma &amp; Syarat ini. Platform ini diuruskan oleh <strong>Noble Synergy Ventures</strong> di bawah undang-undang Malaysia.</p></div>
       <div class="modal-section"><h3>2. Kelayakan Pengguna</h3><ol><li>Anda mesti seorang Muslim atau Muslimah yang telah mencapai umur 18 tahun.</li><li>Anda mesti warganegara Malaysia atau pemastautin tetap yang sah.</li><li>Anda mesti belum berkahwin atau telah bercerai mengikut undang-undang yang sah.</li><li>Semua maklumat yang diberikan mesti tepat, terkini dan benar.</li></ol></div>
       <div class="modal-section"><h3>3. Kod Etika</h3><p>Pengguna wajib mematuhi adab Islam dalam semua komunikasi. Kandungan lucah, pertukaran maklumat peribadi di luar platform, dan aktiviti penipuan adalah <strong>dilarang sama sekali</strong>.</p></div>
@@ -1490,7 +1490,7 @@ const i18n = {
   upload_change: 'Tukar Gambar',
 },
     
-    footer_copyright: '&copy; 2025 <strong>Jodohku.my</strong>. Hak Cipta Terpelihara.',
+    footer_copyright: '&copy; 2026 <strong>Jodohku.my</strong>. Hak Cipta Terpelihara.',
 footer_initiative: 'Sebuah Inisiatif',
 footer_sub: 'Jodohku.my adalah jenama di bawah portfolio <strong style="color:#555;">Noble Synergy Ventures</strong>',
 footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Platform',
@@ -1586,7 +1586,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
     wed_desc: '<strong style="color:var(--gold);font-size:18px;">Spektrum Ekosistem Perkahwinan</strong> adalah rangkaian lengkap vendor halal, pakej majlis, perkhidmatan fotografi, catering dan wedding planning yang terintegrasi dengan platform. Setiap vendor telah melalui proses audit ketat untuk memastikan kualiti premium dan pematuhan syariah. Sistem booking digital membolehkan pasangan merancang majlis impian mereka dengan mudah dan telus.',
     // MODALS
     terms_title: 'Terma & Syarat', 
-    terms_meta: 'Berkuat kuasa: 1 Januari 2025 &nbsp;|&nbsp; Versi: 2.1 &nbsp;|&nbsp; Bahasa: Bahasa Malaysia',
+    terms_meta: 'Berkuat kuasa: 1 Januari 2026 &nbsp;|&nbsp; Versi: 2.1 &nbsp;|&nbsp; Bahasa: Bahasa Malaysia',
    
     close_btn: '✕',
     terms_sections: [
@@ -1655,7 +1655,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
   upload_change: 'Change Photo',
 },
     
-    footer_copyright: '&copy; 2025 <strong>Jodohku.my</strong>. All Rights Reserved.',
+    footer_copyright: '&copy; 2026 <strong>Jodohku.my</strong>. All Rights Reserved.',
 footer_initiative: 'An Initiative by',
 footer_sub: 'Jodohku.my is a brand under the portfolio of <strong style="color:#555;">Noble Synergy Ventures</strong>',
 footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Platform',
@@ -1743,7 +1743,7 @@ footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Pla
     wed_heading: 'From Matching to the Aisle — All in One Platform',
     wed_desc: '<strong style="color:var(--gold);font-size:18px;">The Wedding Ecosystem Spectrum</strong> is a complete network of halal vendors, event packages, photography services, catering and wedding planning integrated into the platform. Every vendor undergoes a rigorous audit to ensure premium quality and Shariah compliance. The digital booking system allows couples to plan their dream event easily and transparently.',
     terms_title: 'Terms & Conditions',
-    terms_meta: 'Effective: 1 January 2025 &nbsp;|&nbsp; Version: 2.1 &nbsp;|&nbsp; Language: English',
+    terms_meta: 'Effective: 1 January 2026 &nbsp;|&nbsp; Version: 2.1 &nbsp;|&nbsp; Language: English',
    
     close_btn: '✕',
     terms_sections: [
@@ -1811,7 +1811,7 @@ unexpected_title: 'خطأ غير متوقع',
   gender_female: 'أنثى',
   upload_change: 'تغيير الصورة',
 },
-    footer_copyright: '&copy; 2025 <strong>Jodohku.my</strong>. جميع الحقوق محفوظة.',
+    footer_copyright: '&copy; 2026 <strong>Jodohku.my</strong>. جميع الحقوق محفوظة.',
 footer_initiative: 'مبادرة من',
 footer_sub: 'Jodohku.my علامة تجارية ضمن محفظة <strong style="color:#555;">Noble Synergy Ventures</strong>',
 footer_tagline: 'Noble Synergy Ventures &nbsp;&#9670;&nbsp; Islamic Marriage Platform',
