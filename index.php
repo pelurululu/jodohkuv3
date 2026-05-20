@@ -226,7 +226,7 @@
 
         <!-- 5. Komuniti Muslim Malaysia — Mosque/cultural gathering -->
         <div class="slide">
-            <img src="images/komuniti-muslim.jpg" alt="Muslim Professionals">
+            <img src="images/malay-couple.jpg" alt="Muslim Professionals">
           <div class="slide-overlay">
             <div class="slide-content">
               <h3 class="slide-title">Komuniti Premium Muslim</h3>
