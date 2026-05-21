@@ -67,6 +67,19 @@
     <span>JPG, PNG atau WEBP — maksimum 5MB</span>
   </label>
   <input id="profilePhoto" name="profilePhoto" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+          <div class="checkbox-terms" style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
+  <input type="checkbox" id="agreeTerms" required 
+         style="margin-top:3px;accent-color:#E5CF97;width:16px;height:16px;flex-shrink:0;">
+  <label for="agreeTerms" style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.6;cursor:pointer;">
+    Saya bersetuju dengan 
+    <a href="#" onclick="openModal('termsModal');return false;" 
+       style="color:#E5CF97;text-decoration:underline;">Terma &amp; Syarat</a> 
+    dan 
+    <a href="#" onclick="openModal('privacyModal');return false;" 
+       style="color:#E5CF97;text-decoration:underline;">Dasar Privasi</a> 
+    Jodohku.my yang mematuhi PDPA 2010
+  </label>
+</div>
   <button class="btn primary" type="submit" id="submitBtn">Mohon Akses Awal</button>
   <div id="successMsg" style="display:none; padding:12px; border-radius:14px; background:rgba(20,56,47,.18); border:1px solid rgba(20,200,120,.25); color:#8ff7c8; font-size:13px; line-height:1.6;"></div>
 </form>
@@ -209,8 +222,11 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* ── CONFIG — fill these in ── */
-const SUPABASE_URL  = 'https://YOUR_PROJECT.supabase.co';
-const SUPABASE_KEY  = 'YOUR_ANON_KEY';
+const { createClient } = supabase;
+const db = createClient(
+  '<?php echo getenv("SUPABASE_URL"); ?>',
+  '<?php echo getenv("SUPABASE_ANON_KEY"); ?>'
+);
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
 const STORAGE_BUCKET  = 'profile-pics';
 
@@ -311,7 +327,50 @@ function clearUploadError() {
   document.querySelector('.upload-error')?.remove();
 }
 
-/* ── IC REAL-TIME HINT ── */
+function validateIC(icFormatted) {
+  const ic = icFormatted.replace(/-/g, '');
+  if (!ic || ic.length !== 12 || !/^\d{12}$/.test(ic))
+    return { valid: false, error: 'No. IC mesti mengandungi tepat 12 digit angka.' };
+  if (/^(\d)\1{11}$/.test(ic))
+    return { valid: false, error: 'No. IC tidak sah — corak berulang dikesan.' };
+
+  const sequential = '0123456789012345678901234567890';
+  const reverseSeq = '9876543210987654321098765432109';
+  if (sequential.includes(ic.slice(0,10)) || reverseSeq.includes(ic.slice(0,10)))
+    return { valid: false, error: 'No. IC tidak sah — urutan nombor palsu dikesan.' };
+
+  const yy = parseInt(ic.substring(0, 2));
+  const mm = parseInt(ic.substring(2, 4));
+  const dd = parseInt(ic.substring(4, 6));
+
+  if (mm < 1 || mm > 12)
+    return { valid: false, error: 'No. IC tidak sah — bulan lahir tidak wujud (digit 3-4).' };
+
+  const fullYear = yy <= (new Date().getFullYear() % 100) ? 2000 + yy : 1900 + yy;
+  const daysInMonth = new Date(fullYear, mm, 0).getDate();
+  if (dd < 1 || dd > daysInMonth)
+    return { valid: false, error: `No. IC tidak sah — tarikh lahir tidak wujud (bulan ${mm} hanya ${daysInMonth} hari).` };
+
+  const dob = new Date(fullYear, mm - 1, dd);
+  if (dob > new Date())
+    return { valid: false, error: 'No. IC tidak sah — tarikh lahir pada masa hadapan.' };
+
+  const age = (new Date() - dob) / (1000 * 60 * 60 * 24 * 365.25);
+  if (age > 120)
+    return { valid: false, error: 'No. IC tidak sah — tarikh lahir melebihi 120 tahun.' };
+
+  const stateCode = parseInt(ic.substring(6, 8));
+  const validState = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+  const isValid = validState.includes(stateCode) || (stateCode >= 21 && stateCode <= 59);
+  if (!isValid)
+    return { valid: false, error: `No. IC tidak sah — kod negeri tidak diiktiraf (digit 7-8: ${ic.substring(6,8)}).` };
+
+  const lastDigit = parseInt(ic[11]);
+  const gender = lastDigit % 2 === 0 ? 'Perempuan' : 'Lelaki';
+  const dobStr = `${String(dd).padStart(2,'0')}/${String(mm).padStart(2,'0')}/${fullYear}`;
+  return { valid: true, gender, dob: dobStr, age: Math.floor(age) };
+}
+
 function showICHint(result) {
   clearFieldError('icNo');
   const el = document.getElementById('icNo');
@@ -324,6 +383,7 @@ function showICHint(result) {
   }
   if (hint) hint.textContent = `✓ ${result.gender} · Lahir: ${result.dob} · Umur: ${result.age} tahun`;
 }
+
 function clearICHint() {
   document.querySelector('.ic-hint')?.remove();
 }
@@ -401,6 +461,21 @@ function validateForm() {
 
   if (!selectedFile) { showUploadError('Sila muat naik gambar profil anda.'); valid = false; }
   else clearUploadError();
+
+  if (!document.getElementById('agreeTerms').checked) {
+  const cb = document.getElementById('agreeTerms');
+  let err = cb?.parentElement?.querySelector('.cb-error');
+  if (!err) {
+    err = document.createElement('div');
+    err.className = 'cb-error';
+    err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:4px;';
+    cb.parentElement.insertAdjacentElement('afterend', err);
+  }
+  err.textContent = 'Sila bersetuju dengan Terma & Syarat untuk meneruskan.';
+  valid = false;
+} else {
+  document.querySelector('.cb-error')?.remove();
+}
 
   return valid;
 }
@@ -527,6 +602,66 @@ const revObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 revealItems.forEach(el => revObs.observe(el));
+
+  function openModal(id) { 
+  document.getElementById(id).classList.add('active'); 
+  document.body.style.overflow = 'hidden'; 
+}
+function closeModal(id) { 
+  document.getElementById(id).classList.remove('active'); 
+  document.body.style.overflow = ''; 
+}
+
+  document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', function(e) { 
+    if (e.target === this) closeModal(this.id); 
+  });
+});
+  
 </script>
+
+  <!-- TERMS MODAL -->
+<div class="modal-overlay" id="termsModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2 class="modal-title">Terma &amp; Syarat</h2>
+      <button class="modal-close" onclick="closeModal('termsModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meta">Berkuat kuasa: 1 Januari 2026 &nbsp;|&nbsp; Versi: 2.1</div>
+      <div class="modal-section"><h3>1. Penerimaan Terma</h3><p>Dengan mengakses atau menggunakan platform Jodohku.my ("Platform"), anda bersetuju untuk terikat dengan Terma &amp; Syarat ini. Platform ini diuruskan oleh <strong>Noble Synergy Ventures</strong> di bawah undang-undang Malaysia.</p></div>
+      <div class="modal-section"><h3>2. Kelayakan Pengguna</h3><ol><li>Anda mesti seorang Muslim atau Muslimah yang telah mencapai umur 18 tahun.</li><li>Anda mesti warganegara Malaysia atau pemastautin tetap yang sah.</li><li>Anda mesti belum berkahwin atau telah bercerai mengikut undang-undang yang sah.</li><li>Semua maklumat yang diberikan mesti tepat, terkini dan benar.</li></ol></div>
+      <div class="modal-section"><h3>3. Kod Etika</h3><p>Pengguna wajib mematuhi adab Islam dalam semua komunikasi. Kandungan lucah, pertukaran maklumat peribadi di luar platform, dan aktiviti penipuan adalah <strong>dilarang sama sekali</strong>.</p></div>
+      <div class="modal-section"><h3>4. Sistem Wali</h3><p>Penglibatan Wali adalah <strong>diwajibkan</strong> bagi setiap pengguna wanita sebelum sebarang komunikasi dibenarkan.</p></div>
+      <div class="modal-section"><h3>5. Hubungi Kami</h3><p><strong>Noble Synergy Ventures</strong><br>E-mel: legal@jodohku.my</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRIVACY MODAL -->
+<div class="modal-overlay" id="privacyModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2 class="modal-title">Dasar Privasi &amp; Notis Perlindungan Data Peribadi</h2>
+      <button class="modal-close" onclick="closeModal('privacyModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meta">Berkuat kuasa: 01/05/2026 &nbsp;|&nbsp; Mematuhi: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Versi: 3.0</div>
+      <div class="modal-section"><h3>1. Pengenalan</h3><p>Polisi Privasi ini menerangkan bagaimana Jodohku.my mengumpul, menggunakan, menyimpan, melindungi dan mendedahkan data peribadi pengguna selaras dengan Akta Perlindungan Data Peribadi 2010 (PDPA).</p></div>
+      <div class="modal-section"><h3>2. Data Peribadi Yang Kami Kumpul</h3><ul><li><strong>Maklumat identiti:</strong> nama penuh, nombor kad pengenalan/MyKad, tarikh lahir, umur, jantina, status perkahwinan.</li><li><strong>Maklumat hubungan:</strong> nombor telefon, alamat e-mel, negeri/daerah tempat tinggal.</li><li><strong>Maklumat profil:</strong> gambar profil, biodata ringkas, minat, kriteria pasangan.</li><li><strong>Maklumat teknikal:</strong> alamat IP, jenis peranti, pelayar internet, cookies.</li></ul></div>
+      <div class="modal-section"><h3>3. Kenapa Kami Memerlukan Nama Penuh dan Nombor IC</h3><ul><li><strong>Pengesahan identiti</strong></li><li><strong>Pengesahan umur</strong></li><li><strong>Pencegahan penipuan dan scam</strong></li><li><strong>Keselamatan komuniti</strong></li><li><strong>Pematuhan undang-undang</strong></li></ul><p><em>Nombor IC anda tidak akan dipaparkan kepada pengguna lain.</em></p></div>
+      <div class="modal-section"><h3>4. Tujuan Pemprosesan Data</h3><ol><li>Membuka dan mengurus akaun pengguna.</li><li>Mengesahkan identiti dan umur pengguna.</li><li>Menyediakan fungsi padanan atau pencarian jodoh.</li><li>Menghubungi anda berkaitan akaun dan perkhidmatan.</li><li>Mengesan, mencegah dan menangani penipuan atau penyalahgunaan platform.</li><li>Mematuhi kehendak undang-undang.</li></ol></div>
+      <div class="modal-section"><h3>5. Asas Persetujuan</h3><p>Dengan menghantar data peribadi anda, anda memberi persetujuan kepada kami untuk mengumpul, menyimpan dan memproses data tersebut bagi tujuan yang dinyatakan.</p></div>
+      <div class="modal-section"><h3>6. Pendedahan Kepada Pihak Ketiga</h3><ul><li>Penyedia hosting dan cloud</li><li>Penyedia pembayaran</li><li>Pasukan sokongan Jodohku</li><li>Pihak berkuasa jika diwajibkan undang-undang</li></ul></div>
+      <div class="modal-section"><h3>7. Keselamatan Data</h3><p>Kami mengambil langkah keselamatan yang munasabah termasuk akses terhad, enkripsi dan pemantauan aktiviti mencurigakan.</p></div>
+      <div class="modal-section"><h3>8. Tempoh Penyimpanan Data</h3><p>Data disimpan selama mana diperlukan untuk tujuan perkhidmatan, keselamatan dan pematuhan undang-undang.</p></div>
+      <div class="modal-section"><h3>9. Hak Anda</h3><ol><li>Meminta akses kepada data anda</li><li>Membetulkan data yang tidak tepat</li><li>Menarik balik persetujuan</li><li>Meminta pemadaman akaun</li></ol></div>
+      <div class="modal-section"><h3>10. Ketepatan Maklumat</h3><p>Anda bertanggungjawab memastikan maklumat yang diberikan adalah benar dan terkini.</p></div>
+      <div class="modal-section"><h3>11. Data Yang Dipaparkan Kepada Pengguna Lain</h3><p>Nombor IC, nombor telefon dan e-mel <strong>tidak akan dipaparkan</strong> kepada pengguna lain.</p></div>
+      <div class="modal-section"><h3>12. Hubungi Kami</h3><p><strong>Jodohku.my</strong><br>E-mel: <strong>inquiry@jodohku.my</strong><br><a href="https://www.jodohku.my" style="color:#E5CF97;">https://www.jodohku.my</a></p></div>
+    </div>
+  </div>
+</div>
+  
 </body>
 </html>
