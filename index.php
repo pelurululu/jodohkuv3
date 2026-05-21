@@ -1000,6 +1000,19 @@
     </div>
   </div>
 
+        <script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('show');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
  <script>
 
    const GAS_URL = 'https://script.google.com/macros/s/XXXXXXXXXX/exec';
