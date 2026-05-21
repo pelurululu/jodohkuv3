@@ -634,7 +634,7 @@ error_reporting(E_ALL);
   padding: 4px 8px;
 }
 .modal-close:hover { color: #fff; }
-.modal-body { padding: 24px 28px; }
+.modal-body { padding: 20px 28px 28px; }
 .modal-meta { 
   font-size: 11px; 
   color: #666; 
@@ -796,7 +796,7 @@ error_reporting(E_ALL);
     </div>
   </div>
   <div class="image-panel reveal">
-    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?w=800&q=80" alt="Ekosistem lengkap">
+    <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80" alt="Ekosistem lengkap">
     <div class="panel-copy">
       <h3>Ekosistem Lengkap</h3>
       <p>Dari taaruf pertama hingga kehidupan selepas nikah, kami sentiasa ada.</p>
@@ -909,7 +909,7 @@ error_reporting(E_ALL);
   </article>
   <article class="step-card reveal">
     <div class="step-img">
-      <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?w=400&q=80" alt="Taaruf dengan wali">
+      <img src="https://images.unsplash.com/photo-1609234656388-0ff363383899?w=400&q=80" alt="Taaruf dengan wali">
       <span class="step-number">5</span>
     </div>
     <div class="step-body"><h3>Taaruf Dengan Wali</h3><p>Teruskan proses dengan restu dan pemantauan yang sesuai.</p></div>
@@ -932,7 +932,7 @@ error_reporting(E_ALL);
     </div>
   </div>
   <div class="ecosystem-photo">
-    <img src="https://images.unsplash.com/photo-1606216840931-69b10c1b1f7e?w=1200&q=80" alt="Ekosistem taaruf">
+    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80" alt="Ekosistem taaruf">
   </div>
 </div>
       </div>
@@ -963,7 +963,7 @@ error_reporting(E_ALL);
 <div id="termsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('termsModal')" aria-label="Tutup modal">&times;</button>
-      <h2 id="termsTitle">Terma &amp; Syarat</h2>
+     <h2 id="termsTitle" style="color:#E5CF97;font-family:Georgia,serif;font-size:22px;margin:0 0 4px;">Terma &amp; Syarat</h2>
       <div class="modal-body">
         <div class="modal-section"><h3>1. Pengenalan</h3><p>Selamat datang ke Jodohku.my. Dengan memohon akses awal, anda bersetuju untuk terikat dengan terma-terma di bawah.</p></div>
         <div class="modal-section"><h3>2. Kelayakan Pengguna</h3><p>Perkhidmatan ini terbuka khusus untuk Muslim warganegara Malaysia atau penduduk tetap yang berumur 18 tahun ke atas dan berstatus bujang, duda, atau janda yang serius ingin mencari pasangan hidup melalui kaedah taaruf yang sah.</p></div>
@@ -978,7 +978,7 @@ error_reporting(E_ALL);
   <div id="privacyModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('privacyModal')" aria-label="Tutup modal">&times;</button>
-      <h2 id="privacyTitle">Dasar Privasi (PDPA 2010)</h2>
+      <h2 id="privacyTitle" style="color:#E5CF97;font-family:Georgia,serif;font-size:22px;margin:0 0 4px;">Dasar Privasi (PDPA 2010)</h2>
       <div class="modal-body">
         <div class="modal-section"><h3>1. Komitmen Kami</h3><p>Jodohku.my komited melindungi data peribadi anda mematuhi Akta Perlindungan Data Peribadi 2010 (PDPA 2010) Malaysia.</p></div>
         <div class="modal-section"><h3>2. Data Yang Kami Kumpul</h3><ul><li><strong>Maklumat identiti:</strong> nama penuh, nombor kad pengenalan/MyKad, tarikh lahir, umur, jantina, status perkahwinan.</li><li><strong>Maklumat hubungan:</strong> nombor telefon, alamat e-mel.</li><li><strong>Media:</strong> gambar profil rasmi untuk tujuan pengecaman wajah &amp; akaun.</li></ul></div>
@@ -1113,14 +1113,21 @@ const SUPABASE_ANON_KEY = <?= json_encode(getenv("SUPABASE_ANON_KEY")) ?>;
       errorEl.textContent = msg;
     }
 
-    function clearUploadError() {
-      const label = document.getElementById('uploadLabel');
-      if (!label) return;
-      label.style.borderColor = '';
-      label.style.background = '';
-      const errorEl = document.getElementById('upError');
-      if (errorEl) errorEl.remove();
-    }
+  function clearUploadError() {
+  const label = document.getElementById('uploadLabel');
+  if (!label) return;
+  label.style.borderColor = '';
+  label.style.background = '';
+  const errorEl = document.getElementById('upError');
+  if (errorEl) errorEl.remove();
+}
+
+function clearPhotoPreview() {
+  const preview = document.getElementById('photoPreview');
+  if (preview) preview.remove();
+  document.getElementById('uploadTitle').textContent = 'Pilih gambar profil';
+  selectedFile = null;
+}
 
     function showCbError(msg) {
       const cbContainer = document.getElementById('agreeTerms')?.parentNode;
@@ -1293,9 +1300,8 @@ const SUPABASE_ANON_KEY = <?= json_encode(getenv("SUPABASE_ANON_KEY")) ?>;
       const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
       if (!validTypes.includes(file.type)) {
         showUploadError('Format tidak sah. Gunakan JPG, PNG atau WEBP sahaja.');
-        selectedFile = null;
-        document.getElementById('uploadTitle').textContent = 'Pilih gambar profil';
-        return;
+       clearPhotoPreview();
+return;
       }
 
       if (file.size > 5 * 1024 * 1024) {
@@ -1306,7 +1312,21 @@ const SUPABASE_ANON_KEY = <?= json_encode(getenv("SUPABASE_ANON_KEY")) ?>;
       }
 
       selectedFile = file;
-      document.getElementById('uploadTitle').textContent = file.name;
+document.getElementById('uploadTitle').textContent = file.name;
+
+const reader = new FileReader();
+reader.onload = function(ev) {
+  let preview = document.getElementById('photoPreview');
+  if (!preview) {
+    preview = document.createElement('img');
+    preview.id = 'photoPreview';
+    preview.style.cssText = 'width:100%;height:140px;object-fit:cover;border-radius:10px;margin-top:8px;border:1px solid rgba(229,207,151,.3);display:block;';
+    const uploadLabel = document.getElementById('uploadLabel');
+    uploadLabel.parentNode.insertBefore(preview, uploadLabel.nextSibling);
+  }
+  preview.src = ev.target.result;
+};
+reader.readAsDataURL(file);
     });
 
     document.getElementById('fullName')?.addEventListener('input', () => clearFieldError('fullName'));
