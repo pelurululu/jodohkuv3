@@ -407,11 +407,11 @@
 
     /* ── POPUP AND MODAL ENGINE ── */
     function openModal(id) {
-      const modal = document.getElementById(id);
-      if (!modal) return;
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
 
     // Explicitly make modal handling globally available
     window.openModal = openModal;
