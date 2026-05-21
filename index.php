@@ -370,8 +370,8 @@
    const GAS_URL = 'https://script.google.com/macros/s/XXXXXXXXXX/exec';
 /* ── CONFIGURATION & INITIALIZATION ── */
     // Safely embed environment variables via PHP, then sanitize them for JavaScript
-    const SUPABASE_URL = '<?php echo addslashes((string)getenv("SUPABASE_URL")); ?>';
-    const SUPABASE_ANON_KEY = '<?php echo addslashes((string)getenv("SUPABASE_ANON_KEY")); ?>';
+   const SUPABASE_URL = <?= json_encode(getenv("SUPABASE_URL")) ?>;
+const SUPABASE_ANON_KEY = <?= json_encode(getenv("SUPABASE_ANON_KEY")) ?>;
 
     let db = null;
     
