@@ -1450,20 +1450,26 @@ reader.readAsDataURL(file);
         const { data: urlData } = db.storage.from('profile-pics').getPublicUrl(filePath);
         const photoUrl = urlData.publicUrl;
 
-        /* ── 3. Insert Database Record ── */
+      /* ── 3. Insert Database Record ── */
         const payload = {
           id: jdk_id,
-          full_name: document.getElementById('fullName').value.trim(),
-          ic_number: icValue.replace(/-/g, ''),
-          ic_last_four: ic_last4,
+          nama: document.getElementById('fullName').value.trim(),
+          ic: icValue.replace(/-/g, ''),
+          telefon: document.getElementById('phoneNo').value.trim(),
           email: document.getElementById('emailAddr').value.trim().toLowerCase(),
-          phone: document.getElementById('phoneNo').value.trim(),
-          photo_url: photoUrl,
-          age: icRes.age,
-          gender: icRes.gender,
-          state_of_birth: icRes.state,
-          date_of_birth: icRes.rawDob
+          photo_url: photoUrl
+          // Note: created_at is handled automatically by Supabase defaults!
         };
+
+        // Targets your real 'registrations' table
+        const { error: dbError } = await db.from('registrations').insert([payload]);
+
+        if (dbError) {
+          if (dbError.code === '23505') {
+            throw new Error('__DUPLICATE__');
+          }
+          throw dbError;
+        }
 
         const { error: dbError } = await db.from('early_access').insert([payload]);
 
