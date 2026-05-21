@@ -251,562 +251,514 @@
  * ─────────────────────────────────────────────────────────────────
  */
 
-/* ── CONFIG (populated at runtime via fetchConfig) ── */
-const db = createClient(
-  '<?php echo getenv("SUPABASE_URL"); ?>',
-  '<?php echo getenv("SUPABASE_ANON_KEY"); ?>'
-);
-let APPS_SCRIPT_URL   = 'https://script.google.com/macros/s/AKfycbxKr9ScNkwNzlY7pyaeP4bKTfepcttaECQo8cxaleWIj6QYjxAWhNBFMzrNVV6MADT7Kg/exec';
-const STORAGE_BUCKET  = 'profile-pics';
+<div id="termsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('termsModal')" aria-label="Tutup modal">&times;</button>
+      <h2 id="termsTitle">Terma &amp; Syarat</h2>
+      <div class="modal-body">
+        <div class="modal-section"><h3>1. Pengenalan</h3><p>Selamat datang ke Jodohku.my. Dengan memohon akses awal, anda bersetuju untuk terikat dengan terma-terma di bawah.</p></div>
+        <div class="modal-section"><h3>2. Kelayakan Pengguna</h3><p>Perkhidmatan ini terbuka khusus untuk Muslim warganegara Malaysia atau penduduk tetap yang berumur 18 tahun ke atas dan berstatus bujang, duda, atau janda yang serius ingin mencari pasangan hidup melalui kaedah taaruf yang sah.</p></div>
+        <div class="modal-section"><h3>3. Ketepatan Maklumat</h3><p>Anda wajib memberikan maklumat yang benar, tepat, dan terkini (termasuk Nama Penuh, No. IC, Emel, dan No. Telefon). Penggunaan maklumat palsu boleh mengakibatkan penyertaan anda dibatalkan serta-merta.</p></div>
+        <div class="modal-section"><h3>4. Pengesahan &amp; Saringan (KYC)</h3><p>Pihak Jodohku.my berhak melakukan saringan awal menggunakan algoritma AI dan semakan manual berasaskan No. IC yang diberikan bagi memastikan komuniti ini bebas daripada elemen penipuan (scam).</p></div>
+        <div class="modal-section"><h3>5. Sekatan Liabiliti</h3><p>Jodohku.my menyediakan platform padanan awal dan tidak bertanggungjawab ke atas sebarang salah laku, penipuan, atau perselisihan yang berlaku di luar platform antara pengguna selepas fasa taaruf dimulakan.</p></div>
+        <div class="modal-section"><h3>6. Perubahan Terma</h3><p>Kami berhak meminda Terma &amp; Syarat ini pada bila-bila masa tanpa notis awal bagi mematuhi undang-undang semasa atau meningkatkan kualiti perkhidmatan.</p></div>
+      </div>
+    </div>
+  </div>
 
-/* ── GLOBALS ── */
-let db           = null;   // Supabase client
-let selectedFile = null;   // currently chosen image File object
+  <div id="privacyModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('privacyModal')" aria-label="Tutup modal">&times;</button>
+      <h2 id="privacyTitle">Dasar Privasi (PDPA 2010)</h2>
+      <div class="modal-body">
+        <div class="modal-section"><h3>1. Komitmen Kami</h3><p>Jodohku.my komited melindungi data peribadi anda mematuhi Akta Perlindungan Data Peribadi 2010 (PDPA 2010) Malaysia.</p></div>
+        <div class="modal-section"><h3>2. Data Yang Kami Kumpul</h3><ul><li><strong>Maklumat identiti:</strong> nama penuh, nombor kad pengenalan/MyKad, tarikh lahir, umur, jantina, status perkahwinan.</li><li><strong>Maklumat hubungan:</strong> nombor telefon, alamat e-mel.</li><li><strong>Media:</strong> gambar profil rasmi untuk tujuan pengecaman wajah &amp; akaun.</li></ul></div>
+        <div class="modal-section"><h3>3. Tujuan Pemprosesan Data</h3><ul><li>Mengesahkan identiti anda dan menapis pemohon yang tidak serius.</li><li>Menjalankan analisis keserasian berasaskan profil.</li><li>Menghantar kemas kini platform dan jemputan akses awal.</li></ul></div>
+        <div class="modal-section"><h3>4. Persetujuan Pemprosesan</h3><p>Dengan menanda kotak persetujuan terma, anda memberikan kebenaran eksplisit kepada Jodohku.my untuk memproses data peribadi anda bagi tujuan perkahwinan yang dinyatakan.</p></div>
+        <div class="modal-section"><h3>6. Pendedahan Kepada Pihak Ketiga</h3><ul><li>Penyedia hosting dan cloud</li><li>Penyedia pembayaran</li><li>Pasukan sokongan Jodohku</li><li>Pihak berkuasa jika diwajibkan undang-undang</li></ul></div>
+        <div class="modal-section"><h3>7. Keselamatan Data</h3><p>Kami mengambil langkah keselamatan yang munasabah termasuk akses terhad, enkripsi dan pemantauan aktiviti mencurigakan.</p></div>
+        <div class="modal-section"><h3>8. Tempoh Penyimpanan Data</h3><p>Data disimpan selama mana diperlukan untuk tujuan perkhidmatan, keselamatan dan pematuhan undang-undang.</p></div>
+        <div class="modal-section"><h3>9. Hak Anda</h3><ol><li>Meminta akses kepada data anda</li><li>Membetulkan data yang tidak tepat</li><li>Menarik balik persetujuan</li><li>Meminta pemadaman akaun</li></ol></div>
+        <div class="modal-section"><h3>10. Ketepatan Maklumat</h3><p>Anda bertanggungjawab memastikan maklumat yang diberikan adalah benar dan terkini.</p></div>
+        <div class="modal-section"><h3>11. Data Yang Dipaparkan Kepada Pengguna Lain</h3><p>Nombor IC, nombor telefon dan e-mel <strong>tidak akan dipaparkan</strong> kepada pengguna lain.</p></div>
+        <div class="modal-section"><h3>12. Hubungi Kami</h3><p><strong>Jodohku.my</strong><br>E-mel: <strong>inquiry@jodohku.my</strong><br><a href="https://www.jodohku.my" target="_blank" rel="noopener">www.jodohku.my</a></p></div>
+      </div>
+    </div>
+  </div>
 
-/* ─────────────────────────────────────────────────────────────────
- * CONFIG LOADER
- * Fetch /config.json from your Render service.
- * That endpoint should return:
- * {
- *   "supabaseUrl":    "https://xxx.supabase.co",
- *   "supabaseKey":    "eyJ...",
- *   "appsScriptUrl":  "https://script.google.com/macros/s/.../exec"
- * }
- * ───────────────────────────────────────────────────────────────── */
-async function fetchConfig() {
-  try {
-    const res  = await fetch('/config.json');
-    if (!res.ok) throw new Error('config.json not found');
-    const cfg  = await res.json();
-    SUPABASE_URL      = cfg.supabaseUrl      || SUPABASE_URL;
-    SUPABASE_ANON_KEY = cfg.supabaseKey      || SUPABASE_ANON_KEY;
-    APPS_SCRIPT_URL   = cfg.appsScriptUrl    || APPS_SCRIPT_URL;
-  } catch (err) {
-    // Falls back to the placeholder values — will error on submit if not real
-    console.warn('Could not load /config.json, using placeholder config.', err.message);
-  }
+  <div id="popupOverlay" class="popup-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(4,9,14,0.85); backdrop-filter:blur(10px); z-index:10000; align-items:center; justify-content:center; padding:20px;">
+    <div class="popup-box" style="background:#0c1924; border:1px solid rgba(229,207,151,0.2); border-radius:24px; padding:32px; max-width:440px; width:100%; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,0.5); position:relative; transform:scale(0.95); transition:transform 0.3s ease;">
+      <div id="popupIcon" style="font-size:48px; margin-bottom:16px;"></div>
+      <h3 id="popupTitle" style="color:var(--champagne); font-family:var(--font-display); font-size:22px; margin-bottom:12px; font-weight:600;"></h3>
+      <p id="popupDesc" style="color:rgba(255,255,255,0.7); font-size:14px; line-height:1.6; margin-bottom:24px;"></p>
+      <button class="btn primary" onclick="closePopup()" style="width:100%;">Faham &amp; Tutup</button>
+    </div>
+  </div>
 
-  // Initialise Supabase client once config is ready
-  const { createClient } = supabase;
-  db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-}
+  <script>
+    /* ── CONFIGURATION & INITIALIZATION ── */
+    const SUPABASE_URL = '<?php echo addslashes(getenv("SUPABASE_URL")); ?>';
+    const SUPABASE_ANON_KEY = '<?php echo addslashes(getenv("SUPABASE_ANON_KEY")); ?>';
 
-/* ─────────────────────────────────────────────────────────────────
- * BOOTSTRAP — runs when the page loads
- * ───────────────────────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', async () => {
-  await fetchConfig();
-  attachListeners();
-});
-
-/* ─────────────────────────────────────────────────────────────────
- * EVENT LISTENERS
- * ───────────────────────────────────────────────────────────────── */
-function attachListeners() {
-  /* IC formatter + live validation */
-  document.getElementById('icNo')?.addEventListener('input', onICInput);
-
-  /* Photo picker */
-  document.getElementById('profilePhoto')?.addEventListener('change', onPhotoChange);
-  document.getElementById('uploadLabel')?.addEventListener('click', () =>
-    document.getElementById('profilePhoto')?.click()
-  );
-
-  /* Clear field errors on typing */
-  ['fullName', 'emailAddr', 'phoneNo'].forEach(id =>
-    document.getElementById(id)?.addEventListener('input', () => clearFieldError(id))
-  );
-}
-
-/* ─────────────────────────────────────────────────────────────────
- * IC INPUT HANDLER
- * ───────────────────────────────────────────────────────────────── */
-function onICInput(e) {
-  // Auto-format XXXXXX-XX-XXXX
-  let raw = e.target.value.replace(/\D/g, '');
-  if (raw.length > 6  && raw.length <= 8) raw = raw.slice(0, 6) + '-' + raw.slice(6);
-  else if (raw.length > 8)                raw = raw.slice(0, 6) + '-' + raw.slice(6, 8) + '-' + raw.slice(8, 12);
-  e.target.value = raw;
-
-  const digits = raw.replace(/-/g, '');
-  if (digits.length === 12) {
-    const r = validateIC(raw);
-    r.valid ? showICHint(r) : (showFieldError('icNo', r.error), clearICHint());
-  } else {
-    clearFieldError('icNo');
-    clearICHint();
-  }
-}
-
-/* ─────────────────────────────────────────────────────────────────
- * PHOTO CHANGE HANDLER
- * ───────────────────────────────────────────────────────────────── */
-function onPhotoChange(e) {
-  const file = e.target.files?.[0];
-  if (!file) return;
-
-  if (file.size > 5 * 1024 * 1024) {
-    alert('Saiz fail melebihi 5MB. Sila pilih gambar yang lebih kecil.');
-    e.target.value = '';
-    return;
-  }
-
-  selectedFile = file;
-  clearUploadError();
-
-  const reader  = new FileReader();
-  reader.onload = (ev) => {
-    const lbl = document.getElementById('uploadLabel');
-    if (!lbl) return;
-    lbl.innerHTML = `
-      <div style="display:flex;align-items:center;gap:12px;">
-        <img src="${ev.target.result}" alt="Preview"
-             style="width:52px;height:52px;object-fit:cover;border-radius:50%;border:2px solid rgba(229,207,151,.5);">
-        <div>
-          <strong style="display:block;font-size:13px;color:var(--champagne);">Gambar berjaya dipilih</strong>
-          <span style="font-size:12px;opacity:.7;">${file.name}</span>
-        </div>
-      </div>`;
-    lbl.setAttribute('for', 'profilePhoto');
-  };
-  reader.readAsDataURL(file);
-}
-
-/* ─────────────────────────────────────────────────────────────────
- * IC VALIDATION
- * Returns { valid, gender, dob, age } or { valid: false, error }
- * ───────────────────────────────────────────────────────────────── */
-function validateIC(icFormatted) {
-  const ic = icFormatted.replace(/-/g, '');
-
-  if (!ic || ic.length !== 12 || !/^\d{12}$/.test(ic))
-    return { valid: false, error: 'No. IC mesti mengandungi tepat 12 digit angka.' };
-
-  if (/^(\d)\1{11}$/.test(ic))
-    return { valid: false, error: 'No. IC tidak sah — corak berulang dikesan.' };
-
-  const sequential = '0123456789012345678901234567890';
-  const reverseSeq = '9876543210987654321098765432109';
-  if (sequential.includes(ic.slice(0, 10)) || reverseSeq.includes(ic.slice(0, 10)))
-    return { valid: false, error: 'No. IC tidak sah — urutan nombor palsu dikesan.' };
-
-  const yy = parseInt(ic.substring(0, 2));
-  const mm = parseInt(ic.substring(2, 4));
-  const dd = parseInt(ic.substring(4, 6));
-
-  if (mm < 1 || mm > 12)
-    return { valid: false, error: 'No. IC tidak sah — bulan lahir tidak wujud (digit 3–4).' };
-
-  const fullYear    = yy <= (new Date().getFullYear() % 100) ? 2000 + yy : 1900 + yy;
-  const daysInMonth = new Date(fullYear, mm, 0).getDate();
-  if (dd < 1 || dd > daysInMonth)
-    return { valid: false, error: `No. IC tidak sah — tarikh lahir tidak wujud (bulan ${mm} hanya ${daysInMonth} hari).` };
-
-  const dob = new Date(fullYear, mm - 1, dd);
-  if (dob > new Date())
-    return { valid: false, error: 'No. IC tidak sah — tarikh lahir pada masa hadapan.' };
-
-  const age = (new Date() - dob) / (1000 * 60 * 60 * 24 * 365.25);
-  if (age > 120)
-    return { valid: false, error: 'No. IC tidak sah — tarikh lahir melebihi 120 tahun.' };
-
-  const stateCode = parseInt(ic.substring(6, 8));
-  const validStates = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
-  const stateOk = validStates.includes(stateCode) || (stateCode >= 21 && stateCode <= 59);
-  if (!stateOk)
-    return { valid: false, error: `No. IC tidak sah — kod negeri tidak diiktiraf (digit 7–8: ${ic.substring(6,8)}).` };
-
-  const lastDigit = parseInt(ic[11]);
-  const gender    = lastDigit % 2 === 1 ? 'Lelaki' : 'Perempuan';
-  const dobStr    = `${String(dd).padStart(2,'0')}/${String(mm).padStart(2,'0')}/${fullYear}`;
-
-  return { valid: true, gender, dob: dobStr, age: Math.floor(age) };
-}
-
-/* ─────────────────────────────────────────────────────────────────
- * FIELD ERROR / HINT HELPERS
- * ───────────────────────────────────────────────────────────────── */
-function showFieldError(id, msg) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.style.borderColor = '#FF6B6B';
-  let err = el.parentElement?.querySelector('.field-error');
-  if (!err) {
-    err = document.createElement('div');
-    err.className = 'field-error';
-    err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:5px;';
-    el.insertAdjacentElement('afterend', err);
-  }
-  err.textContent = msg;
-}
-
-function clearFieldError(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.style.borderColor = '';
-  el.parentElement?.querySelector('.field-error')?.remove();
-}
-
-function showICHint(result) {
-  clearFieldError('icNo');
-  const el = document.getElementById('icNo');
-  let hint  = el?.parentElement?.querySelector('.ic-hint');
-  if (!hint && el) {
-    hint = document.createElement('div');
-    hint.className = 'ic-hint';
-    hint.style.cssText = 'color:#4CAF50;font-size:11px;margin-top:4px;';
-    el.insertAdjacentElement('afterend', hint);
-  }
-  if (hint) hint.textContent = `✓ ${result.gender} · Lahir: ${result.dob} · Umur: ${result.age} tahun`;
-}
-
-function clearICHint() {
-  document.querySelector('.ic-hint')?.remove();
-}
-
-function showUploadError(msg) {
-  const lbl = document.getElementById('uploadLabel');
-  if (lbl) lbl.style.borderColor = '#FF6B6B';
-  let err = document.querySelector('.upload-error');
-  if (!err) {
-    err = document.createElement('div');
-    err.className = 'upload-error';
-    err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:5px;';
-    lbl?.insertAdjacentElement('afterend', err);
-  }
-  if (err) err.textContent = msg;
-}
-
-function clearUploadError() {
-  const lbl = document.getElementById('uploadLabel');
-  if (lbl) lbl.style.borderColor = '';
-  document.querySelector('.upload-error')?.remove();
-}
-
-/* ─────────────────────────────────────────────────────────────────
- * FULL FORM VALIDATION
- * Returns true if everything is OK, false otherwise.
- * ───────────────────────────────────────────────────────────────── */
-function validateForm() {
-  let ok = true;
-
-  /* Name */
-  const name = document.getElementById('fullName')?.value.trim() ?? '';
-  if (!name)              { showFieldError('fullName', 'Nama penuh diperlukan.');                    ok = false; }
-  else if (name.length < 3){ showFieldError('fullName', 'Nama penuh terlalu pendek.');               ok = false; }
-  else if (!/^[a-zA-Z\u0600-\u06FF\s\/'\-.]+$/.test(name))
-                          { showFieldError('fullName', 'Nama penuh hanya boleh mengandungi huruf.'); ok = false; }
-  else clearFieldError('fullName');
-
-  /* IC */
-  const icVal = document.getElementById('icNo')?.value ?? '';
-  const icRes  = validateIC(icVal);
-  if (!icVal.replace(/-/g,''))  { showFieldError('icNo', 'No. Kad Pengenalan diperlukan.'); clearICHint(); ok = false; }
-  else if (!icRes.valid)        { showFieldError('icNo', icRes.error);                       clearICHint(); ok = false; }
-  else                          { clearFieldError('icNo'); showICHint(icRes); }
-
-  /* Email */
-  const email = document.getElementById('emailAddr')?.value.trim() ?? '';
-  if (!email)
-    { showFieldError('emailAddr', 'Alamat e-mel diperlukan.'); ok = false; }
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-    { showFieldError('emailAddr', 'Format e-mel tidak sah.'); ok = false; }
-  else clearFieldError('emailAddr');
-
-  /* Phone */
-  const phone = document.getElementById('phoneNo')?.value.trim() ?? '';
-  const phoneClean = phone.replace(/[\s\-]/g, '');
-  if (!phone)
-    { showFieldError('phoneNo', 'No. telefon diperlukan.'); ok = false; }
-  else if (!/^\+?6?01\d{8,9}$/.test(phoneClean) && !/^01\d{8,9}$/.test(phoneClean))
-    { showFieldError('phoneNo', 'Format no. telefon tidak sah. Contoh: 011-12345678'); ok = false; }
-  else clearFieldError('phoneNo');
-
-  /* Photo */
-  if (!selectedFile) { showUploadError('Sila muat naik gambar profil anda.'); ok = false; }
-  else clearUploadError();
-
-  /* Terms */
-  const terms = document.getElementById('agreeTerms');
-  if (!terms?.checked) {
-    let err = terms?.parentElement?.querySelector('.cb-error');
-    if (!err) {
-      err = document.createElement('div');
-      err.className = 'cb-error';
-      err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:4px;';
-      terms?.parentElement?.insertAdjacentElement('afterend', err);
-    }
-    if (err) err.textContent = 'Sila bersetuju dengan Terma & Syarat untuk meneruskan.';
-    ok = false;
-  } else {
-    document.querySelector('.cb-error')?.remove();
-  }
-
-  return ok;
-}
-
-/* ─────────────────────────────────────────────────────────────────
- * ERROR POPUP
- * ───────────────────────────────────────────────────────────────── */
-function showErrorPopup(title, msg) {
-  document.getElementById('errorPopup')?.remove();
-  const pop = document.createElement('div');
-  pop.id = 'errorPopup';
-  pop.style.cssText =
-    'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);' +
-    'backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;';
-  pop.innerHTML = `
-    <div style="background:#100a00;border:1.5px solid rgba(255,80,80,.35);border-radius:18px;max-width:400px;width:100%;padding:36px 28px;text-align:center;">
-      <div style="font-size:28px;margin-bottom:14px;">✗</div>
-      <h3 style="font-family:Georgia,serif;font-size:20px;color:#fff;margin:0 0 12px;">${title}</h3>
-      <p style="color:#aaa;font-size:13px;line-height:1.7;margin:0 0 24px;">${msg}</p>
-      <button onclick="document.getElementById('errorPopup').remove()"
-              style="background:linear-gradient(135deg,#FF4444,#FF8800);color:#fff;border:none;
-                     padding:10px 32px;border-radius:8px;font-weight:700;font-size:13px;
-                     cursor:pointer;letter-spacing:.8px;text-transform:uppercase;">
-        Tutup
-      </button>
-    </div>`;
-  pop.addEventListener('click', ev => { if (ev.target === pop) pop.remove(); });
-  document.body.appendChild(pop);
-}
-
-/* ─────────────────────────────────────────────────────────────────
- * UNIQUE ID GENERATOR (mirrors Apps Script format)
- * ───────────────────────────────────────────────────────────────── */
-function generateId() {
-  const yr  = new Date().getFullYear();
-  const rnd = crypto.randomUUID().replace(/-/g, '').substring(0, 8).toUpperCase();
-  return `JDK-${yr}-${rnd}`;
-}
-
-/* ─────────────────────────────────────────────────────────────────
- * FILE → BASE64 HELPER
- * ───────────────────────────────────────────────────────────────── */
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader  = new FileReader();
-    reader.onload = () => resolve(reader.result.split(',')[1]); // strip data:... prefix
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-}
-
-/* ─────────────────────────────────────────────────────────────────
- * MAIN SUBMIT HANDLER
- *
- * Flow:
- *  1. Validate form fields
- *  2. Upload photo to Supabase Storage
- *  3. Insert registration row in Supabase DB
- *  4. Fire Apps Script (Sheet + Gmail) — fire-and-forget
- *  5. Show success state
- * ───────────────────────────────────────────────────────────────── */
-async function handleFormSubmit(e) {
-  e.preventDefault();
-
-  if (!validateForm()) {
-    document.querySelector('.field-error, .upload-error, .cb-error')
-      ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    return;
-  }
-
-  const btn = document.getElementById('submitBtn');
-  btn.disabled    = true;
-  btn.textContent = 'Memproses…';
-
-  try {
-    const jdk_id  = generateId();
-    const icValue = document.getElementById('icNo').value;
-    const icRes   = validateIC(icValue); // guaranteed valid here
-    const ic_last4 = icValue.replace(/-/g, '').slice(-4);
-
-    /* ── 1. Upload photo to Supabase Storage ── */
-    const ext      = selectedFile.name.split('.').pop().toLowerCase();
-    const filePath = `${jdk_id}.${ext}`;
-
-    const { error: uploadErr } = await db.storage
-      .from(STORAGE_BUCKET)
-      .upload(filePath, selectedFile, { cacheControl: '3600', upsert: false });
-
-    if (uploadErr) throw new Error('Gambar gagal dimuat naik: ' + uploadErr.message);
-
-    const { data: urlData } = db.storage.from(STORAGE_BUCKET).getPublicUrl(filePath);
-    const photo_url = urlData?.publicUrl ?? null;
-    if (!photo_url) throw new Error('URL gambar tidak dijana.');
-
-    /* ── 2. Insert row into Supabase DB ── */
-    const { error: dbErr } = await db.from('registrations').insert([{
-      jdk_id,
-      nama:       document.getElementById('fullName').value.trim(),
-      ic:         icValue,
-      ic_last4,
-      jantina:    icRes.gender,   // derived from IC
-      telefon:    document.getElementById('phoneNo').value.trim(),
-      email:      document.getElementById('emailAddr').value.trim().toLowerCase(),
-      photo_url,
-      created_at: new Date().toISOString(),
-    }]);
-
-    if (dbErr) {
-      const isDup = dbErr.code === '23505' || dbErr.message.includes('unique');
-      throw new Error(isDup ? '__DUPLICATE__' : 'Ralat pendaftaran: ' + dbErr.message);
+    let db = null;
+    if (SUPABASE_URL && SUPABASE_ANON_KEY && !SUPABASE_URL.startsWith('<?php') && !SUPABASE_ANON_KEY.startsWith('<?php')) {
+      db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    } else {
+      console.warn("Supabase configuration keys are missing or invalid environment variables.");
     }
 
-    /* ── 3. Apps Script — Google Sheet + Gmail (fire and forget) ── */
-    (async () => {
+    let selectedFile = null;
+
+    /* ── UI HELPERS ── */
+    function showFieldError(fieldId, msg) {
+      const inputEl = document.getElementById(fieldId);
+      if (!inputEl) return;
+      inputEl.style.borderColor = '#ff6b6b';
+      inputEl.style.background = 'rgba(255,107,107,0.03)';
+      
+      let errorEl = inputEl.nextElementSibling;
+      if (!errorEl || !errorEl.classList.contains('field-error')) {
+        errorEl = document.createElement('div');
+        errorEl.className = 'field-error';
+        errorEl.style.color = '#ff6b6b';
+        errorEl.style.fontSize = '12px';
+        errorEl.style.marginTop = '4px';
+        errorEl.style.paddingLeft = '4px';
+        inputEl.parentNode.insertBefore(errorEl, inputEl.nextSibling);
+      }
+      errorEl.textContent = msg;
+    }
+
+    function clearFieldError(fieldId) {
+      const inputEl = document.getElementById(fieldId);
+      if (!inputEl) return;
+      inputEl.style.borderColor = '';
+      inputEl.style.background = '';
+      
+      const errorEl = inputEl.nextElementSibling;
+      if (errorEl && errorEl.classList.contains('field-error')) {
+        errorEl.remove();
+      }
+    }
+
+    function showICHint(res) {
+      const inputEl = document.getElementById('icNo');
+      if (!inputEl) return;
+      let hintEl = document.getElementById('icHintBox');
+      if (!hintEl) {
+        hintEl = document.createElement('div');
+        hintEl.id = 'icHintBox';
+        hintEl.style.fontSize = '12px';
+        hintEl.style.marginTop = '6px';
+        hintEl.style.color = '#8ff7c8';
+        hintEl.style.background = 'rgba(143,247,200,0.06)';
+        hintEl.style.padding = '8px 12px';
+        hintEl.style.borderRadius = '8px';
+        hintEl.style.border = '1px solid rgba(143,247,200,0.15)';
+        inputEl.parentNode.insertBefore(hintEl, inputEl.nextSibling);
+      }
+      hintEl.innerHTML = `✨ <strong>Saringan AI:</strong> Jantina: ${res.gender} | Umur: ${res.age} tahun (${res.dobStr}) | Negeri Lahir: ${res.state}`;
+    }
+
+    function clearICHint() {
+      const hintEl = document.getElementById('icHintBox');
+      if (hintEl) hintEl.remove();
+    }
+
+    function showUploadError(msg) {
+      const label = document.getElementById('uploadLabel');
+      if (!label) return;
+      label.style.borderColor = '#ff6b6b';
+      label.style.background = 'rgba(255,107,107,0.03)';
+      
+      let errorEl = document.getElementById('upError');
+      if (!errorEl) {
+        errorEl = document.createElement('div');
+        errorEl.id = 'upError';
+        errorEl.style.color = '#ff6b6b';
+        errorEl.style.fontSize = '12px';
+        errorEl.style.marginTop = '4px';
+        label.parentNode.insertBefore(errorEl, label.nextSibling);
+      }
+      errorEl.textContent = msg;
+    }
+
+    function clearUploadError() {
+      const label = document.getElementById('uploadLabel');
+      if (!label) return;
+      label.style.borderColor = '';
+      label.style.background = '';
+      const errorEl = document.getElementById('upError');
+      if (errorEl) errorEl.remove();
+    }
+
+    function showCbError(msg) {
+      const cbContainer = document.getElementById('agreeTerms')?.parentNode;
+      if (!cbContainer) return;
+      let errorEl = document.getElementById('cbError');
+      if (!errorEl) {
+        errorEl = document.createElement('div');
+        errorEl.id = 'cbError';
+        errorEl.style.color = '#ff6b6b';
+        errorEl.style.fontSize = '12px';
+        errorEl.style.marginTop = '4px';
+        cbContainer.parentNode.insertBefore(errorEl, cbContainer.nextSibling);
+      }
+      errorEl.textContent = msg;
+    }
+
+    function clearCbError() {
+      const errorEl = document.getElementById('cbError');
+      if (errorEl) errorEl.remove();
+    }
+
+    /* ── POPUP AND MODAL ENGINE ── */
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    window.onclick = function(e) {
+      if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    };
+
+    function showErrorPopup(title, desc) {
+      document.getElementById('popupIcon').textContent = '⚠️';
+      document.getElementById('popupIcon').style.color = '#ff6b6b';
+      document.getElementById('popupTitle').textContent = title;
+      document.getElementById('popupDesc').textContent = desc;
+      const overlay = document.getElementById('popupOverlay');
+      overlay.style.display = 'flex';
+      setTimeout(() => { overlay.firstElementChild.style.transform = 'scale(1)'; }, 10);
+    }
+
+    function showMaintenancePopup(title, desc) {
+      document.getElementById('popupIcon').textContent = '🔧';
+      document.getElementById('popupIcon').style.color = '#e5cf97';
+      document.getElementById('popupTitle').textContent = title;
+      document.getElementById('popupDesc').textContent = desc;
+      const overlay = document.getElementById('popupOverlay');
+      overlay.style.display = 'flex';
+      setTimeout(() => { overlay.firstElementChild.style.transform = 'scale(1)'; }, 10);
+    }
+
+    function closePopup() {
+      const overlay = document.getElementById('popupOverlay');
+      overlay.firstElementChild.style.transform = 'scale(0.95)';
+      setTimeout(() => { overlay.style.display = 'none'; }, 200);
+    }
+
+    /* ── CORE COMPONENT LOGIC & ID GENERATORS ── */
+    function generateId() {
+      const prefix = "JDK";
+      const timestamp = Date.now().toString(36).toUpperCase().slice(-4);
+      const randomStr = Math.random().toString(36).toUpperCase().substring(2, 6);
+      return `${prefix}-${timestamp}${randomStr}`;
+    }
+
+    function validateIC(ic) {
+      ic = ic.replace(/-/g, '');
+      if (ic.length !== 12) return { valid: false, error: 'No. IC mestilah mengandungi 12 digit.' };
+      if (!/^\d+$/.test(ic)) return { valid: false, error: 'No. IC hanya boleh mengandungi nombor.' };
+
+      let year = parseInt(ic.substring(0, 2));
+      const month = parseInt(ic.substring(2, 4));
+      const day = parseInt(ic.substring(4, 6));
+
+      const currentYear = new Date().getFullYear();
+      const currentCentury = Math.floor(currentYear / 100) * 100;
+      year = (currentCentury + year > currentYear) ? (currentCentury - 100 + year) : (currentCentury + year);
+
+      if (month < 1 || month > 12) return { valid: false, error: 'No. IC tidak sah — format bulan salah.' };
+      
+      const daysInMonth = new Date(year, month, 0).getDate();
+      if (day < 1 || day > daysInMonth) return { valid: false, error: 'No. IC tidak sah — tarikh tidak wujud pada bulan tersebut.' };
+
+      const dob = new Date(year, month - 1, day);
+      if (dob > new Date()) return { valid: false, error: 'No. IC tidak sah — tarikh lahir pada masa hadapan.' };
+
+      const age = (new Date() - dob) / (1000 * 60 * 60 * 24 * 365.25);
+      if (age > 120) return { valid: false, error: 'No. IC tidak sah — tarikh lahir melebihi 120 tahun.' };
+
+      const stateCode = parseInt(ic.substring(6, 8));
+      const validStates = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+      const stateOk = validStates.includes(stateCode) || (stateCode >= 21 && stateCode <= 59);
+      if (!stateOk) return { valid: false, error: 'No. IC tidak sah — kod negeri tidak sepadan.' };
+
+      const monthsMs = ['Jan', 'Feb', 'Mac', 'Apr', 'Mei', 'Jun', 'Jul', 'Ogo', 'Sep', 'Okt', 'Nov', 'Dis'];
+      const dobStr = `${day} ${monthsMs[month - 1]} ${year}`;
+
+      const stateMap = {
+        1: 'Johor', 2: 'Kedah', 3: 'Kelantan', 4: 'Melaka', 5: 'Negeri Sembilan', 
+        6: 'Pahang', 7: 'Pulau Pinang', 8: 'Perak', 9: 'Perlis', 10: 'Selangor', 
+        11: 'Terengganu', 12: 'Sabah', 13: 'Sarawak', 14: 'Wilayah Persekutuan (KL)', 
+        15: 'Wilayah Persekutuan (Labuan)', 16: 'Wilayah Persekutuan (Putrajaya)',
+        21: 'Johor', 22: 'Johor', 23: 'Johor', 24: 'Johor', 25: 'Kedah', 26: 'Kedah', 27: 'Kedah',
+        28: 'Kelantan', 29: 'Kelantan', 30: 'Melaka', 31: 'Negeri Sembilan', 32: 'Pahang', 33: 'Pahang',
+        34: 'Pulau Pinang', 35: 'Pulau Pinang', 36: 'Perak', 37: 'Perak', 38: 'Perak', 39: 'Perak',
+        40: 'Perlis', 41: 'Selangor', 42: 'Selangor', 43: 'Selangor', 44: 'Selangor', 45: 'Terengganu',
+        46: 'Terengganu', 47: 'Sabah', 48: 'Sabah', 49: 'Sabah', 50: 'Sarawak', 51: 'Sarawak',
+        52: 'Sarawak', 53: 'Sarawak', 54: 'Wilayah Persekutuan (KL)', 55: 'Wilayah Persekutuan (KL)',
+        56: 'Wilayah Persekutuan (KL)', 57: 'Wilayah Persekutuan (KL)', 58: 'Wilayah Persekutuan (Labuan)',
+        59: 'Wilayah Persekutuan (Putrajaya)'
+      };
+      
+      const state = stateMap[stateCode] || 'Luar Negara / Lain-lain';
+      const lastDigit = parseInt(ic.slice(-1));
+      const gender = (lastDigit % 2 === 0) ? 'Wanita' : 'Lelaki';
+
+      return { valid: true, age: Math.floor(age), dobStr, state, gender, rawDob: dob.toISOString().split('T')[0] };
+    }
+
+    /* ── EVENT HANDLERS & REGISTRATION PIPELINE ── */
+    document.getElementById('icNo')?.addEventListener('input', function(e) {
+      let raw = e.target.value.replace(/\D/g, '');
+      if (raw.length > 6 && raw.length <= 8) {
+        raw = raw.slice(0, 6) + '-' + raw.slice(6);
+      } else if (raw.length > 8) {
+        raw = raw.slice(0, 6) + '-' + raw.slice(6, 8) + '-' + raw.slice(8, 12);
+      }
+      e.target.value = raw;
+
+      const digits = raw.replace(/-/g, '');
+      if (digits.length === 12) {
+        const r = validateIC(raw);
+        if (r.valid) {
+          clearFieldError('icNo');
+          showICHint(r);
+        } else {
+          showFieldError('icNo', r.error);
+          clearICHint();
+        }
+      } else {
+        clearFieldError('icNo');
+        clearICHint();
+      }
+    });
+
+    document.getElementById('profilePhoto')?.addEventListener('change', function(e) {
+      clearUploadError();
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
+      if (!validTypes.includes(file.type)) {
+        showUploadError('Format tidak sah. Gunakan JPG, PNG atau WEBP sahaja.');
+        selectedFile = null;
+        document.getElementById('uploadTitle').textContent = 'Pilih gambar profil';
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        showUploadError('Fail terlalu besar. Maksimum saiz dibenarkan adalah 5MB.');
+        selectedFile = null;
+        document.getElementById('uploadTitle').textContent = 'Pilih gambar profil';
+        return;
+      }
+
+      selectedFile = file;
+      document.getElementById('uploadTitle').textContent = file.name;
+    });
+
+    // Automatically remove error highlights as soon as fields change
+    document.getElementById('fullName')?.addEventListener('input', () => clearFieldError('fullName'));
+    document.getElementById('emailAddr')?.addEventListener('input', () => clearFieldError('emailAddr'));
+    document.getElementById('phoneNo')?.addEventListener('input', () => clearFieldError('phoneNo'));
+    document.getElementById('agreeTerms')?.addEventListener('change', (e) => { if(e.target.checked) clearCbError(); });
+
+    function validateForm() {
+      let ok = true;
+
+      /* Name */
+      const name = document.getElementById('fullName')?.value.trim() ?? '';
+      if (!name) {
+        showFieldError('fullName', 'Nama penuh diperlukan.');
+        ok = false;
+      } else if (name.length < 3) {
+        showFieldError('fullName', 'Nama penuh mestilah sekurang-kurangnya 3 aksara.');
+        ok = false;
+      } else {
+        clearFieldError('fullName');
+      }
+
+      /* IC */
+      const icVal = document.getElementById('icNo')?.value ?? '';
+      const icRes = validateIC(icVal);
+      if (!icVal.replace(/-/g,'')) {
+        showFieldError('icNo', 'No. Kad Pengenalan diperlukan.');
+        clearICHint();
+        ok = false;
+      } else if (!icRes.valid) {
+        showFieldError('icNo', icRes.error);
+        clearICHint();
+        ok = false;
+      } else {
+        clearFieldError('icNo');
+        showICHint(icRes);
+      }
+
+      /* Email */
+      const email = document.getElementById('emailAddr')?.value.trim() ?? '';
+      if (!email) {
+        showFieldError('emailAddr', 'Alamat e-mel diperlukan.');
+        ok = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showFieldError('emailAddr', 'Format e-mel tidak sah.');
+        ok = false;
+      } else {
+        clearFieldError('emailAddr');
+      }
+
+      /* Phone */
+      const phone = document.getElementById('phoneNo')?.value.trim() ?? '';
+      if (!phone) {
+        showFieldError('phoneNo', 'Nombor telefon diperlukan.');
+        ok = false;
+      } else if (!/^\+?\d{9,15}$/.test(phone.replace(/[-\s]/g,''))) {
+        showFieldError('phoneNo', 'Nombor telefon tidak sah (9-15 digit).');
+        ok = false;
+      } else {
+        clearFieldError('phoneNo');
+      }
+
+      /* Photo */
+      if (!selectedFile) {
+        showUploadError('Gambar profil rasmi diperlukan untuk pengesahan awal.');
+        ok = false;
+      } else {
+        clearUploadError();
+      }
+
+      /* Checkbox */
+      const agree = document.getElementById('agreeTerms')?.checked ?? false;
+      if (!agree) {
+        showCbError('Anda mesti bersetuju dengan Terma dan Dasar Privasi untuk meneruskan.');
+        ok = false;
+      } else {
+        clearCbError();
+      }
+
+      return ok;
+    }
+
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      if (!validateForm()) {
+        const firstErr = document.querySelector('.field-error, #upError, #cbError');
+        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      if (!db) {
+        showMaintenancePopup(
+          'Sistem Sedang Dikemas Kini', 
+          'Pangkalan data kami sedang dalam fasa konfigurasi penyelenggaraan. Sila cuba lagi dalam masa beberapa minit.'
+        );
+        return;
+      }
+
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Memproses…';
+
       try {
-        const base64 = await fileToBase64(selectedFile);
+        const jdk_id = generateId();
+        const icValue = document.getElementById('icNo').value;
+        const icRes = validateIC(icValue);
+        const ic_last4 = icValue.replace(/-/g, '').slice(-4);
+
+        /* ── 1. Upload photo to Supabase Storage ── */
+        const ext = selectedFile.name.split('.').pop();
+        const filename = `${jdk_id}_profile.${ext}`;
+        const filePath = `${jdk_id}/${filename}`;
+
+        const { error: uploadError } = await db.storage
+          .from('profiles')
+          .upload(filePath, selectedFile, { cacheControl: '3600', upsert: true });
+
+        if (uploadError) throw uploadError;
+
+        /* ── 2. Get Public URL for the Uploaded Image ── */
+        const { data: urlData } = db.storage.from('profiles').getPublicUrl(filePath);
+        const photoUrl = urlData.publicUrl;
+
+        /* ── 3. Insert Database Record ── */
         const payload = {
-          reference_no:            jdk_id,
-          full_name:               document.getElementById('fullName').value.trim(),
-          phone:                   document.getElementById('phoneNo').value.trim(),
-          email:                   document.getElementById('emailAddr').value.trim(),
-          gender:                  icRes.gender,
-          ic_last4,
-          ic_no:                   icValue.replace(/-/g, ''),
-          state:                   '',
-          marital_status:          '',
-          profile_image_filename:  selectedFile.name,
-          profile_image_mime_type: selectedFile.type,
-          profile_image_base64:    base64,
-          consent_marketing:       true,
-          source:                  'landing_page',
-          page_url:                window.location.href,
-          user_agent:              navigator.userAgent,
-          created_at:              new Date().toISOString(),
+          id: jdk_id,
+          full_name: document.getElementById('fullName').value.trim(),
+          ic_number: icValue.replace(/-/g, ''),
+          ic_last_four: ic_last4,
+          email: document.getElementById('emailAddr').value.trim().toLowerCase(),
+          phone: document.getElementById('phoneNo').value.trim(),
+          photo_url: photoUrl,
+          age: icRes.age,
+          gender: icRes.gender,
+          state_of_birth: icRes.state,
+          date_of_birth: icRes.rawDob
         };
 
-        await fetch(APPS_SCRIPT_URL, {
-          method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify(payload),
+        const { error: dbError } = await db.from('early_access').insert([payload]);
+
+        if (dbError) {
+          if (dbError.code === '23505') {
+            throw new Error('__DUPLICATE__');
+          }
+          throw dbError;
+        }
+
+        /* ── 4. Trigger External Automation Pipelines via Edge Functions ── */
+        db.functions.invoke('on-early-access-reg', { body: { jdk_id } }).catch(e => {
+          console.error("Non-blocking automation trigger failure:", e);
         });
+
+        /* ── 5. Show Success Screen UI Changes ── */
+        const form = document.getElementById('regForm');
+        const successMsg = document.getElementById('successMsg');
+        if (form && successMsg) {
+          form.style.pointerEvents = 'none';
+          btn.style.display = 'none';
+          successMsg.style.display = 'block';
+          successMsg.innerHTML = `
+            <div style="text-align:center;padding:10px 0;">
+              <span style="font-size:40px; display:block; margin-bottom:12px;">🎉</span>
+              <strong style="font-size:16px;color:#fff;display:block;margin-bottom:8px;font-family:var(--font-display);">Permohonan Akses Awal Diterima!</strong>
+              <p style="margin-bottom:16px;color:rgba(255,255,255,0.85);font-size:13px;">Pendaftaran anda berjaya disaring oleh AI kami. Sila simpan ID unik anda di bawah sebagai rujukan rasmi. Kami akan menghubungi anda apabila slot onboarding dibuka. — Pasukan Jodohku</p>
+              <div style="display:inline-block;padding:10px 24px;border-radius:20px;background:#0c1924;border:1px solid rgba(229,207,151,.4);color:var(--champagne);font-size:14px;letter-spacing:.08em;font-family:monospace;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+                ${jdk_id}
+              </div>
+            </div>`;
+          form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
       } catch (err) {
-        // Not critical — Supabase already saved the data
-        console.warn('Apps Script call failed (non-critical):', err.message);
+        btn.disabled = false;
+        btn.textContent = 'Mohon Akses Awal';
+        if (err.message === '__DUPLICATE__') {
+          showErrorPopup(
+            'Pendaftaran Duplikat', 
+            'Nombor IC atau alamat e-mel ini sudah pun didaftarkan di dalam sistem kami untuk akses awal.'
+          );
+        } else {
+          console.error("Critical submission break:", err);
+          showErrorPopup(
+            'Gagal Menyimpan', 
+            'Rangkaian tergendala atau pelayan sibuk. Sila pastikan sambungan internet anda stabil dan cuba sekali lagi.'
+          );
+        }
       }
-    })();
-
-    /* ── 4. Show success ── */
-    const frm = document.getElementById('regForm');
-    if (frm) {
-      frm.innerHTML = `
-        <div style="text-align:center;padding:16px 0;">
-          <div style="width:56px;height:56px;border-radius:50%;
-                      background:linear-gradient(135deg,#1a6644,#0f3d28);
-                      display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
-            <svg width="26" height="26" viewBox="0 0 40 40" fill="none">
-              <path d="M8 20L16 28L32 12" stroke="#8ff7c8" stroke-width="3.5"
-                    stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3 style="font-family:Georgia,serif;color:var(--champagne);font-size:20px;margin:0 0 10px;">
-            Pendaftaran Berjaya!
-          </h3>
-          <p style="color:rgba(255,255,255,.72);font-size:13px;line-height:1.7;margin:0 0 12px;">
-            Tahniah! Anda berjaya mendaftar untuk beta access Jodohku.my.<br>
-            Kami akan menghubungi anda apabila aplikasi tersedia. — Admin
-          </p>
-          <div style="display:inline-block;padding:8px 18px;border-radius:20px;
-                      border:1px solid rgba(229,207,151,.3);color:var(--champagne);
-                      font-size:12px;letter-spacing:.08em;font-family:monospace;">
-            ${jdk_id}
-          </div>
-        </div>`;
     }
-
-  } catch (err) {
-    btn.disabled    = false;
-    btn.textContent = 'Mohon Akses Awal';
-
-    if (err.message === '__DUPLICATE__') {
-      showErrorPopup(
-        'Pendaftaran Duplikat',
-        'Nombor IC atau e-mel ini telah didaftarkan. Setiap pengguna hanya boleh mendaftar sekali.'
-      );
-    } else {
-      showErrorPopup('Ralat Tidak Dijangka', err.message || 'Sila cuba sebentar lagi.');
-    }
-  }
-}
-
-/* ─────────────────────────────────────────────────────────────────
- * SCROLL REVEAL
- * ───────────────────────────────────────────────────────────────── */
-const revObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-      revObs.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
-
-/* ─────────────────────────────────────────────────────────────────
- * MODAL HELPERS
- * ───────────────────────────────────────────────────────────────── */
-function openModal(id) {
-  document.getElementById(id)?.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal(id) {
-  document.getElementById(id)?.classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-document.querySelectorAll('.modal-overlay').forEach(m => {
-  m.addEventListener('click', function (ev) {
-    if (ev.target === this) closeModal(this.id);
-  });
-});
-</script>
-
-  <!-- TERMS MODAL -->
-<div class="modal-overlay" id="termsModal">
-  <div class="modal-box">
-    <div class="modal-header">
-      <h2 class="modal-title">Terma &amp; Syarat</h2>
-      <button class="modal-close" onclick="closeModal('termsModal')">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-meta">Berkuat kuasa: 1 Januari 2026 &nbsp;|&nbsp; Versi: 2.1</div>
-      <div class="modal-section"><h3>1. Penerimaan Terma</h3><p>Dengan mengakses atau menggunakan platform Jodohku.my ("Platform"), anda bersetuju untuk terikat dengan Terma &amp; Syarat ini. Platform ini diuruskan oleh <strong>Noble Synergy Ventures</strong> di bawah undang-undang Malaysia.</p></div>
-      <div class="modal-section"><h3>2. Kelayakan Pengguna</h3><ol><li>Anda mesti seorang Muslim atau Muslimah yang telah mencapai umur 18 tahun.</li><li>Anda mesti warganegara Malaysia atau pemastautin tetap yang sah.</li><li>Anda mesti belum berkahwin atau telah bercerai mengikut undang-undang yang sah.</li><li>Semua maklumat yang diberikan mesti tepat, terkini dan benar.</li></ol></div>
-      <div class="modal-section"><h3>3. Kod Etika</h3><p>Pengguna wajib mematuhi adab Islam dalam semua komunikasi. Kandungan lucah, pertukaran maklumat peribadi di luar platform, dan aktiviti penipuan adalah <strong>dilarang sama sekali</strong>.</p></div>
-      <div class="modal-section"><h3>4. Sistem Wali</h3><p>Penglibatan Wali adalah <strong>diwajibkan</strong> bagi setiap pengguna wanita sebelum sebarang komunikasi dibenarkan.</p></div>
-      <div class="modal-section"><h3>5. Hubungi Kami</h3><p><strong>Noble Synergy Ventures</strong><br>E-mel: legal@jodohku.my</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- PRIVACY MODAL -->
-<div class="modal-overlay" id="privacyModal">
-  <div class="modal-box">
-    <div class="modal-header">
-      <h2 class="modal-title">Dasar Privasi &amp; Notis Perlindungan Data Peribadi</h2>
-      <button class="modal-close" onclick="closeModal('privacyModal')">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-meta">Berkuat kuasa: 01/05/2026 &nbsp;|&nbsp; Mematuhi: PDPA 2010 (Malaysia) &nbsp;|&nbsp; Versi: 3.0</div>
-      <div class="modal-section"><h3>1. Pengenalan</h3><p>Polisi Privasi ini menerangkan bagaimana Jodohku.my mengumpul, menggunakan, menyimpan, melindungi dan mendedahkan data peribadi pengguna selaras dengan Akta Perlindungan Data Peribadi 2010 (PDPA).</p></div>
-      <div class="modal-section"><h3>2. Data Peribadi Yang Kami Kumpul</h3><ul><li><strong>Maklumat identiti:</strong> nama penuh, nombor kad pengenalan/MyKad, tarikh lahir, umur, jantina, status perkahwinan.</li><li><strong>Maklumat hubungan:</strong> nombor telefon, alamat e-mel, negeri/daerah tempat tinggal.</li><li><strong>Maklumat profil:</strong> gambar profil, biodata ringkas, minat, kriteria pasangan.</li><li><strong>Maklumat teknikal:</strong> alamat IP, jenis peranti, pelayar internet, cookies.</li></ul></div>
-      <div class="modal-section"><h3>3. Kenapa Kami Memerlukan Nama Penuh dan Nombor IC</h3><ul><li><strong>Pengesahan identiti</strong></li><li><strong>Pengesahan umur</strong></li><li><strong>Pencegahan penipuan dan scam</strong></li><li><strong>Keselamatan komuniti</strong></li><li><strong>Pematuhan undang-undang</strong></li></ul><p><em>Nombor IC anda tidak akan dipaparkan kepada pengguna lain.</em></p></div>
-      <div class="modal-section"><h3>4. Tujuan Pemprosesan Data</h3><ol><li>Membuka dan mengurus akaun pengguna.</li><li>Mengesahkan identiti dan umur pengguna.</li><li>Menyediakan fungsi padanan atau pencarian jodoh.</li><li>Menghubungi anda berkaitan akaun dan perkhidmatan.</li><li>Mengesan, mencegah dan menangani penipuan atau penyalahgunaan platform.</li><li>Mematuhi kehendak undang-undang.</li></ol></div>
-      <div class="modal-section"><h3>5. Asas Persetujuan</h3><p>Dengan menghantar data peribadi anda, anda memberi persetujuan kepada kami untuk mengumpul, menyimpan dan memproses data tersebut bagi tujuan yang dinyatakan.</p></div>
-      <div class="modal-section"><h3>6. Pendedahan Kepada Pihak Ketiga</h3><ul><li>Penyedia hosting dan cloud</li><li>Penyedia pembayaran</li><li>Pasukan sokongan Jodohku</li><li>Pihak berkuasa jika diwajibkan undang-undang</li></ul></div>
-      <div class="modal-section"><h3>7. Keselamatan Data</h3><p>Kami mengambil langkah keselamatan yang munasabah termasuk akses terhad, enkripsi dan pemantauan aktiviti mencurigakan.</p></div>
-      <div class="modal-section"><h3>8. Tempoh Penyimpanan Data</h3><p>Data disimpan selama mana diperlukan untuk tujuan perkhidmatan, keselamatan dan pematuhan undang-undang.</p></div>
-      <div class="modal-section"><h3>9. Hak Anda</h3><ol><li>Meminta akses kepada data anda</li><li>Membetulkan data yang tidak tepat</li><li>Menarik balik persetujuan</li><li>Meminta pemadaman akaun</li></ol></div>
-      <div class="modal-section"><h3>10. Ketepatan Maklumat</h3><p>Anda bertanggungjawab memastikan maklumat yang diberikan adalah benar dan terkini.</p></div>
-      <div class="modal-section"><h3>11. Data Yang Dipaparkan Kepada Pengguna Lain</h3><p>Nombor IC, nombor telefon dan e-mel <strong>tidak akan dipaparkan</strong> kepada pengguna lain.</p></div>
-      <div class="modal-section"><h3>12. Hubungi Kami</h3><p><strong>Jodohku.my</strong><br>E-mel: <strong>inquiry@jodohku.my</strong><br><a href="https://www.jodohku.my" style="color:#E5CF97;">https://www.jodohku.my</a></p></div>
-    </div>
-  </div>
-</div>
-  
+  </script>
 </body>
 </html>
