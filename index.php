@@ -56,8 +56,11 @@
             <div class="trust-item"><strong>Wali</strong>Proses lebih yakin dan tersusun</div>
           </div>
         </div>
-        <aside class="hero-side reveal" id="daftar">
-        <form class="form-grid" id="regForm">
+       <aside class="hero-side reveal" id="daftar">
+<div class="form-card">
+  <h3>Mohon Akses Awal</h3>
+  <p>Daftar sekarang dan jadilah antara yang pertama merasai pengalaman taaruf premium.</p>
+<form class="form-grid" id="regForm">
   <input class="field" type="text" id="fullName" placeholder="Nama penuh" autocomplete="name" required>
   <input class="field" type="text" id="icNo" placeholder="XXXXXX-XX-XXXX" maxlength="14" required>
   <input class="field" type="email" id="emailAddr" placeholder="Emel" autocomplete="email" required>
@@ -83,7 +86,8 @@
   <button class="btn primary" type="submit" id="submitBtn">Mohon Akses Awal</button>
   <div id="successMsg" style="display:none; padding:12px; border-radius:14px; background:rgba(20,56,47,.18); border:1px solid rgba(20,200,120,.25); color:#8ff7c8; font-size:13px; line-height:1.6;"></div>
 </form>
-        </aside>
+</div>
+</aside>
       </div>
     </section>
 
@@ -95,7 +99,39 @@
           <p class="lead">Direka supaya proses mencari pasangan menjadi lebih selamat, matang, visual dan dipercayai.</p>
         </div>
         <div class="gallery-grid">
-        </div>
+  <article class="photo-card reveal">
+    <img src="https://images.unsplash.com/photo-1604881991720-f91add269bed?w=600&q=80" alt="Taaruf beradab">
+    <span class="photo-label">Taaruf</span>
+    <div class="card-copy">
+      <h3>Taaruf Beradab</h3>
+      <p>Proses berkenalan yang sopan dan tersusun mengikut adab Islam.</p>
+    </div>
+  </article>
+  <article class="photo-card reveal">
+    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80" alt="Analisis AI">
+    <span class="photo-label">AI</span>
+    <div class="card-copy">
+      <h3>Analisis AI</h3>
+      <p>Teknologi terdepan menilai keserasian nilai dan pegangan hidup anda.</p>
+    </div>
+  </article>
+  <article class="photo-card reveal">
+    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="Sistem Wali">
+    <span class="photo-label">Wali</span>
+    <div class="card-copy">
+      <h3>Sistem Wali Digital</h3>
+      <p>Proses taaruf lebih yakin dengan penglibatan wali yang tersusun.</p>
+    </div>
+  </article>
+  <article class="photo-card reveal">
+    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&q=80" alt="Privasi terlindung">
+    <span class="photo-label">Privasi</span>
+    <div class="card-copy">
+      <h3>Privasi Terlindung</h3>
+      <p>Identiti anda selamat dan terkawal sepanjang proses taaruf.</p>
+    </div>
+  </article>
+</div>
       </div>
     </section>
 
@@ -105,8 +141,29 @@
           <span class="eyebrow">Teras Utama</span>
           <h2>Tiga Asas Yang Membuatkan Jodohku.my Berbeza</h2>
         </div>
-        <div class="core-grid">
-        </div>
+     <div class="core-grid">
+  <div class="image-panel reveal">
+    <img src="https://images.unsplash.com/photo-1609743522653-52354461eb27?w=800&q=80" alt="Syariah">
+    <div class="panel-copy">
+      <h3>Berasaskan Syariah</h3>
+      <p>Setiap ciri direka mengikut nilai dan adab Islam yang tulen.</p>
+    </div>
+  </div>
+  <div class="image-panel reveal">
+    <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80" alt="Teknologi AI">
+    <div class="panel-copy">
+      <h3>Teknologi AI Terdepan</h3>
+      <p>Sistem padanan kami menganalisis lebih 115 dimensi keserasian secara mendalam.</p>
+    </div>
+  </div>
+  <div class="image-panel reveal">
+    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?w=800&q=80" alt="Ekosistem lengkap">
+    <div class="panel-copy">
+      <h3>Ekosistem Lengkap</h3>
+      <p>Dari taaruf pertama hingga kehidupan selepas nikah, kami sentiasa ada.</p>
+    </div>
+  </div>
+</div>
       </div>
     </section>
 
@@ -141,7 +198,11 @@
         </div>
         <div class="science-wrap">
           <article class="science-card reveal">
-            <div class="science-copy">
+  <div class="science-photo">
+    <img src="https://images.unsplash.com/photo-1604881991720-f91add269bed?w=800&q=80" alt="Taaruf">
+    <span class="section-badge">Taaruf</span>
+  </div>
+  <div class="science-copy">
               <span class="eyebrow">Taaruf</span>
               <h3>Taaruf</h3>
               <p>Membantu pengguna memperkenalkan diri dengan tersusun, sopan dan jelas mengikut adab Islam sebelum proses padanan diteruskan.</p>
@@ -153,7 +214,11 @@
           </article>
 
           <article class="science-card reverse reveal">
-            <div class="science-copy">
+  <div class="science-photo">
+    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80" alt="Keserasian">
+    <span class="section-badge">Keserasian</span>
+  </div>
+  <div class="science-copy">
               <span class="eyebrow">Uji Keserasian</span>
               <h3>Uji Keserasian</h3>
               <p>Menilai kecocokan dua individu apabila mula dipadankan untuk melihat potensi kehidupan bersama selepas perkahwinan.</p>
@@ -174,25 +239,40 @@
           <span class="eyebrow">Proses Taaruf</span>
           <h2>Bagaimana Ia Berfungsi?</h2>
         </div>
-       <div class="steps">
+      <div class="steps">
   <article class="step-card reveal">
-    <div class="step-img"><span class="step-number">1</span></div>
+    <div class="step-img">
+      <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&q=80" alt="Daftar profil">
+      <span class="step-number">1</span>
+    </div>
     <div class="step-body"><h3>Daftar & Bina Profil</h3><p>Isikan maklumat diri, latar belakang dan nilai peribadi anda dengan jujur dan lengkap.</p></div>
   </article>
   <article class="step-card reveal">
-    <div class="step-img"><span class="step-number">2</span></div>
+    <div class="step-img">
+      <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=400&q=80" alt="Soalan taaruf">
+      <span class="step-number">2</span>
+    </div>
     <div class="step-body"><h3>Jawab Soalan Taaruf</h3><p>Lengkapkan soalan taaruf dan uji keserasian supaya AI dapat menilai profil anda dengan tepat.</p></div>
   </article>
   <article class="step-card reveal">
-    <div class="step-img"><span class="step-number">3</span></div>
+    <div class="step-img">
+      <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" alt="Cadangan padanan">
+      <span class="step-number">3</span>
+    </div>
     <div class="step-body"><h3>Terima Cadangan Padanan</h3><p>AI kami akan mencadangkan calon yang sesuai berdasarkan nilai, agama dan keserasian hidup.</p></div>
   </article>
   <article class="step-card reveal">
-    <div class="step-img"><span class="step-number">4</span></div>
+    <div class="step-img">
+      <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80" alt="Taaruf beradab">
+      <span class="step-number">4</span>
+    </div>
     <div class="step-body"><h3>Mulakan Taaruf Beradab</h3><p>Berkomunikasi dalam persekitaran yang selamat, sopan dan terpantau mengikut adab Islam.</p></div>
   </article>
   <article class="step-card reveal">
-    <div class="step-img"><span class="step-number">5</span></div>
+    <div class="step-img">
+      <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?w=400&q=80" alt="Taaruf dengan wali">
+      <span class="step-number">5</span>
+    </div>
     <div class="step-body"><h3>Taaruf Dengan Wali</h3><p>Teruskan proses dengan restu dan pemantauan yang sesuai.</p></div>
   </article>
 </div>
@@ -200,19 +280,22 @@
 
     <section class="section compact cream" id="ekosistem">
       <div class="container">
-        <div class="ecosystem reveal">
-          <div class="ecosystem-copy">
-            <span class="eyebrow">Ekosistem Lengkap</span>
-            <h2>Daripada Taaruf Hingga Pelamin</h2>
-            <p>Kami bukan sekadar platform taaruf. Kami menemani anda sepanjang perjalanan menuju ke jenjang pelamin dan kehidupan berumah tangga.</p>
-            <div class="ecosystem-list">
-              <span>Taaruf Beradab</span>
-              <span>Bimbingan Perkahwinan</span>
-              <span>Persiapan Rumah Tangga</span>
-              <span>Sokongan Selepas Nikah</span>
-            </div>
-          </div>
-        </div>
+      <div class="ecosystem reveal">
+  <div class="ecosystem-copy">
+    <span class="eyebrow">Ekosistem Lengkap</span>
+    <h2>Daripada Taaruf Hingga Pelamin</h2>
+    <p>Kami bukan sekadar platform taaruf. Kami menemani anda sepanjang perjalanan menuju ke jenjang pelamin dan kehidupan berumah tangga.</p>
+    <div class="ecosystem-list">
+      <span>Taaruf Beradab</span>
+      <span>Bimbingan Perkahwinan</span>
+      <span>Persiapan Rumah Tangga</span>
+      <span>Sokongan Selepas Nikah</span>
+    </div>
+  </div>
+  <div class="ecosystem-photo">
+    <img src="https://images.unsplash.com/photo-1606216840931-69b10c1b1f7e?w=1200&q=80" alt="Ekosistem taaruf">
+  </div>
+</div>
       </div>
     </section>
 
