@@ -296,15 +296,17 @@
   </div>
 
  <script>
-    /* ── CONFIGURATION & INITIALIZATION ── */
+/* ── CONFIGURATION & INITIALIZATION ── */
     // Safely embed environment variables via PHP, then sanitize them for JavaScript
     const SUPABASE_URL = '<?php echo addslashes((string)getenv("SUPABASE_URL")); ?>';
     const SUPABASE_ANON_KEY = '<?php echo addslashes((string)getenv("SUPABASE_ANON_KEY")); ?>';
 
     let db = null;
     
-    // Ensure the keys are parsed as clean strings and don't contain unprocessed raw PHP code strings
-    if (SUPABASE_URL && SUPABASE_ANON_KEY && !SUPABASE_URL.startsWith('<?') && !SUPABASE_ANON_KEY.startsWith('<?')) {
+    // Split '<' and '?' to prevent older PHP environments from misinterpreting short tags
+    const phpTagMarker = '<' + '?';
+
+    if (SUPABASE_URL && SUPABASE_ANON_KEY && !SUPABASE_URL.startsWith(phpTagMarker) && !SUPABASE_ANON_KEY.startsWith(phpTagMarker)) {
       // Use the global window object configuration to initialize Supabase client safely
       db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     } else {
