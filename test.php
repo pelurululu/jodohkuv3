@@ -220,195 +220,141 @@
   </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
 <script>
-/* ── CONFIG — fill these in ── */
-const { createClient } = supabase;
+/*
+ * ─────────────────────────────────────────────────────────────────
+ * Jodohku.my — Frontend JS (replaces the <script> block in doc 3)
+ *
+ * Replace the entire existing <script>...</script> block in
+ * document 3 with this file's contents.
+ *
+ * ENV VARS (set in Render):
+ *   SUPABASE_URL       → your Supabase project URL
+ *   SUPABASE_ANON_KEY  → your Supabase anon/public key
+ *   APPS_SCRIPT_URL    → deployed Apps Script web-app URL
+ *
+ * Because this file runs in the browser, Render cannot inject
+ * server-side env vars directly into static HTML.
+ * Two clean options:
+ *
+ *   Option A (recommended for static sites):
+ *     Host a tiny /config.json on your Render service and fetch it.
+ *     See fetchConfig() below — it is already wired up.
+ *
+ *   Option B (if you use a Node/Express server on Render):
+ *     Have your server template the HTML and replace the
+ *     __SUPABASE_URL__ etc. placeholders below at render time.
+ *
+ * For now the placeholders are left as-is so nothing breaks at
+ * deploy time. Fill them in via whichever option suits you.
+ * ─────────────────────────────────────────────────────────────────
+ */
+
+/* ── CONFIG (populated at runtime via fetchConfig) ── */
 const db = createClient(
   '<?php echo getenv("SUPABASE_URL"); ?>',
   '<?php echo getenv("SUPABASE_ANON_KEY"); ?>'
 );
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
+let APPS_SCRIPT_URL   = '__APPS_SCRIPT_URL__';
 const STORAGE_BUCKET  = 'profile-pics';
 
-/* ── SUPABASE INIT ── */
-const { createClient } = supabase;
-const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+/* ── GLOBALS ── */
+let db           = null;   // Supabase client
+let selectedFile = null;   // currently chosen image File object
 
-/* ── STATE ── */
-let selectedFile = null;
+/* ─────────────────────────────────────────────────────────────────
+ * CONFIG LOADER
+ * Fetch /config.json from your Render service.
+ * That endpoint should return:
+ * {
+ *   "supabaseUrl":    "https://xxx.supabase.co",
+ *   "supabaseKey":    "eyJ...",
+ *   "appsScriptUrl":  "https://script.google.com/macros/s/.../exec"
+ * }
+ * ───────────────────────────────────────────────────────────────── */
+async function fetchConfig() {
+  try {
+    const res  = await fetch('/config.json');
+    if (!res.ok) throw new Error('config.json not found');
+    const cfg  = await res.json();
+    SUPABASE_URL      = cfg.supabaseUrl      || SUPABASE_URL;
+    SUPABASE_ANON_KEY = cfg.supabaseKey      || SUPABASE_ANON_KEY;
+    APPS_SCRIPT_URL   = cfg.appsScriptUrl    || APPS_SCRIPT_URL;
+  } catch (err) {
+    // Falls back to the placeholder values — will error on submit if not real
+    console.warn('Could not load /config.json, using placeholder config.', err.message);
+  }
 
-/* ── IC FORMATTER ── */
-document.getElementById('icNo')?.addEventListener('input', function (e) {
+  // Initialise Supabase client once config is ready
+  const { createClient } = supabase;
+  db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+ * BOOTSTRAP — runs when the page loads
+ * ───────────────────────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', async () => {
+  await fetchConfig();
+  attachListeners();
+});
+
+/* ─────────────────────────────────────────────────────────────────
+ * EVENT LISTENERS
+ * ───────────────────────────────────────────────────────────────── */
+function attachListeners() {
+  /* IC formatter + live validation */
+  document.getElementById('icNo')?.addEventListener('input', onICInput);
+
+  /* Photo picker */
+  document.getElementById('profilePhoto')?.addEventListener('change', onPhotoChange);
+  document.getElementById('uploadLabel')?.addEventListener('click', () =>
+    document.getElementById('profilePhoto')?.click()
+  );
+
+  /* Clear field errors on typing */
+  ['fullName', 'emailAddr', 'phoneNo'].forEach(id =>
+    document.getElementById(id)?.addEventListener('input', () => clearFieldError(id))
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────
+ * IC INPUT HANDLER
+ * ───────────────────────────────────────────────────────────────── */
+function onICInput(e) {
+  // Auto-format XXXXXX-XX-XXXX
   let raw = e.target.value.replace(/\D/g, '');
-  if (raw.length > 6 && raw.length <= 8) raw = raw.slice(0,6) + '-' + raw.slice(6);
-  else if (raw.length > 8)               raw = raw.slice(0,6) + '-' + raw.slice(6,8) + '-' + raw.slice(8,12);
+  if (raw.length > 6  && raw.length <= 8) raw = raw.slice(0, 6) + '-' + raw.slice(6);
+  else if (raw.length > 8)                raw = raw.slice(0, 6) + '-' + raw.slice(6, 8) + '-' + raw.slice(8, 12);
   e.target.value = raw;
-});
 
-/* ── IC VALIDATION ── */
-function validateIC(icFormatted) {
-  const ic = icFormatted.replace(/-/g, '');
-  if (!ic || ic.length !== 12 || !/^\d{12}$/.test(ic))
-    return { valid: false, error: 'No. IC mesti mengandungi tepat 12 digit angka.' };
-  if (/^(\d)\1{11}$/.test(ic))
-    return { valid: false, error: 'No. IC tidak sah — corak berulang dikesan.' };
-
-  const sequential = '0123456789012345678901234567890';
-  const reverseSeq = '9876543210987654321098765432109';
-  if (sequential.includes(ic.slice(0,10)) || reverseSeq.includes(ic.slice(0,10)))
-    return { valid: false, error: 'No. IC tidak sah — urutan nombor palsu dikesan.' };
-
-  const yy = parseInt(ic.substring(0, 2));
-  const mm = parseInt(ic.substring(2, 4));
-  const dd = parseInt(ic.substring(4, 6));
-
-  if (mm < 1 || mm > 12)
-    return { valid: false, error: 'No. IC tidak sah — bulan lahir tidak wujud (digit 3-4).' };
-
-  const fullYear    = yy <= (new Date().getFullYear() % 100) ? 2000 + yy : 1900 + yy;
-  const daysInMonth = new Date(fullYear, mm, 0).getDate();
-  if (dd < 1 || dd > daysInMonth)
-    return { valid: false, error: `No. IC tidak sah — tarikh lahir tidak wujud (bulan ${mm} hanya ${daysInMonth} hari).` };
-
-  const dob = new Date(fullYear, mm - 1, dd);
-  if (dob > new Date()) return { valid: false, error: 'No. IC tidak sah — tarikh lahir pada masa hadapan.' };
-
-  const age       = (new Date() - dob) / (1000 * 60 * 60 * 24 * 365.25);
-  if (age > 120)  return { valid: false, error: 'No. IC tidak sah — tarikh lahir melebihi 120 tahun.' };
-
-  const stateCode  = parseInt(ic.substring(6, 8));
-  const validState = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
-  const isValid    = validState.includes(stateCode) || (stateCode >= 21 && stateCode <= 59);
-  if (!isValid)
-    return { valid: false, error: `No. IC tidak sah — kod negeri tidak diiktiraf (digit 7-8: ${ic.substring(6,8)}).` };
-
-  const lastDigit = parseInt(ic[11]);
-  const gender    = lastDigit % 2 === 0 ? 'Perempuan' : 'Lelaki';
-  const dobStr    = `${String(dd).padStart(2,'0')}/${String(mm).padStart(2,'0')}/${fullYear}`;
-  return { valid: true, gender, dob: dobStr, age: Math.floor(age) };
-}
-
-/* ── FIELD ERROR HELPERS ── */
-function showFieldError(id, msg) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.style.borderColor = '#FF6B6B';
-  let err = el.parentElement?.querySelector('.field-error');
-  if (!err) {
-    err = document.createElement('div');
-    err.className = 'field-error';
-    err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:5px;';
-    el.insertAdjacentElement('afterend', err);
-  }
-  err.textContent = msg;
-}
-function clearFieldError(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.style.borderColor = '';
-  el.parentElement?.querySelector('.field-error')?.remove();
-}
-function showUploadError(msg) {
-  const lbl = document.getElementById('uploadLabel');
-  if (!lbl) return;
-  lbl.style.borderColor = '#FF6B6B';
-  let err = lbl.parentElement?.querySelector('.upload-error');
-  if (!err) {
-    err = document.createElement('div');
-    err.className = 'upload-error';
-    err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:5px;';
-    lbl.insertAdjacentElement('afterend', err);
-  }
-  err.textContent = msg;
-}
-function clearUploadError() {
-  const lbl = document.getElementById('uploadLabel');
-  lbl?.style && (lbl.style.borderColor = '');
-  document.querySelector('.upload-error')?.remove();
-}
-
-function validateIC(icFormatted) {
-  const ic = icFormatted.replace(/-/g, '');
-  if (!ic || ic.length !== 12 || !/^\d{12}$/.test(ic))
-    return { valid: false, error: 'No. IC mesti mengandungi tepat 12 digit angka.' };
-  if (/^(\d)\1{11}$/.test(ic))
-    return { valid: false, error: 'No. IC tidak sah — corak berulang dikesan.' };
-
-  const sequential = '0123456789012345678901234567890';
-  const reverseSeq = '9876543210987654321098765432109';
-  if (sequential.includes(ic.slice(0,10)) || reverseSeq.includes(ic.slice(0,10)))
-    return { valid: false, error: 'No. IC tidak sah — urutan nombor palsu dikesan.' };
-
-  const yy = parseInt(ic.substring(0, 2));
-  const mm = parseInt(ic.substring(2, 4));
-  const dd = parseInt(ic.substring(4, 6));
-
-  if (mm < 1 || mm > 12)
-    return { valid: false, error: 'No. IC tidak sah — bulan lahir tidak wujud (digit 3-4).' };
-
-  const fullYear = yy <= (new Date().getFullYear() % 100) ? 2000 + yy : 1900 + yy;
-  const daysInMonth = new Date(fullYear, mm, 0).getDate();
-  if (dd < 1 || dd > daysInMonth)
-    return { valid: false, error: `No. IC tidak sah — tarikh lahir tidak wujud (bulan ${mm} hanya ${daysInMonth} hari).` };
-
-  const dob = new Date(fullYear, mm - 1, dd);
-  if (dob > new Date())
-    return { valid: false, error: 'No. IC tidak sah — tarikh lahir pada masa hadapan.' };
-
-  const age = (new Date() - dob) / (1000 * 60 * 60 * 24 * 365.25);
-  if (age > 120)
-    return { valid: false, error: 'No. IC tidak sah — tarikh lahir melebihi 120 tahun.' };
-
-  const stateCode = parseInt(ic.substring(6, 8));
-  const validState = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
-  const isValid = validState.includes(stateCode) || (stateCode >= 21 && stateCode <= 59);
-  if (!isValid)
-    return { valid: false, error: `No. IC tidak sah — kod negeri tidak diiktiraf (digit 7-8: ${ic.substring(6,8)}).` };
-
-  const lastDigit = parseInt(ic[11]);
-  const gender = lastDigit % 2 === 0 ? 'Perempuan' : 'Lelaki';
-  const dobStr = `${String(dd).padStart(2,'0')}/${String(mm).padStart(2,'0')}/${fullYear}`;
-  return { valid: true, gender, dob: dobStr, age: Math.floor(age) };
-}
-
-function showICHint(result) {
-  clearFieldError('icNo');
-  const el = document.getElementById('icNo');
-  let hint = el?.parentElement?.querySelector('.ic-hint');
-  if (!hint && el) {
-    hint = document.createElement('div');
-    hint.className = 'ic-hint';
-    hint.style.cssText = 'color:#4CAF50;font-size:11px;margin-top:4px;';
-    el.insertAdjacentElement('afterend', hint);
-  }
-  if (hint) hint.textContent = `✓ ${result.gender} · Lahir: ${result.dob} · Umur: ${result.age} tahun`;
-}
-
-function clearICHint() {
-  document.querySelector('.ic-hint')?.remove();
-}
-
-document.getElementById('icNo')?.addEventListener('input', () => {
-  const val = document.getElementById('icNo').value;
-  if (val.replace(/-/g,'').length === 12) {
-    const r = validateIC(val);
+  const digits = raw.replace(/-/g, '');
+  if (digits.length === 12) {
+    const r = validateIC(raw);
     r.valid ? showICHint(r) : (showFieldError('icNo', r.error), clearICHint());
-  } else { clearFieldError('icNo'); clearICHint(); }
-});
+  } else {
+    clearFieldError('icNo');
+    clearICHint();
+  }
+}
 
-/* ── PHOTO FILE INPUT ── */
-document.getElementById('profilePhoto')?.addEventListener('change', function (e) {
+/* ─────────────────────────────────────────────────────────────────
+ * PHOTO CHANGE HANDLER
+ * ───────────────────────────────────────────────────────────────── */
+function onPhotoChange(e) {
   const file = e.target.files?.[0];
   if (!file) return;
+
   if (file.size > 5 * 1024 * 1024) {
     alert('Saiz fail melebihi 5MB. Sila pilih gambar yang lebih kecil.');
     e.target.value = '';
     return;
   }
+
   selectedFile = file;
   clearUploadError();
 
-  const reader = new FileReader();
+  const reader  = new FileReader();
   reader.onload = (ev) => {
     const lbl = document.getElementById('uploadLabel');
     if (!lbl) return;
@@ -424,200 +370,399 @@ document.getElementById('profilePhoto')?.addEventListener('change', function (e)
     lbl.setAttribute('for', 'profilePhoto');
   };
   reader.readAsDataURL(file);
-});
+}
 
-document.getElementById('uploadLabel')?.addEventListener('click', () => {
-  document.getElementById('profilePhoto')?.click();
-});
+/* ─────────────────────────────────────────────────────────────────
+ * IC VALIDATION
+ * Returns { valid, gender, dob, age } or { valid: false, error }
+ * ───────────────────────────────────────────────────────────────── */
+function validateIC(icFormatted) {
+  const ic = icFormatted.replace(/-/g, '');
 
-/* ── FULL FORM VALIDATION ── */
-function validateForm() {
-  let valid = true;
+  if (!ic || ic.length !== 12 || !/^\d{12}$/.test(ic))
+    return { valid: false, error: 'No. IC mesti mengandungi tepat 12 digit angka.' };
 
-  const name      = document.getElementById('fullName')?.value.trim() ?? '';
-  const nameRegex = /^[a-zA-Z\u0600-\u06FF\s\/'\-.]+$/;
-  if (!name)                   { showFieldError('fullName', 'Nama penuh diperlukan.');                    valid = false; }
-  else if (name.length < 3)    { showFieldError('fullName', 'Nama penuh terlalu pendek.');                valid = false; }
-  else if (!nameRegex.test(name)){ showFieldError('fullName', 'Nama penuh hanya boleh mengandungi huruf.'); valid = false; }
-  else clearFieldError('fullName');
+  if (/^(\d)\1{11}$/.test(ic))
+    return { valid: false, error: 'No. IC tidak sah — corak berulang dikesan.' };
 
-  const icVal = document.getElementById('icNo')?.value ?? '';
-  const icRes = validateIC(icVal);
-  if (!icVal.replace(/-/g,''))   { showFieldError('icNo', 'No. Kad Pengenalan diperlukan.'); clearICHint(); valid = false; }
-  else if (!icRes.valid)         { showFieldError('icNo', icRes.error);                      clearICHint(); valid = false; }
-  else                           { clearFieldError('icNo'); showICHint(icRes); }
+  const sequential = '0123456789012345678901234567890';
+  const reverseSeq = '9876543210987654321098765432109';
+  if (sequential.includes(ic.slice(0, 10)) || reverseSeq.includes(ic.slice(0, 10)))
+    return { valid: false, error: 'No. IC tidak sah — urutan nombor palsu dikesan.' };
 
-  const email      = document.getElementById('emailAddr')?.value.trim() ?? '';
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email)                    { showFieldError('emailAddr', 'Alamat e-mel diperlukan.');              valid = false; }
-  else if (!emailRegex.test(email)){ showFieldError('emailAddr', 'Format e-mel tidak sah.'); valid = false; }
-  else clearFieldError('emailAddr');
+  const yy = parseInt(ic.substring(0, 2));
+  const mm = parseInt(ic.substring(2, 4));
+  const dd = parseInt(ic.substring(4, 6));
 
-  const phone      = document.getElementById('phoneNo')?.value.trim() ?? '';
-  const phoneRegex = /^(\+?60|0)[1-9]\d{7,9}$/;
-  if (!phone)                        { showFieldError('phoneNo', 'No. telefon diperlukan.');              valid = false; }
-  else if (!phoneRegex.test(phone.replace(/[\s-]/g,''))) { showFieldError('phoneNo', 'Format no. telefon tidak sah. Contoh: 011-12345678'); valid = false; }
-  else clearFieldError('phoneNo');
+  if (mm < 1 || mm > 12)
+    return { valid: false, error: 'No. IC tidak sah — bulan lahir tidak wujud (digit 3–4).' };
 
-  if (!selectedFile) { showUploadError('Sila muat naik gambar profil anda.'); valid = false; }
-  else clearUploadError();
+  const fullYear    = yy <= (new Date().getFullYear() % 100) ? 2000 + yy : 1900 + yy;
+  const daysInMonth = new Date(fullYear, mm, 0).getDate();
+  if (dd < 1 || dd > daysInMonth)
+    return { valid: false, error: `No. IC tidak sah — tarikh lahir tidak wujud (bulan ${mm} hanya ${daysInMonth} hari).` };
 
-  if (!document.getElementById('agreeTerms').checked) {
-  const cb = document.getElementById('agreeTerms');
-  let err = cb?.parentElement?.querySelector('.cb-error');
+  const dob = new Date(fullYear, mm - 1, dd);
+  if (dob > new Date())
+    return { valid: false, error: 'No. IC tidak sah — tarikh lahir pada masa hadapan.' };
+
+  const age = (new Date() - dob) / (1000 * 60 * 60 * 24 * 365.25);
+  if (age > 120)
+    return { valid: false, error: 'No. IC tidak sah — tarikh lahir melebihi 120 tahun.' };
+
+  const stateCode = parseInt(ic.substring(6, 8));
+  const validStates = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+  const stateOk = validStates.includes(stateCode) || (stateCode >= 21 && stateCode <= 59);
+  if (!stateOk)
+    return { valid: false, error: `No. IC tidak sah — kod negeri tidak diiktiraf (digit 7–8: ${ic.substring(6,8)}).` };
+
+  const lastDigit = parseInt(ic[11]);
+  const gender    = lastDigit % 2 === 1 ? 'Lelaki' : 'Perempuan';
+  const dobStr    = `${String(dd).padStart(2,'0')}/${String(mm).padStart(2,'0')}/${fullYear}`;
+
+  return { valid: true, gender, dob: dobStr, age: Math.floor(age) };
+}
+
+/* ─────────────────────────────────────────────────────────────────
+ * FIELD ERROR / HINT HELPERS
+ * ───────────────────────────────────────────────────────────────── */
+function showFieldError(id, msg) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.borderColor = '#FF6B6B';
+  let err = el.parentElement?.querySelector('.field-error');
   if (!err) {
     err = document.createElement('div');
-    err.className = 'cb-error';
-    err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:4px;';
-    cb.parentElement.insertAdjacentElement('afterend', err);
+    err.className = 'field-error';
+    err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:5px;';
+    el.insertAdjacentElement('afterend', err);
   }
-  err.textContent = 'Sila bersetuju dengan Terma & Syarat untuk meneruskan.';
-  valid = false;
-} else {
-  document.querySelector('.cb-error')?.remove();
+  err.textContent = msg;
 }
 
-  return valid;
+function clearFieldError(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.borderColor = '';
+  el.parentElement?.querySelector('.field-error')?.remove();
 }
 
-/* ── ERROR POPUP ── */
+function showICHint(result) {
+  clearFieldError('icNo');
+  const el = document.getElementById('icNo');
+  let hint  = el?.parentElement?.querySelector('.ic-hint');
+  if (!hint && el) {
+    hint = document.createElement('div');
+    hint.className = 'ic-hint';
+    hint.style.cssText = 'color:#4CAF50;font-size:11px;margin-top:4px;';
+    el.insertAdjacentElement('afterend', hint);
+  }
+  if (hint) hint.textContent = `✓ ${result.gender} · Lahir: ${result.dob} · Umur: ${result.age} tahun`;
+}
+
+function clearICHint() {
+  document.querySelector('.ic-hint')?.remove();
+}
+
+function showUploadError(msg) {
+  const lbl = document.getElementById('uploadLabel');
+  if (lbl) lbl.style.borderColor = '#FF6B6B';
+  let err = document.querySelector('.upload-error');
+  if (!err) {
+    err = document.createElement('div');
+    err.className = 'upload-error';
+    err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:5px;';
+    lbl?.insertAdjacentElement('afterend', err);
+  }
+  if (err) err.textContent = msg;
+}
+
+function clearUploadError() {
+  const lbl = document.getElementById('uploadLabel');
+  if (lbl) lbl.style.borderColor = '';
+  document.querySelector('.upload-error')?.remove();
+}
+
+/* ─────────────────────────────────────────────────────────────────
+ * FULL FORM VALIDATION
+ * Returns true if everything is OK, false otherwise.
+ * ───────────────────────────────────────────────────────────────── */
+function validateForm() {
+  let ok = true;
+
+  /* Name */
+  const name = document.getElementById('fullName')?.value.trim() ?? '';
+  if (!name)              { showFieldError('fullName', 'Nama penuh diperlukan.');                    ok = false; }
+  else if (name.length < 3){ showFieldError('fullName', 'Nama penuh terlalu pendek.');               ok = false; }
+  else if (!/^[a-zA-Z\u0600-\u06FF\s\/'\-.]+$/.test(name))
+                          { showFieldError('fullName', 'Nama penuh hanya boleh mengandungi huruf.'); ok = false; }
+  else clearFieldError('fullName');
+
+  /* IC */
+  const icVal = document.getElementById('icNo')?.value ?? '';
+  const icRes  = validateIC(icVal);
+  if (!icVal.replace(/-/g,''))  { showFieldError('icNo', 'No. Kad Pengenalan diperlukan.'); clearICHint(); ok = false; }
+  else if (!icRes.valid)        { showFieldError('icNo', icRes.error);                       clearICHint(); ok = false; }
+  else                          { clearFieldError('icNo'); showICHint(icRes); }
+
+  /* Email */
+  const email = document.getElementById('emailAddr')?.value.trim() ?? '';
+  if (!email)
+    { showFieldError('emailAddr', 'Alamat e-mel diperlukan.'); ok = false; }
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+    { showFieldError('emailAddr', 'Format e-mel tidak sah.'); ok = false; }
+  else clearFieldError('emailAddr');
+
+  /* Phone */
+  const phone = document.getElementById('phoneNo')?.value.trim() ?? '';
+  const phoneClean = phone.replace(/[\s\-]/g, '');
+  if (!phone)
+    { showFieldError('phoneNo', 'No. telefon diperlukan.'); ok = false; }
+  else if (!/^\+?6?01\d{8,9}$/.test(phoneClean) && !/^01\d{8,9}$/.test(phoneClean))
+    { showFieldError('phoneNo', 'Format no. telefon tidak sah. Contoh: 011-12345678'); ok = false; }
+  else clearFieldError('phoneNo');
+
+  /* Photo */
+  if (!selectedFile) { showUploadError('Sila muat naik gambar profil anda.'); ok = false; }
+  else clearUploadError();
+
+  /* Terms */
+  const terms = document.getElementById('agreeTerms');
+  if (!terms?.checked) {
+    let err = terms?.parentElement?.querySelector('.cb-error');
+    if (!err) {
+      err = document.createElement('div');
+      err.className = 'cb-error';
+      err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:4px;';
+      terms?.parentElement?.insertAdjacentElement('afterend', err);
+    }
+    if (err) err.textContent = 'Sila bersetuju dengan Terma & Syarat untuk meneruskan.';
+    ok = false;
+  } else {
+    document.querySelector('.cb-error')?.remove();
+  }
+
+  return ok;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+ * ERROR POPUP
+ * ───────────────────────────────────────────────────────────────── */
 function showErrorPopup(title, msg) {
   document.getElementById('errorPopup')?.remove();
   const pop = document.createElement('div');
   pop.id = 'errorPopup';
-  pop.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;';
+  pop.style.cssText =
+    'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);' +
+    'backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;';
   pop.innerHTML = `
     <div style="background:#100a00;border:1.5px solid rgba(255,80,80,.35);border-radius:18px;max-width:400px;width:100%;padding:36px 28px;text-align:center;">
       <div style="font-size:28px;margin-bottom:14px;">✗</div>
       <h3 style="font-family:Georgia,serif;font-size:20px;color:#fff;margin:0 0 12px;">${title}</h3>
       <p style="color:#aaa;font-size:13px;line-height:1.7;margin:0 0 24px;">${msg}</p>
       <button onclick="document.getElementById('errorPopup').remove()"
-              style="background:linear-gradient(135deg,#FF4444,#FF8800);color:#fff;border:none;padding:10px 32px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;letter-spacing:.8px;text-transform:uppercase;">
+              style="background:linear-gradient(135deg,#FF4444,#FF8800);color:#fff;border:none;
+                     padding:10px 32px;border-radius:8px;font-weight:700;font-size:13px;
+                     cursor:pointer;letter-spacing:.8px;text-transform:uppercase;">
         Tutup
       </button>
     </div>`;
-  pop.addEventListener('click', e => { if (e.target === pop) pop.remove(); });
+  pop.addEventListener('click', ev => { if (ev.target === pop) pop.remove(); });
   document.body.appendChild(pop);
 }
 
-/* ── ID GENERATOR ── */
+/* ─────────────────────────────────────────────────────────────────
+ * UNIQUE ID GENERATOR (mirrors Apps Script format)
+ * ───────────────────────────────────────────────────────────────── */
 function generateId() {
   const yr  = new Date().getFullYear();
-  const rnd = crypto.randomUUID().replace(/-/g,'').substring(0,8).toUpperCase();
+  const rnd = crypto.randomUUID().replace(/-/g, '').substring(0, 8).toUpperCase();
   return `JDK-${yr}-${rnd}`;
 }
 
-/* ── MAIN SUBMIT ── */
+/* ─────────────────────────────────────────────────────────────────
+ * FILE → BASE64 HELPER
+ * ───────────────────────────────────────────────────────────────── */
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader  = new FileReader();
+    reader.onload = () => resolve(reader.result.split(',')[1]); // strip data:... prefix
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+/* ─────────────────────────────────────────────────────────────────
+ * MAIN SUBMIT HANDLER
+ *
+ * Flow:
+ *  1. Validate form fields
+ *  2. Upload photo to Supabase Storage
+ *  3. Insert registration row in Supabase DB
+ *  4. Fire Apps Script (Sheet + Gmail) — fire-and-forget
+ *  5. Show success state
+ * ───────────────────────────────────────────────────────────────── */
 async function handleFormSubmit(e) {
   e.preventDefault();
+
   if (!validateForm()) {
-    document.querySelector('.field-error')?.scrollIntoView({ behavior:'smooth', block:'center' });
+    document.querySelector('.field-error, .upload-error, .cb-error')
+      ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
 
   const btn = document.getElementById('submitBtn');
-  btn.disabled = true;
+  btn.disabled    = true;
   btn.textContent = 'Memproses…';
 
   try {
-    const jdk_id = generateId();
+    const jdk_id  = generateId();
+    const icValue = document.getElementById('icNo').value;
+    const icRes   = validateIC(icValue); // guaranteed valid here
+    const ic_last4 = icValue.replace(/-/g, '').slice(-4);
 
-    /* — Upload photo — */
-    const ext  = selectedFile.name.split('.').pop();
-    const path = `${jdk_id}.${ext}`;
-    const { error: uploadErr } = await db.storage.from(STORAGE_BUCKET).upload(path, selectedFile);
+    /* ── 1. Upload photo to Supabase Storage ── */
+    const ext      = selectedFile.name.split('.').pop().toLowerCase();
+    const filePath = `${jdk_id}.${ext}`;
+
+    const { error: uploadErr } = await db.storage
+      .from(STORAGE_BUCKET)
+      .upload(filePath, selectedFile, { cacheControl: '3600', upsert: false });
+
     if (uploadErr) throw new Error('Gambar gagal dimuat naik: ' + uploadErr.message);
 
-    const { data: urlData } = db.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+    const { data: urlData } = db.storage.from(STORAGE_BUCKET).getPublicUrl(filePath);
     const photo_url = urlData?.publicUrl ?? null;
     if (!photo_url) throw new Error('URL gambar tidak dijana.');
 
-    /* — Insert row — */
+    /* ── 2. Insert row into Supabase DB ── */
     const { error: dbErr } = await db.from('registrations').insert([{
       jdk_id,
-      nama:    document.getElementById('fullName').value.trim(),
-      ic:      document.getElementById('icNo').value,
-      telefon: document.getElementById('phoneNo').value.trim(),
-      email:   document.getElementById('emailAddr').value.trim(),
+      nama:       document.getElementById('fullName').value.trim(),
+      ic:         icValue,
+      ic_last4,
+      jantina:    icRes.gender,   // derived from IC
+      telefon:    document.getElementById('phoneNo').value.trim(),
+      email:      document.getElementById('emailAddr').value.trim().toLowerCase(),
       photo_url,
+      created_at: new Date().toISOString(),
     }]);
 
     if (dbErr) {
-      const isDup = dbErr.message.includes('unique') || dbErr.code === '23505';
-      throw new Error(isDup
-        ? '__DUPLICATE__'
-        : 'Ralat pendaftaran: ' + dbErr.message);
+      const isDup = dbErr.code === '23505' || dbErr.message.includes('unique');
+      throw new Error(isDup ? '__DUPLICATE__' : 'Ralat pendaftaran: ' + dbErr.message);
     }
 
-    /* — Apps Script (Google Sheet + Gmail) — */
-    const body = new URLSearchParams({
-      fullName:  document.getElementById('fullName').value.trim(),
-      icNo:      document.getElementById('icNo').value,
-      phoneNo:   document.getElementById('phoneNo').value.trim(),
-      emailAddr: document.getElementById('emailAddr').value.trim(),
-    });
-    fetch(APPS_SCRIPT_URL, { method:'POST', mode:'no-cors', body })
-      .catch(err => console.warn('Apps Script error:', err));
+    /* ── 3. Apps Script — Google Sheet + Gmail (fire and forget) ── */
+    (async () => {
+      try {
+        const base64 = await fileToBase64(selectedFile);
+        const payload = {
+          reference_no:            jdk_id,
+          full_name:               document.getElementById('fullName').value.trim(),
+          phone:                   document.getElementById('phoneNo').value.trim(),
+          email:                   document.getElementById('emailAddr').value.trim(),
+          gender:                  icRes.gender,
+          ic_last4,
+          ic_no:                   icValue.replace(/-/g, ''),
+          state:                   '',
+          marital_status:          '',
+          profile_image_filename:  selectedFile.name,
+          profile_image_mime_type: selectedFile.type,
+          profile_image_base64:    base64,
+          consent_marketing:       true,
+          source:                  'landing_page',
+          page_url:                window.location.href,
+          user_agent:              navigator.userAgent,
+          created_at:              new Date().toISOString(),
+        };
 
-    /* — Success — */
+        await fetch(APPS_SCRIPT_URL, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload),
+        });
+      } catch (err) {
+        // Not critical — Supabase already saved the data
+        console.warn('Apps Script call failed (non-critical):', err.message);
+      }
+    })();
+
+    /* ── 4. Show success ── */
     const frm = document.getElementById('regForm');
     if (frm) {
       frm.innerHTML = `
         <div style="text-align:center;padding:16px 0;">
-          <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1a6644,#0f3d28);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
-            <svg width="26" height="26" viewBox="0 0 40 40" fill="none"><path d="M8 20L16 28L32 12" stroke="#8ff7c8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div style="width:56px;height:56px;border-radius:50%;
+                      background:linear-gradient(135deg,#1a6644,#0f3d28);
+                      display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="26" height="26" viewBox="0 0 40 40" fill="none">
+              <path d="M8 20L16 28L32 12" stroke="#8ff7c8" stroke-width="3.5"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
-          <h3 style="font-family:Georgia,serif;color:var(--champagne);font-size:20px;margin:0 0 10px;">Pendaftaran Berjaya!</h3>
+          <h3 style="font-family:Georgia,serif;color:var(--champagne);font-size:20px;margin:0 0 10px;">
+            Pendaftaran Berjaya!
+          </h3>
           <p style="color:rgba(255,255,255,.72);font-size:13px;line-height:1.7;margin:0 0 12px;">
             Tahniah! Anda berjaya mendaftar untuk beta access Jodohku.my.<br>
-            Kami akan menghubungi anda apabila aplikasi tersedia di Playstore dan Appstore. — Admin
+            Kami akan menghubungi anda apabila aplikasi tersedia. — Admin
           </p>
-          <div style="display:inline-block;padding:8px 18px;border-radius:20px;border:1px solid rgba(229,207,151,.3);color:var(--champagne);font-size:12px;letter-spacing:.08em;font-family:monospace;">
+          <div style="display:inline-block;padding:8px 18px;border-radius:20px;
+                      border:1px solid rgba(229,207,151,.3);color:var(--champagne);
+                      font-size:12px;letter-spacing:.08em;font-family:monospace;">
             ${jdk_id}
           </div>
         </div>`;
     }
 
   } catch (err) {
-    btn.disabled = false;
+    btn.disabled    = false;
     btn.textContent = 'Mohon Akses Awal';
+
     if (err.message === '__DUPLICATE__') {
-      showErrorPopup('Pendaftaran Duplikat', 'Nombor IC atau e-mel ini telah didaftarkan. Setiap pengguna hanya boleh mendaftar sekali.');
+      showErrorPopup(
+        'Pendaftaran Duplikat',
+        'Nombor IC atau e-mel ini telah didaftarkan. Setiap pengguna hanya boleh mendaftar sekali.'
+      );
     } else {
       showErrorPopup('Ralat Tidak Dijangka', err.message || 'Sila cuba sebentar lagi.');
     }
   }
 }
 
-/* ── REAL-TIME CLEAR ERRORS ── */
-['fullName','emailAddr','phoneNo'].forEach(id =>
-  document.getElementById(id)?.addEventListener('input', () => clearFieldError(id))
-);
-
-/* ── SCROLL REVEAL ── */
-const revealItems = document.querySelectorAll('.reveal');
+/* ─────────────────────────────────────────────────────────────────
+ * SCROLL REVEAL
+ * ───────────────────────────────────────────────────────────────── */
 const revObs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.add('show'); revObs.unobserve(entry.target); }
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      revObs.unobserve(entry.target);
+    }
   });
 }, { threshold: 0.12 });
-revealItems.forEach(el => revObs.observe(el));
 
-  function openModal(id) { 
-  document.getElementById(id).classList.add('active'); 
-  document.body.style.overflow = 'hidden'; 
-}
-function closeModal(id) { 
-  document.getElementById(id).classList.remove('active'); 
-  document.body.style.overflow = ''; 
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+/* ─────────────────────────────────────────────────────────────────
+ * MODAL HELPERS
+ * ───────────────────────────────────────────────────────────────── */
+function openModal(id) {
+  document.getElementById(id)?.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
 
-  document.querySelectorAll('.modal-overlay').forEach(m => {
-  m.addEventListener('click', function(e) { 
-    if (e.target === this) closeModal(this.id); 
+function closeModal(id) {
+  document.getElementById(id)?.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', function (ev) {
+    if (ev.target === this) closeModal(this.id);
   });
 });
-  
 </script>
 
   <!-- TERMS MODAL -->
