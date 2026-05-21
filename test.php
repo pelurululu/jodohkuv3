@@ -256,7 +256,7 @@ const db = createClient(
   '<?php echo getenv("SUPABASE_URL"); ?>',
   '<?php echo getenv("SUPABASE_ANON_KEY"); ?>'
 );
-let APPS_SCRIPT_URL   = '__APPS_SCRIPT_URL__';
+let APPS_SCRIPT_URL   = 'https://script.google.com/macros/s/AKfycbxKr9ScNkwNzlY7pyaeP4bKTfepcttaECQo8cxaleWIj6QYjxAWhNBFMzrNVV6MADT7Kg/exec';
 const STORAGE_BUCKET  = 'profile-pics';
 
 /* ── GLOBALS ── */
