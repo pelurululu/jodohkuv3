@@ -6,567 +6,6 @@
   <meta name="theme-color" content="#071017">
   <title>Jodohku.my | Platform Taaruf Premium Muslim Malaysia</title>
   <meta name="description" content="Platform taaruf premium Muslim Malaysia berasaskan AI, syariah, wali digital dan sistem taaruf serta keserasian mendalam.">
-  <style>
-    :root {
-      --ink: #050605;
-      --ink-2: #0b0a08;
-      --panel: #14110d;
-      --panel-2: #1d1811;
-      --cream: #f5ead8;
-      --cream-2: #e8dac2;
-      --text: #f7f0e6;
-      --text-dark: #17202a;
-      --muted: #b9ad98;
-      --muted-dark: #615544;
-      --champagne: #d8c08a;
-      --gold: #b48a49;
-      --gold-2: #83602d;
-      --bronze: #68471f;
-      --emerald: #14382f;
-      --line: rgba(180, 138, 73, .24);
-      --line-soft: rgba(255, 255, 255, .10);
-      --shadow: 0 28px 90px rgba(0, 0, 0, .44);
-      --radius-xl: 34px;
-      --radius-lg: 26px;
-      --radius-md: 18px;
-      --max: 1180px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--text-dark);
-      background: #070706;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    button, input, select { font: inherit; }
-    ::selection { background: rgba(199, 161, 94, .32); }
-
-    .container { width: min(var(--max), calc(100% - 44px)); margin-inline: auto; }
-    .section { padding: 96px 0; position: relative; }
-    .section.compact { padding: 70px 0; }
-    .dark {
-      color: var(--text);
-      background:
-        radial-gradient(circle at 18% 0%, rgba(199, 161, 94, .18), transparent 34%),
-        radial-gradient(circle at 90% 18%, rgba(20, 56, 47, .46), transparent 36%),
-        linear-gradient(180deg, #08111a 0%, #0d1721 56%, #08111a 100%);
-    }
-    .cream {
-      background:
-        radial-gradient(circle at 6% 0%, rgba(199, 161, 94, .18), transparent 26%),
-        linear-gradient(180deg, #f8f2e9 0%, #efe4d3 100%);
-    }
-    .section-head { max-width: 760px; margin: 0 auto 42px; text-align: center; }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 7px 12px;
-      border: 1px solid rgba(199, 161, 94, .42);
-      border-radius: 999px;
-      color: var(--bronze);
-      background: rgba(255, 255, 255, .45);
-      font-size: 12px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-weight: 800;
-    }
-    .dark .eyebrow { color: var(--champagne); background: rgba(255,255,255,.055); }
-    h1, h2, h3 { margin: 0; line-height: 1.05; letter-spacing: -.03em; }
-    h1, h2 { font-family: Georgia, "Times New Roman", ui-serif, serif; font-weight: 650; }
-    h1 { font-size: clamp(42px, 7vw, 82px); margin-top: 22px; max-width: 830px; }
-    h2 { font-size: clamp(34px, 5vw, 58px); margin-top: 18px; }
-    h3 { font-size: 22px; }
-    p { margin: 0; }
-    .lead { font-size: clamp(16px, 2.2vw, 20px); color: rgba(255,255,255,.76); max-width: 720px; margin-top: 22px; }
-    .cream .lead, .section-head .lead { color: var(--muted-dark); }
-    .gold-text {
-      background: linear-gradient(100deg, #f6e6bd 0%, #c69c55 42%, #866132 80%, #efd9a5 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: none;
-    }
-
-    /* Header */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(8, 7, 6, .88);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(216, 192, 138, .16);
-    }
-    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 18px; }
-    .brand { display: flex; align-items: center; gap: 12px; color: var(--text); font-weight: 900; letter-spacing: -.02em; }
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 15px;
-      border: 1px solid rgba(229, 207, 151, .48);
-      background: linear-gradient(135deg, rgba(216, 192, 138, .18), rgba(85, 56, 21, .32));
-      display: grid;
-      place-items: center;
-      color: var(--champagne);
-      position: relative;
-      overflow: hidden;
-    }
-    .brand-mark:before, .brand-mark:after {
-      content: "";
-      position: absolute;
-      border: 2px solid currentColor;
-      border-radius: 999px 999px 999px 0;
-      width: 16px;
-      height: 22px;
-      transform: rotate(-45deg);
-      opacity: .95;
-    }
-    .brand-mark:after { transform: rotate(45deg); }
-    .brand span { color: var(--champagne); font-size: 21px; }
-    .nav-links { display: flex; gap: 28px; align-items: center; color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; }
-    .nav-links a { transition: color .2s ease; }
-    .nav-links a:hover { color: var(--champagne); }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 48px;
-      padding: 0 22px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-weight: 900;
-      cursor: pointer;
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-      white-space: nowrap;
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn.primary {
-      color: #1f170d;
-      background:
-        linear-gradient(135deg, #e9d6a4 0%, #c4a064 24%, #8a622d 55%, #5f411c 78%, #d1b06f 100%);
-      border-color: rgba(238, 215, 161, .38);
-      box-shadow: 0 18px 44px rgba(67, 43, 17, .30), inset 0 1px 0 rgba(255,255,255,.28);
-    }
-    .btn.secondary { color: var(--text); border-color: rgba(229,207,151,.34); background: rgba(255,255,255,.05); }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      color: var(--text);
-      overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(5,6,5,.98) 0%, rgba(7,8,7,.91) 48%, rgba(8,9,8,.46) 100%),
-        radial-gradient(circle at 82% 8%, rgba(180,138,73,.20), transparent 26%),
-        linear-gradient(180deg, #050605 0%, #0a0e0d 100%);
-    }
-    .hero:before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(rgba(216,192,138,.024) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(216,192,138,.024) 1px, transparent 1px);
-      background-size: 74px 74px;
-      mask-image: linear-gradient(180deg, black, transparent 80%);
-      pointer-events: none;
-    }
-    .hero-wrap {
-      min-height: 790px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(340px, .78fr);
-      gap: 44px;
-      align-items: center;
-      padding: 72px 0 88px;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-copy { max-width: 760px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-    .trust-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 38px; max-width: 700px; }
-    .trust-item {
-      border: 1px solid rgba(229,207,151,.20);
-      background: rgba(255,255,255,.035);
-      border-radius: 18px;
-      padding: 16px;
-      color: rgba(255,255,255,.84);
-      font-weight: 800;
-      font-size: 13px;
-    }
-    .trust-item strong { display: block; color: var(--champagne); font-size: 18px; margin-bottom: 3px; }
-    .hero-side { display: grid; gap: 18px; }
-    .hero-photo {
-      position: relative;
-      border-radius: 36px;
-      overflow: hidden;
-      aspect-ratio: 4 / 5;
-      border: 1px solid rgba(229,207,151,.22);
-      box-shadow: var(--shadow);
-      background: #111;
-    }
-    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .hero-photo:after, .photo-card:after, .image-panel:after, .step-img:after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.03), rgba(0,0,0,.55)),
-        radial-gradient(circle at 18% 12%, rgba(245,222,174,.25), transparent 36%);
-      pointer-events: none;
-    }
-    .form-card {
-      border-radius: 28px;
-      padding: 26px;
-      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.045));
-      border: 1px solid rgba(229,207,151,.22);
-      box-shadow: 0 22px 60px rgba(0,0,0,.24);
-    }
-    .form-card h3 { color: var(--champagne); margin-bottom: 8px; }
-    .form-card p { color: rgba(255,255,255,.70); font-size: 14px; margin-bottom: 18px; }
-    .form-grid { display: grid; gap: 12px; }
-    .field { width: 100%; min-height: 48px; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; background: rgba(255,255,255,.08); color: var(--text); padding: 0 15px; outline: none; }
-    .field::placeholder { color: rgba(255,255,255,.45); }
-    .upload {
-      display: grid;
-      gap: 4px;
-      padding: 14px;
-      border: 1px dashed rgba(229,207,151,.36);
-      border-radius: 15px;
-      color: rgba(255,255,255,.72);
-      cursor: pointer;
-      background: rgba(255,255,255,.035);
-    }
-    .upload strong { color: var(--champagne); font-size: 14px; }
-    .mini-note { color: rgba(255,255,255,.55); font-size: 12px; margin-top: 12px; }
-
-    /* Photo cards */
-    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-    .photo-card {
-      position: relative;
-      min-height: 276px;
-      border-radius: 24px;
-      overflow: hidden;
-      background: #111;
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 18px 46px rgba(46, 35, 20, .16);
-      isolation: isolate;
-    }
-    .photo-card img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: transform .5s ease; }
-    .photo-card:hover img { transform: scale(1.055); }
-    .photo-card .card-copy { position: absolute; z-index: 2; left: 18px; right: 18px; bottom: 18px; color: white; }
-    .photo-card h3 { font-size: 18px; margin-bottom: 8px; text-shadow: 0 8px 24px rgba(0,0,0,.6); }
-    .photo-card p { font-size: 13px; color: rgba(255,255,255,.80); }
-    .photo-label {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      z-index: 2;
-      border-radius: 999px;
-      padding: 6px 10px;
-      color: #24180a;
-      background: linear-gradient(135deg, #e6d1a0, #aa7f42 58%, #72501f);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      box-shadow: 0 8px 26px rgba(0,0,0,.18);
-    }
-
-    .core-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .image-panel {
-      min-height: 320px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 30px;
-      border: 1px solid rgba(199, 161, 94, .20);
-      box-shadow: 0 20px 60px rgba(68, 45, 21, .18);
-    }
-    .image-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .image-panel .panel-copy { position: absolute; z-index: 2; inset: auto 22px 22px 22px; color: white; }
-    .image-panel h3 { font-family: Georgia, "Times New Roman", serif; font-size: 27px; margin-bottom: 10px; }
-    .image-panel p { color: rgba(255,255,255,.78); font-size: 14px; }
-
-    /* Comparison */
-    .table-shell {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      border-radius: 26px;
-      border: 1px solid rgba(229,207,151,.22);
-      background: rgba(255,255,255,.04);
-      box-shadow: 0 22px 60px rgba(0,0,0,.20);
-    }
-    table { width: 100%; border-collapse: collapse; min-width: 720px; }
-    th, td { padding: 18px 22px; border-bottom: 1px solid rgba(255,255,255,.10); text-align: left; font-size: 14px; }
-    th { color: var(--champagne); background: rgba(255,255,255,.05); font-weight: 900; }
-    td { color: rgba(255,255,255,.78); }
-    td:nth-child(2), th:nth-child(2) { background: rgba(199, 161, 94, .11); color: #fff4d8; }
-    .tick { color: var(--champagne); font-weight: 900; }
-
-    /* Science */
-    .science-wrap { display: grid; gap: 24px; }
-    .science-card {
-      display: grid;
-      grid-template-columns: .84fr 1.16fr;
-      gap: 0;
-      overflow: hidden;
-      border-radius: 34px;
-      border: 1px solid rgba(229,207,151,.23);
-      background: rgba(255,255,255,.055);
-      box-shadow: 0 26px 90px rgba(0,0,0,.25);
-    }
-    .science-card.reverse { grid-template-columns: 1.16fr .84fr; }
-    .science-photo { min-height: 530px; position: relative; overflow: hidden; background: #111; }
-    .science-photo img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
-    .science-photo:after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.42));
-    }
-    .section-badge {
-      position: absolute;
-      z-index: 2;
-      top: 20px;
-      left: 20px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #e5cf9a, #a47738 58%, #65441b);
-      color: #26180a;
-      font-size: 12px;
-      font-weight: 1000;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    .science-copy { padding: clamp(28px, 5vw, 54px); }
-    .science-copy h3 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 4vw, 48px); margin: 10px 0 16px; }
-    .science-copy p { color: rgba(255,255,255,.72); max-width: 640px; }
-    .title-list {
-      list-style: none;
-      padding: 0;
-      margin: 26px 0 0;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px 14px;
-    }
-    .title-list li {
-      position: relative;
-      padding: 10px 12px 10px 34px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.055);
-      border: 1px solid rgba(255,255,255,.08);
-      color: rgba(255,255,255,.86);
-      font-size: 14px;
-      min-height: 43px;
-      display: flex;
-      align-items: center;
-    }
-    .title-list li:before {
-      content: "";
-      position: absolute;
-      left: 12px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #e6d0a0, #a87836);
-      box-shadow: 0 0 0 3px rgba(199,161,94,.16);
-    }
-    .highlight {
-      margin-top: 28px;
-      padding: 18px 20px;
-      border: 1px solid rgba(229,207,151,.26);
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(216,192,138,.13), rgba(255,255,255,.035));
-      color: rgba(255,255,255,.84);
-      font-weight: 700;
-    }
-    .science-end {
-      text-align: center;
-      color: #f3dca5;
-      font-weight: 800;
-      max-width: 920px;
-      margin: 28px auto 0;
-    }
-
-    /* Steps */
-    .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
-    .step-card {
-      border-radius: 24px;
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(199, 161, 94, .22);
-      overflow: hidden;
-      box-shadow: 0 18px 48px rgba(68, 45, 21, .12);
-    }
-    .step-img { position: relative; min-height: 150px; overflow: hidden; background: #111; }
-    .step-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
-    .step-number {
-      position: absolute;
-      z-index: 3;
-      left: 16px;
-      bottom: 14px;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #e5cf9a, #94682f 58%, #62421b);
-      color: #211508;
-      font-weight: 1000;
-      box-shadow: 0 12px 28px rgba(0,0,0,.26);
-    }
-    .step-body { padding: 18px; }
-    .step-body h3 { font-size: 17px; margin-bottom: 8px; }
-    .step-body p { color: var(--muted-dark); font-size: 13px; }
-
-    /* Ecosystem */
-    .ecosystem {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      align-items: stretch;
-      min-height: 430px;
-      overflow: hidden;
-      border-radius: 36px;
-      border: 1px solid rgba(199,161,94,.24);
-      background: #f4eadc;
-      box-shadow: 0 25px 70px rgba(68, 45, 21, .18);
-    }
-    .ecosystem-copy { padding: clamp(30px, 5vw, 58px); }
-    .ecosystem-copy h2 { color: #191914; }
-    .ecosystem-copy p { color: var(--muted-dark); margin-top: 18px; max-width: 540px; }
-    .ecosystem-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin-top: 26px; }
-    .ecosystem-list span {
-      border: 1px solid rgba(111,79,38,.15);
-      background: rgba(255,255,255,.58);
-      border-radius: 14px;
-      padding: 12px 14px;
-      font-weight: 800;
-      color: #332613;
-    }
-    .ecosystem-photo { position: relative; min-height: 430px; }
-    .ecosystem-photo img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
-    .ecosystem-photo:before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: linear-gradient(90deg, #f4eadc 0%, rgba(244,234,220,.12) 42%, transparent 100%);
-    }
-
-    .final-cta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 34px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
-      border: 1px solid rgba(229,207,151,.25);
-    }
-    .final-cta h2 { margin: 0; font-size: clamp(30px, 4vw, 46px); }
-    .final-cta p { color: rgba(255,255,255,.68); margin-top: 8px; }
-
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.show { opacity: 1; transform: none; }
-
-
-    .brand-mark {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 21px;
-      font-weight: 700;
-      text-shadow: 0 1px 0 rgba(255,255,255,.18);
-    }
-    .brand-mark:before, .brand-mark:after { display: none !important; }
-    .dark {
-      background:
-        radial-gradient(circle at 18% 0%, rgba(180, 138, 73, .12), transparent 34%),
-        radial-gradient(circle at 92% 18%, rgba(18, 54, 46, .34), transparent 34%),
-        linear-gradient(180deg, #060706 0%, #0d0c09 56%, #060706 100%);
-    }
-    .cream {
-      background:
-        radial-gradient(circle at 6% 0%, rgba(180, 138, 73, .13), transparent 26%),
-        linear-gradient(180deg, #f5ead8 0%, #eadcc5 100%);
-    }
-    .btn.primary:hover { box-shadow: 0 22px 54px rgba(69, 45, 18, .36), inset 0 1px 0 rgba(255,255,255,.30); }
-    .photo-card, .image-panel, .science-card, .step-card, .ecosystem, .form-card, .trust-item {
-      border-color: rgba(216, 192, 138, .22);
-    }
-    .site-footer {
-      color: rgba(255,255,255,.62);
-      background: #060706;
-      border-top: 1px solid rgba(216,192,138,.16);
-      padding: 26px 0;
-      font-size: 13px;
-    }
-    .footer-wrap { display:flex; justify-content:space-between; align-items:center; gap:18px; flex-wrap:wrap; }
-    .footer-wrap strong { color: var(--champagne); }
-    .footer-wrap a { color: rgba(216,192,138,.86); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-
-    /* Responsive */
-    @media (max-width: 1100px) {
-      .nav-links { gap: 16px; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .steps { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (max-width: 920px) {
-      .container { width: min(100% - 32px, var(--max)); }
-      .nav-links { display: none; }
-      .nav { min-height: 68px; }
-      .hero-wrap { grid-template-columns: 1fr; min-height: auto; padding: 48px 0 70px; gap: 30px; }
-      .hero-photo { aspect-ratio: 16 / 10; max-height: 520px; }
-      .hero-side { order: 2; }
-      .trust-row { grid-template-columns: 1fr; }
-      .core-grid { grid-template-columns: 1fr; }
-      .science-card, .science-card.reverse { grid-template-columns: 1fr; }
-      .science-card.reverse .science-photo { order: -1; }
-      .science-photo { min-height: 390px; }
-      .title-list { grid-template-columns: 1fr; }
-      .ecosystem { grid-template-columns: 1fr; }
-      .ecosystem-photo { min-height: 320px; order: -1; }
-      .ecosystem-photo:before { background: linear-gradient(180deg, transparent 35%, #f4eadc 100%); }
-      .final-cta { align-items: stretch; flex-direction: column; }
-    }
-    @media (max-width: 640px) {
-      .section { padding: 70px 0; }
-      .section.compact { padding: 56px 0; }
-      .container { width: min(100% - 26px, var(--max)); }
-      .brand span { font-size: 18px; }
-      .brand-mark { width: 38px; height: 38px; border-radius: 14px; }
-      .nav .btn { min-height: 42px; padding: 0 14px; font-size: 12px; }
-      h1 { font-size: clamp(38px, 12vw, 58px); }
-      h2 { font-size: clamp(31px, 9vw, 44px); }
-      .hero-wrap { padding-top: 34px; }
-      .hero-actions .btn { width: 100%; }
-      .hero-photo { aspect-ratio: 4 / 5; border-radius: 26px; }
-      .form-card { border-radius: 24px; padding: 20px; }
-      .gallery-grid { grid-template-columns: 1fr; gap: 14px; }
-      .photo-card { min-height: 260px; border-radius: 22px; }
-      .image-panel { min-height: 280px; border-radius: 24px; }
-      .science-card { border-radius: 24px; }
-      .science-photo { min-height: 300px; }
-      .science-copy { padding: 24px; }
-      .title-list li { font-size: 13px; padding-top: 9px; padding-bottom: 9px; }
-      .steps { grid-template-columns: 1fr; }
-      .step-img { min-height: 210px; }
-      .ecosystem-list { grid-template-columns: 1fr; }
-      .final-cta { padding: 24px; border-radius: 24px; }
-    }
-    @media (max-width: 420px) {
-      .container { width: min(100% - 22px, var(--max)); }
-      .eyebrow { font-size: 10px; letter-spacing: .09em; }
-      .lead { font-size: 15px; }
-      .photo-card { min-height: 238px; }
-      .science-photo { min-height: 265px; }
-      .ecosystem-photo { min-height: 260px; }
-      th, td { padding: 14px 16px; }
-    }
-  </style>
 </head>
 <body>
   <header class="site-header">
@@ -601,19 +40,19 @@
           </div>
         </div>
         <aside class="hero-side reveal" id="daftar">
-          <form class="form-card" action="#" method="post">
-            <h3>Akses Awal Beta</h3>
-            <p>Jadilah antara yang terawal mencuba platform premium ini.</p>
-            <div class="form-grid">
-              <input class="field" type="text" name="name" placeholder="Nama penuh" autocomplete="name">
-              <input class="field" type="email" name="email" placeholder="Emel" autocomplete="email">
-              <input class="field" type="tel" name="phone" placeholder="Nombor telefon" autocomplete="tel">
-              <label class="upload" for="profilePhoto"><strong id="uploadTitle">Pilih gambar profil</strong><span>JPG, PNG atau WEBP — maksimum 5MB</span></label>
-              <input id="profilePhoto" name="profilePhoto" type="file" accept="image/jpeg,image/png,image/webp" hidden>
-              <button class="btn primary" type="submit">Mohon Akses Awal</button>
-            </div>
-            <div class="mini-note">Maklumat anda disimpan secara sulit dan tidak dipaparkan tanpa izin.</div>
-          </form>
+        <form class="form-grid" id="regForm" onsubmit="handleFormSubmit(event)">
+  <input class="field" type="text" id="fullName" placeholder="Nama penuh" autocomplete="name" required>
+  <input class="field" type="text" id="icNo" placeholder="XXXXXX-XX-XXXX" maxlength="14" required>
+  <input class="field" type="email" id="emailAddr" placeholder="Emel" autocomplete="email" required>
+  <input class="field" type="tel" id="phoneNo" placeholder="Nombor telefon" autocomplete="tel" required>
+  <label class="upload" for="profilePhoto" id="uploadLabel">
+    <strong id="uploadTitle">Pilih gambar profil</strong>
+    <span>JPG, PNG atau WEBP — maksimum 5MB</span>
+  </label>
+  <input id="profilePhoto" name="profilePhoto" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+  <button class="btn primary" type="submit" id="submitBtn">Mohon Akses Awal</button>
+  <div id="successMsg" style="display:none; padding:12px; border-radius:14px; background:rgba(20,56,47,.18); border:1px solid rgba(20,200,120,.25); color:#8ff7c8; font-size:13px; line-height:1.6;"></div>
+</form>
         </aside>
       </div>
     </section>
@@ -750,26 +189,327 @@
     </div>
   </footer>
 
-  <script>
-    const fileInput = document.getElementById('profilePhoto');
-    const uploadTitle = document.getElementById('uploadTitle');
-    if (fileInput && uploadTitle) {
-      fileInput.addEventListener('change', () => {
-        const file = fileInput.files && fileInput.files[0];
-        uploadTitle.textContent = file ? file.name : 'Pilih gambar profil';
-      });
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* ── CONFIG — fill these in ── */
+const SUPABASE_URL  = 'https://YOUR_PROJECT.supabase.co';
+const SUPABASE_KEY  = 'YOUR_ANON_KEY';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
+const STORAGE_BUCKET  = 'profile-pics';
+
+/* ── SUPABASE INIT ── */
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+/* ── STATE ── */
+let selectedFile = null;
+
+/* ── IC FORMATTER ── */
+document.getElementById('icNo')?.addEventListener('input', function (e) {
+  let raw = e.target.value.replace(/\D/g, '');
+  if (raw.length > 6 && raw.length <= 8) raw = raw.slice(0,6) + '-' + raw.slice(6);
+  else if (raw.length > 8)               raw = raw.slice(0,6) + '-' + raw.slice(6,8) + '-' + raw.slice(8,12);
+  e.target.value = raw;
+});
+
+/* ── IC VALIDATION ── */
+function validateIC(icFormatted) {
+  const ic = icFormatted.replace(/-/g, '');
+  if (!ic || ic.length !== 12 || !/^\d{12}$/.test(ic))
+    return { valid: false, error: 'No. IC mesti mengandungi tepat 12 digit angka.' };
+  if (/^(\d)\1{11}$/.test(ic))
+    return { valid: false, error: 'No. IC tidak sah — corak berulang dikesan.' };
+
+  const sequential = '0123456789012345678901234567890';
+  const reverseSeq = '9876543210987654321098765432109';
+  if (sequential.includes(ic.slice(0,10)) || reverseSeq.includes(ic.slice(0,10)))
+    return { valid: false, error: 'No. IC tidak sah — urutan nombor palsu dikesan.' };
+
+  const yy = parseInt(ic.substring(0, 2));
+  const mm = parseInt(ic.substring(2, 4));
+  const dd = parseInt(ic.substring(4, 6));
+
+  if (mm < 1 || mm > 12)
+    return { valid: false, error: 'No. IC tidak sah — bulan lahir tidak wujud (digit 3-4).' };
+
+  const fullYear    = yy <= (new Date().getFullYear() % 100) ? 2000 + yy : 1900 + yy;
+  const daysInMonth = new Date(fullYear, mm, 0).getDate();
+  if (dd < 1 || dd > daysInMonth)
+    return { valid: false, error: `No. IC tidak sah — tarikh lahir tidak wujud (bulan ${mm} hanya ${daysInMonth} hari).` };
+
+  const dob = new Date(fullYear, mm - 1, dd);
+  if (dob > new Date()) return { valid: false, error: 'No. IC tidak sah — tarikh lahir pada masa hadapan.' };
+
+  const age       = (new Date() - dob) / (1000 * 60 * 60 * 24 * 365.25);
+  if (age > 120)  return { valid: false, error: 'No. IC tidak sah — tarikh lahir melebihi 120 tahun.' };
+
+  const stateCode  = parseInt(ic.substring(6, 8));
+  const validState = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+  const isValid    = validState.includes(stateCode) || (stateCode >= 21 && stateCode <= 59);
+  if (!isValid)
+    return { valid: false, error: `No. IC tidak sah — kod negeri tidak diiktiraf (digit 7-8: ${ic.substring(6,8)}).` };
+
+  const lastDigit = parseInt(ic[11]);
+  const gender    = lastDigit % 2 === 0 ? 'Perempuan' : 'Lelaki';
+  const dobStr    = `${String(dd).padStart(2,'0')}/${String(mm).padStart(2,'0')}/${fullYear}`;
+  return { valid: true, gender, dob: dobStr, age: Math.floor(age) };
+}
+
+/* ── FIELD ERROR HELPERS ── */
+function showFieldError(id, msg) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.borderColor = '#FF6B6B';
+  let err = el.parentElement?.querySelector('.field-error');
+  if (!err) {
+    err = document.createElement('div');
+    err.className = 'field-error';
+    err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:5px;';
+    el.insertAdjacentElement('afterend', err);
+  }
+  err.textContent = msg;
+}
+function clearFieldError(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.borderColor = '';
+  el.parentElement?.querySelector('.field-error')?.remove();
+}
+function showUploadError(msg) {
+  const lbl = document.getElementById('uploadLabel');
+  if (!lbl) return;
+  lbl.style.borderColor = '#FF6B6B';
+  let err = lbl.parentElement?.querySelector('.upload-error');
+  if (!err) {
+    err = document.createElement('div');
+    err.className = 'upload-error';
+    err.style.cssText = 'color:#FF6B6B;font-size:12px;margin-top:5px;';
+    lbl.insertAdjacentElement('afterend', err);
+  }
+  err.textContent = msg;
+}
+function clearUploadError() {
+  const lbl = document.getElementById('uploadLabel');
+  lbl?.style && (lbl.style.borderColor = '');
+  document.querySelector('.upload-error')?.remove();
+}
+
+/* ── IC REAL-TIME HINT ── */
+function showICHint(result) {
+  clearFieldError('icNo');
+  const el = document.getElementById('icNo');
+  let hint = el?.parentElement?.querySelector('.ic-hint');
+  if (!hint && el) {
+    hint = document.createElement('div');
+    hint.className = 'ic-hint';
+    hint.style.cssText = 'color:#4CAF50;font-size:11px;margin-top:4px;';
+    el.insertAdjacentElement('afterend', hint);
+  }
+  if (hint) hint.textContent = `✓ ${result.gender} · Lahir: ${result.dob} · Umur: ${result.age} tahun`;
+}
+function clearICHint() {
+  document.querySelector('.ic-hint')?.remove();
+}
+
+document.getElementById('icNo')?.addEventListener('input', () => {
+  const val = document.getElementById('icNo').value;
+  if (val.replace(/-/g,'').length === 12) {
+    const r = validateIC(val);
+    r.valid ? showICHint(r) : (showFieldError('icNo', r.error), clearICHint());
+  } else { clearFieldError('icNo'); clearICHint(); }
+});
+
+/* ── PHOTO FILE INPUT ── */
+document.getElementById('profilePhoto')?.addEventListener('change', function (e) {
+  const file = e.target.files?.[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) {
+    alert('Saiz fail melebihi 5MB. Sila pilih gambar yang lebih kecil.');
+    e.target.value = '';
+    return;
+  }
+  selectedFile = file;
+  clearUploadError();
+
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    const lbl = document.getElementById('uploadLabel');
+    if (!lbl) return;
+    lbl.innerHTML = `
+      <div style="display:flex;align-items:center;gap:12px;">
+        <img src="${ev.target.result}" alt="Preview"
+             style="width:52px;height:52px;object-fit:cover;border-radius:50%;border:2px solid rgba(229,207,151,.5);">
+        <div>
+          <strong style="display:block;font-size:13px;color:var(--champagne);">Gambar berjaya dipilih</strong>
+          <span style="font-size:12px;opacity:.7;">${file.name}</span>
+        </div>
+      </div>`;
+    lbl.setAttribute('for', 'profilePhoto');
+  };
+  reader.readAsDataURL(file);
+});
+
+document.getElementById('uploadLabel')?.addEventListener('click', () => {
+  document.getElementById('profilePhoto')?.click();
+});
+
+/* ── FULL FORM VALIDATION ── */
+function validateForm() {
+  let valid = true;
+
+  const name      = document.getElementById('fullName')?.value.trim() ?? '';
+  const nameRegex = /^[a-zA-Z\u0600-\u06FF\s\/'\-.]+$/;
+  if (!name)                   { showFieldError('fullName', 'Nama penuh diperlukan.');                    valid = false; }
+  else if (name.length < 3)    { showFieldError('fullName', 'Nama penuh terlalu pendek.');                valid = false; }
+  else if (!nameRegex.test(name)){ showFieldError('fullName', 'Nama penuh hanya boleh mengandungi huruf.'); valid = false; }
+  else clearFieldError('fullName');
+
+  const icVal = document.getElementById('icNo')?.value ?? '';
+  const icRes = validateIC(icVal);
+  if (!icVal.replace(/-/g,''))   { showFieldError('icNo', 'No. Kad Pengenalan diperlukan.'); clearICHint(); valid = false; }
+  else if (!icRes.valid)         { showFieldError('icNo', icRes.error);                      clearICHint(); valid = false; }
+  else                           { clearFieldError('icNo'); showICHint(icRes); }
+
+  const email      = document.getElementById('emailAddr')?.value.trim() ?? '';
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email)                    { showFieldError('emailAddr', 'Alamat e-mel diperlukan.');              valid = false; }
+  else if (!emailRegex.test(email)){ showFieldError('emailAddr', 'Format e-mel tidak sah.'); valid = false; }
+  else clearFieldError('emailAddr');
+
+  const phone      = document.getElementById('phoneNo')?.value.trim() ?? '';
+  const phoneRegex = /^(\+?60|0)[1-9]\d{7,9}$/;
+  if (!phone)                        { showFieldError('phoneNo', 'No. telefon diperlukan.');              valid = false; }
+  else if (!phoneRegex.test(phone.replace(/[\s-]/g,''))) { showFieldError('phoneNo', 'Format no. telefon tidak sah. Contoh: 011-12345678'); valid = false; }
+  else clearFieldError('phoneNo');
+
+  if (!selectedFile) { showUploadError('Sila muat naik gambar profil anda.'); valid = false; }
+  else clearUploadError();
+
+  return valid;
+}
+
+/* ── ERROR POPUP ── */
+function showErrorPopup(title, msg) {
+  document.getElementById('errorPopup')?.remove();
+  const pop = document.createElement('div');
+  pop.id = 'errorPopup';
+  pop.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;';
+  pop.innerHTML = `
+    <div style="background:#100a00;border:1.5px solid rgba(255,80,80,.35);border-radius:18px;max-width:400px;width:100%;padding:36px 28px;text-align:center;">
+      <div style="font-size:28px;margin-bottom:14px;">✗</div>
+      <h3 style="font-family:Georgia,serif;font-size:20px;color:#fff;margin:0 0 12px;">${title}</h3>
+      <p style="color:#aaa;font-size:13px;line-height:1.7;margin:0 0 24px;">${msg}</p>
+      <button onclick="document.getElementById('errorPopup').remove()"
+              style="background:linear-gradient(135deg,#FF4444,#FF8800);color:#fff;border:none;padding:10px 32px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;letter-spacing:.8px;text-transform:uppercase;">
+        Tutup
+      </button>
+    </div>`;
+  pop.addEventListener('click', e => { if (e.target === pop) pop.remove(); });
+  document.body.appendChild(pop);
+}
+
+/* ── ID GENERATOR ── */
+function generateId() {
+  const yr  = new Date().getFullYear();
+  const rnd = crypto.randomUUID().replace(/-/g,'').substring(0,8).toUpperCase();
+  return `JDK-${yr}-${rnd}`;
+}
+
+/* ── MAIN SUBMIT ── */
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  if (!validateForm()) {
+    document.querySelector('.field-error')?.scrollIntoView({ behavior:'smooth', block:'center' });
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Memproses…';
+
+  try {
+    const jdk_id = generateId();
+
+    /* — Upload photo — */
+    const ext  = selectedFile.name.split('.').pop();
+    const path = `${jdk_id}.${ext}`;
+    const { error: uploadErr } = await db.storage.from(STORAGE_BUCKET).upload(path, selectedFile);
+    if (uploadErr) throw new Error('Gambar gagal dimuat naik: ' + uploadErr.message);
+
+    const { data: urlData } = db.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+    const photo_url = urlData?.publicUrl ?? null;
+    if (!photo_url) throw new Error('URL gambar tidak dijana.');
+
+    /* — Insert row — */
+    const { error: dbErr } = await db.from('registrations').insert([{
+      jdk_id,
+      nama:    document.getElementById('fullName').value.trim(),
+      ic:      document.getElementById('icNo').value,
+      telefon: document.getElementById('phoneNo').value.trim(),
+      email:   document.getElementById('emailAddr').value.trim(),
+      photo_url,
+    }]);
+
+    if (dbErr) {
+      const isDup = dbErr.message.includes('unique') || dbErr.code === '23505';
+      throw new Error(isDup
+        ? '__DUPLICATE__'
+        : 'Ralat pendaftaran: ' + dbErr.message);
     }
 
-    const revealItems = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealItems.forEach((item) => observer.observe(item));
-  </script>
+    /* — Apps Script (Google Sheet + Gmail) — */
+    const body = new URLSearchParams({
+      fullName:  document.getElementById('fullName').value.trim(),
+      icNo:      document.getElementById('icNo').value,
+      phoneNo:   document.getElementById('phoneNo').value.trim(),
+      emailAddr: document.getElementById('emailAddr').value.trim(),
+    });
+    fetch(APPS_SCRIPT_URL, { method:'POST', mode:'no-cors', body })
+      .catch(err => console.warn('Apps Script error:', err));
+
+    /* — Success — */
+    const frm = document.getElementById('regForm');
+    if (frm) {
+      frm.innerHTML = `
+        <div style="text-align:center;padding:16px 0;">
+          <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1a6644,#0f3d28);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="26" height="26" viewBox="0 0 40 40" fill="none"><path d="M8 20L16 28L32 12" stroke="#8ff7c8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 style="font-family:Georgia,serif;color:var(--champagne);font-size:20px;margin:0 0 10px;">Pendaftaran Berjaya!</h3>
+          <p style="color:rgba(255,255,255,.72);font-size:13px;line-height:1.7;margin:0 0 12px;">
+            Tahniah! Anda berjaya mendaftar untuk beta access Jodohku.my.<br>
+            Kami akan menghubungi anda apabila aplikasi tersedia di Playstore dan Appstore. — Admin
+          </p>
+          <div style="display:inline-block;padding:8px 18px;border-radius:20px;border:1px solid rgba(229,207,151,.3);color:var(--champagne);font-size:12px;letter-spacing:.08em;font-family:monospace;">
+            ${jdk_id}
+          </div>
+        </div>`;
+    }
+
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Mohon Akses Awal';
+    if (err.message === '__DUPLICATE__') {
+      showErrorPopup('Pendaftaran Duplikat', 'Nombor IC atau e-mel ini telah didaftarkan. Setiap pengguna hanya boleh mendaftar sekali.');
+    } else {
+      showErrorPopup('Ralat Tidak Dijangka', err.message || 'Sila cuba sebentar lagi.');
+    }
+  }
+}
+
+/* ── REAL-TIME CLEAR ERRORS ── */
+['fullName','emailAddr','phoneNo'].forEach(id =>
+  document.getElementById(id)?.addEventListener('input', () => clearFieldError(id))
+);
+
+/* ── SCROLL REVEAL ── */
+const revealItems = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('show'); revObs.unobserve(entry.target); }
+  });
+}, { threshold: 0.12 });
+revealItems.forEach(el => revObs.observe(el));
+</script>
 </body>
 </html>
