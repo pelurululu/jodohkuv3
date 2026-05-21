@@ -1441,13 +1441,13 @@ reader.readAsDataURL(file);
         const filePath = `${jdk_id}/${filename}`;
 
         const { error: uploadError } = await db.storage
-          .from('profiles')
+          .from('profile-pics')
           .upload(filePath, selectedFile, { cacheControl: '3600', upsert: true });
 
         if (uploadError) throw uploadError;
 
         /* ── 2. Get Public URL for the Uploaded Image ── */
-        const { data: urlData } = db.storage.from('profiles').getPublicUrl(filePath);
+        const { data: urlData } = db.storage.from('profile-pics').getPublicUrl(filePath);
         const photoUrl = urlData.publicUrl;
 
         /* ── 3. Insert Database Record ── */
