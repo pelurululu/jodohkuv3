@@ -219,39 +219,9 @@
     </div>
   </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  
-<script>
-/*
- * ─────────────────────────────────────────────────────────────────
- * Jodohku.my — Frontend JS (replaces the <script> block in doc 3)
- *
- * Replace the entire existing <script>...</script> block in
- * document 3 with this file's contents.
- *
- * ENV VARS (set in Render):
- *   SUPABASE_URL       → your Supabase project URL
- *   SUPABASE_ANON_KEY  → your Supabase anon/public key
- *   APPS_SCRIPT_URL    → deployed Apps Script web-app URL
- *
- * Because this file runs in the browser, Render cannot inject
- * server-side env vars directly into static HTML.
- * Two clean options:
- *
- *   Option A (recommended for static sites):
- *     Host a tiny /config.json on your Render service and fetch it.
- *     See fetchConfig() below — it is already wired up.
- *
- *   Option B (if you use a Node/Express server on Render):
- *     Have your server template the HTML and replace the
- *     __SUPABASE_URL__ etc. placeholders below at render time.
- *
- * For now the placeholders are left as-is so nothing breaks at
- * deploy time. Fill them in via whichever option suits you.
- * ─────────────────────────────────────────────────────────────────
- */
+  <!-- ── MODALS (must be in HTML body, NOT inside a script tag) ── -->
 
-<div id="termsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+  <div id="termsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('termsModal')" aria-label="Tutup modal">&times;</button>
       <h2 id="termsTitle">Terma &amp; Syarat</h2>
@@ -295,150 +265,126 @@
     </div>
   </div>
 
- <script>
-/* ── CONFIGURATION & INITIALIZATION ── */
-    // Safely embed environment variables via PHP, then sanitize them for JavaScript
-    const SUPABASE_URL = '<?php echo addslashes((string)getenv("SUPABASE_URL")); ?>';
-    const SUPABASE_ANON_KEY = '<?php echo addslashes((string)getenv("SUPABASE_ANON_KEY")); ?>';
+  <!-- ── SINGLE SCRIPT BLOCK: env vars injected via PHP getenv() ── -->
+  <script>
+    /* Supabase config — values come from Render environment variables via PHP */
+    const SUPABASE_URL      = '<?php echo addslashes((string) getenv("SUPABASE_URL")); ?>';
+    const SUPABASE_ANON_KEY = '<?php echo addslashes((string) getenv("SUPABASE_ANON_KEY")); ?>';
 
     let db = null;
-    
-    // Split '<' and '?' to prevent older PHP environments from misinterpreting short tags
-    const phpTagMarker = '<' + '?';
-
-    if (SUPABASE_URL && SUPABASE_ANON_KEY && !SUPABASE_URL.startsWith(phpTagMarker) && !SUPABASE_ANON_KEY.startsWith(phpTagMarker)) {
-      // Use the global window object configuration to initialize Supabase client safely
+    if (SUPABASE_URL && SUPABASE_ANON_KEY) {
       db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     } else {
-      console.warn("Supabase initialization skipped: Missing configuration keys or invalid environment variables.");
+      console.warn('Supabase: missing env vars — registration will be disabled.');
     }
 
     let selectedFile = null;
 
-    /* ── UI HELPERS ── */
+    /* ── FIELD ERROR HELPERS ── */
     function showFieldError(fieldId, msg) {
-      const inputEl = document.getElementById(fieldId);
-      if (!inputEl) return;
-      inputEl.style.borderColor = '#ff6b6b';
-      inputEl.style.background = 'rgba(255,107,107,0.03)';
-      
-      let errorEl = inputEl.nextElementSibling;
-      if (!errorEl || !errorEl.classList.contains('field-error')) {
-        errorEl = document.createElement('div');
-        errorEl.className = 'field-error';
-        errorEl.style.color = '#ff6b6b';
-        errorEl.style.fontSize = '12px';
-        errorEl.style.marginTop = '4px';
-        errorEl.style.paddingLeft = '4px';
-        inputEl.parentNode.insertBefore(errorEl, inputEl.nextSibling);
+      const el = document.getElementById(fieldId);
+      if (!el) return;
+      el.style.borderColor = '#ff6b6b';
+      el.style.background   = 'rgba(255,107,107,0.03)';
+      let err = el.nextElementSibling;
+      if (!err || !err.classList.contains('field-error')) {
+        err = document.createElement('div');
+        err.className = 'field-error';
+        Object.assign(err.style, { color:'#ff6b6b', fontSize:'12px', marginTop:'4px', paddingLeft:'4px' });
+        el.parentNode.insertBefore(err, el.nextSibling);
       }
-      errorEl.textContent = msg;
+      err.textContent = msg;
     }
 
     function clearFieldError(fieldId) {
-      const inputEl = document.getElementById(fieldId);
-      if (!inputEl) return;
-      inputEl.style.borderColor = '';
-      inputEl.style.background = '';
-      
-      const errorEl = inputEl.nextElementSibling;
-      if (errorEl && errorEl.classList.contains('field-error')) {
-        errorEl.remove();
-      }
+      const el = document.getElementById(fieldId);
+      if (!el) return;
+      el.style.borderColor = '';
+      el.style.background  = '';
+      const err = el.nextElementSibling;
+      if (err && err.classList.contains('field-error')) err.remove();
     }
 
     function showICHint(res) {
-      const inputEl = document.getElementById('icNo');
-      if (!inputEl) return;
-      let hintEl = document.getElementById('icHintBox');
-      if (!hintEl) {
-        hintEl = document.createElement('div');
-        hintEl.id = 'icHintBox';
-        hintEl.style.fontSize = '12px';
-        hintEl.style.marginTop = '6px';
-        hintEl.style.color = '#8ff7c8';
-        hintEl.style.background = 'rgba(143,247,200,0.06)';
-        hintEl.style.padding = '8px 12px';
-        hintEl.style.borderRadius = '8px';
-        hintEl.style.border = '1px solid rgba(143,247,200,0.15)';
-        inputEl.parentNode.insertBefore(hintEl, inputEl.nextSibling);
+      const el = document.getElementById('icNo');
+      if (!el) return;
+      let hint = document.getElementById('icHintBox');
+      if (!hint) {
+        hint = document.createElement('div');
+        hint.id = 'icHintBox';
+        Object.assign(hint.style, {
+          fontSize:'12px', marginTop:'6px', color:'#8ff7c8',
+          background:'rgba(143,247,200,0.06)', padding:'8px 12px',
+          borderRadius:'8px', border:'1px solid rgba(143,247,200,0.15)'
+        });
+        el.parentNode.insertBefore(hint, el.nextSibling);
       }
-      hintEl.innerHTML = `✨ <strong>Saringan AI:</strong> Jantina: ${res.gender} | Umur: ${res.age} tahun (${res.dobStr}) | Negeri Lahir: ${res.state}`;
+      hint.innerHTML = `✨ <strong>Saringan AI:</strong> Jantina: ${res.gender} | Umur: ${res.age} tahun (${res.dobStr}) | Negeri Lahir: ${res.state}`;
     }
 
     function clearICHint() {
-      const hintEl = document.getElementById('icHintBox');
-      if (hintEl) hintEl.remove();
+      const hint = document.getElementById('icHintBox');
+      if (hint) hint.remove();
     }
 
     function showUploadError(msg) {
       const label = document.getElementById('uploadLabel');
       if (!label) return;
       label.style.borderColor = '#ff6b6b';
-      label.style.background = 'rgba(255,107,107,0.03)';
-      
-      let errorEl = document.getElementById('upError');
-      if (!errorEl) {
-        errorEl = document.createElement('div');
-        errorEl.id = 'upError';
-        errorEl.style.color = '#ff6b6b';
-        errorEl.style.fontSize = '12px';
-        errorEl.style.marginTop = '4px';
-        label.parentNode.insertBefore(errorEl, label.nextSibling);
+      label.style.background  = 'rgba(255,107,107,0.03)';
+      let err = document.getElementById('upError');
+      if (!err) {
+        err = document.createElement('div');
+        err.id = 'upError';
+        Object.assign(err.style, { color:'#ff6b6b', fontSize:'12px', marginTop:'4px' });
+        label.parentNode.insertBefore(err, label.nextSibling);
       }
-      errorEl.textContent = msg;
+      err.textContent = msg;
     }
 
     function clearUploadError() {
       const label = document.getElementById('uploadLabel');
       if (!label) return;
       label.style.borderColor = '';
-      label.style.background = '';
-      const errorEl = document.getElementById('upError');
-      if (errorEl) errorEl.remove();
+      label.style.background  = '';
+      const err = document.getElementById('upError');
+      if (err) err.remove();
     }
 
     function showCbError(msg) {
-      const cbContainer = document.getElementById('agreeTerms')?.parentNode;
-      if (!cbContainer) return;
-      let errorEl = document.getElementById('cbError');
-      if (!errorEl) {
-        errorEl = document.createElement('div');
-        errorEl.id = 'cbError';
-        errorEl.style.color = '#ff6b6b';
-        errorEl.style.fontSize = '12px';
-        errorEl.style.marginTop = '4px';
-        cbContainer.parentNode.insertBefore(errorEl, cbContainer.nextSibling);
+      let err = document.getElementById('cbError');
+      if (!err) {
+        const cb = document.getElementById('agreeTerms')?.parentNode;
+        if (!cb) return;
+        err = document.createElement('div');
+        err.id = 'cbError';
+        Object.assign(err.style, { color:'#ff6b6b', fontSize:'12px', marginTop:'4px' });
+        cb.parentNode.insertBefore(err, cb.nextSibling);
       }
-      errorEl.textContent = msg;
+      err.textContent = msg;
     }
 
     function clearCbError() {
-      const errorEl = document.getElementById('cbError');
-      if (errorEl) errorEl.remove();
+      const err = document.getElementById('cbError');
+      if (err) err.remove();
     }
 
-    /* ── POPUP AND MODAL ENGINE ── */
+    /* ── MODAL / POPUP ── */
     function openModal(id) {
-      const modal = document.getElementById(id);
-      if (!modal) return;
-      modal.style.display = 'flex';
+      const m = document.getElementById(id);
+      if (!m) return;
+      m.style.display = 'flex';
       document.body.style.overflow = 'hidden';
     }
 
-    // Explicitly make modal handling globally available
-    window.openModal = openModal;
-
     function closeModal(id) {
-      const modal = document.getElementById(id);
-      if (!modal) return;
-      modal.style.display = 'none';
+      const m = document.getElementById(id);
+      if (!m) return;
+      m.style.display = 'none';
       document.body.style.overflow = '';
     }
 
-    window.closeModal = closeModal;
-
-    window.addEventListener('click', function(e) {
+    window.addEventListener('click', e => {
       if (e.target.classList.contains('modal')) {
         e.target.style.display = 'none';
         document.body.style.overflow = '';
@@ -446,115 +392,98 @@
     });
 
     function showErrorPopup(title, desc) {
-      document.getElementById('popupIcon').textContent = '⚠️';
-      document.getElementById('popupIcon').style.color = '#ff6b6b';
+      document.getElementById('popupIcon').textContent  = '⚠️';
       document.getElementById('popupTitle').textContent = title;
-      document.getElementById('popupDesc').textContent = desc;
-      const overlay = document.getElementById('popupOverlay');
-      overlay.style.display = 'flex';
-      setTimeout(() => { overlay.firstElementChild.style.transform = 'scale(1)'; }, 10);
+      document.getElementById('popupDesc').textContent  = desc;
+      const o = document.getElementById('popupOverlay');
+      o.style.display = 'flex';
+      setTimeout(() => { o.firstElementChild.style.transform = 'scale(1)'; }, 10);
     }
 
     function showMaintenancePopup(title, desc) {
-      document.getElementById('popupIcon').textContent = '🔧';
-      document.getElementById('popupIcon').style.color = '#e5cf97';
+      document.getElementById('popupIcon').textContent  = '🔧';
       document.getElementById('popupTitle').textContent = title;
-      document.getElementById('popupDesc').textContent = desc;
-      const overlay = document.getElementById('popupOverlay');
-      overlay.style.display = 'flex';
-      setTimeout(() => { overlay.firstElementChild.style.transform = 'scale(1)'; }, 10);
+      document.getElementById('popupDesc').textContent  = desc;
+      const o = document.getElementById('popupOverlay');
+      o.style.display = 'flex';
+      setTimeout(() => { o.firstElementChild.style.transform = 'scale(1)'; }, 10);
     }
 
     function closePopup() {
-      const overlay = document.getElementById('popupOverlay');
-      overlay.firstElementChild.style.transform = 'scale(0.95)';
-      setTimeout(() => { overlay.style.display = 'none'; }, 200);
+      const o = document.getElementById('popupOverlay');
+      o.firstElementChild.style.transform = 'scale(0.95)';
+      setTimeout(() => { o.style.display = 'none'; }, 200);
     }
 
-    window.closePopup = closePopup;
-
-    /* ── CORE COMPONENT LOGIC & ID GENERATORS ── */
+    /* ── UTILITIES ── */
     function generateId() {
-      const prefix = "JDK";
-      const timestamp = Date.now().toString(36).toUpperCase().slice(-4);
-      const randomStr = Math.random().toString(36).toUpperCase().substring(2, 6);
-      return `${prefix}-${timestamp}${randomStr}`;
+      const ts  = Date.now().toString(36).toUpperCase().slice(-4);
+      const rnd = Math.random().toString(36).toUpperCase().substring(2, 6);
+      return `JDK-${ts}${rnd}`;
     }
 
     function validateIC(ic) {
       ic = ic.replace(/-/g, '');
-      if (ic.length !== 12) return { valid: false, error: 'No. IC mestilah mengandungi 12 digit.' };
-      if (!/^\d+$/.test(ic)) return { valid: false, error: 'No. IC hanya boleh mengandungi nombor.' };
-
-      let year = parseInt(ic.substring(0, 2));
-      const month = parseInt(ic.substring(2, 4));
-      const day = parseInt(ic.substring(4, 6));
+      if (ic.length !== 12)       return { valid: false, error: 'No. IC mestilah mengandungi 12 digit.' };
+      if (!/^\d+$/.test(ic))      return { valid: false, error: 'No. IC hanya boleh mengandungi nombor.' };
 
       const currentYear = new Date().getFullYear();
-      const currentCentury = Math.floor(currentYear / 100) * 100;
-      year = (currentCentury + year > currentYear) ? (currentCentury - 100 + year) : (currentCentury + year);
+      const century     = Math.floor(currentYear / 100) * 100;
+      let year          = parseInt(ic.substring(0, 2));
+      year = (century + year > currentYear) ? century - 100 + year : century + year;
+
+      const month = parseInt(ic.substring(2, 4));
+      const day   = parseInt(ic.substring(4, 6));
 
       if (month < 1 || month > 12) return { valid: false, error: 'No. IC tidak sah — format bulan salah.' };
-      
       const daysInMonth = new Date(year, month, 0).getDate();
-      if (day < 1 || day > daysInMonth) return { valid: false, error: 'No. IC tidak sah — tarikh tidak wujud pada bulan tersebut.' };
+      if (day < 1 || day > daysInMonth) return { valid: false, error: 'No. IC tidak sah — tarikh tidak wujud.' };
 
       const dob = new Date(year, month - 1, day);
       if (dob > new Date()) return { valid: false, error: 'No. IC tidak sah — tarikh lahir pada masa hadapan.' };
 
       const age = (new Date() - dob) / (1000 * 60 * 60 * 24 * 365.25);
-      if (age > 120) return { valid: false, error: 'No. IC tidak sah — tarikh lahir melebihi 120 tahun.' };
+      if (age > 120) return { valid: false, error: 'No. IC tidak sah — melebihi 120 tahun.' };
 
-      const stateCode = parseInt(ic.substring(6, 8));
-      const validStates = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
-      const stateOk = validStates.includes(stateCode) || (stateCode >= 21 && stateCode <= 59);
+      const stateCode  = parseInt(ic.substring(6, 8));
+      const validCodes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+      const stateOk    = validCodes.includes(stateCode) || (stateCode >= 21 && stateCode <= 59);
       if (!stateOk) return { valid: false, error: 'No. IC tidak sah — kod negeri tidak sepadan.' };
 
-      const monthsMs = ['Jan', 'Feb', 'Mac', 'Apr', 'Mei', 'Jun', 'Jul', 'Ogo', 'Sep', 'Okt', 'Nov', 'Dis'];
-      const dobStr = `${day} ${monthsMs[month - 1]} ${year}`;
+      const months = ['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogo','Sep','Okt','Nov','Dis'];
+      const dobStr = `${day} ${months[month - 1]} ${year}`;
 
       const stateMap = {
-        1: 'Johor', 2: 'Kedah', 3: 'Kelantan', 4: 'Melaka', 5: 'Negeri Sembilan', 
-        6: 'Pahang', 7: 'Pulau Pinang', 8: 'Perak', 9: 'Perlis', 10: 'Selangor', 
-        11: 'Terengganu', 12: 'Sabah', 13: 'Sarawak', 14: 'Wilayah Persekutuan (KL)', 
-        15: 'Wilayah Persekutuan (Labuan)', 16: 'Wilayah Persekutuan (Putrajaya)',
-        21: 'Johor', 22: 'Johor', 23: 'Johor', 24: 'Johor', 25: 'Kedah', 26: 'Kedah', 27: 'Kedah',
-        28: 'Kelantan', 29: 'Kelantan', 30: 'Melaka', 31: 'Negeri Sembilan', 32: 'Pahang', 33: 'Pahang',
-        34: 'Pulau Pinang', 35: 'Pulau Pinang', 36: 'Perak', 37: 'Perak', 38: 'Perak', 39: 'Perak',
-        40: 'Perlis', 41: 'Selangor', 42: 'Selangor', 43: 'Selangor', 44: 'Selangor', 45: 'Terengganu',
-        46: 'Terengganu', 47: 'Sabah', 48: 'Sabah', 49: 'Sabah', 50: 'Sarawak', 51: 'Sarawak',
-        52: 'Sarawak', 53: 'Sarawak', 54: 'Wilayah Persekutuan (KL)', 55: 'Wilayah Persekutuan (KL)',
-        56: 'Wilayah Persekutuan (KL)', 57: 'Wilayah Persekutuan (KL)', 58: 'Wilayah Persekutuan (Labuan)',
-        59: 'Wilayah Persekutuan (Putrajaya)'
+        1:'Johor',2:'Kedah',3:'Kelantan',4:'Melaka',5:'Negeri Sembilan',6:'Pahang',
+        7:'Pulau Pinang',8:'Perak',9:'Perlis',10:'Selangor',11:'Terengganu',
+        12:'Sabah',13:'Sarawak',14:'WP Kuala Lumpur',15:'WP Labuan',16:'WP Putrajaya',
+        21:'Johor',22:'Johor',23:'Johor',24:'Johor',25:'Kedah',26:'Kedah',27:'Kedah',
+        28:'Kelantan',29:'Kelantan',30:'Melaka',31:'Negeri Sembilan',32:'Pahang',33:'Pahang',
+        34:'Pulau Pinang',35:'Pulau Pinang',36:'Perak',37:'Perak',38:'Perak',39:'Perak',
+        40:'Perlis',41:'Selangor',42:'Selangor',43:'Selangor',44:'Selangor',
+        45:'Terengganu',46:'Terengganu',47:'Sabah',48:'Sabah',49:'Sabah',
+        50:'Sarawak',51:'Sarawak',52:'Sarawak',53:'Sarawak',
+        54:'WP Kuala Lumpur',55:'WP Kuala Lumpur',56:'WP Kuala Lumpur',57:'WP Kuala Lumpur',
+        58:'WP Labuan',59:'WP Putrajaya'
       };
-      
-      const state = stateMap[stateCode] || 'Luar Negara / Lain-lain';
-      const lastDigit = parseInt(ic.slice(-1));
-      const gender = (lastDigit % 2 === 0) ? 'Wanita' : 'Lelaki';
 
-      return { valid: true, age: Math.floor(age), dobStr, state, gender, rawDob: dob.toISOString().split('T')[0] };
+      const state      = stateMap[stateCode] || 'Luar Negara / Lain-lain';
+      const lastDigit  = parseInt(ic.slice(-1));
+      const gender     = (lastDigit % 2 === 0) ? 'Wanita' : 'Lelaki';
+
+      return { valid:true, age:Math.floor(age), dobStr, state, gender, rawDob:dob.toISOString().split('T')[0] };
     }
 
-    /* ── EVENT HANDLERS & REGISTRATION PIPELINE ── */
+    /* ── LIVE INPUT HANDLERS ── */
     document.getElementById('icNo')?.addEventListener('input', function(e) {
       let raw = e.target.value.replace(/\D/g, '');
-      if (raw.length > 6 && raw.length <= 8) {
-        raw = raw.slice(0, 6) + '-' + raw.slice(6);
-      } else if (raw.length > 8) {
-        raw = raw.slice(0, 6) + '-' + raw.slice(6, 8) + '-' + raw.slice(8, 12);
-      }
+      if (raw.length > 8)      raw = raw.slice(0,6) + '-' + raw.slice(6,8) + '-' + raw.slice(8,12);
+      else if (raw.length > 6) raw = raw.slice(0,6) + '-' + raw.slice(6);
       e.target.value = raw;
 
-      const digits = raw.replace(/-/g, '');
-      if (digits.length === 12) {
+      if (raw.replace(/-/g,'').length === 12) {
         const r = validateIC(raw);
-        if (r.valid) {
-          clearFieldError('icNo');
-          showICHint(r);
-        } else {
-          showFieldError('icNo', r.error);
-          clearICHint();
-        }
+        r.valid ? (clearFieldError('icNo'), showICHint(r)) : (showFieldError('icNo', r.error), clearICHint());
       } else {
         clearFieldError('icNo');
         clearICHint();
@@ -565,118 +494,72 @@
       clearUploadError();
       const file = e.target.files[0];
       if (!file) return;
-
-      const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
-      if (!validTypes.includes(file.type)) {
+      if (!['image/jpeg','image/png','image/webp'].includes(file.type)) {
         showUploadError('Format tidak sah. Gunakan JPG, PNG atau WEBP sahaja.');
         selectedFile = null;
         document.getElementById('uploadTitle').textContent = 'Pilih gambar profil';
         return;
       }
-
       if (file.size > 5 * 1024 * 1024) {
-        showUploadError('Fail terlalu besar. Maksimum saiz dibenarkan adalah 5MB.');
+        showUploadError('Fail terlalu besar. Maksimum 5MB.');
         selectedFile = null;
         document.getElementById('uploadTitle').textContent = 'Pilih gambar profil';
         return;
       }
-
       selectedFile = file;
       document.getElementById('uploadTitle').textContent = file.name;
     });
 
-    document.getElementById('fullName')?.addEventListener('input', () => clearFieldError('fullName'));
-    document.getElementById('emailAddr')?.addEventListener('input', () => clearFieldError('emailAddr'));
-    document.getElementById('phoneNo')?.addEventListener('input', () => clearFieldError('phoneNo'));
-    document.getElementById('agreeTerms')?.addEventListener('change', (e) => { if(e.target.checked) clearCbError(); });
+    document.getElementById('fullName')?.addEventListener('input',    () => clearFieldError('fullName'));
+    document.getElementById('emailAddr')?.addEventListener('input',   () => clearFieldError('emailAddr'));
+    document.getElementById('phoneNo')?.addEventListener('input',     () => clearFieldError('phoneNo'));
+    document.getElementById('agreeTerms')?.addEventListener('change', e => { if (e.target.checked) clearCbError(); });
 
+    /* ── FORM VALIDATION ── */
     function validateForm() {
       let ok = true;
 
-      /* Name */
       const name = document.getElementById('fullName')?.value.trim() ?? '';
-      if (!name) {
-        showFieldError('fullName', 'Nama penuh diperlukan.');
-        ok = false;
-      } else if (name.length < 3) {
-        showFieldError('fullName', 'Nama penuh mestilah sekurang-kurangnya 3 aksara.');
-        ok = false;
-      } else {
-        clearFieldError('fullName');
-      }
+      if (!name || name.length < 3) { showFieldError('fullName', name ? 'Nama penuh sekurang-kurangnya 3 aksara.' : 'Nama penuh diperlukan.'); ok = false; }
+      else clearFieldError('fullName');
 
-      /* IC */
       const icVal = document.getElementById('icNo')?.value ?? '';
       const icRes = validateIC(icVal);
-      if (!icVal.replace(/-/g,'')) {
-        showFieldError('icNo', 'No. Kad Pengenalan diperlukan.');
-        clearICHint();
-        ok = false;
-      } else if (!icRes.valid) {
-        showFieldError('icNo', icRes.error);
-        clearICHint();
-        ok = false;
-      } else {
-        clearFieldError('icNo');
-        showICHint(icRes);
-      }
+      if (!icVal.replace(/-/g,'')) { showFieldError('icNo', 'No. Kad Pengenalan diperlukan.'); clearICHint(); ok = false; }
+      else if (!icRes.valid)        { showFieldError('icNo', icRes.error); clearICHint(); ok = false; }
+      else                          { clearFieldError('icNo'); showICHint(icRes); }
 
-      /* Email */
       const email = document.getElementById('emailAddr')?.value.trim() ?? '';
-      if (!email) {
-        showFieldError('emailAddr', 'Alamat e-mel diperlukan.');
-        ok = false;
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showFieldError('emailAddr', 'Format e-mel tidak sah.');
-        ok = false;
-      } else {
-        clearFieldError('emailAddr');
-      }
+      if (!email)                                       { showFieldError('emailAddr', 'Alamat e-mel diperlukan.'); ok = false; }
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showFieldError('emailAddr', 'Format e-mel tidak sah.'); ok = false; }
+      else clearFieldError('emailAddr');
 
-      /* Phone */
       const phone = document.getElementById('phoneNo')?.value.trim() ?? '';
-      if (!phone) {
-        showFieldError('phoneNo', 'Nombor telefon diperlukan.');
-        ok = false;
-      } else if (!/^\+?\d{9,15}$/.test(phone.replace(/[-\s]/g,''))) {
-        showFieldError('phoneNo', 'Nombor telefon tidak sah (9-15 digit).');
-        ok = false;
-      } else {
-        clearFieldError('phoneNo');
-      }
+      if (!phone)                                              { showFieldError('phoneNo', 'Nombor telefon diperlukan.'); ok = false; }
+      else if (!/^\+?\d{9,15}$/.test(phone.replace(/[-\s]/g,''))) { showFieldError('phoneNo', 'Nombor telefon tidak sah (9–15 digit).'); ok = false; }
+      else clearFieldError('phoneNo');
 
-      /* Photo */
-      if (!selectedFile) {
-        showUploadError('Gambar profil rasmi diperlukan untuk pengesahan awal.');
-        ok = false;
-      } else {
-        clearUploadError();
-      }
+      if (!selectedFile) { showUploadError('Gambar profil rasmi diperlukan untuk pengesahan awal.'); ok = false; }
+      else clearUploadError();
 
-      /* Checkbox */
-      const agree = document.getElementById('agreeTerms')?.checked ?? false;
-      if (!agree) {
-        showCbError('Anda mesti bersetuju dengan Terma dan Dasar Privasi untuk meneruskan.');
-        ok = false;
-      } else {
-        clearCbError();
-      }
+      if (!document.getElementById('agreeTerms')?.checked) { showCbError('Anda mesti bersetuju dengan Terma dan Dasar Privasi.'); ok = false; }
+      else clearCbError();
 
       return ok;
     }
 
+    /* ── FORM SUBMISSION ── */
     async function handleFormSubmit(e) {
       e.preventDefault();
       if (!validateForm()) {
-        const firstErr = document.querySelector('.field-error, #upError, #cbError');
-        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.querySelector('.field-error, #upError, #cbError')?.scrollIntoView({ behavior:'smooth', block:'center' });
         return;
       }
 
       if (!db) {
         showMaintenancePopup(
-          'Sistem Sedang Dikemas Kini', 
-          'Pangkalan data kami sedang dalam fasa konfigurasi penyelenggaraan. Sila cuba lagi dalam masa beberapa minit.'
+          'Sistem Sedang Dikemas Kini',
+          'Pangkalan data kami sedang dalam fasa konfigurasi. Sila cuba lagi dalam beberapa minit.'
         );
         return;
       }
@@ -686,93 +569,77 @@
       btn.textContent = 'Memproses…';
 
       try {
-        const jdk_id = generateId();
+        const jdk_id  = generateId();
         const icValue = document.getElementById('icNo').value;
-        const icRes = validateIC(icValue);
-        const ic_last4 = icValue.replace(/-/g, '').slice(-4);
+        const icRes   = validateIC(icValue);
+        const ic_last4 = icValue.replace(/-/g,'').slice(-4);
 
-        /* ── 1. Upload photo to Supabase Storage ── */
-        const ext = selectedFile.name.split('.').pop();
-        const filename = `${jdk_id}_profile.${ext}`;
-        const filePath = `${jdk_id}/${filename}`;
-
-        const { error: uploadError } = await db.storage
-          .from('profiles')
-          .upload(filePath, selectedFile, { cacheControl: '3600', upsert: true });
-
+        /* 1. Upload photo */
+        const ext      = selectedFile.name.split('.').pop();
+        const filePath = `${jdk_id}/${jdk_id}_profile.${ext}`;
+        const { error: uploadError } = await db.storage.from('profiles').upload(filePath, selectedFile, { cacheControl:'3600', upsert:true });
         if (uploadError) throw uploadError;
 
-        /* ── 2. Get Public URL for the Uploaded Image ── */
+        /* 2. Get public URL */
         const { data: urlData } = db.storage.from('profiles').getPublicUrl(filePath);
         const photoUrl = urlData.publicUrl;
 
-        /* ── 3. Insert Database Record ── */
+        /* 3. Insert record */
         const payload = {
-          id: jdk_id,
-          full_name: document.getElementById('fullName').value.trim(),
-          ic_number: icValue.replace(/-/g, ''),
-          ic_last_four: ic_last4,
-          email: document.getElementById('emailAddr').value.trim().toLowerCase(),
-          phone: document.getElementById('phoneNo').value.trim(),
-          photo_url: photoUrl,
-          age: icRes.age,
-          gender: icRes.gender,
-          state_of_birth: icRes.state,
-          date_of_birth: icRes.rawDob
+          id:              jdk_id,
+          full_name:       document.getElementById('fullName').value.trim(),
+          ic_number:       icValue.replace(/-/g,''),
+          ic_last_four:    ic_last4,
+          email:           document.getElementById('emailAddr').value.trim().toLowerCase(),
+          phone:           document.getElementById('phoneNo').value.trim(),
+          photo_url:       photoUrl,
+          age:             icRes.age,
+          gender:          icRes.gender,
+          state_of_birth:  icRes.state,
+          date_of_birth:   icRes.rawDob
         };
 
         const { error: dbError } = await db.from('early_access').insert([payload]);
-
         if (dbError) {
-          if (dbError.code === '23505') {
-            throw new Error('__DUPLICATE__');
-          }
+          if (dbError.code === '23505') throw new Error('__DUPLICATE__');
           throw dbError;
         }
 
-        /* ── 4. Trigger External Automation Pipelines via Edge Functions ── */
-        db.functions.invoke('on-early-access-reg', { body: { jdk_id } }).catch(err => {
-          console.error("Non-blocking automation trigger failure:", err);
-        });
+        /* 4. Trigger automation (non-blocking) */
+        db.functions.invoke('on-early-access-reg', { body:{ jdk_id } }).catch(console.error);
 
-        /* ── 5. Show Success Screen UI Changes ── */
-        const form = document.getElementById('regForm');
+        /* 5. Success UI */
+        const form       = document.getElementById('regForm');
         const successMsg = document.getElementById('successMsg');
-        if (form && successMsg) {
-          form.style.pointerEvents = 'none';
-          btn.style.display = 'none';
-          successMsg.style.display = 'block';
-          successMsg.innerHTML = `
-            <div style="text-align:center;padding:10px 0;">
-              <span style="font-size:40px; display:block; margin-bottom:12px;">🎉</span>
-              <strong style="font-size:16px;color:#fff;display:block;margin-bottom:8px;font-family:var(--font-display);">Permohonan Akses Awal Diterima!</strong>
-              <p style="margin-bottom:16px;color:rgba(255,255,255,0.85);font-size:13px;">Pendaftaran anda berjaya disaring oleh AI kami. Sila simpan ID unik anda di bawah sebagai rujukan rasmi. Kami akan menghubungi anda apabila slot onboarding dibuka. — Pasukan Jodohku</p>
-              <div style="display:inline-block;padding:10px 24px;border-radius:20px;background:#0c1924;border:1px solid rgba(229,207,151,.4);color:var(--champagne);font-size:14px;letter-spacing:.08em;font-family:monospace;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,0.3);">
-                ${jdk_id}
-              </div>
-            </div>`;
-          form.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        form.style.pointerEvents = 'none';
+        btn.style.display = 'none';
+        successMsg.style.display = 'block';
+        successMsg.innerHTML = `
+          <div style="text-align:center;padding:10px 0;">
+            <span style="font-size:40px;display:block;margin-bottom:12px;">🎉</span>
+            <strong style="font-size:16px;color:#fff;display:block;margin-bottom:8px;font-family:var(--font-display);">Permohonan Akses Awal Diterima!</strong>
+            <p style="margin-bottom:16px;color:rgba(255,255,255,0.85);font-size:13px;">
+              Pendaftaran anda berjaya disaring oleh AI kami. Simpan ID unik anda di bawah sebagai rujukan rasmi.
+              Kami akan menghubungi anda apabila slot onboarding dibuka. — Pasukan Jodohku
+            </p>
+            <div style="display:inline-block;padding:10px 24px;border-radius:20px;background:#0c1924;border:1px solid rgba(229,207,151,.4);color:var(--champagne);font-size:14px;letter-spacing:.08em;font-family:monospace;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+              ${jdk_id}
+            </div>
+          </div>`;
+        form.scrollIntoView({ behavior:'smooth', block:'center' });
 
       } catch (err) {
         btn.disabled = false;
         btn.textContent = 'Mohon Akses Awal';
         if (err.message === '__DUPLICATE__') {
-          showErrorPopup(
-            'Pendaftaran Duplikat', 
-            'Nombor IC atau alamat e-mel ini sudah pun didaftarkan di dalam sistem kami untuk akses awal.'
-          );
+          showErrorPopup('Pendaftaran Duplikat', 'Nombor IC atau alamat e-mel ini sudah pun didaftarkan di dalam sistem kami.');
         } else {
-          console.error("Critical submission break:", err);
-          showErrorPopup(
-            'Gagal Menyimpan', 
-            'Rangkaian tergendala atau pelayan sibuk. Sila pastikan sambungan internet anda stabil dan cuba sekali lagi.'
-          );
+          console.error('Submission error:', err);
+          showErrorPopup('Gagal Menyimpan', 'Rangkaian tergendala atau pelayan sibuk. Sila pastikan sambungan internet anda stabil dan cuba sekali lagi.');
         }
       }
     }
 
-    // Attach handler dynamically to prevent global scope conflicts
     document.getElementById('regForm')?.addEventListener('submit', handleFormSubmit);
   </script>
 </body>
