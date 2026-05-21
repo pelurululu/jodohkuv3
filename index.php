@@ -371,6 +371,8 @@ error_reporting(E_ALL);
   </div>
 
  <script>
+
+   const GAS_URL = 'https://script.google.com/macros/s/XXXXXXXXXX/exec';
 /* ── CONFIGURATION & INITIALIZATION ── */
     // Safely embed environment variables via PHP, then sanitize them for JavaScript
     const SUPABASE_URL = '<?php echo addslashes((string)getenv("SUPABASE_URL")); ?>';
@@ -809,6 +811,39 @@ error_reporting(E_ALL);
         db.functions.invoke('on-early-access-reg', { body: { jdk_id } }).catch(err => {
           console.error("Non-blocking automation trigger failure:", err);
         });
+
+        /* ── 4b. Send to Google Apps Script ── */
+try {
+  const reader = new FileReader();
+  reader.readAsDataURL(selectedFile);
+  reader.onload = async () => {
+    const gasPayload = {
+      reference_no:            jdk_id,
+      full_name:               document.getElementById('fullName').value.trim(),
+      phone:                   document.getElementById('phoneNo').value.trim(),
+      email:                   document.getElementById('emailAddr').value.trim().toLowerCase(),
+      ic_no:                   document.getElementById('icNo').value.replace(/-/g, ''),
+      ic_last4:                document.getElementById('icNo').value.replace(/-/g, '').slice(-4),
+      gender:                  icRes.gender,
+      state:                   icRes.state,
+      profile_image_filename:  selectedFile.name,
+      profile_image_mime_type: selectedFile.type,
+      profile_image_base64:    reader.result,
+      consent_marketing:       true,
+      source:                  'jodohku_landing',
+      page_url:                window.location.href,
+      user_agent:              navigator.userAgent,
+      created_at:              new Date().toISOString(),
+    };
+
+    await fetch(GAS_URL, {
+      method: 'POST',
+      body:   JSON.stringify(gasPayload),
+    });
+  };
+} catch (gasErr) {
+  console.error('GAS sync error (non-blocking):', gasErr);
+}
 
         /* ── 5. Show Success Screen UI Changes ── */
         const form = document.getElementById('regForm');
