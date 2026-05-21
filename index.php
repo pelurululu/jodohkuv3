@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071017">
   <title>Jodohku.my | Platform Taaruf Premium Muslim Malaysia</title>
   <meta name="description" content="Platform taaruf premium Muslim Malaysia berasaskan AI, syariah, wali digital dan sistem taaruf serta keserasian mendalam.">
-  <link rel="stylesheet" href="styles2.css">
+  <link rel="stylesheet" href="styles.css">
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
 <meta property="og:title" content="Jodohku.my - Platform Ultra-Premium Mencari Pasangan">
