@@ -295,16 +295,20 @@
     </div>
   </div>
 
-  <script>
+ <script>
     /* ── CONFIGURATION & INITIALIZATION ── */
-    const SUPABASE_URL = '<?php echo addslashes(getenv("SUPABASE_URL")); ?>';
-    const SUPABASE_ANON_KEY = '<?php echo addslashes(getenv("SUPABASE_ANON_KEY")); ?>';
+    // Safely embed environment variables via PHP, then sanitize them for JavaScript
+    const SUPABASE_URL = '<?php echo addslashes((string)getenv("SUPABASE_URL")); ?>';
+    const SUPABASE_ANON_KEY = '<?php echo addslashes((string)getenv("SUPABASE_ANON_KEY")); ?>';
 
     let db = null;
-    if (SUPABASE_URL && SUPABASE_ANON_KEY && !SUPABASE_URL.startsWith('<?php') && !SUPABASE_ANON_KEY.startsWith('<?php')) {
-      db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    
+    // Ensure the keys are parsed as clean strings and don't contain unprocessed raw PHP code strings
+    if (SUPABASE_URL && SUPABASE_ANON_KEY && !SUPABASE_URL.startsWith('<?') && !SUPABASE_ANON_KEY.startsWith('<?')) {
+      // Use the global window object configuration to initialize Supabase client safely
+      db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     } else {
-      console.warn("Supabase configuration keys are missing or invalid environment variables.");
+      console.warn("Supabase initialization skipped: Missing configuration keys or invalid environment variables.");
     }
 
     let selectedFile = null;
@@ -420,6 +424,9 @@
       document.body.style.overflow = 'hidden';
     }
 
+    // Explicitly make modal handling globally available
+    window.openModal = openModal;
+
     function closeModal(id) {
       const modal = document.getElementById(id);
       if (!modal) return;
@@ -427,12 +434,14 @@
       document.body.style.overflow = '';
     }
 
-    window.onclick = function(e) {
+    window.closeModal = closeModal;
+
+    window.addEventListener('click', function(e) {
       if (e.target.classList.contains('modal')) {
         e.target.style.display = 'none';
         document.body.style.overflow = '';
       }
-    };
+    });
 
     function showErrorPopup(title, desc) {
       document.getElementById('popupIcon').textContent = '⚠️';
@@ -459,6 +468,8 @@
       overlay.firstElementChild.style.transform = 'scale(0.95)';
       setTimeout(() => { overlay.style.display = 'none'; }, 200);
     }
+
+    window.closePopup = closePopup;
 
     /* ── CORE COMPONENT LOGIC & ID GENERATORS ── */
     function generateId() {
@@ -572,7 +583,6 @@
       document.getElementById('uploadTitle').textContent = file.name;
     });
 
-    // Automatically remove error highlights as soon as fields change
     document.getElementById('fullName')?.addEventListener('input', () => clearFieldError('fullName'));
     document.getElementById('emailAddr')?.addEventListener('input', () => clearFieldError('emailAddr'));
     document.getElementById('phoneNo')?.addEventListener('input', () => clearFieldError('phoneNo'));
@@ -719,8 +729,8 @@
         }
 
         /* ── 4. Trigger External Automation Pipelines via Edge Functions ── */
-        db.functions.invoke('on-early-access-reg', { body: { jdk_id } }).catch(e => {
-          console.error("Non-blocking automation trigger failure:", e);
+        db.functions.invoke('on-early-access-reg', { body: { jdk_id } }).catch(err => {
+          console.error("Non-blocking automation trigger failure:", err);
         });
 
         /* ── 5. Show Success Screen UI Changes ── */
@@ -759,6 +769,9 @@
         }
       }
     }
+
+    // Attach handler dynamically to prevent global scope conflicts
+    document.getElementById('regForm')?.addEventListener('submit', handleFormSubmit);
   </script>
 </body>
 </html>
